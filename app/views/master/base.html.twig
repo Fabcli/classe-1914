@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html ng-app="classe1914" class="classe1914 no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html ng-app="classe1914" class="classe1914 no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html ng-app="classe1914" class="classe1914 no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html ng-app="classe1914" class="classe1914 no-js"> <!--<![endif]-->
+<head>
+
+  {#-- META --#}
+  {% block meta %}
+    <meta charset="utf-8">
+    <meta name="description" content="When the cow of uniqueness realizes the stigmas of the body, the bliss will know follower ?">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=890, minimal-ui">
+   {#open Graph Protocol => social informations #}
+    <meta property="og:title" content="Classe-1914 : lorem ipsum ?" />
+    <meta property="og:description" content="Equisos mori in teres tubinga! Cum rumor assimilant, omnes guttuses locus salvus, bassus capioes ?" />
+    <meta property="og:url" content="http://www.classe1914-1914.fr/" />
+    <meta property="og:image" content="{{ROOT_URI}}/img/ui/img-share-fb.jpg" />
+  {% endblock meta %}
+
+  <!--  TITLE  -->
+  <title>Classe 1914</title>
+
+  <base href="/" />
+
+  {#-- SCRIPT ---#}
+  {% block script %}
+    <script src="{{STATIC_URL}}js/lib.min.js?v={{ "../public/js/lib.min.js" | md5 }}"></script>
+  {% endblock %}
+
+  {#-- HEAD --#}
+  {% block head %}
+    <link rel="icon" href="{{STATIC_URL}}img/icon.png" />
+    <script type="text/javascript">
+      // Values passed throught server-side app configuration
+      window.MEDIA_URL  = "{{MEDIA_URL|raw}}";
+      window.STATIC_URL = "{{STATIC_URL|raw}}";
+    </script>
+    {% if MODE == "development" %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/lib.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}dev/css/styles.css" />
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}dev/js/app.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}dev/js/app.template.js"></script>
+    {% endif %}
+    {% if MODE == "production" %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/app.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/app.template.min.js"></script>
+    {% endif %}
+  {% endblock head %}
+
+  {% if partner %}
+    <script type="text/javascript">
+    </script>
+  {% endif %}
+
+</head>
+
+
+<body ng-class="{ 'body--in-game' : user.inGame, 'body--game-done': user.isGameDone, 'body--is-loading': !user.isReady }">
+  <div id="content" class="site_content">
+    {#-- CONTENT --#}
+    {% block content %}
+      {{ content|raw }}
+    {% endblock content %}
+  </div>
+
+{% block inline%}{% endblock inline %}
+
+</body>
+</html>
+
+
+

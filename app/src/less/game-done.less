@@ -1,0 +1,116 @@
+/*
+.game-done {
+    @left-col-width: 350px;
+    z-index:     @game-done-zindex;
+    font-family: @font-family-base;
+
+    .fade > .show(@chapter-starting-duration-2);
+
+    &__bg {
+        .covering();
+        background-image:url("/img/bg/wait.jpg");   
+    }
+
+    &__title {
+        width: @left-col-width - 50px;
+        position: absolute;
+        text-align: right;
+        top: 100px;
+        &__topping {
+            border:0;
+            background-color: black;
+            height: 30px;
+            width: 100%;
+        }
+    }
+    &__summary {
+        position: absolute;
+        background: fade(black, 25);
+        top: 260px;
+        width: @left-col-width;
+        padding: 30px;
+        padding-top: 10px;
+        &__title, &__description {
+            font-size: @font-size-base;
+            font-weight: bold;
+            color: white;
+        }
+
+         &__title { 
+            text-transform: uppercase;
+         }
+
+
+        &__restart-button {
+            position: absolute;
+            top:100%;
+            right:0;
+            margin-top:20px;
+        }
+    }
+
+
+    &__results {
+        z-index: @game-done-zindex;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+
+        width: 560px + 150px;
+        min-height: 560px + 20px;
+        background: fade(black, 25);
+
+
+        @media (max-width: 1100px) {                 
+            width: 360px + 150px;
+            min-height: 380px;
+        }
+
+ 
+        &__feedbacks {
+            padding:15px;
+            background:fade(black, 75);        
+            font-size:@font-size-base - 2px;
+
+
+            &__share  {
+                position:absolute;
+                top:15px;
+                right:15px;
+
+                button {
+                    display:inline-block;
+                    height:40px;
+                    width:40px;
+                    background-position:center center;
+                    background-repeat:no-repeat;
+                    background-color:@btn-default-bg;    
+                    margin-left:10px;        
+                }
+
+                &__facebook {
+                    background-image:url("/img/ui/pic_facebook-big.png");
+                }
+
+                &__twitter {
+                    background-image:url("/img/ui/pic_twitter-big.png");
+                }
+                    
+            }
+        }
+        
+        &:after {
+            content:"";
+            position:absolute;
+            bottom: 12px;
+            right:-12px;                    
+            background:no-repeat right top url("/img/ui/question_right.png");
+            width:14px;                   
+            height:7px;                    
+            margin-right:-2px;
+            margin-top:2px;
+            z-index:-1;
+        }
+    }
+}
+*/

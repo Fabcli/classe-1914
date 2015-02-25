@@ -1,0 +1,52 @@
+@import "bootstrap.variables.less";
+@import 'bootstrap.loader.less';
+@import 'bootstrap.fix.less';
+@import 'bootstrap.forms.less';
+
+@content-zindex       : 1000;
+@scene-zindex         : @content-zindex     + 1000;
+@scenebg-zindex       : @scene-zindex       - 100;
+@chapter-zindex       : @scene-zindex       + 1000;
+@welcome-zindex       : @chapter-zindex     + 1000;
+@results-zindex       : @welcome-zindex     + 1000;
+@game-over-zindex     : @chapter-zindex     + 1000;
+@game-done-zindex     : @chapter-zindex     + 1000;
+@static-page-zindex   : @game-done-zindex   + 1000;
+@nav-zindex           : @static-page-zindex + 1000;
+@metanav-zindex       : @nav-zindex         + 1000;
+@cookie-cnil-zindex   : @metanav-zindex     + 1000;
+@debug-toolbar-zindex : @cookie-cnil-zindex + 1000;
+
+@scatterplot-grid-zindex        : 100;
+@scatterplot-dot-zindex         : @scatterplot-grid-zindex   + 100;
+@scatterplot-legend-zindex      : @scatterplot-dot-zindex    + 100;
+@scatterplot-you-zindex         : @scatterplot-legend-zindex + 100;
+@scatterplot-user-tooltip-zindex: @scatterplot-you-zindex    + 100;
+
+@chapter-starting-duration-1: 6s;
+@chapter-starting-duration-2: 1s;
+
+@metanav-height: 31px;
+
+@import 'mixins.less';
+@import 'animations.less';
+@import 'metanav.less';
+@import 'cookie-cnil.less';
+
+.site_content {
+    @import 'angular.less';
+    @import 'chapter.cmd.less';
+    @import 'chapter.less';
+    @import 'content.less';
+    @import 'debug-toolbar.less';
+    @import 'game-done.less';
+    @import 'game-over.less';
+    @import 'global.less';
+    @import 'nav.less';
+    @import 'nouislider.less';
+    @import 'page.less';
+    @import 'results.less';
+    @import 'scatter-plot.less';
+    @import 'scene.less';
+    @import 'welcome.less';
+}

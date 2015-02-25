@@ -1,0 +1,17 @@
+{
+      "next_scene": "1.5.3",
+      "decor": [
+            {
+                  "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5-1.png",
+                  "background_transition": "fade",
+                  "soundtrack": "/medias/chap1/soundtrack/CH1_SE5_SC2_TP_PL1.mp3"
+            }
+      ],
+      "sequence": [
+            {
+                  "type": "voixoff",
+                  "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5-1.mp3"
+            }
+]
+}
+

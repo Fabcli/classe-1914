@@ -1,0 +1,55 @@
+.debug-toolbar {
+  z-index: @debug-toolbar-zindex;
+  position: absolute;
+  top:    0px;
+  right:   30px;
+  padding: 10px;
+  background: black;
+
+  .transition(0.25s );
+  .translate(0, 0);
+
+  &--hidden {
+    .translate(0, -100%);
+  }
+
+  h3 {
+    margin-top:0;
+  }
+
+
+  .form-group {
+    margin-bottom: 5px;
+
+    input {
+      margin-left: 10px;
+      height: inherit;
+    }
+  }
+
+  &__summary {
+    &__info {
+      width:50%;
+    }
+  }
+  &__controls {
+    border-bottom: 1px solid @text-color;
+    margin-bottom:5px;
+    padding:10px 0;
+  }
+
+  &__toggler {
+    position:absolute;
+    top:100%;
+    right:60px;
+    z-index:-1;
+    height:40px;
+    width:50px;
+    color:white;
+    background: black;
+    font-size:130%;
+    border:0;
+    padding:0;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,113 @@
+<!-- Affiche le chapitre souhaité avec la directive ng-if de la fonction shouldShowChapter()  -->
+<!-- Le ng-class bascule entre "chapter--starting et chapter--loading en fonction du isReady  -->
+<div class="chapter chapter-entrance-animation" ng-if="shouldShowChapter()" ng-class="chapterClasses()">
+
+    <!-- Loader, disparait si user.isReady = true -->
+    <div class="chapter__spinner" ng-hide="user.isReady">
+        <p class="chapter__spinner__label">Chargement en cours...</p>
+    </div>
+
+    <preload images="getBackgrounds()" object="user" attr="isReady" />
+
+    <!-- Introduction du chapitre, affiché avec ng-show et 2 conditions true => isStartingChapters() && !isGameOver -->
+    <div class="chapter__intro" ng-show="user.isStartingChapter() && !user.isGameOver">
+        <div class="chapter__intro__id">
+            <span ng-if="chapter.id === '1'">Id de la Partie : [[chapter.id]]</span>
+            <span ng-if="chapter.id !== '1'">Id de la Partie : [[chapter.id]]</span>
+        </div>
+        <h2 class="chapter__intro__title">Titre: [[chapter.title]]</h2>
+    </div>
+
+    <!-- Numéro + Titre + Progression du chap sauf si isStartingChapter ou isGameOver -->
+    <div class="chapter__track" ng-hide="user.isStartingChapter() || user.isGameOver">
+        <!-- Le numéro du chapitre -->
+        <div class="chapter__track__id">
+            <span >Partie <b>[[chapter.id]]</b></span>
+        </div>
+        <!-- Pourcentage de progression : les bullets -->
+        <div class="chapter__track__bullets">
+            <i class="chapter__track__bullets__bullet" ng-repeat="i in [] | range: 5" ng-class="{ active: i*25 <= user.chapterProgression() }"></i>
+        </div>
+        <!-- Pourcentage de progression : le pourcentage -->
+        <div class="chapter__track__progression">
+            [[user.chapterProgression()]]<small>%</small>
+        </div>
+        <!-- Le titre du chapitre -->
+        <h2 class="chapter__track__title">[[chapter.title]]</h2>
+    </div>
+
+    <!-- Les barres d'indication -->
+    <div class="chapter__cmd" ng-class="{ 'chapter__cmd--touch-visible': cmdVisible }" ng-hide="user.isStartingChapter() || user.isGameOver">
+        <ul class="list-unstyled">
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--ubm">
+                <a class="chapter__cmd__indicator__help">
+                    ?
+                    <span class="chapter__cmd__indicator__help__definition">
+                        <span class="chapter__cmd__indicator__help__definition__abbr">
+                            L'indicateur de chance
+                        </span>
+                        <br />
+                        <span class="chapter__cmd__indicator__help__definition__warning">
+                            Un coefficient qui aide lors des évenements aléatoires
+                        </span>
+                    </span>
+                </a>
+                <span class="chapter__cmd__indicator__label">Chance</span>
+                <span class="chapter__cmd__indicator__value">[[user.indicators.luck | number:0]]%</span>
+                <span class="chapter__cmd__indicator__progress progress">
+                    <span class="progress-bar progress-bar-danger" ng-style="{ width: user.indicators.luck + '%' }">
+                    </span>
+                </span>
+            </li>
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--trust">
+                <a class="chapter__cmd__indicator__help">
+                    ?
+                    <span class="chapter__cmd__indicator__help__definition">
+                        <span class="chapter__cmd__indicator__help__definition__abbr">
+                            L'indicateur de santé
+                        </span>
+                        <br />
+                        <span class="chapter__cmd__indicator__help__definition__warning">
+                            Warning ???
+                        </span>
+                    </span>
+                </a>
+                <span class="chapter__cmd__indicator__label">Santé</span>
+
+                <span class="chapter__cmd__indicator__value">[[user.indicators.health | number:0]]%</span>
+                <span class="chapter__cmd__indicator__progress progress">
+                    <span class="progress-bar progress-bar-info" ng-style="{ width: user.indicators.health + '%' }">
+                    </span>
+                </span>
+            </li>
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--stress">
+                <a class="chapter__cmd__indicator__help">
+                    ?
+                    <span class="chapter__cmd__indicator__help__definition">
+                        <span class="chapter__cmd__indicator__help__definition__abbr">
+                            Votre moral
+                        </span>
+                        <br />
+                        <span class="chapter__cmd__indicator__help__definition__warning">
+                            Warning ???
+                        </span>
+                    </span>
+                </a>
+                <span class="chapter__cmd__indicator__label">Moral</span>
+                <span class="chapter__cmd__indicator__value">[[user.indicators.mood | number:0]]%</span>
+                <span class="chapter__cmd__indicator__progress progress">
+                    <span class="progress-bar progress-bar-success" ng-style="{ width: user.indicators.mood + '%' }">
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <button class="chapter__cmd__toggler" ng-click="cmdVisible = !cmdVisible">
+            <span class="fa fa-dashboard"></span>
+        </button>
+    </div>
+
+
+    <!-- La boucle des scenes -->
+    <scene ng-repeat="scene in chapter.scenes" src="scene" chapter="chapter"></scene>
+</div>
+

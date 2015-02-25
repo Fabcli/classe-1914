@@ -1,0 +1,463 @@
+.scene {
+
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:@scene-zindex;
+    overflow: hidden;
+    
+    &__bg {
+        .covering();
+        .fade > .repeat(@chapter-starting-duration-2);
+        z-index:-1;   
+    }
+    
+    &__sequence {    
+
+        .fade > .show(@chapter-starting-duration-2);
+
+        z-index:@scene-zindex+20;
+                    
+        // Choice box, a the middle of the screen
+        &--choice {
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:440px;
+            padding:10px 0;
+            padding-bottom:20px;
+            text-align: center;
+            white-space:nowrap;
+            .translate(-50%, -50%);
+            #gradient > .vertical(fade(#000, 30), fade(#000, 0) );
+
+            &__question {
+                position:absolute;
+                bottom:100%;
+                left:-20px;
+                right:-20px;
+                margin:0;
+                padding:12px 10px;
+                background:fade(#fff, 75);    
+                color: fade(#000, 75);
+                font-weight:bold;
+                font-size: 22px;   
+                white-space: normal;
+                
+                &:after,
+                &:before {
+                    content:"";
+                    position:absolute;
+                    top:100%;
+                    background:no-repeat 0 0;
+                    height:10px;                    
+                    width:20px;                    
+                }       
+
+                &:after {
+                    right:0;
+                    background-image:url("/img/ui/question_right.png");
+                }      
+
+                &:before {
+                    left:0;
+                    background-image:url("/img/ui/question_left.png");
+                }      
+            }
+
+            &__option {
+                min-height:60px;
+                width:150px;
+                padding:10px;
+                margin:0 10px 15px;
+                white-space: normal;
+            }
+
+            &__timeout {
+                position:absolute;
+                left:50%;
+                bottom:100%;
+                margin-bottom:70px;
+                width:50px;
+                height:50px;
+                .translate(-50%, 0);
+
+                &:before {
+                    z-index:-1;
+                    content:"";
+                    background:fade(#000, 75);
+                    border-radius: 50%;
+                    height:40px;
+                    width:40px;
+                    .translate(-50%, -50%);
+                    position:absolute;
+                    left:50%;
+                    top:50%;
+                }
+            }
+        }
+
+        // Full width choices
+        &--inline-choices {
+
+            .scene__sequence--choice__option {
+                white-space: normal;
+                width:420px;
+                display:block;
+            }
+        }
+
+        // Notification box, a the top right corner of the screen
+        &--notification {
+
+            &__wrapper {
+
+                position:absolute;
+                top:20px  + @metanav-height;
+                right:0;
+                background:fade(#000, 75);
+                width:270px;
+                padding:15px;
+                color:white;
+
+                &__header {
+                    font-style: italic;
+                    font-size:10px;
+                    margin-bottom:10px;
+                    padding-left:20px;
+                    background:url("/img/ui/notification.png") left center no-repeat;
+                }
+
+                &__next {
+                    position:absolute;
+                    bottom:-15px;
+                    right:5px;
+                    height:30px;
+                    width:30px;
+                    display:block;
+                    padding:0;
+                    background:url("/img/ui/btn_next.png") no-repeat center center #000;
+                    .animation(0.3s move-next linear alternate infinite);
+
+                    &:before {
+                        content:"";
+                        position:absolute;
+                        bottom:2px;
+                        right:100%;
+                        background:no-repeat right top url("/img/ui/question_right.png");
+                        width:15px;
+                        height:7px;
+                        margin-right:-2px;
+                        margin-top:0;
+                        z-index:-1;
+                        .rotate(90deg);
+                    }
+                }
+            }
+        }
+
+        // Player box, a the bottom of the screen
+        &--voixoff {          
+
+            position:absolute;
+            bottom:60px;
+            left:50%;
+            background:fade(#000, 75);
+            width:440px;
+            padding:20px;
+            .translate(-50%, 0);
+
+            @media (max-width: @screen-xs-min) {
+                width:auto;
+                left:40px;
+                right:40px;
+                .translate(0, 0);
+            }
+
+            &__head {
+                position:absolute;
+                top:20px;
+                right: 100%;
+                margin-right:-15px;
+                background:black;
+                border:2px solid black;
+                width:50px;
+
+                img {
+                    width:100%;
+                }
+
+                &:before {                    
+                    content:"";
+                    position:absolute;
+                    top:100%;
+                    background:no-repeat 0 0 url("/img/ui/triangle_head.png");
+                    height:10px;                    
+                    width:35px;                   
+                    left:0;
+                    margin-top:2px;
+                    margin-left:-2px;
+                }
+            }
+
+            &__character {
+                color:@brand-secondary;
+                text-transform: uppercase;
+                margin-bottom:5px;                    
+            }
+
+
+            &__play {        
+                .btn();
+                .btn-default();
+
+                padding:0;
+                height:24px;                
+                width:24px;
+                background-repeat:no-repeat;
+                background-position: center center;
+                background-image:url("/img/ui/btn_play.png");
+
+                &:focus, &:active {
+                    background-image:url("/img/ui/btn_play.png");
+                }
+
+                &.active, &.active:focus, &.active:active {
+                    background-image:url("/img/ui/btn_pause.png");
+                }
+
+            }
+
+            &__load {
+                background-image:url("/img/ui/spinner.gif");
+
+                &:focus, &:active {
+                    background-image:url("/img/ui/spinner.gif");
+                }
+            }
+
+            &__progression {
+                border:2px solid @text-color;                
+                height:24px;
+                position:absolute;
+                left:50px;
+                right:20px;
+                bottom:20px;
+                background:fade(#000, 75);
+                .box-shadow(~"0 0 3px 0 black, 0 0 3px 0 black inset");
+
+                &__timestamp {
+                    position:absolute;
+                    right:0;
+                    bottom:100%;
+                    color:white;
+                    font-family: @font-family-serif;
+                    font-style: italic;
+                    margin-bottom:5px;
+                }
+
+                .progress {
+                    position:absolute;
+                    top:7px;
+                    left:7px;
+                    right:7px;
+                    height:6px;
+
+                    .progress-bar, & {
+                        border-radius:3px;
+                    }
+
+                    .progress-bar {
+                        .transition(0.4s);
+                        background: @brand-secondary;
+                    }
+                }
+            }
+        }
+
+        // Feedback, in the middle of the screen 
+        &--feedback {
+
+            &__body {                
+                position:absolute;
+                bottom:50%;
+                left:50%;
+                background:@brand-secondary;            
+                padding:5px 15px;
+                color: #000;
+                opacity:0.6;
+                font-size: 140%;
+                font-weight:bold;
+                .translate(-50%, 0);
+
+                p {
+                    padding:0;
+                    margin:0;
+                }
+            }
+        }
+
+        // Feedback, in the middle of the screen 
+        &--video {
+
+            &__body { 
+                .translate(-50%, -50%);
+                z-index:@scene-zindex - 20;    
+                position: absolute;            
+                left:50%;
+                top:50%;         
+              
+                &__center {   
+
+                    position: absolute;   
+                    left:0;
+                    top:0;         
+                    width:80.7%;
+                    height:72.5%; 
+
+                    iframe {          
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        // Feedback, in the middle of the screen 
+        &--video_background {
+
+            z-index:@scene-zindex - 10;
+            
+            &__body {                
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+
+                .no-touch &:after {
+                    content:"";
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                }
+            }
+        }
+
+        // Dialog box, a the bottom of the screen
+        &--dialogue,
+        &--narrative,
+        &__next {
+
+            @media (max-width: @screen-xs-min) {
+                width:auto;
+                left:40px;
+                right:40px;
+                .translate(0, 0);
+            }
+
+            position:absolute;
+            bottom:60px;
+            left:50%;
+            background:fade(#000, 75);
+            width:440px;
+            padding:20px;
+            .translate(-50%, 0);
+
+            &__frame {
+                color:white;
+                padding:10px;
+                border:2px solid @text-color;
+                font-size: 13px;
+                background:#000;
+                position:relative;
+                .box-shadow(~"0 0 3px 0 black, 0 0 3px 0 black inset");
+
+                &__header {
+                    font-family: @font-family-base;
+                    font-style: italic;
+                }
+
+                &__character {
+                    color:@brand-secondary;
+                    text-transform: uppercase;
+                    margin-bottom:0;                    
+                }
+
+                &__body {
+                    margin-bottom:0;
+                    font-family: @font-family-base;
+                    text-align: justify;
+                }
+
+                &__head {
+                    position:absolute;
+                    top:-2px;
+                    right: 100%;
+                    margin-right: 7px;
+                    background:black;
+                    border:2px solid black;
+                    width:50px;
+
+                    img {
+                        width:100%;
+                    }
+
+                    &:before {                    
+                        content:"";
+                        position:absolute;
+                        top:100%;
+                        background:no-repeat 0 0 url("/img/ui/triangle_head.png");
+                        height:10px;                    
+                        width:35px;                   
+                        left:0;
+                        margin-top:2px;
+                        margin-left:-2px;
+                    }
+                }
+            }
+            
+            &__next, &__btn {
+                position:absolute;
+                bottom:20px;
+                right:-15px;
+                height:30px;
+                width:30px;
+                display:block;
+                padding:0;
+                background:url("/img/ui/btn_next.png") no-repeat center center #000;
+                .animation(0.3s move-next linear alternate infinite);
+
+                &:before {                    
+                    content:"";
+                    position:absolute;
+                    top:100%;
+                    right:0;                    
+                    background:no-repeat right top url("/img/ui/question_right.png");
+                    width:15px;                   
+                    height:7px;                    
+                    margin-right:-2px;
+                    margin-top:2px;
+                    z-index:-1;
+                }
+            }
+        }
+
+        // Special box to display a next button
+        html &__next {
+            min-height:70px;            
+            background:none;
+            position:fixed;   
+            z-index:@scene-zindex+40;
+
+            #gradient > .horizontal( fade(#000, 0), fade(#000, 75) );
+        }       
+    }
+}

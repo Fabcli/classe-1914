@@ -1,0 +1,20 @@
+{
+  "next_scene": "1.4",
+  "decor": [
+    {
+      "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
+      "background_transition": null,
+      "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "narrative",
+      "body": "Nous sommes à la scene 1.2"
+    },
+    {
+      "type": "voixoff",
+      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5-2.mp3"
+    }
+  ]
+}

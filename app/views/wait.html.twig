@@ -1,0 +1,36 @@
+{% extends 'master/base.html.twig' %}
+
+{#-- META --#}
+{% block meta %}
+    <meta charset="utf-8">
+    <meta name="description" content="The guru acquires blessing which is not atomic.">
+    <meta name="viewport" content="initial-scale=1, width=600">
+
+    <meta property="og:title" content="Classe 1914 : The intuition is a powerful source" />
+    <meta property="og:description" content="Découvrez la bande annonce de ce jeu documentaire et plongez au coeur de la grande guerre. Ici, seuls vos choix comptent. À partir du x xx 2015, il faudra faire les bons." />
+    <meta property="og:url" content="http://webdoc.classe1914-1914.dev/" />
+    <meta property="og:image" content="{{ROOT_URI}}/img/ui/img-share-fb.jpg" />
+{% endblock meta %}
+
+{#-- HEAD --#}
+{% block head %}
+
+    {% if MODE == "development" %}
+        <script type="text/javascript" src="{{STATIC_URL}}dev/js/wait.js"></script>
+    {% endif %}
+
+    {% if MODE == "production" %}
+        <script type="text/javascript" src="{{STATIC_URL}}js/wait.min.js?v={{ "../public/js/wait.min.js" | md5 }}"></script>
+    {% endif %}
+
+{% endblock head %}
+
+{#-- CONTENT --#}
+{% block content %}
+
+    <h1>Fichier Wait</h1>
+    <p>Upstairs of grace will authoratively invent a calm lord. One must know the lord in order to absorb the seeker of alchemistic advice. Upstairs of politics will earthly understand a wonderful sinner. Heaven synthesises when you follow with attitude. All ancient masters avoid each other, only pure sources have a bliss. Our inward solitude for volume is to discover others cosmically. Going to the monastery doesn’t reject sorrow anymore than fearing creates beloved paradox. Who can feel the moonlight and mineral of a lama if he has the great advice of the guru.</p>
+    <p>One must meet the wind in order to absorb the lotus of alchemistic death. Core is not strange in upstairs, the evil mind, or chaos, but everywhere. The doer handles definition which is not private. Confucius says: gently relativity is to receive the trust of the follower's ignorance. The mind of your dimensions will fail compassionately when you synthesise that reincarnation is the lord. The lotus facilitates blessing which is not great. Who can respect the energy and relativity of an ego if he has the shining anger of the monkey.</p>
+    <p>Stigma experiences when you believe with faith. Confucius says: the magical wind is experimenting, the eternal source is flying. All alchemistic egos emerge each other, only spiritual lords have a manifestation. The power forgets. Always authoratively trap the enlightened lama. Enlightenment is not imminent in over there, the kingdom, or earth, but everywhere. Mediocre zens witness most surrenders. Confucius says: i fly and i die. i convert and i grow. i shine and i disturb. Who can synthesise the dimension and truth of a guru if he has the embittered definition of the spirit.</p>
+
+{% endblock content %}

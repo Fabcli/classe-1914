@@ -1,0 +1,17 @@
+<div class="welcometest" ng-controller="WelcomeCtrl"  ng-show="testShow">
+    <p>------------------------------------------------------</p>
+    <h3>### TEST => Template Welcome ###</h3>
+    <h4>[[ toto ]] aime la quoi ? La [[ name ]] </h4>
+    <p>On a toujours le probleme des controllers qui ne se déclarent pas sous le module classe1914.controller mais dans le module global classe1914</p>
+    <p>Pour info: dans ce template, j'ai mis :</p>
+    <ul>
+        <li>uclass="welcometest" qui deviendra class="welcome"</li>
+        <li>ng-controller="WelcomeCtrl" qui contient :
+            <ol>
+                <li>la variable toto qui vaut "Toto"</li>
+                <li>la variable name qui vaut "choucroute"</li>
+                <li>et un variable testShow = true qui permet d'afficher ceci avec la directive ng-show="testShow"</li>
+            </ol>
+        </li>
+    </ul>
+</div>
