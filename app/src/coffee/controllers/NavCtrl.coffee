@@ -8,6 +8,7 @@ class NavCtrl
         @scope.isVolumeOn = => @User.volume > 0
         # Mute or unmute the volume
         @scope.toggleVolume = =>
+            console.log("toggleVolume Launch")
             if @User.volume is 0
                 # Restore old volume value
                 @scope.volume = @scope.volumeBp

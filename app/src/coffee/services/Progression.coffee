@@ -44,7 +44,7 @@ angular.module("classe1914.service").factory "Progression", [
                   do Timeout.cancel
 
           # Update the volume
-#          $rootScope.$watch (=>User.volume), Sound.updateVolume
+          $rootScope.$watch (=>User.volume), Sound.updateVolume
 
           $rootScope.$watch (=>User.isGameDone),  @singMeTheEnd,  yes
 
