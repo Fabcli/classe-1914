@@ -15,6 +15,7 @@ app = angular.module('classe1914', [
   "ngTouch"
   "ngSanitize"
   "nouislider"
+  "FBAngular"
   # External dependencies
   "btford.markdown"
   #Internal dependencies

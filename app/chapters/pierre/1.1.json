@@ -2,7 +2,7 @@
   "next_scene": null,
   "decor": [
       {
-          "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL1.png",
+          "background": "/medias/chap1/illustrations/c14_wait.png",
           "background_transition": "fade",
           "soundtrack": "/medias/chap1/soundtrack/test.mp3"
       }

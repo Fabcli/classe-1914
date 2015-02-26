@@ -1,15 +1,17 @@
 @ipad-landscape: ~"only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)";
+@nav-height: 72px;
 
 .nav {
 	position:absolute;
 	bottom:0;
 	left:0;
 	right:0;
-	height:64px;
-	line-height: 64px;
+	height:@nav-height;
+	line-height: @nav-height;
     background:fade(black, 75);
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
     z-index:@nav-zindex;
+
 
     @media (max-width: @screen-md-min), @ipad-landscape { 
         background:fade(black, 90);
@@ -108,109 +110,147 @@
 			height:12px;
 			line-height: 12px;
             color: @brand-primary;
-
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 		}
 	}
 
 	&__cmd {
-		position:absolute;
+        height:@nav-height;
 		right:0;
 		top:0;		
 		text-transform: uppercase;
-
+        margin-right: 40px;
 
         @media (max-width: 1200px) {
             right: -120px;
 
             &__volume__slider-holder {
                 display: none;
-            } 
+            }
         }
 
+        .title  {
+            margin-top:5px;
+            padding-left:30px;
+            position:relative;
+        }
 
-		// Overide .btn padding
-		&__save.btn {
-			padding-right:25px;
-			position:relative;
+        &__autoplay {}
 
-			&:after {
-				content:"";
-				height:10px;
-				width:15px;
-				background: url("/img/ui/arrow_save.png") no-repeat 0 0;
-				position: absolute;
-				right:5px;
-				top:50%;
-				margin-top:-5px;
-				.transition(0.7s);
-			}						
-		}
+        &__save {
+            position:relative;
+            line-height: @line-height-base;
+            height:@nav-height;
+            width:150px;
+            padding:5px;
 
-		&__save--on:after {
-			.rotate(180deg);
-		}
+            &__title  {
+                &:after {
+                    content:"";
+                    height:12px;
+                    width:14px;
+                    background: url("/img/ui/c14_icon-backup.svg") no-repeat 0 0;
+                    position: absolute;
+                    left:5px;
+                    top:40%;
+                    margin-top:-5px;
+                }
+            }
 
-		&__share {
+            &__form {
+                line-height:@line-height-base;
+                background:fade(black, 75);
+                margin-top:10px;
+                position: relative;
 
-			li {
-				padding-left:0;
-			}
+                &__submit.btn {
+                    z-index:10;
+                    background: url("/img/ui/c14_arrow-mail.png") no-repeat 0 0;
+                    background-size: contain;
+                    position:absolute;
+                    top:@font-size-base / 2;
+                    right:-5px;
+                    height:@font-size-base;
+                    border: none;
+                    box-shadow: none;
 
-			&__third-party {
+                    &:active &,
+                    &:focus{
+                        outline-color: transparent;
+                    }
 
-				.hide-text();
-				height:30px;
-				width:30px;
-				background:no-repeat center center;
-				background-color:@btn-default-bg;
-    			padding:0;
-				
-				&--mail {
-					background-image:url("/img/ui/pic_mail.png");
-				}
-				&--facebook {
-					background-image:url("/img/ui/pic_facebook.png");
-
-				}
-				&--twitter {
-					background-image:url("/img/ui/pic_twitter.png");
-				}
-				
-				&--google {
-					background-image:url("/img/ui/pic_google.png");
-
-				}
-			}
-		}
+                    &:hover {}
+                }
+            }
+        }
 
 		&__volume {
-			position: relative;
-			height: 20px;
-			width: 150px;
+            line-height: @line-height-base;
+            height:@nav-height;
+            width:150px;
+            padding:5px;
 
 			&__state {
-				position: absolute;
-				top: 4px;
-				cursor: pointer;
-			 	height: 30px;
-			 	width: 30px;
-				background-image:url("/img/ui/sound_on.png");
+
+                &:after {
+                    cursor: pointer;
+                    content:"";
+                    height:12px;
+                    width:17px;
+                    background: url("/img/ui/c14_icon-sound-on.svg") no-repeat 0 0;
+                    position: absolute;
+                    left:5px;
+                    top:40%;
+                    margin-top:-5px;
+                }
 			 	
-			 	&--off {
-					background-image:url("/img/ui/sound_off.png");
-			 		
+			 	&--off:after {
+                    cursor: pointer;
+                    background: url("/img/ui/c14_icon-sound-off.svg") no-repeat 0 0;
 			 	}
 			}
+
 			&__slider-holder {
-				position: absolute;
-				top: 15px;
-				left: 35px;
+                height:@line-height-base;
+                background:fade(black, 75);
+                margin-top:10px;
+                position: relative;
 				width: 105px;
-				height: 20px;
 			}
 		}
-	}
 
+        &__fullscreen {
+            line-height: @line-height-base;
+            width: @nav-height/2;
+            height:@nav-height/2;
+            margin:@nav-height/4 0;
+            opacity:0.9;
+            cursor: pointer;
+            background: url("/img/ui/c14_icon-fullscreen-enter.svg") no-repeat 0 0;
+            background-size: 60%;
+            background-position: center;
+            transition: all 0.3s;
+
+            &:hover {
+              background-size: 70%;
+              opacity:1;
+            }
+
+            &--exit {
+                background: url("/img/ui/c14_icon-fullscreen-exit.svg") no-repeat 0 0;
+                background-size: 60%;
+                background-position: center;
+                opacity:0.9;
+                transition: all 0.3s;
+
+                &:hover {
+                    background-size: 70%;
+                    opacity:1;
+                }
+            }
+        }
+
+	}
 
 	&--lite {
 

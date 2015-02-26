@@ -5,6 +5,7 @@ var jslibrary = [
     'bower_modules/angular/angular.min.js',
     'bower_modules/nouislider/jquery.nouislider.js',
     'bower_modules/angular-nouislider/src/nouislider.js',
+    'bower_modules/angular-fullscreen/src/angular-fullscreen.js',
     'bower_modules/angular-animate/angular-animate.min.js',
     'bower_modules/angular-local-storage/dist/angular-local-storage.js',
     'bower_modules/angular-route/angular-route.min.js',
@@ -141,7 +142,7 @@ module.exports = function(grunt) {
             options: {
                 spawn: false,
                 livereload: true,
-                livereloadOnError: false
+                livereloadOnError: true
             },
             coffee: {
                 files: ['**/*.coffee','**/*.twig'],

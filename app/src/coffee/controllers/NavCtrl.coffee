@@ -1,6 +1,6 @@
 class NavCtrl
-    @$inject: ['$scope', 'User']
-    constructor: (@scope, @User) ->
+    @$inject: ['$scope', 'User', 'Fullscreen']
+    constructor: (@scope, @User, @Fullscreen) ->
         @scope.user       = @User
         @scope.volume     = @User.volume * 100
         @scope.volumeBp   = if @scope.volume is 0 then 100 else @scope.volume
@@ -19,6 +19,15 @@ class NavCtrl
                 # Update the user's volume
                 @User.volume = @scope.volume = 0
 
+        @scope.toggleFullscreen = =>
+            if Fullscreen.isEnabled()
+                Fullscreen.cancel()
+            else
+                Fullscreen.all()
+
+        @scope.isFullscreen = =>
+            console.log("test "+ Fullscreen.isEnabled())
+            Fullscreen.isEnabled()
 
         # Udate the User volume according the scope attribute
         @scope.$watch "volume", (v)=> @User.volume = v/100 if v?
@@ -38,6 +47,8 @@ class NavCtrl
         @scope.$watch 'shouldShowSaveForm', (newValue, oldValue) =>
             if @User.email? and oldValue and not newValue
                @_shouldShowSaveButton = false
+
+
 
     shouldShowSaveButton: =>
        return @User.inGame && @_shouldShowSaveButton

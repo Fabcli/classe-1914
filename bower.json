@@ -17,6 +17,7 @@
     "circles": "https://raw.githubusercontent.com/lugolabs/circles/827b36f8f3cd47d73adedf5f361c06ce16d1d4ba/circles.js",
     "jquery": "2.1.3",
     "howler": "1.1.24",
-    "modernizr": "2.8.3"
+    "modernizr": "2.8.3",
+    "angular-fullscreen": "~1.0.1"
   }
 }

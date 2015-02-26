@@ -4,7 +4,7 @@ angular.module('classe1914.constant').constant 'constant.settings',
   mediaUrl          : window.MEDIA_URL or ""
 
 # Animations
-  chapterEntrance   : 3*1000
+  chapterEntrance   : 3000*1000
   sceneEntrance     : 1*1000
   feedbackDuration  : 2*1000
 # Some types of sequence have different behavior
