@@ -25,3 +25,6 @@ composer.phar
 
 #ignore db in development mode
 *.sqlite
+
+app/src/coffee/app.js.map
+app/src/coffee/app.js
