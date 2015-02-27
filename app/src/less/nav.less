@@ -1,5 +1,9 @@
 @ipad-landscape: ~"only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)";
-@nav-height: 72px;
+
+@font-size-nav  : 13px;
+@nav-height     : 72px;
+@nav-bg-color   : #04060b;
+@nav-dark-color : #1A171B;
 
 .nav {
 	position:absolute;
@@ -8,7 +12,7 @@
 	right:0;
 	height:@nav-height;
 	line-height: @nav-height;
-    background:fade(black, 75);
+    background:fade(@nav-bg-color, 65);
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
     z-index:@nav-zindex;
 
@@ -135,8 +139,6 @@
             position:relative;
         }
 
-        &__autoplay {}
-
         &__save {
             position:relative;
             line-height: @line-height-base;
@@ -181,6 +183,25 @@
 
                     &:hover {}
                 }
+            }
+        }
+
+        &__autoplay {
+            position:relative;
+            line-height: @line-height-base;
+            height:@nav-height;
+            width:160px;
+            padding:5px;
+            text-align:center;
+
+            &__title {
+                padding-left: 0px!important;
+            }
+
+            &__form {
+                line-height:@line-height-base;
+                margin-top:10px;
+                position: relative;
             }
         }
 

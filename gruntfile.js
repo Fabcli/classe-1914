@@ -5,6 +5,8 @@ var jslibrary = [
     'bower_modules/angular/angular.min.js',
     'bower_modules/nouislider/jquery.nouislider.js',
     'bower_modules/angular-nouislider/src/nouislider.js',
+    'bower_modules/angular-toggle-switch/angular-toggle-switch.min.js',
+    'bower_modules/angular-ui-switch/angular-ui-switch.min.js',
     'bower_modules/angular-fullscreen/src/angular-fullscreen.js',
     'bower_modules/angular-animate/angular-animate.min.js',
     'bower_modules/angular-local-storage/dist/angular-local-storage.js',
@@ -19,6 +21,9 @@ var jslibrary = [
 ];
 
 var csslibrary = [
+    'bower_modules/angular-toggle-switch/angular-ui-switch.min.css',
+    'bower_modules/angular-toggle-switch/angular-toggle-switch.css',
+    'bower_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css',
     'bower_modules/nouislider/jquery.nouislider.css'
 ];
 
@@ -202,7 +207,7 @@ module.exports = function(grunt) {
     // Load task
     grunt.registerTask('default', ['development']);
     grunt.registerTask('build', ['concat:coffee_src','coffee','uglify:app','less']);
-    grunt.registerTask('lib', ['concat:bower_js']);
+    grunt.registerTask('lib', ['concat:bower_js', 'concat:bower_css']);
 
     // Setup environment for development
     grunt.registerTask('development', ['copy:angular_map', 'ngtemplates', 'build','lib', 'clean:development','mkdir:clean', 'open:dev', 'watch']);

@@ -6,6 +6,8 @@ class NavCtrl
         @scope.volumeBp   = if @scope.volume is 0 then 100 else @scope.volume
         # True if the volume is on
         @scope.isVolumeOn = => @User.volume > 0
+        #Temporary desactivated the autoplay => @scope.autoPlay = @User.autoplay
+        @scope.autoPlay = false;
         # Mute or unmute the volume
         @scope.toggleVolume = =>
             if @User.volume is 0
@@ -26,7 +28,6 @@ class NavCtrl
                 Fullscreen.all()
 
         @scope.isFullscreen = =>
-            console.log("test "+ Fullscreen.isEnabled())
             Fullscreen.isEnabled()
 
         # Udate the User volume according the scope attribute
