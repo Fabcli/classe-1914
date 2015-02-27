@@ -16,8 +16,9 @@
         <li><a ng-href="?p=cgu" class="nav__links__link" href="">CGU</a></li>
     </ul>
 
+
     {# Fullscreen button #}
-    <div class="nav__cmd pull-right">
+    <div class="nav__cmd__last pull-right">
         <div class="nav__cmd__part">
             <div class="nav__cmd__fullscreen" ng-class="{ 'nav__cmd__fullscreen--exit': isFullscreen() }"  ng-click="toggleFullscreen()"></div>
         </div>
@@ -25,19 +26,22 @@
 
     {# Volume slider #}
     <div class="nav__cmd pull-right">
-        <div class="nav__cmd__part">
-            <div class="nav__cmd__volume">
+        <div class="nav__cmd__part cmd__max__view">
+            <div class="nav__cmd__volume ">
                 <div class="nav__cmd__volume__state title" ng-class="{ 'nav__cmd__volume__state--off': !isVolumeOn() }"  ng-click="toggleVolume()">volume</div>
                 <div class="nav__cmd__volume__slider-holder">
                     <div slider ng-model="volume" step="1" start="0" end="100"></div>
                 </div>
             </div>
         </div>
+        <div class="nav__cmd__part cmd__min__view">
+                <div class="nav__cmd__volume__state__min" ng-class="{ 'nav__cmd__volume__state__min--off': !isVolumeOn() }"  ng-click="toggleVolume()"></div>
+        </div>
     </div>
 
     {# Autoplay button #}
     <div class="nav__cmd pull-right">
-        <div class="nav__cmd__part">
+        <div class="nav__cmd__part cmd__max__view">
             <div class="nav__cmd__autoplay">
                 <div class="nav__cmd__autoplay__title title" ng-class=""  ng-click="">Navigation automatique</div>
                 <form class="nav__cmd__autoplay__form">
@@ -45,11 +49,14 @@
                 </form>
             </div>
         </div>
+        <div class="nav__cmd__part cmd__min__view">
+            <div class="nav__cmd__autoplay__min" ng-class="{ 'nav__cmd__autoplay__min--off': !autoPlay }"  ng-click="autoPlay = !autoPlay"></div>
+        </div>
     </div>
 
     {# Save form #}
     <div class="nav__cmd pull-right">
-        <div class="nav__cmd__part">
+        <div class="nav__cmd__part cmd__max__view">
             <div class="nav__cmd__save">
                 <div class="nav__cmd__save__title title">sauvegarder</div>
                 <form class="nav__cmd__save__form form-horizontal" ng-submit="save()">
@@ -58,11 +65,14 @@
                 </form>
             </div>
         </div>
+        <div class="nav__cmd__part cmd__min__view">
+            <div class="nav__cmd__save__min" ng-class="{ 'nav__cmd__save__min--on': shouldShowSaveForm}"></div>
+        </div>
     </div>
 
 
 
-    {#<ul class="nav__EX-cmd list-inline">
+{#    <ul class="nav__EX-cmd list-inline">
         &#123;&#35; C14 -> Save Form &#35;&#125;
 &#123;&#35;        <li class="nav__cmd__part" ng-show="shouldShowSaveButton()">
             <div class="nav__cmd__save">sauvegarder</div>
@@ -77,15 +87,7 @@
             </button>
         </li>
 
-        &#123;&#35; Volume &#35;&#125;
-        <li class="nav__cmd__part">
-            <div class="nav__cmd__volume">
-                <div class="nav__cmd__volume__state"  ng-class="{ 'nav__cmd__volume__state--off': !isVolumeOn() }" ng-click="toggleVolume()">volume</div>
-                <div class="nav__cmd__volume__slider-holder">
-                    <div slider ng-model="volume" step="1" start="0" end="100"></div>
-                </div>
-            </div>
-        </li>
+
     </ul>#}
 
     {# The contact form #}
