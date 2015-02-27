@@ -1,17 +1,12 @@
 @ipad-landscape: ~"only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)";
 
-@font-size-nav  : 13px;
-@nav-height     : 72px;
-@nav-bg-color   : #04060b;
-@nav-dark-color : #1A171B;
-
 .nav {
 	position:absolute;
 	bottom:0;
 	left:0;
 	right:0;
-	height:@nav-height;
-	line-height: @nav-height;
+	height:@navbar-height;
+	line-height: @navbar-height;
     background:fade(@nav-bg-color, 65);
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
     z-index:@nav-zindex;
@@ -119,7 +114,7 @@
 	}
 
 	&__cmd {
-        height:@nav-height;
+        height:@navbar-height;
 		right:0;
 		top:0;		
 		text-transform: uppercase;
@@ -142,7 +137,7 @@
         &__save {
             position:relative;
             line-height: @line-height-base;
-            height:@nav-height;
+            height:@navbar-height;
             width:150px;
             padding:5px;
 
@@ -160,9 +155,9 @@
             }
 
             &__form {
-                line-height:@line-height-base;
+                line-height: 10px;
                 background:fade(black, 75);
-                margin-top:10px;
+                margin-top:6px;
                 position: relative;
 
                 &__submit.btn {
@@ -176,9 +171,12 @@
                     border: none;
                     box-shadow: none;
 
-                    &:active &,
-                    &:focus{
-                        outline-color: transparent;
+                    &:active,
+                    &:focus,
+                    &:active:focus,
+                    &.active:focus{
+                        outline: 0px;
+                        opacity: 0.8;
                     }
 
                     &:hover {}
@@ -189,7 +187,7 @@
         &__autoplay {
             position:relative;
             line-height: @line-height-base;
-            height:@nav-height;
+            height:@navbar-height;
             width:160px;
             padding:5px;
             text-align:center;
@@ -200,15 +198,14 @@
 
             &__form {
                 line-height:@line-height-base;
-                margin-top:10px;
+                margin-top:6px;
                 position: relative;
             }
         }
 
 		&__volume {
             line-height: @line-height-base;
-            height:@nav-height;
-            width:150px;
+            height:@navbar-height;
             padding:5px;
 
 			&__state {
@@ -234,7 +231,7 @@
 			&__slider-holder {
                 height:@line-height-base;
                 background:fade(black, 75);
-                margin-top:10px;
+                margin-top:16px;
                 position: relative;
 				width: 105px;
 			}
@@ -242,9 +239,9 @@
 
         &__fullscreen {
             line-height: @line-height-base;
-            width: @nav-height/2;
-            height:@nav-height/2;
-            margin:@nav-height/4 0;
+            width: @navbar-height/2;
+            height:@navbar-height/2;
+            margin:@navbar-height/4 0;
             opacity:0.9;
             cursor: pointer;
             background: url("/img/ui/c14_icon-fullscreen-enter.svg") no-repeat 0 0;

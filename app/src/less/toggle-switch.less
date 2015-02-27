@@ -2,8 +2,8 @@
 *   Use with angular-toggle-switch
 *   https://github.com/cgarvis/angular-toggle-switch.git
 */
-@toggle-switch-height        :   25px;
-@toggle-switch-width         :   36px;
+@toggle-switch-height        :   24px;
+@toggle-switch-width         :   66px;
 
 @toggle-switch-border-color  :   @switch-active-bg;
 
@@ -24,7 +24,7 @@
   display: inline-block;
   text-align: left;
   overflow: hidden;
-  line-height: @font-size-nav;
+  line-height: @navbar-default-font-size;
   min-width: @switch-width ;
   height: @toggle-switch-height;
   color:  @toggle-switch-border-color;
@@ -38,7 +38,7 @@
   display: inline-block;
   float: left;
   height: 100%;
-  line-height: @font-size-nav + 4px;
+  line-height: @navbar-default-font-size + 4px;
   padding: 4px;
   text-align: center;
   width: 33%;
@@ -77,8 +77,8 @@
   background: @toggle-switch-inactive-bg ;
 }
 .toggle-switch-animate {
-  transition: left 0.5s;
-  -o-transition: left 0.5s;
-  -moz-transition: left 0.5s;
-  -webkit-transition: left 0.5s;
+  transition: left 0.3s ease-out;
+  -o-transition: left 0.3s ease-out;
+  -moz-transition: left 0.3s ease-out;
+  -webkit-transition: left 0.3s ease-out;
 }
