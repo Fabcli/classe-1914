@@ -1,0 +1,84 @@
+/*
+*   Use with angular-toggle-switch
+*   https://github.com/cgarvis/angular-toggle-switch.git
+*/
+@toggle-switch-height        :   25px;
+@toggle-switch-width         :   36px;
+
+@toggle-switch-border-color  :   @switch-active-bg;
+
+@toggle-switch-inactive-bg   :   #ccc;
+@toggle-switch-inactive-color:   @nav-dark-color ;
+
+@toggle-switch-active-bg     :   @brand-primary;
+@toggle-switch-active-color  :   #fff ;
+
+@toggle-switch-button-color  :   @nav-dark-color;
+@toggle-switch-button-border :   @nav-dark-color;
+
+
+.toggle-switch {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 1px rgba(26, 23, 27, 0.3);
+  cursor: pointer;
+  display: inline-block;
+  text-align: left;
+  overflow: hidden;
+  line-height: @font-size-nav;
+  min-width: @switch-width ;
+  height: @toggle-switch-height;
+  color:  @toggle-switch-border-color;
+  border-radius: @toggle-switch-height ;
+}
+.toggle-switch.disabled > div > span.knob {
+  background: @toggle-switch-button-color;
+}
+.toggle-switch span {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  line-height: @font-size-nav + 4px;
+  padding: 4px;
+  text-align: center;
+  width: 33%;
+  white-space: nowrap;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.toggle-switch > div {
+  position: relative;
+  width: 150%;
+}
+.toggle-switch .knob {
+  border-left: 1px solid @toggle-switch-button-border ;
+  border-right: 1px solid @toggle-switch-button-border ;
+  background-color: @toggle-switch-button-color;
+  width: 34%;
+  z-index: 100;
+}
+.toggle-switch .switch-on {
+  left: 0%;
+}
+.toggle-switch .switch-off {
+  left: -50%
+}
+.toggle-switch .switch-left, .toggle-switch .switch-right {
+  z-index: 1;
+}
+.toggle-switch .switch-left {
+  color: @toggle-switch-active-color;
+  background: @toggle-switch-active-bg;
+}
+.toggle-switch .switch-right {
+  color: @toggle-switch-inactive-color ;
+  background: @toggle-switch-inactive-bg ;
+}
+.toggle-switch-animate {
+  transition: left 0.5s;
+  -o-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -webkit-transition: left 0.5s;
+}
