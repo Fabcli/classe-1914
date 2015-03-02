@@ -30,6 +30,18 @@
 @nav-dark-color : #1A171B;
 @nav-bg-color   : #04060b;
 
+//## Cmd color
+
+.cmd-bg-gradient {
+  background: rgba(34,151,166,1);
+  background: -moz-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(255,255,255,0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(34,151,166,0)), color-stop(100%, rgba(255,255,255,0)));
+  background: -webkit-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(255,255,255,0) 100%);
+  background: -o-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(255,255,255,0) 100%);
+  background: -ms-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to right, rgba(34,151,166,1) 0%, rgba(255,255,255,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2297a6', endColorstr='#ffffff', GradientType=1 );}
+
   //== Scaffolding
 //
 // ## Settings for some of the most global styles.
@@ -645,7 +657,7 @@
 @progress-border-radius:      @border-radius-base;
 
 //** Default progress bar color
-@progress-bar-bg:             @brand-primary;
+@progress-bar-bg:             #43A02B;
 //** Success progress bar color
 @progress-bar-success-bg:     #daec80;
 //** Warning progress bar color

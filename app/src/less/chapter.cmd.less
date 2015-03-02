@@ -1,12 +1,12 @@
 @ipad-landscape: ~"only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)";
 
 .chapter {
-    
+
     &__cmd {
         z-index:@chapter-zindex;
         position:absolute;
         right:0;
-        bottom:50px;
+        bottom: @navbar-height + 20px;
         width:280px;
         .transition(0.25s);
 
@@ -34,7 +34,7 @@
         @media (max-width: @screen-md-min), @ipad-landscape {
             .translate(0, -100%);
             width: auto !important;       
-            right:0;
+            left:0;
             top:0;
             bottom:auto;
             background:fade(black, 90);
@@ -75,33 +75,36 @@
             padding:0 10px;
             height:34px;
             line-height:34px;
-            background:fade(black, 75);
+            border-bottom: 1px solid #fff;
+            .cmd-bg-gradient;
             position:relative;
 
-            html body &--trust .chapter__cmd__indicator__help__definition {
-                margin-bottom:24px*1px + 10px;
+            html body &--health .chapter__cmd__indicator__help__definition {
+                margin-bottom:48px;
             }
 
-            html body &--stress .chapter__cmd__indicator__help__definition {
-                margin-bottom:24px*2px + 15px;
+            html body &--mood .chapter__cmd__indicator__help__definition {
+                margin-bottom:87px;
             }
 
             @media (max-width: @screen-md-min), @ipad-landscape {
                 background:none;
+                border: none;
             }
 
 
             &__value {
                 position:absolute;
-                margin-left:5px;
-                left:100%;
+                margin-right:5px;
+                right:100%;
                 top:0;
-                background:fade(black, 75);
-                height:24px;
+                background:fade(@brand-primary, 100);
+                border-bottom:1px solid #fff;
+                height:34px;
                 padding:0 5px;
                 color:#fff;   
                 opacity: 0;                             
-                .translate(-40px, 0);
+                .translate(40px, 0);
                 .transition(0.6s cubic-bezier(0.23, 1, 0.32, 1) );
 
                 @media (max-width: @screen-md-min), @ipad-landscape {                        
@@ -110,6 +113,7 @@
                     background:none;              
                     opacity: 1;                     
                     .translate(0, 0);
+                    border: none;
                 }
             }
 
@@ -119,51 +123,60 @@
             }
 
             &__help {
-                font-family: Helvetica, Arial, sans-serif;
-                font-size:10px;
+                font-size:12px;
+                color: @brand-primary;
+                font-weight: bold ;
                 display: inline-block;
                 margin-top:4px;
                 line-height: 16px;
+                .translate(230px,0);
                 height:16px;
                 width:16px;
                 text-align:center;
-                border:1px solid @text-color;
+                border:1px solid #fff;
+                background: #fff ;
                 border-radius: 50%;
                 cursor:help;
                 z-index:@chapter-zindex+10;
 
                 &:hover, &:active {
-                    text-decoration: none;
+                  text-decoration: none;
                 }
 
                 &:hover .chapter__cmd__indicator__help__definition,
                 &:active .chapter__cmd__indicator__help__definition {
-                    .translate(0, 0);       
+                   .translate(-10px, 0);
                 }
 
-                @media (max-width: @screen-md-min), @ipad-landscape { 
-                    
+                @media (max-width: @screen-md-min), @ipad-landscape {
+                    left: 0px;
+                    .translate(0, 0);
+
                     &:hover .chapter__cmd__indicator__help__definition,
                     &:active .chapter__cmd__indicator__help__definition {
-                        .translate(0, 136px);
+                       .translate(0, 161px);
                     }
-                }         
+                }
 
                 &__definition {
                     font-size:12px;
                     line-height: 20px;
-                    margin-bottom:5px;
+                    margin-bottom:9px;
+                    margin-right: -40px;
                     position:absolute;
-                    left:0;
+                    right:0;
                     bottom:100%;
                     white-space:nowrap;
-                    text-align:left;
+                    text-align:right;
 
-                    .translate(-100%, 0);
+                    .translate(100%, 0);
                     .transition(0.6s cubic-bezier(0.23, 1, 0.32, 1) );
 
-                    @media (max-width: @screen-md-min), @ipad-landscape { 
-                        .translate(-100%, 136px);
+                    @media (max-width: @screen-md-min), @ipad-landscape {
+                        left:0;
+                        text-align: left;
+                        .translate(-500px, 161px);
+                        margin-left: -14px;
                     }
 
                     &__abbr {
@@ -171,8 +184,9 @@
                         color:fade(#000, 75);
                         display:inline-block;
                         padding-left:10px;
-                        padding-right:5px;
+                        padding-right:10px;
                         height:20px;
+                        .translate(4px, 0);
                     }
 
                     &__warning {
@@ -180,7 +194,7 @@
                         color:contrast(@brand-secondary);
                         display:inline-block;
                         padding-left:10px;
-                        padding-right:5px;
+                        padding-right:10px;
                         height:20px;
                     }
                 }
@@ -189,30 +203,35 @@
 
             &__label {
                 position:absolute;
-                left:35px;
+                left:-25px;
                 width:100px;
-                top:0;
+                top:1px;
                 bottom:0;
                 text-transform: uppercase;
                 color:white;
                 text-align: right;
 
-                @media (max-width: @screen-md-min), 
-                @ipad-landscape {
+                @media (max-width: @screen-md-min), @ipad-landscape {
                     width:70px;
+                    left:25px;
                 }
             }
 
             &__progress {
                 width:130px;
-                height:10px;
+                height:14px;
                 position:absolute;
-                right:10px;
-                top:12px;
+                left:90px;
+                top:10px;
+                background: #fff;
+                border-radius: 14px;
 
-                .progress-bar, & {
-                    border-radius:3px;
+                .progress-bar {
+                  border-top-right-radius: 0px!important;
+                  border-bottom-right-radius: 0px!important;
                 }
+
+
 
                 @media (max-width: @screen-md-min), @ipad-landscape {
                     //.translate(-100%, 0);

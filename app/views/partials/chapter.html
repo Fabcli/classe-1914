@@ -39,7 +39,7 @@
     <!-- Les barres d'indication -->
     <div class="chapter__cmd" ng-class="{ 'chapter__cmd--touch-visible': cmdVisible }" ng-hide="user.isStartingChapter() || user.isGameOver">
         <ul class="list-unstyled">
-            <li class="chapter__cmd__indicator chapter__cmd__indicator--ubm">
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--luck">
                 <a class="chapter__cmd__indicator__help">
                     ?
                     <span class="chapter__cmd__indicator__help__definition">
@@ -55,11 +55,11 @@
                 <span class="chapter__cmd__indicator__label">Chance</span>
                 <span class="chapter__cmd__indicator__value">[[user.indicators.luck | number:0]]%</span>
                 <span class="chapter__cmd__indicator__progress progress">
-                    <span class="progress-bar progress-bar-danger" ng-style="{ width: user.indicators.luck + '%' }">
+                    <span class="progress-bar" ng-style="{ width: user.indicators.luck + '%' }">
                     </span>
                 </span>
             </li>
-            <li class="chapter__cmd__indicator chapter__cmd__indicator--trust">
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--health">
                 <a class="chapter__cmd__indicator__help">
                     ?
                     <span class="chapter__cmd__indicator__help__definition">
@@ -76,11 +76,11 @@
 
                 <span class="chapter__cmd__indicator__value">[[user.indicators.health | number:0]]%</span>
                 <span class="chapter__cmd__indicator__progress progress">
-                    <span class="progress-bar progress-bar-info" ng-style="{ width: user.indicators.health + '%' }">
+                    <span class="progress-bar" ng-style="{ width: user.indicators.health + '%' }">
                     </span>
                 </span>
             </li>
-            <li class="chapter__cmd__indicator chapter__cmd__indicator--stress">
+            <li class="chapter__cmd__indicator chapter__cmd__indicator--mood">
                 <a class="chapter__cmd__indicator__help">
                     ?
                     <span class="chapter__cmd__indicator__help__definition">
@@ -96,7 +96,7 @@
                 <span class="chapter__cmd__indicator__label">Moral</span>
                 <span class="chapter__cmd__indicator__value">[[user.indicators.mood | number:0]]%</span>
                 <span class="chapter__cmd__indicator__progress progress">
-                    <span class="progress-bar progress-bar-success" ng-style="{ width: user.indicators.mood + '%' }">
+                    <span class="progress-bar" ng-style="{ width: user.indicators.mood + '%' }">
                     </span>
                 </span>
             </li>

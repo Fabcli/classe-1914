@@ -89,7 +89,7 @@ class Game {
          */
         $context = array( // initial context
             "luck"        => 50,
-            "health"      => 99,
+            "health"      => 100,
             "mood"      => 50
         );
 
