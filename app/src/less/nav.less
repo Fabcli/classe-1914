@@ -271,7 +271,7 @@
                     top:40%;
                     margin-top:-5px;
                 }
-			 	
+
 			 	&--off:after {
                     cursor: pointer;
                     background: url("/img/ui/c14_icon-sound-off.svg") no-repeat 0 0;
@@ -334,22 +334,22 @@
 	}
 
 
-    @media (min-width: @screen-md-min) and (min-device-width: 1024px) {     
-    	&:hover .nav__save--visible {    
+    @media (min-width: @screen-md-min) and (min-device-width: 1024px) {
+    	&:hover .nav__save--visible {
             height:150px;
             .nav__save__form {
                 .translate(0,0);
-            }           
+            }
     	}
-    }    
+    }
 
 
-    @media (max-width: @screen-md-min), @ipad-landscape { 
-        &.nav--touch-visible .nav__save--visible {    
+    @media (max-width: @screen-md-min), @ipad-landscape {
+        &.nav--touch-visible .nav__save--visible {
             height:150px;
             .nav__save__form {
                 .translate(0,0);
-            }           
+            }
         }
     }
 
@@ -360,13 +360,13 @@
 		bottom:100%;
 		right:0px;
 		display:block;
-		width:300px;		
+		width:300px;
 		height:0px;
 		overflow:hidden;
-		.transition(0.4s);	
+		.transition(0.4s);
 
 
-        @media (max-width: @screen-md-min), @ipad-landscape { 
+        @media (max-width: @screen-md-min), @ipad-landscape {
             .translate(-80px, 0);
         }
 
@@ -378,11 +378,11 @@
 			left:20px;
 			right:20px;
 			padding:10px;
-			padding-right:18px;	
-			.translate(0,100%);	
-			.transition(0.4s);	
+			padding-right:18px;
+			.translate(0,100%);
+			.transition(0.4s);
 
-            @media (max-width: @screen-md-min), @ipad-landscape { 
+            @media (max-width: @screen-md-min), @ipad-landscape {
                 background:fade(black, 90);
             }
 
@@ -391,10 +391,10 @@
                 position:absolute;
                 top:34px;
                 left:100%;
-                background:url("/img/ui/triangle1.png") no-repeat right 0;                    
+                background:url("/img/ui/triangle1.png") no-repeat right 0;
                 height:5px;
                 width:11px;
-                z-index:-1;                
+                z-index:-1;
             }
 
             &__submit.btn {
@@ -402,8 +402,8 @@
                 position:absolute;
                 top:10px;
                 right:-12px;
-                padding:0;   
-                width: @input-height-base;  
+                padding:0;
+                width: @input-height-base;
                 height: @input-height-base;
                 line-height: @input-height-base;
                 font-size:10px;
@@ -426,21 +426,24 @@
 		}
 	}
 
-    &__toggler {     
-        z-index:@nav-zindex + 20;   
+    &__toggler {
+        z-index:@nav-zindex + 20;
         position:absolute;
         bottom:100%;
-        right:30px;
+        left:50%;
+        .translate(-18px,0);
         padding:0;
-        height:40px;
-        line-height:25px;
-        width:50px;
-        background:fade(black, 90);
+        height:26px;
+        line-height:26px;
+        width:36px;
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        background-color: fade(black, 60);
+        background-image: url("/img/ui/c14_arrow-nav.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
         color:white;
         border:0;
-        font-size:130%;
-        display: none;
-        border-radius: 0;
 
         @media (max-width: @screen-md-min), @ipad-landscape { 
             display: block;
