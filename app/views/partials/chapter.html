@@ -20,20 +20,20 @@
 
     <!-- Numéro + Titre + Progression du chap sauf si isStartingChapter ou isGameOver -->
     <div class="chapter__track" ng-hide="user.isStartingChapter() || user.isGameOver">
+        <div class="chapter__track__logo"></div>
         <!-- Le numéro du chapitre -->
         <div class="chapter__track__id">
-            <span >Partie <b>[[chapter.id]]</b></span>
+            <span>Chapitre <b>[[chapter.id]]<span>/3</span></b></span>
         </div>
-        <!-- Pourcentage de progression : les bullets -->
+        <!-- Le chapitre : les bullets -->
         <div class="chapter__track__bullets">
-            <i class="chapter__track__bullets__bullet" ng-repeat="i in [] | range: 5" ng-class="{ active: i*25 <= user.chapterProgression() }"></i>
+            <i class="chapter__track__bullets__bullet" ng-repeat="i in [] | range: 3" ng-class="{ active: i*2 <= chapter.id }"></i>
         </div>
-        <!-- Pourcentage de progression : le pourcentage -->
-        <div class="chapter__track__progression">
-            [[user.chapterProgression()]]<small>%</small>
+        <div class="chapter__track__point">
+            <span>100[[ user.indicators.point ]] pts</span>
         </div>
-        <!-- Le titre du chapitre -->
-        <h2 class="chapter__track__title">[[chapter.title]]</h2>
+        <div class="chapter__track__case">ma valise
+        </div>
     </div>
 
     <!-- Les barres d'indication -->

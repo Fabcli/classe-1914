@@ -58,6 +58,7 @@ angular.module("classe1914.service").factory("User", [
                   luck     : UserIndicators.luck.meta.start
                   health   : UserIndicators.health.meta.start
                   mood     : UserIndicators.mood.meta.start
+                  point    : 0
 
               return @
 

@@ -30,7 +30,17 @@
 @nav-dark-color : #1A171B;
 @nav-bg-color   : #04060b;
 
-//## Cmd color
+//## Gradient
+.chapter-track-bg-gradient  {
+  background: rgba(34,151,166,1);
+  background: -moz-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(34,151,166,1) 85%, rgba(255,255,255,0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(34,151,166,1)), color-stop(85%, rgba(34,151,166,0)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(34,151,166,1) 85%, rgba(255,255,255,0) 100%);
+  background: -o-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(34,151,166,1) 85%, rgba(255,255,255,0) 100%);
+  background: -ms-linear-gradient(left, rgba(34,151,166,1) 0%, rgba(34,151,166,1) 85%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to right, rgba(34,151,166,1) 0%, rgba(34,151,166,1) 85%, rgba(255,255,255,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2297a6', endColorstr='#ffffff', GradientType=1 );
+}
 
 .cmd-bg-gradient {
   background: rgba(34,151,166,1);
