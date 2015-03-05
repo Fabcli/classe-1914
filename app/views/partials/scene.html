@@ -12,52 +12,52 @@
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">
             <div class="scene__sequence--[[sequence.type]]__frame">
-                <p class="scene__sequence--[[sequence.type]]__frame__header" ng-if="sequence.header">
+                <p class="scene__sequence--[[sequence.type]]__frame__header [[sequence.header | lowercase]]" ng-if="sequence.header">
                     [[sequence.header]]
                 </p>
-                <p class="scene__sequence--[[sequence.type]]__frame__character" ng-if="sequence.character">
+           <!--     <p class="scene__sequence--[[sequence.type]]__frame__character" ng-if="sequence.character">
                     [[sequence.character]]&nbsp;:
-                </p>
+                </p>-->
                 <div class="scene__sequence--[[sequence.type]]__frame__body" btf-markdown="sequence.body"></div>
-                <div class="scene__sequence--[[sequence.type]]__frame__head" ng-if="sequence.getHeadSrc()">
-                    <img ng-src="[[sequence.getHeadSrc()]]" />
+                <div class="scene__sequence--[[sequence.type]]__frame__head" ng-if="sequence.getAvatarSrc()">
+                    <img ng-src="[[sequence.getAvatarSrc()]]" />
                 </div>
             </div>
-            <a class="scene__sequence--dialogue__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
+            <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
                 <span class="sr-only">Continuer</span>
             </a>
         </div>
 
         <!-- Player box, a the bottom of the screen -->
         <div ng-if="sequence.isPlayer()">
-            <p class="scene__sequence--voixoff__character" ng-if="sequence.character">
-                [[sequence.character]]&nbsp;:
-            </p>
-            <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__play" ng-click="toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
-                <span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>
-                <span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>
-            </button>
-            <button ng-hide="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__play scene__sequence--voixoff__load"></button>
-            <div class="scene__sequence--voixoff__progression">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" ng-style="{ width: (sound.voicetrack._position/sound.voicetrack._duration)*100 + '%'}"></div>
+            <div class="scene__sequence--voixoff__frame">
+                <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
+                    <span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>
+                    <span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>
+                </button>
+                <button ng-hide="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play scene__sequence--voixoff__frame__load"></button>
+                <div class="scene__sequence--voixoff__frame__progression">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" ng-style="{ width: (sound.voicetrack._position/sound.voicetrack._duration)*100 + '%'}"></div>
+                    </div>
+                    <span class="scene__sequence--voixoff__frame__progression__timestamp">
+                        [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
+                    </span>
                 </div>
-                <span class="scene__sequence--voixoff__progression__timestamp">
-                    [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
-                </span>
+                <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
+                    <img ng-src="[[sequence.getAvatarSrc()]]" />
+                </div>
             </div>
-            <div class="scene__sequence--voixoff__head" ng-if="sequence.getHeadSrc()">
-                <img ng-src="[[sequence.getHeadSrc()]]" />
-            </div>
-            <a class="scene__sequence--dialogue__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
+            <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
                 <span class="sr-only">Continuer</span>
             </a>
         </div>
 
+
         <!-- Choice box, at the middle of the screen -->
-        <div ng-if="sequence.isChoice()">
-            <h3 class="scene__sequence--choice__question" ng-bind-html="sequence.body">
-            </h3>
+        <div ng-if="sequence.isChoice()" class="scene__sequence--choice">
+            <p class="scene__sequence--choice__question" ng-bind-html="sequence.body">
+            </p>
             <button ng-repeat="option in sequence.options"
                     class="btn btn-lg btn-default scene__sequence--choice__option"
                     ng-click="selectOption(option, $index)">

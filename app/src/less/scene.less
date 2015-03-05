@@ -25,54 +25,38 @@
             position:absolute;
             top:50%;
             left:50%;
-            width:440px;
-            padding:10px 0;
-            padding-bottom:20px;
+            width:100%;
             text-align: center;
             white-space:nowrap;
+            border-bottom: 1px solid #fff;
+            .box-shadow(1px 1px 5px fade(@black, 75));
+            background-color: fade(@black, 75);
             .translate(-50%, -50%);
-            #gradient > .vertical(fade(#000, 30), fade(#000, 0) );
 
             &__question {
-                position:absolute;
-                bottom:100%;
-                left:-20px;
-                right:-20px;
-                margin:0;
-                padding:12px 10px;
-                background:fade(#fff, 75);    
-                color: fade(#000, 75);
-                font-weight:bold;
-                font-size: 22px;   
+                max-width: 350px;
+                margin: 0 auto;
+                padding: 25px 10px 35px 10px;
+                line-height: 16px;
                 white-space: normal;
-                
-                &:after,
-                &:before {
-                    content:"";
-                    position:absolute;
-                    top:100%;
-                    background:no-repeat 0 0;
-                    height:10px;                    
-                    width:20px;                    
-                }       
-
-                &:after {
-                    right:0;
-                    background-image:url("/img/ui/question_right.png");
-                }      
-
-                &:before {
-                    left:0;
-                    background-image:url("/img/ui/question_left.png");
-                }      
             }
 
             &__option {
-                min-height:60px;
+                background-color: @brand-primary;
+                color:#fff;
                 width:150px;
-                padding:10px;
-                margin:0 10px 15px;
+                padding:8px 25px;
+                margin:0 15px 25px 0px;
                 white-space: normal;
+
+                &:hover {
+                    border-color: fade(#fff,50);
+                }
+
+                &:focus, &:active, &:focus:active {
+                    outline: 5px auto fade(#fff,75);
+                    outline-offset: -2px;
+                }
             }
 
             &__timeout {
@@ -158,126 +142,7 @@
             }
         }
 
-        // Player box, a the bottom of the screen
-        &--voixoff {          
-
-            position:absolute;
-            bottom:60px;
-            left:50%;
-            background:fade(#000, 75);
-            width:440px;
-            padding:20px;
-            .translate(-50%, 0);
-
-            @media (max-width: @screen-xs-min) {
-                width:auto;
-                left:40px;
-                right:40px;
-                .translate(0, 0);
-            }
-
-            &__head {
-                position:absolute;
-                top:20px;
-                right: 100%;
-                margin-right:-15px;
-                background:black;
-                border:2px solid black;
-                width:50px;
-
-                img {
-                    width:100%;
-                }
-
-                &:before {                    
-                    content:"";
-                    position:absolute;
-                    top:100%;
-                    background:no-repeat 0 0 url("/img/ui/triangle_head.png");
-                    height:10px;                    
-                    width:35px;                   
-                    left:0;
-                    margin-top:2px;
-                    margin-left:-2px;
-                }
-            }
-
-            &__character {
-                color:@brand-secondary;
-                text-transform: uppercase;
-                margin-bottom:5px;                    
-            }
-
-
-            &__play {        
-                .btn();
-                .btn-default();
-
-                padding:0;
-                height:24px;                
-                width:24px;
-                background-repeat:no-repeat;
-                background-position: center center;
-                background-image:url("/img/ui/btn_play.png");
-
-                &:focus, &:active {
-                    background-image:url("/img/ui/btn_play.png");
-                }
-
-                &.active, &.active:focus, &.active:active {
-                    background-image:url("/img/ui/btn_pause.png");
-                }
-
-            }
-
-            &__load {
-                background-image:url("/img/ui/spinner.gif");
-
-                &:focus, &:active {
-                    background-image:url("/img/ui/spinner.gif");
-                }
-            }
-
-            &__progression {
-                border:2px solid @text-color;                
-                height:24px;
-                position:absolute;
-                left:50px;
-                right:20px;
-                bottom:20px;
-                background:fade(#000, 75);
-                .box-shadow(~"0 0 3px 0 black, 0 0 3px 0 black inset");
-
-                &__timestamp {
-                    position:absolute;
-                    right:0;
-                    bottom:100%;
-                    color:white;
-                    font-family: @font-family-serif;
-                    font-style: italic;
-                    margin-bottom:5px;
-                }
-
-                .progress {
-                    position:absolute;
-                    top:7px;
-                    left:7px;
-                    right:7px;
-                    height:6px;
-
-                    .progress-bar, & {
-                        border-radius:3px;
-                    }
-
-                    .progress-bar {
-                        .transition(0.4s);
-                        background: @brand-secondary;
-                    }
-                }
-            }
-        }
-
-        // Feedback, in the middle of the screen 
+        // Feedback, in the middle of the screen
         &--feedback {
 
             &__body {                
@@ -352,9 +217,10 @@
         }
 
         // Dialog box, a the bottom of the screen
-        &--dialogue,
+        &--dialog,
         &--narrative,
-        &__next {
+        &--voixoff,
+        &__next, {
 
             @media (max-width: @screen-xs-min) {
                 width:auto;
@@ -363,6 +229,7 @@
                 .translate(0, 0);
             }
 
+            .box-shadow(1px 1px 5px fade(@black, 75));
             position:absolute;
             bottom:100px;
             left:50%;
@@ -374,11 +241,13 @@
             &__frame {
                 color:white;
                 padding:30px;
+                height:100px;
 //                border:2px solid @text-color;
                 font-size: 13px;
                 background:fade(@black, 75);
                 position:relative;
-                .box-shadow(~"0 0 3px 0 black, 0 0 3px 0 black inset");
+                .box-shadow(1px 1px 5px fade(@black, 75));
+                border-bottom: 1px solid #fff;
 
                 &__header {
                     font-family: @font-family-base;
@@ -386,7 +255,7 @@
                 }
 
                 &__character {
-                    color:@brand-secondary;
+//                    color:@brand-primary;
                     text-transform: uppercase;
                     margin-bottom:0;                    
                 }
@@ -394,59 +263,104 @@
                 &__body {
                     margin-bottom:0;
                     font-family: @font-family-base;
+                    font-weight:bold;
                     text-align: justify;
                 }
 
                 &__head {
                     position:absolute;
-                    top:-2px;
+                    top:0px;
                     right: 100%;
-                    margin-right: 7px;
-                    background:black;
-                    border:2px solid black;
-                    width:50px;
+                    background:fade(white, 75);
+                    width:100px;
+                    height:100px;
+                    .box-shadow(1px 1px 5px fade(@black, 75));
 
                     img {
-                        width:100%;
+                        margin:10px;
+                        width:80px;
+                        opacity: 0.85;
+                    }
+                }
+
+                &__play {
+                    .btn();
+                    .btn-default();
+
+                    position: absolute;
+                    left: 20px;
+                    bottom:18px;
+                    background-color: transparent!important;
+                    padding:0;
+                    height:20px;
+                    width:20px;
+                    background-repeat:no-repeat;
+                    background-image:url("/img/ui/c14_player-play.svg");
+                    border:none;
+                    outline: none;
+
+                    &:focus, &:active, &:active:focus, &:focus:active  {
+                      background-image:url("/img/ui/c14_player-play.svg");
+                      outline: none;
                     }
 
-                    &:before {                    
-                        content:"";
+                    &.active, &.active:focus, &.active:active {
+                      background-image:url("/img/ui/c14_player-pause.svg");
+                      outline: none;
+                    }
+                }
+
+                &__load {
+                    background-image:url("/img/ui/c14_player-loader.svg");
+
+                    &:focus, &:active {
+                      background-image:url("/img/ui/c14_player-loader.svg");
+                    }
+                }
+
+                &__progression {
+                    height:2px;
+                    position:absolute;
+                    left:50px;
+                    right:32px;
+                    bottom:27px;
+
+                    &__timestamp {
                         position:absolute;
-                        top:100%;
-                        background:no-repeat 0 0 url("/img/ui/triangle_head.png");
-                        height:10px;                    
-                        width:35px;                   
-                        left:0;
-                        margin-top:2px;
-                        margin-left:-2px;
+                        right:0;
+                        bottom:100%;
+                        margin-bottom:35px;
+                    }
+
+                    .progress {
+                        height:2px;
+
+                        .progress-bar, & {
+                            border-radius:2px;
+                        }
+
+                        .progress-bar {
+//                            background: url("/img/ui/c14_player-progress-circle.svg") no-repeat center right;
+//                            background-size: 10px;
+                            .transition(0.4s);
+                        }
                     }
                 }
             }
             
             &__next, &__btn {
                 position:absolute;
-                bottom:-2px;
-                right:-30px;
-                height:30px;
-                width:30px;
+                border: none;
+                bottom:0px;
+                right:-32px;
+                height:32px;
+                width:32px;
                 display:block;
                 padding:0;
-                background:url("/img/ui/btn_next.png") no-repeat center center #000;
-                .animation(0.3s move-next linear alternate infinite);
+                background:url("/img/ui/c14_arrow-next") no-repeat center center  #fff;
+                .box-shadow(1px 1px 5px fade(@black, 75));
+//                .animation(0.3s move-next linear alternate infinite);
 
-                &:before {                    
-                    content:"";
-                    position:absolute;
-                    top:100%;
-                    right:0;                    
-                    background:no-repeat right top url("/img/ui/question_right.png");
-                    width:15px;                   
-                    height:7px;                    
-                    margin-right:-2px;
-                    margin-top:2px;
-                    z-index:-1;
-                }
             }
         }
 

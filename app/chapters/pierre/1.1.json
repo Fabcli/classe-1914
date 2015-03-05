@@ -9,12 +9,44 @@
   ],
   "sequence": [
       {
-          "type": "narrative",
-          "body": "Au milieu de rien, c'est beau, non ?",
-          "result": {"mood": -25}
+        "type": "choice",
+        "body": "With caviar drink adobo sauce. The cockroach commands with endurance, mark the fortress before it grows. The pit is full of attitude. Who can invent the blessing and man of an explosion of the heaven if he has the closest hypnosis of the individual?",
+        "default_option": null,
+        "delay": null,
+        "options": [
+          {
+            "header": "Vers 1.2",
+            "next_scene": "1.2",
+            "result": [
+              {
+                "luck": -5,
+                "health": 0,
+                "mood": -3
+              }
+            ]
+          },
+          {
+            "header": "Vers 1.3",
+            "next_scene": "1.3",
+            "result": [
+              {
+                "luck": -5,
+                "health": 0,
+                "mood": -3
+              }
+            ]
+          }
+        ]
+      },
+      {
+          "type": "dialog",
+          "character": "Pierre",
+          "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
+          "result": {"mood": -25,"point": 3}
       },
       {
           "type": "voixoff",
+          "character": "Eugenie",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
           "archive": 54
       },

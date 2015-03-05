@@ -6,8 +6,8 @@ class NavCtrl
         @scope.volumeBp   = if @scope.volume is 0 then 100 else @scope.volume
         # True if the volume is on
         @scope.isVolumeOn = => @User.volume > 0
-        #Temporary desactivated the autoplay => @scope.autoPlay = @User.autoplay
-        @scope.autoPlay = false;
+        # Autoplay value //TODO to activate with a $watch
+        @scope.autoplay = @User.autoplay;
         # Mute or unmute the volume
         @scope.toggleVolume = =>
             if @User.volume is 0
@@ -30,7 +30,7 @@ class NavCtrl
         @scope.isFullscreen = =>
             Fullscreen.isEnabled()
 
-        # Udate the User volume according the scope attribute
+        # Update the User volume according the scope attribute
         @scope.$watch "volume", (v)=> @User.volume = v/100 if v?
 
         @scope.shouldShowSaveButton = @shouldShowSaveButton
