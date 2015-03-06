@@ -9,16 +9,30 @@
   ],
   "sequence": [
       {
-          "type": "dialog",
+          "type": "narrative",
           "character": "Pierre",
           "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
           "result": {"mood": -25,"point": 3}
       },
       {
+          "type": "archive",
+          "images" : [
+              {
+                  "url": "http://docgame.classe-1914.dev/medias/chap1/archives/archive1.jpg",
+                  "caption": "Inner enlightenments hears most blessings. When one yearns purpose and politics, one is able to experience death."
+              },
+              {
+                  "url": "http://docgame.classe-1914.dev/medias/chap1/archives/archive2.jpg",
+                  "caption": "As i have respected you, so you must avoid one another. One is able to experience death."
+              }
+          ],
+          "result": {"mood": 5,"point": 3}
+      },
+      {
           "type": "voixoff",
           "character": "Eugenie",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-          "archive": 54
+          "case": 54
       },
       {
           "type": "new_background",

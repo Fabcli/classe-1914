@@ -33,6 +33,9 @@ angular.module("classe1914.service").factory "Story", [
               isNewBg: ->
                   this.lowerType() is types.sequence.newBackground
 
+              isArchive: ->
+                  this.lowerType() is types.sequence.archive
+
               isVideoBg: ->
                   this.lowerType() is types.sequence.videoBackground
 

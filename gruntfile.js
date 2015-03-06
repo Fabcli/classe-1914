@@ -6,7 +6,10 @@ var jslibrary = [
     'bower_modules/nouislider/jquery.nouislider.js',
     'bower_modules/angular-nouislider/src/nouislider.js',
     'bower_modules/angular-toggle-switch/angular-toggle-switch.min.js',
-    'bower_modules/angular-ui-switch/angular-ui-switch.min.js',
+    'bower_modules/angular-bootstrap/ui-bootstrap.min.js',
+    'bower_modules/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js',
+    'bower_modules/angular-loading-bar/build/loading-bar.min.js',
     'bower_modules/angular-fullscreen/src/angular-fullscreen.js',
     'bower_modules/angular-animate/angular-animate.min.js',
     'bower_modules/angular-local-storage/dist/angular-local-storage.js',
@@ -21,7 +24,8 @@ var jslibrary = [
 ];
 
 var csslibrary = [
-    'bower_modules/angular-toggle-switch/angular-ui-switch.min.css',
+    'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
+    'bower_modules/angular-loading-bar/build/loading-bar.min.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css',
     'bower_modules/nouislider/jquery.nouislider.css'

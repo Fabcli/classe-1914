@@ -142,6 +142,55 @@
             }
         }
 
+        // Archive , a the top right corner thumbnail & a lightbox
+        &--archive {
+
+            &__wrapper {
+
+            position:absolute;
+            top:20px  + @metanav-height;
+            right:0;
+            background:fade(#000, 75);
+            width:270px;
+            padding:15px;
+            color:white;
+
+                &__header {
+                  font-style: italic;
+                  font-size:10px;
+                  margin-bottom:10px;
+                  padding-left:20px;
+                  background:url("/img/ui/notification.png") left center no-repeat;
+                }
+
+                &__next {
+                position:absolute;
+                bottom:-15px;
+                right:5px;
+                height:30px;
+                width:30px;
+                display:block;
+                padding:0;
+                background:url("/img/ui/btn_next.png") no-repeat center center #000;
+                .animation(0.3s move-next linear alternate infinite);
+
+                   &:before {
+                content:"";
+                position:absolute;
+                bottom:2px;
+                right:100%;
+                background:no-repeat right top url("/img/ui/question_right.png");
+                width:15px;
+                height:7px;
+                margin-right:-2px;
+                margin-top:0;
+                z-index:-1;
+                .rotate(90deg);
+              }
+            }
+        }
+      }
+
         // Feedback, in the middle of the screen
         &--feedback {
 
@@ -311,7 +360,18 @@
                 }
 
                 &__load {
+                    position: absolute;
+                    left: 20px;
+                    bottom:18px;
+                    background-color: transparent!important;
+                    padding:0;
+                    height:20px;
+                    width:20px;
+                    background-repeat:no-repeat;
                     background-image:url("/img/ui/c14_player-loader.svg");
+                    background-size: contain;
+                    border:none;
+                    outline: none;
 
                     &:focus, &:active {
                       background-image:url("/img/ui/c14_player-loader.svg");

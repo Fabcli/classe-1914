@@ -16,8 +16,8 @@ app = angular.module('classe1914', [
   "ngSanitize"
   "nouislider"
   "FBAngular"
-  "uiSwitch"
   "toggle-switch"
+  "bootstrapLightbox"
   # External dependencies
   "btford.markdown"
   #Internal dependencies
