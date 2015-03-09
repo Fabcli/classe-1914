@@ -15,24 +15,26 @@
           "result": {"mood": -25,"point": 3}
       },
       {
-          "type": "archive",
-          "images" : [
-              {
-                  "url": "/medias/chap1/archives/archive1.jpg",
-                  "caption": "Inner enlightenments hears most blessings. When one yearns purpose and politics, one is able to experience death."
-              },
-              {
-                  "url": "/medias/chap1/archives/archive2.jpg",
-                  "caption": "As i have respected you, so you must avoid one another. One is able to experience death."
-              }
-          ],
-          "result": {"mood": 5,"point": 3}
-      },
-      {
           "type": "voixoff",
+          "archives": true ,
           "character": "Eugenie",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
           "case": 54
+      },
+      {
+          "type": "archive",
+          "button": "Affiche de recrutement",
+          "images" : [
+              {
+                  "url": "/medias/chap1/archives/archive1.jpg",
+                  "cote": "archive1"
+              },
+              {
+                  "url": "/medias/chap1/archives/archive2.jpg",
+                  "cote": "archive2"
+              }
+          ],
+          "result": {"mood": 5,"point": 3}
       },
       {
           "type": "new_background",

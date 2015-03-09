@@ -1,3 +1,91 @@
-.modal-body {
-    z-index: @zindex-modal;
+.modal {
+    /* the modal background */
+    &-backdrop {
+        cursor: pointer!important;
+        height:100%;
+    }
+
+    &-content {
+        background: none;
+        .box-shadow(none);
+        padding: 0px;
+        border: none!important;
+    }
+
+    &-body {
+        background: none;
+        box-shadow: none!important;
+        padding: 0px;
+    }
+}
+
+.lightbox {
+
+    &__image {
+        position: relative;
+        text-align: center; /* center the image */
+
+        &__nav  {
+            position: relative;
+            display: block;
+
+            .button {
+                cursor: pointer;
+                position: absolute;
+                width: 32px;
+                height: 32px;
+            }
+
+            &__previous {
+                left:-16px;
+                background-color: #fff;
+
+            }
+
+            &__next {
+                right:-16px;
+                background-color: red;
+
+            }
+
+        }
+        /* the caption overlays the top left corner of the image */
+        &__caption {
+            position: relative;
+            margin: 0 25px; /* the left and right margins are offset by 0.4em for the span box-shadow */
+            color: #fff;
+            font-family: monospace;
+            text-align: right;
+            text-shadow: none;
+
+            &__cote {
+                font-size: 12px;
+            }
+
+            &__url {
+              font-size: 10px;
+            }
+
+
+            span {
+                padding-top: 0.1em;
+                padding-bottom: 0.1em;
+                background-color: transparent;
+                /* pad the left and right of each line of text */
+                box-shadow: none;
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+
+                    &:hover,
+                    &:active {
+                        color: #fff;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+    }
 }

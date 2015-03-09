@@ -79,13 +79,8 @@
         </div>
 
         <!-- Archive, a the top right corner of the screen with a lightbox -->
-        <div ng-if="sequence.isArchive()" class="scene__sequence--archive__wrapper">
-            <div ng-repeat="image in sequence.images">
-                <a  ng-click="openLightboxArchives(sequence.images, $index)">
-                    [[ image.url | thumb ]]
-                </a>
-            </div>
-
+        <div ng-if="sequence.isArchive()" class="scene__sequence--archive__wrapper" ng-click="openLightboxArchives(sequence.images, $index)">
+            <div>[[ sequence.button ]]</div>
 
             <div class="scene__sequence--archive__wrapper__header" ng-if="sequence.header">[[sequence.header]]&nbsp;:</div>
             <div class="scene__sequence--archive__wrapper__body" btf-markdown="sequence.body"></div>

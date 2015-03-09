@@ -3,6 +3,9 @@ angular.module('classe1914.config').config ['LightboxProvider', 'constant.settin
     LightboxProvider.templateUrl = 'partials/lightbox.html'
 
     LightboxProvider.getImageUrl= (image) =>
-      settings.mediaUrl + image.url
+        settings.mediaUrl + image.url
+
+    LightboxProvider.getImageCaption= (image) =>
+        image.cote
 ]
 #EOF

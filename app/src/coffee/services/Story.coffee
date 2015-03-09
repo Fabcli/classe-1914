@@ -24,6 +24,9 @@ angular.module("classe1914.service").factory "Story", [
               isPlayer: ->
                   this.lowerType() is types.sequence.player
 
+              isPlayerWithArchives: ->
+                  this.lowerType() is types.sequence.player and this.archive
+
               isVideo: ->
                   this.lowerType() is types.sequence.video
 
