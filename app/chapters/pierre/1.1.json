@@ -18,11 +18,11 @@
           "type": "archive",
           "images" : [
               {
-                  "url": "http://docgame.classe-1914.dev/medias/chap1/archives/archive1.jpg",
+                  "url": "/medias/chap1/archives/archive1.jpg",
                   "caption": "Inner enlightenments hears most blessings. When one yearns purpose and politics, one is able to experience death."
               },
               {
-                  "url": "http://docgame.classe-1914.dev/medias/chap1/archives/archive2.jpg",
+                  "url": "/medias/chap1/archives/archive2.jpg",
                   "caption": "As i have respected you, so you must avoid one another. One is able to experience death."
               }
           ],
