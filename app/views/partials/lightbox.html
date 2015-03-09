@@ -1,3 +1,4 @@
+<!-- Template du bootstrap -->
 <div class="modal-body"
      ng-swipe-left="Lightbox.nextImage()"
      ng-swipe-right="Lightbox.prevImage()">
@@ -11,7 +12,7 @@
                 ‹ Previous
             </a>
 
-            <a ng-href="{{Lightbox.imageUrl}}" target="_blank"
+            <a ng-href="[[ Lightbox.imageUrl ]]" target="_blank"
                class="btn btn-xs btn-default" title="Open in new tab">
                 Open image in new tab
             </a>
@@ -25,10 +26,10 @@
     <div class="lightbox-image-container">
         <!-- caption -->
         <div class="lightbox-image-caption">
-            <span>{{Lightbox.imageCaption}}</span>
+            <span>Description : [[ Lightbox.imageCaption ]]</span>
         </div>
 
         <!-- image -->
-        <img lightbox-src="{{Lightbox.imageUrl}}" alt="">
+        <img lightbox-src="[[ Lightbox.imageUrl ]]" alt="">
     </div>
 </div>

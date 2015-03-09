@@ -1,14 +1,13 @@
 class SceneCtrl
   @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Lightbox']
 
-  constructor: (@scope, @Story, @User, @Sound, @Timeout, @Lightbox) ->
+  constructor: (@scope, @Story, @User, @Sound, @Timeout, Lightbox) ->
       @scope.story  = @Story
       @scope.user  = @User
       @scope.sound = @Sound
       @scope.timeout = @Timeout
-      @scope.Lightbox = @Lightbox
 
-    # Establishes a bound between "src" and "chapter" arguments
+      # Establishes a bound between "src" and "chapter" arguments
       # provided by the scene directive and the Controller
       @scene = @scope.scene = @scope.src
       @chapter = @scope.chapter
@@ -91,12 +90,9 @@ class SceneCtrl
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack
 
-
-#      # Lightbox for archive
-#      @scope.openLightboxModal = (archives, index) =>
-#          console.log(archives)
-#          console.log(index)
-#          Lightbox.openModal(archives, index)
+      # Open the lightbox for archives type
+      @scope.openLightboxArchives = (archives, index) =>
+          Lightbox.openModal(archives, index)
 
       # Last dialog box that we see
       @getLastDialogIdx = @scope.getLastDialogIdx = =>

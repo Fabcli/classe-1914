@@ -43,6 +43,7 @@ $app->view->setData(
     array(
         'MODE'                  => $app->getMode(),
         'STATIC_URL'            => $app->config("static_url"),
+        'MEDIA_URL'             => $app->config("media_url"),
         'ROOT_URI'		        => "http://{$_SERVER['HTTP_HOST']}",
         'DISPLAY_DEBUG_TOOLBAR' => $app->config("display_debug_toolbar") or $app->config("debug")
     )

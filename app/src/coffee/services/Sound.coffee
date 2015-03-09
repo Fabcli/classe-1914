@@ -25,7 +25,6 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
       @soundtrack.play => @soundtrack.fade(0, User.volume, 1000)
 
     extractAllTracks: (track) =>
-      console.log("Extraction de music")
       tracks = [track]
       tracks.push tracks[0]
       tracks[1] = tracks[1].split '.'
