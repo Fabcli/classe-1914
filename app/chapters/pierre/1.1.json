@@ -30,10 +30,6 @@
               {
                   "url": "/medias/chap1/archives/archive1.jpg",
                   "cote": "archive1"
-              },
-              {
-                  "url": "/medias/chap1/archives/archive2.jpg",
-                  "cote": "archive2"
               }
           ],
           "result": {"mood": 5,"point": 3}

@@ -7,5 +7,6 @@ angular.module('classe1914.config').config ['LightboxProvider', 'constant.settin
 
     LightboxProvider.getImageCaption= (image) =>
         image.cote
+
 ]
 #EOF

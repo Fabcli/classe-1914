@@ -91,11 +91,19 @@ class SceneCtrl
       @scope.shouldDisplayArchive = () =>
           display_archive = no
           # Id of the actual sequence
-          @sequence = @Story.sequence(@chapter.id, @scene.id, @User.sequence)
-          if @sequence.archive_params?
+          sequence = @Story.sequence(@chapter.id, @scene.id, @User.sequence)
+          if sequence.archive_params?
+              archives = sequence.archive_params
+              @shouldShowArchiveNav(archives)
               display_archive = yes
           display_archive
 
+      # Display the arrow nav in the archive lightbox
+      @shouldShowArchiveNav = (images) =>
+          Lightbox.show_nav = no
+          if images.length > 1
+              Lightbox.show_nav = yes
+          Lightbox.show_nav
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack
