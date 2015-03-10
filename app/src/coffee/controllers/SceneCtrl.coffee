@@ -88,6 +88,7 @@ class SceneCtrl
           return should_display
 
       # True if we the actual sequence have archives to show
+      # TODO : Extract in LightboxFactory
       @scope.shouldDisplayArchive = () =>
           display_archive = no
           # Id of the actual sequence
