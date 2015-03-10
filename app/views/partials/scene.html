@@ -11,46 +11,54 @@
 
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">
-            <div class="scene__sequence--[[sequence.type]]__frame">
-                <p class="scene__sequence--[[sequence.type]]__frame__header [[sequence.header | lowercase]]" ng-if="sequence.header">
-                    [[sequence.header]]
-                </p>
-           <!--     <p class="scene__sequence--[[sequence.type]]__frame__character" ng-if="sequence.character">
-                    [[sequence.character]]&nbsp;:
-                </p>-->
-                <div class="scene__sequence--[[sequence.type]]__frame__body" btf-markdown="sequence.body"></div>
-                <div class="scene__sequence--[[sequence.type]]__frame__head" ng-if="sequence.getAvatarSrc()">
-                    <img ng-src="[[sequence.getAvatarSrc()]]" />
+            <div class="scene__sequence--[[sequence.type]]__body">
+                <div class="scene__sequence--[[sequence.type]]__frame">
+                    <p class="scene__sequence--[[sequence.type]]__frame__header [[sequence.header | lowercase]]" ng-if="sequence.header">
+                        [[sequence.header]]
+                    </p>
+               <!--     <p class="scene__sequence--[[sequence.type]]__frame__character" ng-if="sequence.character">
+                        [[sequence.character]]&nbsp;:
+                    </p>-->
+                    <div class="scene__sequence--[[sequence.type]]__frame__body" btf-markdown="sequence.body"></div>
+                    <div class="scene__sequence--[[sequence.type]]__frame__head" ng-if="sequence.getAvatarSrc()">
+                        <img ng-src="[[sequence.getAvatarSrc()]]" />
+                    </div>
                 </div>
+                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
+                    <span class="sr-only">Continuer</span>
+                </a>
             </div>
-            <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
-                <span class="sr-only">Continuer</span>
-            </a>
         </div>
 
         <!-- Player box, a the bottom of the screen -->
         <div ng-if="sequence.isPlayer()">
-            <div class="scene__sequence--voixoff__frame">
-                <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
-                    <span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>
-                    <span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>
-                </button>
-                <button ng-hide="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play scene__sequence--voixoff__frame__load"></button>
-                <div class="scene__sequence--voixoff__frame__progression">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" ng-style="{ width: (sound.voicetrack._position/sound.voicetrack._duration)*100 + '%'}"></div>
+
+            <div class="scene__sequence--voixoff__body">
+                <div class="scene__sequence--voixoff__frame">
+                    <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
+                        <span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>
+                        <span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>
+                    </button>
+                    <button ng-hide="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play scene__sequence--voixoff__frame__load"></button>
+                    <div class="scene__sequence--voixoff__frame__progression">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" ng-style="{ width: (sound.voicetrack._position/sound.voicetrack._duration)*100 + '%'}"></div>
+                        </div>
+                        <span class="scene__sequence--voixoff__frame__progression__timestamp">
+                            [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
+                        </span>
                     </div>
-                    <span class="scene__sequence--voixoff__frame__progression__timestamp">
-                        [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
-                    </span>
+                    <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
+                        <img ng-src="[[sequence.getAvatarSrc()]]" />
+                    </div>
                 </div>
-                <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
-                    <img ng-src="[[sequence.getAvatarSrc()]]" />
-                </div>
+
+                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
+                    <span class="sr-only">Continuer</span>
+                </a>
+
             </div>
-            <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
-                <span class="sr-only">Continuer</span>
-            </a>
+
         </div>
 
         <!-- Choice box, at the middle of the screen -->
@@ -72,18 +80,15 @@
             </div>
         </div>
 
+        <!-- Archive, a the top right corner of the screen with a lightbox -->
+        <div ng-if="shouldDisplayArchive()" class="scene__sequence--archive__wrapper" ng-click="openLightboxArchives(sequence.archive_params, 0)">
+            <div>[[ sequence.archive_button ]]</div>
+        </div>
+
         <!-- Notification, a the top right corner of the screen -->
         <div ng-if="sequence.isNotification()" class="scene__sequence--notification__wrapper">
             <div class="scene__sequence--notification__wrapper__header" ng-if="sequence.header">[[sequence.header]]&nbsp;:</div>
             <div class="scene__sequence--notification__wrapper__body" btf-markdown="sequence.body"></div>
-        </div>
-
-        <!-- Archive, a the top right corner of the screen with a lightbox -->
-        <div ng-if="sequence.isArchive()" class="scene__sequence--archive__wrapper" ng-click="openLightboxArchives(sequence.images, $index)">
-            <div>[[ sequence.button ]]</div>
-
-            <div class="scene__sequence--archive__wrapper__header" ng-if="sequence.header">[[sequence.header]]&nbsp;:</div>
-            <div class="scene__sequence--archive__wrapper__body" btf-markdown="sequence.body"></div>
         </div>
 
         <!-- Video, in the middle of the screen -->

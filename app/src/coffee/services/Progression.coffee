@@ -85,19 +85,19 @@ angular.module("classe1914.service").factory "Progression", [
               do Sound.startScene
               User.saveChapterChanging true
 
-#      onKeyPressed: (e)=>
-#          inGame = User.inGame
-#          isSummary = User.isSummary
-#          gameOver = User.isGameOver
-#          isStartingChapter = User.isStartingChapter()
-#
-#          if _.every [ inGame, not isSummary, not gameOver,
-#                       not isStartingChapter]
-#              seq = Story.sequence(User.chapter, User.scene, User.sequence)
-#              if seq.hasNext()
-#                 do User.nextSequence
-#          if isSummary and inGame and not gameOver
-#             do User.leaveSummary
+      onKeyPressed: (e)=>
+          inGame = User.inGame
+          isSummary = User.isSummary
+          gameOver = User.isGameOver
+          isStartingChapter = User.isStartingChapter()
+
+          if _.every [ inGame, not isSummary, not gameOver,
+                       not isStartingChapter]
+              seq = Story.sequence(User.chapter, User.scene, User.sequence)
+              if seq.hasNext()
+                 do User.nextSequence
+          if isSummary and inGame and not gameOver
+             do User.leaveSummary
 
 
       singMeTheEnd: (done) =>

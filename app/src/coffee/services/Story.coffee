@@ -24,8 +24,11 @@ angular.module("classe1914.service").factory "Story", [
               isPlayer: ->
                   this.lowerType() is types.sequence.player
 
-              isPlayerWithArchives: ->
-                  this.lowerType() is types.sequence.player and this.archive
+              isPlayerWithArchive: ->
+                  (this.lowerType() is types.sequence.player) and this.archive
+
+              isArchive: ->
+                  this.lowerType() is types.sequence.archive
 
               isVideo: ->
                   this.lowerType() is types.sequence.video
@@ -56,6 +59,9 @@ angular.module("classe1914.service").factory "Story", [
 
               hasConditions: ->
                   this.condition?
+
+              hasArchive: ->
+                  this.archive_params?
 
               hasNext: ->
                    settings.sequenceWithNext.indexOf( this.lowerType() ) > -1

@@ -186,7 +186,7 @@ angular.module("classe1914.service").factory("User", [
                   scene        = Story.scene(@chapter, @scene)
                   lastSequence = Story.sequence(@chapter, @scene, @sequence)
 
-                  if lastSequence.result and @isSequenceConditionOk lastSequence
+                  if lastSequence.result and @isSequenceConditionOk(lastSequence)
                         for key, value of lastSequence.result
                             @indicators[key] += value
                             gameOver = do @checkProgression

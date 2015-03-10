@@ -68,7 +68,7 @@ class SceneCtrl
       # True if we should display the given bg
       @scope.shouldDisplayBg = (bg)=>
           should_display = no
-          # Do not show the next background it he chapter is starting
+          # Do not show the next background if the chapter is starting
           return bg.sequence is -1 if @User.isStartingChapter()
           # Ids of every sequences
           for id in _.map(@bgs, (bg)-> bg.sequence)
@@ -86,6 +86,16 @@ class SceneCtrl
              should_display = should_display and @User.scene is @scene.id
 
           return should_display
+
+      # True if we the actual sequence have archives to show
+      @scope.shouldDisplayArchive = () =>
+          display_archive = no
+          # Id of the actual sequence
+          @sequence = @Story.sequence(@chapter.id, @scene.id, @User.sequence)
+          if @sequence.archive_params?
+              display_archive = yes
+          display_archive
+
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack

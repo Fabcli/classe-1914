@@ -8,7 +8,7 @@ angular.module('classe1914.constant').constant 'constant.settings',
   sceneEntrance     : 1*1000
   feedbackDuration  : 2*1000
 # Some types of sequence have different behavior
-  sequenceWithNext  : ["dialog", "narrative", "notification", "archive",  "voixoff"]
+  sequenceWithNext  : ["dialog", "narrative", "notification", "voixoff"]
   sequenceDialog    : ["dialog", "narrative"]
   sequenceSkip      : ["new_background"]
 # Refreshing rate for timeouts

@@ -236,11 +236,11 @@
             }
         }
 
-        // Dialog box, a the bottom of the screen
+        // Dialog box & player, a the bottom of the screen
         &--dialog,
         &--narrative,
-        &--voixoff,
-        &__next, {
+        &__next,
+        &--voixoff {
 
             @media (max-width: @screen-xs-min) {
                 width:auto;
@@ -249,20 +249,23 @@
                 .translate(0, 0);
             }
 
-            .box-shadow(1px 1px 5px fade(@black, 75));
-            position:absolute;
-            bottom:100px;
-            left:50%;
-//            background:fade(#000, 75);
-            width:440px;
-//            padding:20px;
-            .translate(-50%, 0);
+            &__body{
+                .box-shadow(1px 1px 5px fade(@black, 75));
+                position:absolute;
+                bottom:100px;
+                left:50%;
+                //            background:fade(#000, 75);
+                width:440px;
+                //            padding:20px;
+                .translate(-50%, 0);
+            }
+
 
             &__frame {
                 color:white;
                 padding:30px;
                 height:100px;
-//                border:2px solid @text-color;
+                //                border:2px solid @text-color;
                 font-size: 13px;
                 background:fade(@black, 75);
                 position:relative;
@@ -275,9 +278,9 @@
                 }
 
                 &__character {
-//                    color:@brand-primary;
+                    //                    color:@brand-primary;
                     text-transform: uppercase;
-                    margin-bottom:0;                    
+                    margin-bottom:0;
                 }
 
                 &__body {
@@ -320,13 +323,13 @@
                     outline: none;
 
                     &:focus, &:active, &:active:focus, &:focus:active  {
-                      background-image:url("/img/ui/c14_player-play.svg");
-                      outline: none;
+                        background-image:url("/img/ui/c14_player-play.svg");
+                        outline: none;
                     }
 
                     &.active, &.active:focus, &.active:active {
-                      background-image:url("/img/ui/c14_player-pause.svg");
-                      outline: none;
+                        background-image:url("/img/ui/c14_player-pause.svg");
+                        outline: none;
                     }
                 }
 
@@ -345,7 +348,7 @@
                     outline: none;
 
                     &:focus, &:active {
-                      background-image:url("/img/ui/c14_player-loader.svg");
+                        background-image:url("/img/ui/c14_player-loader.svg");
                     }
                 }
 
@@ -371,14 +374,14 @@
                         }
 
                         .progress-bar {
-//                            background: url("/img/ui/c14_player-progress-circle.svg") no-repeat center right;
-//                            background-size: 10px;
+                            //                            background: url("/img/ui/c14_player-progress-circle.svg") no-repeat center right;
+                            //                            background-size: 10px;
                             .transition(0.4s);
                         }
                     }
                 }
             }
-            
+
             &__next, &__btn {
                 position:absolute;
                 border: none;
@@ -390,7 +393,7 @@
                 padding:0;
                 background:url("/img/ui/c14_arrow-next") no-repeat center center  #fff;
                 .box-shadow(1px 1px 5px fade(@black, 75));
-//                .animation(0.3s move-next linear alternate infinite);
+                //                .animation(0.3s move-next linear alternate infinite);
 
             }
         }

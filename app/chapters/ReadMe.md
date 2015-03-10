@@ -145,11 +145,11 @@ Les modification des variables au passage de cette scene
             "score": 12
         }
 
-#### 2.9. archives #
+#### 2.9. case #
 
-Les archives à ouvrir, sous forme de tableau :
+Les archives de la valise à ouvrir, sous forme de tableau :
 
-        "archive": [
+        "case": [
             12,
             14
         ]
@@ -176,19 +176,35 @@ Un évenement (appelé aussi "plan") peut être bloquant ou pas. Il est bloquant
 * Comme le type `interactive` induit des aller-retour sur les sènes, il faut que je le definisse plus tard.
 
 
-| types          |  bouton next à la fin | bloquant | paramètres                                                                         |
-|:------------   |:---------------------:|:--------:|----------------------------------------------------------------------------:       |
-| dialogue       |                     ✓ |        ✓ | header, delay, body, character, result, condition, archives                        |
-| narrative      |                     ✓ |        ✓ | body, delay, result, condition, archives                                           |
-| voixoff        |                     ✕ |        ✓ | delay, body, character, result, condition, archives                                |
-| game           |                     ✕ |        x | body, delay, result, options(list), condition, archives                            |
-| interactive    |                     ✕ |        ✓ | __A PRECISER__                                                                     |
-| video          |                     ✓ |        ✓ | body, delay, result, condition, archives                                           |
-| notification   |                     ✓ |        ✓ | body, delay, header, sound, result, condition, archives                            |
-| new_background |                     ✕ |        ✕ | body, type,  delay, transition, transition_duration result, condition, archives    |
-| choice         |                     ✕ |        ✓ | body, delay, result, default_option, options(list), condition, archives            |
+| types          |  bouton next à la fin | bloquant | paramètres                                                                              |
+|:------------   |:---------------------:|:--------:|----------------------------------------------------------------------------------------:|
+| dialogue       |                     ✓ |        ✓ | header, delay, body, character, result, condition, archive, case                        |
+| narrative      |                     ✓ |        ✓ | body, delay, result, condition, archive, case                                           |
+| voixoff        |                     ✕ |        ✓ | delay, body, character, result, condition, archive, case                                |
+| game           |                     ✕ |        x | body, delay, result, options(list), condition, archive, case                            |
+| interactive    |                     ✕ |        ✓ | __A PRECISER__                                                                          |
+| video          |                     ✓ |        ✓ | body, delay, result, condition, case                                                    |
+| notification   |                     ✓ |        ✓ | body, delay, header, sound, result, condition, archive, case                            |
+| new_background |                     ✕ |        ✕ | body, type,  delay, transition, transition_duration result, condition, archive, case    |
+| choice         |                     ✕ |        ✓ | body, delay, result, default_option, options(list), condition, archive, case            |
 
 * Si `choice` ou `game` n'est pas spécifié, le paramètre `next_scene` doit être renseigné dans l'objet `scene`.
+* Tous les types ont une option archives possibles avec :
+    * `archive_button` qui donnera le texte de la zone de notification pour ouvrir les archives
+    * archive_params` qui contient un tableau de cette forme :
+   
+              "archive_button": "Voir les archives",
+              "archive_params" : [
+                  {
+                      "url": "/medias/chap1/archives/archive1.jpg",
+                      "cote": "archive1"
+                  },
+                  {
+                      "url": "/medias/chap1/archives/archive2.jpg",
+                      "cote": "archive2"
+                  }
+              ]
+        
 
 ##### 3.1.1. Les encarts type bulle 
 
@@ -203,7 +219,7 @@ Le `dialogue` sera un texte affiché avec :
       * `header` est une sorte de didascalie du genre (en rougissant),
       * `result` qui inluence les variables,
       * `condition` pour que le dialogue s'affiche,
-      * `archives` a debloquer
+      * `case` a debloquer
 
 ###### -> narrative
 
@@ -221,7 +237,7 @@ Une notification sera un texte affiché sous forme de bulle ou d'encart à une p
       * `header` est une sorte de didascalie du genre (en rougissant),
       * `result` qui inluence les variables,
       * `condition` pour que le dialogue s'affiche,
-      * `archives` a debloquer
+      * `case` a debloquer
 
 ###### -> voixoff
 
@@ -233,7 +249,8 @@ La voix off sera un lecteur audio avec :
    * Optionnel:
       * `result` qui inluencera les variables,
       * `condition` pour que le dialogue s'affiche,
-      * `archives` a debloquer
+      * `case` a debloquer
+      * `archive` => `true` ou `false` pour afficher une lightbox avec des documents d'archives
 
 ##### 3.1.2 Le type new_background
 
@@ -305,7 +322,18 @@ J'ai aussi trouvé un éditeur plutot bien fait sur mac à environ 6€ et avec 
               "character" : "Pierre",
               "body" : "T'as de beau yeux, tu sais ?",
               "header" : true,
-              "delay" : 12
+              "delay" : 12,
+              "archive_button": "Voir les archives de fou",
+              "archive_params" : [
+                {
+                    "url": "/medias/chap1/archives/archive1.jpg",
+                    "cote": "archive1"
+                },
+                {
+                    "url": "/medias/chap1/archives/archive2.jpg",
+                    "cote": "archive2"
+                }
+              ]
             },
             {
               "type" : "dialog",

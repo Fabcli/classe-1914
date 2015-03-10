@@ -9,22 +9,24 @@
   ],
   "sequence": [
       {
-          "type": "narrative",
-          "character": "Pierre",
-          "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
-          "result": {"mood": -25,"point": 3}
-      },
-      {
           "type": "voixoff",
-          "archives": true ,
-          "character": "Eugenie",
+          "archives": false ,
+          "character": "Louis",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
           "case": 54
       },
       {
-          "type": "archive",
-          "button": "Affiche de recrutement",
-          "images" : [
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+          "transition": null
+      },
+      {
+          "type": "voixoff",
+          "character": "Eugenie",
+          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
+          "case": 54,
+          "archive_button": "Voir les archives",
+          "archive_params" : [
               {
                   "url": "/medias/chap1/archives/archive1.jpg",
                   "cote": "archive1"
@@ -49,6 +51,23 @@
           "type": "new_background",
           "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL3.png",
           "transition": null
+      },
+      {
+          "type": "narrative",
+          "character": "Pierre",
+          "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
+          "result": {"mood": -25,"point": 3},
+          "archive_button": "Voir les archives de fou",
+          "archive_params" : [
+              {
+                  "url": "/medias/chap1/archives/archive1.jpg",
+                  "cote": "archive1"
+              },
+              {
+                  "url": "/medias/chap1/archives/archive2.jpg",
+                  "cote": "archive2"
+              }
+          ]
       },
       {
           "type": "narrative",
