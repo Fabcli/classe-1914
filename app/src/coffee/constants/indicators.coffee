@@ -31,4 +31,12 @@ angular.module('classe1914.constant').constant 'constant.indicators',
 #              on:   'min'
 #              rule: 'lte'
 
+      point:
+          start: 0
+          max:  10000
+          min:  0
+    #          gameOver:
+    #              on:   'min'
+    #              rule: 'lte'
+
 
