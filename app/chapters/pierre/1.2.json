@@ -10,7 +10,14 @@
   "sequence": [
     {
       "type": "narrative",
-      "body": "Nous sommes à la scene 1.2"
+      "body": "Nous sommes à la scene 1.2",
+      "archive_button": "Clique pour les archives",
+      "archive_params" : [
+        {
+          "url": "/medias/chap1/archives/archive1.jpg",
+          "cote": "archive1"
+        }
+      ]
     },
     {
       "type": "voixoff",

@@ -1,11 +1,12 @@
 class SceneCtrl
-  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Lightbox']
+  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'LightboxFactory', 'Lightbox' ]
 
-  constructor: (@scope, @Story, @User, @Sound, @Timeout, Lightbox) ->
+  constructor: (@scope, @Story, @User, @Sound, @Timeout, @LightboxFactory , Lightbox ) ->
       @scope.story  = @Story
       @scope.user  = @User
       @scope.sound = @Sound
       @scope.timeout = @Timeout
+      @scope.lightboxfactory = LightboxFactory
 
       # Establishes a bound between "src" and "chapter" arguments
       # provided by the scene directive and the Controller
@@ -40,7 +41,7 @@ class SceneCtrl
           # Some choice may have an outro feedback
           if option.outro?
               # Find the current scene
-              scene = @Story.scene @User.chapter, @User.scene
+              scene = @Story.scene(@User.chapter, @User.scene)
               # Create a "virtual sequence" at the end of the scene
               # (becasue every choice is at the end of a scene)
               virt_sequence =
@@ -87,31 +88,18 @@ class SceneCtrl
 
           return should_display
 
-      # True if we the actual sequence have archives to show
-      # TODO : Extract in LightboxFactory
-      @scope.shouldDisplayArchive = () =>
-          display_archive = no
-          # Id of the actual sequence
-          sequence = @Story.sequence(@chapter.id, @scene.id, @User.sequence)
-          if sequence.archive_params?
-              archives = sequence.archive_params
-              @shouldShowArchiveNav(archives)
-              display_archive = yes
-          display_archive
-
-      # Display the arrow nav in the archive lightbox
-      @shouldShowArchiveNav = (images) =>
-          Lightbox.show_nav = no
-          if images.length > 1
-              Lightbox.show_nav = yes
-          Lightbox.show_nav
-
-      # Play or pause the soundtrack
-      @scope.toggleVoicetrack = @Sound.toggleVoicetrack
+      # Condition to view archives
+      @scope.shouldDisplayArchive = =>
+          do @LightboxFactory.shouldDisplayArchive
 
       # Open the lightbox for archives type
       @scope.openLightboxArchives = (archives, index) =>
           Lightbox.openModal(archives, index)
+
+      @scope.Test = => do @LightboxFactory.openLightboxArchives
+
+      # Play or pause the soundtrack
+      @scope.toggleVoicetrack = @Sound.toggleVoicetrack
 
       # Last dialog box that we see
       @getLastDialogIdx = @scope.getLastDialogIdx = =>
