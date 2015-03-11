@@ -10,18 +10,11 @@
   "sequence": [
     {
       "type": "narrative",
-      "body": "Nous sommes à la scene 1.2",
-      "archive_button": "Clique pour les archives",
-      "archive_params" : [
-        {
-          "url": "/medias/chap1/archives/archive1.jpg",
-          "cote": "archive1"
-        }
-      ]
+      "body": "Nous sommes à la scene 1.3"
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5-2.mp3"
+      "body": "/medias/chap1/voixoff/test_nom.mp3"
     }
   ]
 }

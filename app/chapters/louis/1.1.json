@@ -1,3 +1,130 @@
 {
-  "title": "Chapitre 1"
+  "next_scene": null,
+  "decor": [
+      {
+          "background": "/medias/chap1/illustrations/c14_wait.png",
+          "background_transition": "fade",
+          "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+      }
+  ],
+  "sequence": [
+      {
+          "type": "voixoff",
+          "archives": false ,
+          "character": "Louis",
+          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
+          "case": 54,
+          "result": {"point": 1000}
+      },
+      {
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+          "transition": null
+      },
+      {
+          "type": "voixoff",
+          "character": "Eugenie",
+          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
+          "case": 54,
+          "archive_button": "Voir les archives",
+          "archive_params" : [
+              {
+                  "url": "/medias/chap1/archives/archive1.jpg",
+                  "cote": "archive1"
+              }
+          ],
+          "result": {"mood": 5,"point": 3}
+      },
+      {
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+          "transition": null
+      },
+      {
+          "type": "voixoff",
+          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
+      },
+      {
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL3.png",
+          "transition": null
+      },
+      {
+          "type": "narrative",
+          "character": "Pierre",
+          "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
+          "result": {"mood": -25,"point": 3},
+          "archive_button": "Voir les archives de fou",
+          "archive_params" : [
+              {
+                  "url": "/medias/chap1/archives/archive1.jpg",
+                  "cote": "archive1"
+              },
+              {
+                  "url": "/medias/chap1/archives/archive2.jpg",
+                  "cote": "archive2"
+              }
+          ]
+      },
+      {
+          "type": "narrative",
+          "body": "Eugénie et Marie jouent au jeu de la queue de la vache."
+      },
+      {
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL4.png",
+          "transition": "fade"
+      },
+      {
+          "type": "dialog",
+          "character": "Pierre",
+          "body": "Ensuite, nous nous faisons prendre en photo tous ensemble par le photographe ambulant."
+      },
+      {
+          "type": "new_background",
+          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5.png",
+          "transition": "fade",
+          "result":
+            {
+              "luck": 25,
+              "health": -30,
+              "mood": 23
+            }
+      },
+      {
+          "type": "voixoff",
+          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
+      },
+      {
+        "type": "choice",
+        "body": "With caviar drink adobo sauce. The cockroach commands with endurance, mark the fortress before it grows. The pit is full of attitude. Who can invent the blessing and man of an explosion of the heaven if he has the closest hypnosis of the individual?",
+        "default_option": null,
+        "delay": null,
+        "options": [
+          {
+            "header": "Vers 1.2",
+            "next_scene": "1.2",
+            "result": [
+              {
+                "luck": -5,
+                "health": 0,
+                "mood": -3
+              }
+            ]
+          },
+          {
+            "header": "Vers 1.3",
+            "next_scene": "1.3",
+            "result": [
+              {
+                "luck": -5,
+                "health": 0,
+                "mood": -3
+              }
+            ]
+          }
+        ]
+      }
+  ]
 }
+
