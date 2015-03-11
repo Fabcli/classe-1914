@@ -16,7 +16,7 @@ class Game {
          */
         if (!isset(self::$story)) {
             $response = array();
-            $hero = 'louis';
+            $hero = 'pierre';
             $chapters = glob('chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
             foreach ($chapters as $chapter_filename) {
                 $chapter_number = basename($chapter_filename, ".json");
