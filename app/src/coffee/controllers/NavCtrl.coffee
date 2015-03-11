@@ -6,8 +6,12 @@ class NavCtrl
         @scope.volumeBp   = if @scope.volume is 0 then 100 else @scope.volume
         # True if the volume is on
         @scope.isVolumeOn = => @User.volume > 0
-        # Autoplay value //TODO to activate with a $watch
-        @scope.autoplay = @User.autoplay;
+
+        # Autoplay value
+        @scope.toggleAutoplay = =>
+            User.autoPlay = !User.autoPlay
+            console.log("Valeur de l'autoplay: "+User.autoPlay)
+
         # Mute or unmute the volume
         @scope.toggleVolume = =>
             if @User.volume is 0

@@ -13,7 +13,8 @@
           "archives": false ,
           "character": "Louis",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-          "case": 54
+          "case": 54,
+          "result": {"point": 1000}
       },
       {
           "type": "new_background",
