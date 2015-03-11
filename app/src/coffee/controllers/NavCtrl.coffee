@@ -11,7 +11,6 @@ class NavCtrl
         # Autoplay value
         @scope.toggleAutoplay = =>
             @User.autoplay = !@User.autoplay
-            console.log("Valeur de l'autoplay: "+@User.autoplay)
 
         # Mute or unmute the volume
         @scope.toggleVolume = =>
