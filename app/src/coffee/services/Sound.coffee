@@ -121,7 +121,9 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                   @voicetrack.pos(0)
                   @voicetrack.isPlaying = no
                   clearInterval @voicetrack._interval
-                  do User.nextSequence
+                  console.log("Fin de la bande audio")
+                  if User.autoplay is true
+                    do User.nextSequence
             # Just play the voice
           else if @voicetrack? and not @voicetrack.isPlaying
             do @voicetrack.play
