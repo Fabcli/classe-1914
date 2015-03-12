@@ -1,164 +1,164 @@
 angular.module("classe1914.service").factory("User", [
-  'constant.api'
-  'constant.settings'
-  'constant.types'
-  'TimeoutStates'
-  'UserIndicators'
-  'Story'
-  'localStorageService'
-  '$http'
-  '$timeout'
-  '$location'
-  '$rootScope'
-  (api, settings, types, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
-      new class User
-          # ─────────────────────────────────────────────────────────────────
-          # Public method
-          # ─────────────────────────────────────────────────────────────────
-          constructor: ->
-              # This user is saved into local storage
-              master = localStorageService.get("user") or {}
-              # Set initial value according to the localStorage
-              @setInitialValues master
-              # User authentication
-              @token    = $location.search().token or master.token or null
-              @email    = master.email or null
-              if (do $location.search).token?
-                #TODO : CREATE route/api.career.php
-                @email = yes if @email is null
-                $location.search('token', null)
+    'constant.api'
+    'constant.settings'
+    'constant.types'
+    'TimeoutStates'
+    'UserIndicators'
+    'Story'
+    'localStorageService'
+    '$http'
+    '$timeout'
+    '$location'
+    '$rootScope'
+    (api, settings, types, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
+        new class User
+            # ─────────────────────────────────────────────────────────────────
+            # Public method
+            # ─────────────────────────────────────────────────────────────────
+            constructor: ->
+                # This user is saved into local storage
+                master = localStorageService.get("user") or {}
+                # Set initial value according to the localStorage
+                @setInitialValues master
+                # User authentication
+                @token    = $location.search().token or master.token or null
+                @email    = master.email or null
+                if (do $location.search).token?
+                    #TODO : CREATE route/api.career.php
+                    @email = yes if @email is null
+                    $location.search('token', null)
 
-              #TODO : Delete and replace by de next code with conditions
-              do @loadCareer
-              return @
-#              # Load the career if a token is given
-#              do @loadCareer if @token isnt null
-#              # Load career data from the API when the player enters the game
-#              $rootScope.$watch (=>@inGame), (newValue, oldValue) =>
+                #TODO : Delete and replace by de next code with conditions
+                do @loadCareer
+                return @
+#                # Load the career if a token is given
+#                do @loadCareer if @token isnt null
+#                # Load career data from the API when the player enters the game
+#                $rootScope.$watch (=>@inGame), (newValue, oldValue) =>
 #                  if @token is null and newValue and not oldValue
 #                      do @loadCareer
-#              , yes
-#              return @
+#                , yes
+#                return @
 
 
-          setInitialValues: (master={})=>
-              #-- Initialisation --#
-              # Scenes the user passed
-              @scenes   = master.scenes or []
-              # Autoplay value
-              @autoplay = if isNaN(master.autoplay) then 0 else master.autoplay
-              # Sound control
-              @volume   = if isNaN(master.volume) then 1 else master.volume
-              # Reset identification token
-              [@token, @email] = [null, null]
-              # Reset user states
-              @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
-              # Reset progression
-              [@chapter, @scene, @sequence] = ["1", "1", 0]
-              # User indicators
-              @indicators =
-                  luck     : UserIndicators.luck.meta.start
-                  health   : UserIndicators.health.meta.start
-                  mood     : UserIndicators.mood.meta.start
-                  point    : UserIndicators.point.meta.start
-              return @
+            setInitialValues: (master={})=>
+                #-- Initialisation --#
+                # Scenes the user passed
+                @scenes   = master.scenes or []
+                # Autoplay value
+                @autoplay = if isNaN(master.autoplay) then 0 else master.autoplay
+                # Sound control
+                @volume   = if isNaN(master.volume) then 1 else master.volume
+                # Reset identification token
+                [@token, @email] = [null, null]
+                # Reset user states
+                @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
+                # Reset progression
+                [@chapter, @scene, @sequence] = ["1", "1", 0]
+                # User indicators
+                @indicators =
+                    luck     : UserIndicators.luck.meta.start
+                    health   : UserIndicators.health.meta.start
+                    mood     : UserIndicators.mood.meta.start
+                    point    : UserIndicators.point.meta.start
+                return @
 
-          pos: ()=> @chapter + "." + @scene
+            pos: ()=> @chapter + "." + @scene
 
-          chapterProgression: ()=>
-              return 100 if @isSummary
-              inter =_.intersection settings.mainScenes[@chapter], @scenes
-              Math.round( Math.min(inter.length, 4)/4 * 100)
+            chapterProgression: ()=>
+                return 100 if @isSummary
+                inter =_.intersection settings.mainScenes[@chapter], @scenes
+                Math.round( Math.min(inter.length, 4)/4 * 100)
 
-          newUser: ()=>
-              # Remove value in localStorage
-              do localStorageService.clearAll
-              do @setInitialValues
+            newUser: ()=>
+                # Remove value in localStorage
+                do localStorageService.clearAll
+                do @setInitialValues
 
-          updateLocalStorage: (user=@)=>
-              localStorageService.set("user", user) if user?
+            updateLocalStorage: (user=@)=>
+                localStorageService.set("user", user) if user?
 
-          updateProgression: (career)=>
-              # Do we start acting?
-              if career.reached_scene? and typeof(career.reached_scene) is "string"
-                  unless TimeoutStates.feedback isnt undefined
-                      [@chapter, @scene] = career.reached_scene.split "."
-                      # Saved passed scenes
-                      @scenes = career.scenes
-                      # Save indicators
-                      for own key, value of career.context
-                          @indicators[key] = value
-                      # Start to the first sequence
-                      @sequence = 0
-                      # Check that the sequence's condition is OK
-                      if not do @isSequenceConditionOk
-                        # If not, go to the next sequence
-                          do @nextSequence
-              if @checkProgression()
-                  @isGameOver = yes
+            updateProgression: (career)=>
+                # Do we start acting?
+                if career.reached_scene? and typeof(career.reached_scene) is "string"
+                    unless TimeoutStates.feedback isnt undefined
+                        [@chapter, @scene] = career.reached_scene.split "."
+                        # Saved passed scenes
+                        @scenes = career.scenes
+                        # Save indicators
+                        for own key, value of career.context
+                            @indicators[key] = value
+                        # Start to the first sequence
+                        @sequence = 0
+                        # Check that the sequence's condition is OK
+                        if not do @isSequenceConditionOk
+                            # If not, go to the next sequence
+                            do @nextSequence
+                if @checkProgression()
+                    @isGameOver = yes
 
 
-          checkProgression: =>
-              # return false if user is in game over
-              return unless @inGame
-              gameOver = false
-              # will check if user progression lead him to a game over.
-    #              for key, value of @indicators
-    #                  if UserIndicators[key]? and UserIndicators[key].isGameOver(value)
-    #                      @gameOverReason = key
-    #                      gameOver =yes
-    #                      break
-              gameOver
+            checkProgression: =>
+                # return false if user is in game over
+                return unless @inGame
+                gameOver = false
+                # will check if user progression lead him to a game over.
+                #              for key, value of @indicators
+                #                  if UserIndicators[key]? and UserIndicators[key].isGameOver(value)
+                #                      @gameOverReason = key
+                #                      gameOver =yes
+                #                      break
+                gameOver
 
-          isStartingChapter: =>
-              # Chapter is considered as starting during {settings.chapterEntrance} millisecond
-              Date.now() - @lastChapterChanging < settings.chapterEntrance or
-                  # The user may also be ready (all image loaded)
-                  not @isReady
+            isStartingChapter: =>
+                # Chapter is considered as starting during {settings.chapterEntrance} millisecond
+                Date.now() - @lastChapterChanging < settings.chapterEntrance or
+                # The user may also be ready (all image loaded)
+                not @isReady
 
-          saveChapterChanging: (chapter)=>
-              # Stop here until a chapter id is set
-              return unless chapter?
-              @lastChapterChanging = Date.now()
-              # Cancel any current timeout
-              if @trackChapterChanging? then $timeout.cancel @trackChapterChanging
-              # Start the tracking loop
-              do @chapterTrackingLoop
+            saveChapterChanging: (chapter)=>
+                # Stop here until a chapter id is set
+                return unless chapter?
+                @lastChapterChanging = Date.now()
+                # Cancel any current timeout
+                if @trackChapterChanging? then $timeout.cancel @trackChapterChanging
+                # Start the tracking loop
+                do @chapterTrackingLoop
 
-          chapterTrackingLoop: =>
-             if not @isStartingChapter() and @trackChapterChanging?
-                  # Stop until chapter is effectively not starting
-                  $timeout.cancel(@trackChapterChanging)
-             else
-                  # Force Angular to process a digest regulary
-                  @trackChapterChanging = $timeout @chapterTrackingLoop, 200
+            chapterTrackingLoop: =>
+                if not @isStartingChapter() and @trackChapterChanging?
+                    # Stop until chapter is effectively not starting
+                    $timeout.cancel(@trackChapterChanging)
+                else
+                    # Force Angular to process a digest regulary
+                    @trackChapterChanging = $timeout @chapterTrackingLoop, 200
 
-          loadCareer: =>
-              # Get career
-              if @token?
-                  # Get the value using the token
-                  $http.get("#{api.career}?token=#{@token}")
-                  # Update chapter, scene and sequence according
-                  # the last scene given by the career
-                  .success( @updateProgression )
-                  # Something wrong happens, restores the User model
-                  .error (data)=> do @newUser if @token? or @email?
-                  # Or create a new one
-              else
-                  @createNewCareer (@email?)
+            loadCareer: =>
+                # Get career
+                if @token?
+                    # Get the value using the token
+                    $http.get("#{api.career}?token=#{@token}")
+                    # Update chapter, scene and sequence according
+                    # the last scene given by the career
+                    .success( @updateProgression )
+                    # Something wrong happens, restores the User model
+                    .error (data)=> do @newUser if @token? or @email?
+                    # Or create a new one
+                else
+                    @createNewCareer (@email?)
 
-          createNewCareer: (associate=no) =>
-              # Get value using the token
-              $http.post("#{api.career}", reached_scene: "1.1")
-              # Save the token
-              .success (data)=>
-                  # Save the token
-                  @token = data.token
-                  (@associate @email) if associate
-                  # And call this function again
-                  do @loadCareer
+            createNewCareer: (associate=no) =>
+                # Get value using the token
+                $http.post("#{api.career}", reached_scene: "1.1")
+                # Save the token
+                .success (data)=>
+                    # Save the token
+                    @token = data.token
+                    (@associate @email) if associate
+                    # And call this function again
+                    do @loadCareer
 
-          updateCareer: (choice)=>
+            updateCareer: (choice)=>
               return no unless @token
               # Add reached scene parameter
               if choice?
@@ -177,7 +177,7 @@ angular.module("classe1914.service").factory("User", [
               # Get value using the token
               $http.post("#{api.career}?token=#{@token}", state).success @updateProgression
 
-          nextSequence: =>
+            nextSequence: =>
               # will show next sequence or next scene if next sequence in
               # current scene doesn't exists
               scene        = Story.scene(@chapter, @scene)
@@ -208,7 +208,7 @@ angular.module("classe1914.service").factory("User", [
                         sequence = Story.sequence(@chapter, @scene, @sequence)
               sequence
 
-          isSequenceConditionOk: (seq) =>
+            isSequenceConditionOk: (seq) =>
               # check that every sequence condition are met or not.
               # condition are set with variables while doing some choices
               seq = seq or Story.sequence @chapter, @scene, @sequence
@@ -221,7 +221,7 @@ angular.module("classe1914.service").factory("User", [
                       @isGameOver = true
               is_ok
 
-          userMeetSequenceConditions: (seq)=>
+            userMeetSequenceConditions: (seq)=>
               is_ok = yes
               seq = seq or Story.sequence @chapter, @scene, @sequence
               return true unless seq?
@@ -233,7 +233,7 @@ angular.module("classe1914.service").factory("User", [
                       is_ok = is_ok and (user_variable_value is value)
               is_ok
 
-          associate: (email) =>
+            associate: (email) =>
               return if (not email?) or email is ""
               $http
                   url : "#{api.associate}?token=#{@token}"
@@ -241,7 +241,7 @@ angular.module("classe1914.service").factory("User", [
                   data :
                       email : email
 
-          goToScene: (next_scene, shouldUpdateCareer=yes)=>
+            goToScene: (next_scene, shouldUpdateCareer=yes)=>
               if TimeoutStates.feedback
                   # if a previous timeout was set for a previous feedback
                   # we delete it
@@ -275,7 +275,7 @@ angular.module("classe1914.service").factory("User", [
                       [@chapter, @scene, @sequence] = [chapter, scene, 0]
 
                       # Check that the sequence's condition is OK
-    #                      if not do @isSequenceConditionOk
+            #                      if not do @isSequenceConditionOk
                           # If not, go to the next sequence //TODO : incrementation si condition
                       do @nextSequence
                       # Save the career
@@ -286,11 +286,11 @@ angular.module("classe1914.service").factory("User", [
                   # Just go further
                   do @nextSequence
 
-          restart: =>
+            restart: =>
               @inGame = @isSummary = @isGameDone = @isGameOver = no
               @newUser()
 
-          restartChapter: =>
+            restartChapter: =>
               # will restart current chapter to its first scene.
               @inGame     = yes
               @isSummary  = no
@@ -298,18 +298,18 @@ angular.module("classe1914.service").factory("User", [
               (do @eraseCareerChapter).success @updateProgression
 
 
-          leaveSummary: =>
+            leaveSummary: =>
               @isSummary = no
               @saveChapterChanging true
 
-          eraseCareerSinceNow: =>
+            eraseCareerSinceNow: =>
               $http
                   url : "#{api.erase}?token=#{@token}"
                   method : 'POST'
                   data :
                       since : @chapter + '.' + @scene
 
-          eraseCareerChapter: =>
+            eraseCareerChapter: =>
               $http
                   url : "#{api.erase}?token=#{@token}"
                   method : 'POST'
