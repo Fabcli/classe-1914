@@ -5,7 +5,6 @@ angular.module('classe1914.service').factory "LightboxFactory", [
     (Lightbox, Story, User)->
 
         new class LightboxFactory
-
             # True if we the actual sequence have archives to show
             shouldDisplayArchive: () =>
                 @display_archive = no
@@ -31,6 +30,4 @@ angular.module('classe1914.service').factory "LightboxFactory", [
                 if @display_archive is true
                     @archives = @sequence.archive_params
                     Lightbox.openModal(@archives, 0)
-
-
 ]
