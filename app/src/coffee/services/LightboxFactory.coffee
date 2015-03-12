@@ -28,7 +28,6 @@ angular.module('classe1914.service').factory "LightboxFactory", [
             openLightboxArchives: () =>
                 @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
                 @display_archive = @shouldDisplayArchive()
-                console.log("Affiche les archives: "+ @display_archive)
                 if @display_archive is true
                     @archives = @sequence.archive_params
                     Lightbox.openModal(@archives, 0)

@@ -33,7 +33,7 @@
                     "cote": "Certificat d'étude"
                 }
             ],
-            "result": {"mood": 5,"point": 3}
+            "result": {"mood": 5,"point": 0}
         },
         {
             "type": "new_background",
@@ -47,7 +47,7 @@
             "delay": null,
             "options": [
                 {
-                    "header": "160 m",
+                    "header": "175 m",
                     "next_scene": "1.2",
                     "result": [
                         {
@@ -59,13 +59,25 @@
                     ]
                 },
                 {
-                    "header": "175 m",
+                    "header": "363 m",
+                    "next_scene": "1.2",
+                    "result": [
+                        {
+                            "luck": -5,
+                            "health": 0,
+                            "mood": -3 ,
+                            "point" : -5
+                        }
+                    ]
+                },
+                {
+                    "header": "700 m",
                     "next_scene": "1.3",
                     "result": [
                         {
                             "luck": 5,
                             "health": 0,
-                            "mood": 23 ,
+                            "mood": 25 ,
                             "point" : 85
                         }
                     ]

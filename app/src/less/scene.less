@@ -41,21 +41,33 @@
                 white-space: normal;
             }
 
-            &__option {
-                background-color: @brand-primary;
-                color:#fff;
-                width:150px;
-                padding:8px 25px;
-                margin:0 15px 25px 0px;
-                white-space: normal;
+            &__list {
 
-                &:hover {
-                    border-color: fade(#fff,50);
+                padding-left: 40px;
+                padding-right: 40px;
+
+                li {
+                    list-style: none;
+                    display: inline-block;
                 }
 
-                &:focus, &:active, &:focus:active {
-                    outline: 5px auto fade(#fff,75);
-                    outline-offset: -2px;
+
+                &__option {
+                    background-color: @brand-primary;
+                    color:#fff;
+                    width:150px;
+                    padding:8px 25px;
+                    margin:0 15px 25px 0px;
+                    white-space: normal;
+
+                    &:hover {
+                        border-color: fade(#fff,50);
+                    }
+
+                    &:focus, &:active, &:focus:active {
+                        outline: 5px auto fade(#fff,75);
+                        outline-offset: -2px;
+                    }
                 }
             }
 

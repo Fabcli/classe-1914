@@ -1,12 +1,11 @@
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
     <!-- This is the main illustration -->
-    <img class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-click="Test()"/>
+    <img class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-click="openArchives()"/>
 
     <!-- Scene's sequence -->
     <div ng-repeat="sequence in scene.sequence"
          class="scene__sequence scene__sequence--[[sequence.type]]"
-         ng-class="{ 'scene__sequence scene__sequence--inline-choices': sequence.type == 'choice' && sequence.options.length > 2}"
          ng-show="shouldShowSequence($index)">
 
         <!-- Dialog box, a the bottom of the screen -->
@@ -62,14 +61,18 @@
         </div>
 
         <!-- Choice box, at the middle of the screen -->
-        <div ng-if="sequence.isChoice()" class="scene__sequence--choice">
+        <div ng-if="sequence.isChoice()">
             <p class="scene__sequence--choice__question" ng-bind-html="sequence.body">
             </p>
-            <button ng-repeat="option in sequence.options"
-                    class="btn btn-lg btn-default scene__sequence--choice__option"
-                    ng-click="selectOption(option, $index)">
-                [[option.header]]
-            </button>
+            <ul class="scene__sequence--choice__list" >
+                <li ng-repeat="option in sequence.options">
+                    <button class="btn btn-lg btn-default scene__sequence--choice__list__option"
+                            ng-click="selectOption(option, $index)">
+                        [[option.header]]
+                    </button>
+                </li>
+            </ul>
+
             <div ng-if="sequence.delay" class="scene__sequence--choice__timeout">
                 <div circle
                      percentage="timeout.remainingTime"

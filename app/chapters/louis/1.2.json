@@ -1,66 +1,22 @@
 {
-  "next_scene": null,
-  "decor": [
-      {
-          "background": "/medias/louis/PL1.png",
-          "background_transition": "fade",
-          "soundtrack": "/medias/louis/soundtrack.mp3"
-      }
-  ],
-  "sequence": [
-      {
-          "type": "voixoff",
-          "character": "Louis",
-          "body": "/medias/louis/PL1.mp3"
-      },
-      {
-          "type": "new_background",
-          "body": "/medias/louis/PL2.png"
-      },
-      {
-          "type": "voixoff",
-          "character": "Louis",
-          "body": "/medias/louis/PL2.mp3",
-          "archive_params" : [
-              {
-                  "url": "/medias/louis/PL2TER.png",
-                  "cote": "Certificat d'étude"
-              }
-          ]
-      },
-      {
-          "type": "new_background",
-          "body": "/medias/louis/PL3.png",
-          "transition": null
-      },
-      {
-          "type": "choice",
-          "body": "Quelle est la longueur de cette pièce d'etoffe ?",
-          "default_option": null,
-          "delay": null,
-          "options": [
-              {
-                  "header": "160 m",
-                  "next_scene": "1.2",
-                  "result": [
-                      {
-                        "luck": -5,
-                        "point": -2
-                      }
-                  ]
-              },
-              {
-                  "header": "175 m",
-                  "next_scene": "1.3",
-                  "result": [
-                      {
-                        "luck": 15,
-                        "point": 20
-                      }
-                  ]
-              }
-          ]
-      }
-  ]
+    "next_scene": "1.1",
+    "decor": [
+        {
+            "background": "/medias/chap1/illustrations/c14_wait.png",
+            "background_transition": "fade",
+            "soundtrack": "/medias/louis/soundtrack.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "narrative",
+            "body": "Ce n'est pas la bonne réponse, tu as perdu 5% de chance, 3% de moral et 5 points."
+        },
+        {
+            "type": "narrative",
+            "reset": true,
+            "body": "Clique sur le bouton pour recommencer..."
+        }
+    ]
 }
 

@@ -96,7 +96,7 @@ class SceneCtrl
       @scope.openLightboxArchives = (archives, index) =>
           Lightbox.openModal(archives, index)
 
-      @scope.Test = => do @LightboxFactory.openLightboxArchives
+      @scope.openArchives = => do @LightboxFactory.openLightboxArchives
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack
