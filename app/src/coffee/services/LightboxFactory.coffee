@@ -29,9 +29,11 @@ angular.module('classe1914.service').factory "LightboxFactory", [
                     Lightbox.show_nav = yes
                 Lightbox.show_nav
 
-            archiveNotification: (notification)=>
-                console.log("Affiche la notif: "+notification)
-                Notification.primary(notification)
+            archiveNotification: ()=>
+                @notification = @sequence.archive_button
+                @display_archive = @shouldDisplayArchive()
+                if @display_archive is true
+                    Notification.primary(@notification)
 
             # Open the lightbox for archives type
             openLightboxArchives: () =>

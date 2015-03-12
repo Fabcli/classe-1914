@@ -1,7 +1,7 @@
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
     <!-- This is the main illustration -->
-    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldDisplayArchive() }" ng-click="openArchives()"/>
+    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': displayBgPointer() }" ng-click="openArchives()"/>
 
     <!-- Scene's sequence -->
     <div ng-repeat="sequence in scene.sequence"
@@ -84,9 +84,8 @@
         </div>
 
         <!-- Archive, a the top right corner of the screen with a lightbox -->
-        <div ng-if="sequence.hasArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchives()">
+        <div ng-if="sequence.hasArchive()" class="scene__sequence--archive__wrapper archive-notification-animation" ng-click="openArchives()">
             <div>[[ sequence.archive_button ]]</div>
-            [[ Notification('Primary notification') ]]
         </div>
 
         <!-- Notification, a the top right corner of the screen -->

@@ -6,7 +6,6 @@ class SceneCtrl
       @scope.user  = @User
       @scope.sound = @Sound
       @scope.timeout = @Timeout
-      @scope.lightboxfactory = LightboxFactory
 
       # Establishes a bound between "src" and "chapter" arguments
       # provided by the scene directive and the Controller
@@ -89,11 +88,15 @@ class SceneCtrl
           return should_display
 
       # Condition to add a cursor on bg image
-#      @scope.shouldDisplayArchive = =>
-#          do @LightboxFactory.shouldDisplayArchive
+      @scope.displayBgPointer = =>
+          is_pointer = false
+          @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
+          if @sequence.hasArchive()
+              is_pointer = true
+          is_pointer
 
       @scope.openArchives = =>
-          do @LightboxFactory.openLightboxArchives
+          do LightboxFactory.openLightboxArchives
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack
