@@ -1,7 +1,7 @@
 class SceneCtrl
-  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'LightboxFactory', 'Lightbox' ]
+  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'LightboxFactory', 'Lightbox', 'Notification' ]
 
-  constructor: (@scope, @Story, @User, @Sound, @Timeout, @LightboxFactory , Lightbox ) ->
+  constructor: (@scope, @Story, @User, @Sound, @Timeout, @LightboxFactory , Lightbox, Notification ) ->
       @scope.story  = @Story
       @scope.user  = @User
       @scope.sound = @Sound
@@ -88,15 +88,12 @@ class SceneCtrl
 
           return should_display
 
-      # Condition to view archives
-      @scope.shouldDisplayArchive = =>
-          do @LightboxFactory.shouldDisplayArchive
+      # Condition to add a cursor on bg image
+#      @scope.shouldDisplayArchive = =>
+#          do @LightboxFactory.shouldDisplayArchive
 
-      # Open the lightbox for archives type
-      @scope.openLightboxArchives = (archives, index) =>
-          Lightbox.openModal(archives, index)
-
-      @scope.openArchives = => do @LightboxFactory.openLightboxArchives
+      @scope.openArchives = =>
+          do @LightboxFactory.openLightboxArchives
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack

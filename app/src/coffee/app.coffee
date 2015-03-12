@@ -18,6 +18,7 @@ app = angular.module('classe1914', [
   "FBAngular"
   "toggle-switch"
   "bootstrapLightbox"
+  "ui-notification"
   # External dependencies
   "btford.markdown"
   #Internal dependencies

@@ -1,4 +1,4 @@
-<header class="nav" ng-controller="NavCtrl"  ng-class="{ 'nav--touch-visible': navVisible }">
+<header class="nav" ng-controller="NavCtrl"  ng-class="{ 'nav-visible': navVisible }">
 
     {# Partners logos #}
     <ul class="nav__partners list-inline hidden-sm hidden-xs">
@@ -101,6 +101,6 @@
     </div>
 
 
-    <button class="nav__toggler" ng-click="navVisible = !navVisible" ng-class="{ hidden: !user.inGame }">
+    <button class="nav__toggler" ng-class="{ 'close-nav': navVisible }" ng-click="navVisible = !navVisible" ng-class="{ hidden: !user.inGame }">
     </button>
 </header>

@@ -19,6 +19,7 @@
     "howler": "1.1.24",
     "modernizr": "2.8.3",
     "angular-fullscreen": "~1.0.1",
-    "angular-bootstrap-lightbox": "0.4.0"
+    "angular-bootstrap-lightbox": "0.4.0",
+    "angular-ui-notification": "~0.0.5"
   }
 }

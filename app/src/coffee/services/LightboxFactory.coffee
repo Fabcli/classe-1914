@@ -2,17 +2,23 @@ angular.module('classe1914.service').factory "LightboxFactory", [
     'Lightbox'
     'Story'
     'User'
-    (Lightbox, Story, User)->
+    'Notification'
+    (Lightbox, Story, User, Notification)->
 
         new class LightboxFactory
+            constructor: ->
+                # Id of the actual sequence
+                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
+                @notification =  @sequence.archive_button
+
+
             # True if we the actual sequence have archives to show
             shouldDisplayArchive: () =>
                 @display_archive = no
-                # Id of the actual sequence
-                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-                if @sequence.archive_params?
-                    @archives = @sequence.archive_params
+                @archives = @sequence.archive_params
+                if @archives?
                     @shouldShowArchiveNav(@archives)
+                    console.log("killer ?")
                     @display_archive = yes
                 @display_archive
 
@@ -22,6 +28,10 @@ angular.module('classe1914.service').factory "LightboxFactory", [
                 if archives.length > 1
                     Lightbox.show_nav = yes
                 Lightbox.show_nav
+
+            archiveNotification: (notification)=>
+                console.log("Affiche la notif: "+notification)
+                Notification.primary(notification)
 
             # Open the lightbox for archives type
             openLightboxArchives: () =>

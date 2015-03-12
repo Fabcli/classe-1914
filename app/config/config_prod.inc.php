@@ -15,7 +15,7 @@ $app->configureMode('production', function () use ($app) {
         'cache'                => realpath('../tmp/cache'),
         // assets
         'static_url'           => "/",
-        'media_url'            => "http://docgame.classe-1914.dev",
+        'media_url'            => "http://classe-1914.kalioppe.com/",
         // after this date, switch to the game home page
         'launching_date'       => "2010-01-01T10:00:00"
     ));

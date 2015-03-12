@@ -159,39 +159,39 @@ angular.module("classe1914.service").factory("User", [
                     do @loadCareer
 
             updateCareer: (choice)=>
-              return no unless @token
-              # Add reached scene parameter
-              if choice?
-                  state = choice
-                  [chapterIdx, sceneIdx] = choice.scene.split(".")
-                  # Get the current sequence to  update the indicators
-                  sequence = Story.sequence(chapterIdx, sceneIdx, @sequence)
-                  # Propagate the choices only if this sequence has options
-                  if sequence.options?
-                      option = sequence.options[choice.choice]
-                      state.reached_scene = option.next_scene
-              else
-                  state = reached_scene: @pos()
+                return no unless @token
+                # Add reached scene parameter
+                if choice?
+                    state = choice
+                    [chapterIdx, sceneIdx] = choice.scene.split(".")
+                    # Get the current sequence to  update the indicators
+                    sequence = Story.sequence(chapterIdx, sceneIdx, @sequence)
+                    # Propagate the choices only if this sequence has options
+                    if sequence.options?
+                        option = sequence.options[choice.choice]
+                        state.reached_scene = option.next_scene
+                else
+                    state = reached_scene: @pos()
 
-              state.is_game_done = @isGameDone
-              # Get value using the token
-              $http.post("#{api.career}?token=#{@token}", state).success @updateProgression
+                state.is_game_done = @isGameDone
+                # Get value using the token
+                $http.post("#{api.career}?token=#{@token}", state).success @updateProgression
 
             nextSequence: =>
-              # will show next sequence or next scene if next sequence in
-              # current scene doesn't exists
-              scene        = Story.scene(@chapter, @scene)
-              lastSequence = Story.sequence(@chapter, @scene, @sequence)
-              if lastSequence.reset is true
-                  do @restart
-                  do window.location.reload()
-              if lastSequence.result and @isSequenceConditionOk(lastSequence)
+                # will show next sequence or next scene if next sequence in
+                # current scene doesn't exists
+                scene        = Story.scene(@chapter, @scene)
+                lastSequence = Story.sequence(@chapter, @scene, @sequence)
+                if lastSequence.reset is true
+                    do @restart
+                    do window.location.reload()
+                if lastSequence.result and @isSequenceConditionOk(lastSequence)
                     for key, value of lastSequence.result
                         @indicators[key] += value
                         gameOver = do @checkProgression
                         if gameOver
                             @isGameOver = true
-              unless @isGameOver
+                unless @isGameOver
                       # Go to the next sequence within the current scene
                     if Story.sequence(@chapter, @scene, @sequence + 1)?
                         # Go simply to the next sequence
@@ -206,114 +206,114 @@ angular.module("classe1914.service").factory("User", [
                         @goToScene scene.next_scene
                         # Return the new sequence
                         sequence = Story.sequence(@chapter, @scene, @sequence)
-              sequence
+                sequence
 
             isSequenceConditionOk: (seq) =>
-              # check that every sequence condition are met or not.
-              # condition are set with variables while doing some choices
-              seq = seq or Story.sequence @chapter, @scene, @sequence
-              return true unless seq?
-              is_ok = @userMeetSequenceConditions(seq)
-              if seq.isSkipped()
-                  is_ok = no
-              if seq.isGameOver()
-                  $rootScope.safeApply =>
-                      @isGameOver = true
-              is_ok
+                # check that every sequence condition are met or not.
+                # condition are set with variables while doing some choices
+                seq = seq or Story.sequence @chapter, @scene, @sequence
+                return true unless seq?
+                is_ok = @userMeetSequenceConditions(seq)
+                if seq.isSkipped()
+                    is_ok = no
+                if seq.isGameOver()
+                    $rootScope.safeApply =>
+                        @isGameOver = true
+                is_ok
 
             userMeetSequenceConditions: (seq)=>
-              is_ok = yes
-              seq = seq or Story.sequence @chapter, @scene, @sequence
-              return true unless seq?
-              if seq.condition
-                  for key, value of seq.condition
-                      user_variable_value = @indicators[key]
-                      unless user_variable_value?
+                is_ok = yes
+                seq = seq or Story.sequence @chapter, @scene, @sequence
+                return true unless seq?
+                if seq.condition
+                    for key, value of seq.condition
+                        user_variable_value = @indicators[key]
+                        unless user_variable_value?
                           user_variable_value = false
-                      is_ok = is_ok and (user_variable_value is value)
-              is_ok
+                        is_ok = is_ok and (user_variable_value is value)
+                is_ok
 
             associate: (email) =>
-              return if (not email?) or email is ""
-              $http
-                  url : "#{api.associate}?token=#{@token}"
-                  method : 'POST'
-                  data :
-                      email : email
+                return if (not email?) or email is ""
+                $http
+                    url : "#{api.associate}?token=#{@token}"
+                    method : 'POST'
+                    data :
+                        email : email
 
             goToScene: (next_scene, shouldUpdateCareer=yes)=>
-              if TimeoutStates.feedback
+                if TimeoutStates.feedback
                   # if a previous timeout was set for a previous feedback
                   # we delete it
                   TimeoutStates.feedback = undefined
 
-              if typeof(next_scene) is typeof("")
+                if typeof(next_scene) is typeof("")
                   next_scene_str = next_scene
-              else
+                else
                   health_key = if @indicators.karma >= 50 then 'positif' else 'negatif'
                   health_key_str = next_scene["#{health_key}_health"]
 
-              if next_scene_str is types.scene.theEnd
+                if next_scene_str is types.scene.theEnd
                   @isGameDone = true
                   @inGame = false
                   do @updateCareer if shouldUpdateCareer
                   return
 
-              [chapter, scene] = next_scene_str.split "."
+                [chapter, scene] = next_scene_str.split "."
 
-              # Check that the next step exists
-              warn = (m)-> console.warn "#{m} doesn't exist (#{next_scene_str})."
-              # Chapter exits?
-              return warn('Chapter') unless Story.chapter(chapter)?
-              # Scene exits?
-              return warn('Scene') unless Story.scene(chapter, scene)?
-              # If we effectively change
-              if @chapter isnt chapter or @scene isnt scene
+                # Check that the next step exists
+                warn = (m)-> console.warn "#{m} doesn't exist (#{next_scene_str})."
+                # Chapter exits?
+                return warn('Chapter') unless Story.chapter(chapter)?
+                # Scene exits?
+                return warn('Scene') unless Story.scene(chapter, scene)?
+                # If we effectively change
+                if @chapter isnt chapter or @scene isnt scene
                   gameOver = @checkProgression()
                   unless gameOver
                       # Update values
                       [@chapter, @scene, @sequence] = [chapter, scene, 0]
 
                       # Check that the sequence's condition is OK
-            #                      if not do @isSequenceConditionOk
+                #                      if not do @isSequenceConditionOk
                           # If not, go to the next sequence //TODO : incrementation si condition
                       do @nextSequence
                       # Save the career
                       do @updateCareer if shouldUpdateCareer
-              else
+                else
                   # Next sequence exits?
                   return warn('Next sequence') unless Story.sequence(chapter, scene, @sequence+1)?
                   # Just go further
                   do @nextSequence
 
             restart: =>
-              @inGame = @isSummary = @isGameDone = @isGameOver = no
-              @newUser()
+                @inGame = @isSummary = @isGameDone = @isGameOver = no
+                @newUser()
 
             restartChapter: =>
-              # will restart current chapter to its first scene.
-              @inGame     = yes
-              @isSummary  = no
-              @isGameOver = no
-              (do @eraseCareerChapter).success @updateProgression
+                # will restart current chapter to its first scene.
+                @inGame     = yes
+                @isSummary  = no
+                @isGameOver = no
+                (do @eraseCareerChapter).success @updateProgression
 
 
             leaveSummary: =>
-              @isSummary = no
-              @saveChapterChanging true
+                @isSummary = no
+                @saveChapterChanging true
 
             eraseCareerSinceNow: =>
-              $http
-                  url : "#{api.erase}?token=#{@token}"
-                  method : 'POST'
-                  data :
-                      since : @chapter + '.' + @scene
+                $http
+                    url : "#{api.erase}?token=#{@token}"
+                    method : 'POST'
+                    data :
+                        since : @chapter + '.' + @scene
 
             eraseCareerChapter: =>
-              $http
-                  url : "#{api.erase}?token=#{@token}"
-                  method : 'POST'
-                  data :
-                      chapter : @chapter
+                $http
+                    url : "#{api.erase}?token=#{@token}"
+                    method : 'POST'
+                    data :
+                        chapter : @chapter
 
 ])

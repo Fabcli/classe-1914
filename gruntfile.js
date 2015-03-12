@@ -14,8 +14,9 @@ var jslibrary = [
     'bower_modules/angular-sanitize/angular-sanitize.min.js',
     'bower_modules/angular-touch/angular-touch.min.js',
     'bower_modules/angular-bootstrap/ui-bootstrap-tpls.min.js',
-    'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js',
+    'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js',
     'bower_modules/angular-loading-bar/build/loading-bar.min.js',
+    'bower_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
     'bower_modules/angular-markdown-directive/markdown.js',
     'bower_modules/circles/index.js',
     'bower_modules/howler/howler.min.js',
@@ -24,6 +25,7 @@ var jslibrary = [
 
 var csslibrary = [
     'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
+    'bower_modules/angular-ui-notification/dist/angular-ui-notification.min.css',
     'bower_modules/angular-loading-bar/build/loading-bar.min.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css',

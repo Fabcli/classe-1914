@@ -55,8 +55,6 @@ class NavCtrl
             if @User.email? and oldValue and not newValue
                @_shouldShowSaveButton = false
 
-
-
     shouldShowSaveButton: =>
        return @User.inGame && @_shouldShowSaveButton
 

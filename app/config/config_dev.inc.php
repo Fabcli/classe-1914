@@ -14,7 +14,6 @@ $app->configureMode('development', function () use ($app) {
         'cache'                => false,
         // assets
         'static_url'           => "/",
-        'media_url'            => "http://docgame.classe-1914.dev",
         // after this date, switch to the game home page
         'launching_date'       => "2015-01-01T10:00:00"
     ));
