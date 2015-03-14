@@ -25,7 +25,6 @@ angular.module('classe1914.service').factory "Archive", [
                             # Add the archive to archives list
                             @archives.push sequence.archive
                 @getArchivesUrl(@archives)
-                console.log("valeur de User.archiveReady dans getArchives: "+User.archiveReady)
 
 
 
@@ -34,7 +33,6 @@ angular.module('classe1914.service').factory "Archive", [
                 angular.forEach archives, (archive)=>
                     angular.forEach archive, (a)=>
                         @archive_url.push $filter('media')(a.src)
-                console.log(@archive_url)
                 @archive_url
 
 
@@ -44,7 +42,6 @@ angular.module('classe1914.service').factory "Archive", [
                 @archives = @sequence.archive
                 if @archives?
                     @shouldShowArchiveNav(@archives)
-                    console.log("Archive préchargée  ? => "+User.archiveReady)
                     @display_archive = yes
                 @display_archive
 

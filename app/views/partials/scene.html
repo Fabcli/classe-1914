@@ -1,7 +1,5 @@
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
-    <!-- Preload archives img -->
-    <preload images="getArchive()" object="user" attr="archiveReady" />
 
     <!-- This is the main illustration -->
     <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldShowArchive() }" ng-click="openArchive()"/>
@@ -10,6 +8,9 @@
     <div ng-repeat="sequence in scene.sequence"
          class="scene__sequence scene__sequence--[[sequence.type]]"
          ng-show="shouldShowSequence($index)">
+
+        <!-- Preload archives img -->
+        <preload images="getArchive()" object="sequence" attr="archiveReady" />
 
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">

@@ -101,8 +101,8 @@ class SceneCtrl
       @scope.shouldShowArchive = =>
           is_pointer = false
           @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-          console.log(@sequence.hasArchive())
-          if @sequence.hasArchive() and @User.archiveReady
+          #console.log(@User.archiveReady)
+          if @sequence.hasArchive() and @sequence.archiveReady
               is_pointer = true
           is_pointer
 
