@@ -6,9 +6,10 @@ angular.module("classe1914.service").factory "Progression", [
   'Story'
   'User'
   'Sound'
+  'Archive'
   'Timeout'
   'KeyboardCommands'
-  ($rootScope, $timeout, doors, keys, Story, User, Sound, Timeout, KeyboardCommands)->
+  ($rootScope, $timeout, doors, keys, Story, User, Sound, Archive, Timeout, KeyboardCommands)->
     new class Progression
       # ──────────────────────────────────────────────────────────────────────────
       # Public method

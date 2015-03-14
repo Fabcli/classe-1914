@@ -1,7 +1,7 @@
 class SceneCtrl
-  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'LightboxFactory', 'Lightbox', 'Notification' ]
+  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification' ]
 
-  constructor: (@scope, @Story, @User, @Sound, @Timeout, @LightboxFactory , Lightbox, Notification ) ->
+  constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification ) ->
       @scope.story  = @Story
       @scope.user  = @User
       @scope.sound = @Sound
@@ -30,7 +30,8 @@ class SceneCtrl
               [ @getLastDialogIdx(), @User.sequence ].indexOf(idx) > -1
 
       # Just wraps the function from the user service
-      @scope.goToNextSequence = => do @User.nextSequence
+      @scope.goToNextSequence = =>
+          do @User.nextSequence
 
       # Select an option within a sequence by wrapping the User's method
       @scope.selectOption = (option, idx)=>
@@ -96,7 +97,7 @@ class SceneCtrl
           is_pointer
 
       @scope.openArchives = =>
-          do LightboxFactory.openLightboxArchives
+          do Archive.openLightboxArchives
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack

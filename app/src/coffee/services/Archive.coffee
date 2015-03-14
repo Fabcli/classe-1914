@@ -1,15 +1,14 @@
-angular.module('classe1914.service').factory "LightboxFactory", [
+angular.module('classe1914.service').factory "Archive", [
     'Lightbox'
     'Story'
     'User'
     'Notification'
     (Lightbox, Story, User, Notification)->
 
-        new class LightboxFactory
+        new class Archive
             constructor: ->
                 # Id of the actual sequence
                 @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-                @notification =  @sequence.archive_button
 
 
             # True if we the actual sequence have archives to show
