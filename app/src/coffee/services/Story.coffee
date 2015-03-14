@@ -55,7 +55,7 @@ angular.module("classe1914.service").factory "Story", [
                   this.condition?
 
               hasArchive: ->
-                  this.archive_params?
+                  this.archive?
 
               hasNext: ->
                    settings.sequenceWithNext.indexOf( this.lowerType() ) > -1

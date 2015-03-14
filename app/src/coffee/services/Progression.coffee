@@ -23,6 +23,7 @@ angular.module("classe1914.service").factory "Progression", [
           $rootScope.$watch (=>User.chapter), @onChapterChanged, yes
           $rootScope.$watch (=>User.scene),   @onSceneChanged,   yes
           $rootScope.$watch (=>User.isReady), User.saveChapterChanging, yes
+
           # Update local storage
           $rootScope.$watch (=>User), User.updateLocalStorage, yes
           # Scene is changing

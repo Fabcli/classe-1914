@@ -11,10 +11,10 @@
     {
       "type": "narrative",
       "body": "Nous sommes à la scene 1.2",
-      "archive_button": "Clique pour les archives",
-      "archive_params" : [
+      "archive_notification": "Clique pour les archives",
+      "archive" : [
         {
-          "url": "/medias/chap1/archives/archive1.jpg",
+          "src": "/medias/chap1/archives/archive1.jpg",
           "cote": "archive1"
         }
       ]

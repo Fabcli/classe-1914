@@ -10,7 +10,6 @@
     "sequence": [
         {
             "type": "voixoff",
-            "archives": false,
             "character": "Louis",
             "body": "/medias/louis/PL1.mp3",
             "case": 54,
@@ -28,10 +27,10 @@
             "character": "Louis",
             "body": "/medias/louis/PL2.mp3",
             "case": 54,
-            "archive_button": "Voir l'exercice",
-            "archive_params": [
+            "archive_notification": "Voir l'exercice",
+            "archive": [
                 {
-                    "url": "/medias/louis/PL2TER.png",
+                    "src": "/medias/louis/PL2TER.png",
                     "cote": "Certificat d'étude"
                 }
             ],

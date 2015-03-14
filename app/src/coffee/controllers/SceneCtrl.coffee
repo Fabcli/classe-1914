@@ -11,6 +11,7 @@ class SceneCtrl
       # provided by the scene directive and the Controller
       @scene = @scope.scene = @scope.src
       @chapter = @scope.chapter
+
       # True if the given scene is visible
       @shouldShowScene = @scope.shouldShowScene = =>
           if @User.isSummary
@@ -89,15 +90,23 @@ class SceneCtrl
           return should_display
 
       # Condition to add a cursor on bg image
-      @scope.displayBgPointer = =>
+
+
+      @scope.getArchive = =>
+          do Archive.getArchive
+
+      @scope.openArchive = =>
+          do Archive.openLightboxArchives
+
+      @scope.shouldShowArchive = =>
           is_pointer = false
           @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-          if @sequence.hasArchive()
+          console.log(@sequence.hasArchive())
+          if @sequence.hasArchive() and @User.archiveReady
               is_pointer = true
           is_pointer
 
-      @scope.openArchives = =>
-          do Archive.openLightboxArchives
+
 
       # Play or pause the soundtrack
       @scope.toggleVoicetrack = @Sound.toggleVoicetrack
