@@ -13,6 +13,16 @@
             "character": "Louis",
             "body": "/medias/louis/PL1.mp3",
             "case": 54,
+            "archive": [
+                {
+                    "src": "/medias/chap1/archives/archive1.jpg",
+                    "cote": "archive1"
+                },
+                {
+                    "src": "/medias/chap1/archives/archive2.jpg",
+                    "cote": "archive2"
+                }
+            ],
             "result": {
                 "point": 0
             }
