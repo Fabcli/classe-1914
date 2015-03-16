@@ -13,6 +13,7 @@
             "character": "Louis",
             "body": "/medias/louis/PL1.mp3",
             "case": 54,
+            "archive_notification": "Voir les archives",
             "archive": [
                 {
                     "src": "/medias/chap1/archives/archive1.jpg",
