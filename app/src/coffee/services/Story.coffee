@@ -4,7 +4,8 @@ angular.module("classe1914.service").factory "Story", [
   'constant.settings'
   'constant.characters'
   'constant.types'
-  ($http, api, settings, characters, types)->
+  '$rootScope'
+  ($http, api, settings, characters, types, $rootScope)->
       new class Story
           sequenceWrappingObject:
               # help us to know if we already wrapped a sequence
@@ -93,6 +94,7 @@ angular.module("classe1914.service").factory "Story", [
           constructor: ->
               @chapters = []
               # Get story TODO : $http.get(api.story) avec les héros
+              @hero = "louis"
               $http.get(api.story).success (chapters)=>
                   @chapters = @wrapChapters chapters
               return @

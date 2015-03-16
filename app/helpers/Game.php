@@ -16,8 +16,8 @@ class Game {
          */
         if (!isset(self::$story)) {
             $response = array();
-            $hero = 'pierre';
-            $chapters = glob('chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
+            $hero = 'louis';
+            $chapters = glob('data/chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
             foreach ($chapters as $chapter_filename) {
                 $chapter_number = basename($chapter_filename, ".json");
                 $content        = file_get_contents($chapter_filename);
@@ -26,7 +26,7 @@ class Game {
                 // if there is an opening date, compare it with today : keep only opened chapters
                 if(empty($opening_date) || strtotime(date('Y-m-d H:i:s')) >= strtotime($opening_date))  {
                     // retrieve scenes files for the current chapter
-                    $scenes  = glob('chapters/'.$hero.'/'.$chapter_number.'.?*.json', GLOB_BRACE);
+                    $scenes  = glob('data/chapters/'.$hero.'/'.$chapter_number.'.?*.json', GLOB_BRACE);
                     $chapter['id']           = $chapter_number; # add the id from filename
                     $chapter['opening_date'] = $opening_date; # add the opening_date from config into the chapter object
                     $chapter['scenes']       = array();
@@ -53,12 +53,12 @@ class Game {
         if (!isset(self::$story)) {
             $response = array();
             $hero = 'louis';
-            $parts = glob('chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
+            $parts = glob('data/chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
             foreach ($parts as $part_filename) {
                 $part_number        = basename($part_filename, ".json");
                 $content            = file_get_contents($part_filename);
                 $part               = json_decode($content, true);
-                $chapters           = glob('chapters/'.$hero.'/'.$part_number.'.[0-9*].json', GLOB_BRACE);
+                $chapters           = glob('data/chapters/'.$hero.'/'.$part_number.'.[0-9*].json', GLOB_BRACE);
                 $part['id']         = $part_number; # add the id from filename
                 $part['chapters']   = array();
                 foreach ($chapters as $chapter_filename) {
