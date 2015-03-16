@@ -1,0 +1,103 @@
+{
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/medias/louis/PL1.png",
+            "background_transition": "fade",
+            "soundtrack": "/medias/louis/soundtrack.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "voixoff",
+            "character": "Louis",
+            "body": "/medias/louis/PL1.mp3",
+            "case": 54,
+            "archive_notification": "Voir les archives",
+            "archive": [
+                {
+                    "src": "/medias/chap1/archives/archive1.jpg",
+                    "cote": "archive1"
+                },
+                {
+                    "src": "/medias/chap1/archives/archive2.jpg",
+                    "cote": "archive2"
+                }
+            ],
+            "result": {
+                "point": 0
+            }
+        },
+        {
+            "type": "new_background",
+            "body": "/medias/louis/PL2.png",
+            "transition": null
+        },
+        {
+            "type": "voixoff",
+            "character": "Louis",
+            "body": "/medias/louis/PL2.mp3",
+            "case": 54,
+            "archive_notification": "Voir l'exercice",
+            "archive": [
+                {
+                    "src": "/medias/louis/PL2TER.png",
+                    "cote": "Certificat d'étude"
+                }
+            ],
+            "result": {
+                "mood": 5,
+                "point": 0
+            }
+        },
+        {
+            "type": "new_background",
+            "body": "/medias/louis/PL3.png",
+            "transition": null
+        },
+        {
+            "type": "choice",
+            "body": "Quelle est la longueur de cette pièce d'étoffe ?",
+            "default_option": null,
+            "delay": null,
+            "options": [
+                {
+                    "header": "175 m",
+                    "next_scene": "1.2",
+                    "result": [
+                        {
+                            "luck": -5,
+                            "health": 0,
+                            "mood": -3,
+                            "point": -5
+                        }
+                    ]
+                },
+                {
+                    "header": "363 m",
+                    "next_scene": "1.2",
+                    "result": [
+                        {
+                            "luck": -5,
+                            "health": 0,
+                            "mood": -3,
+                            "point": -5
+                        }
+                    ]
+                },
+                {
+                    "header": "700 m",
+                    "next_scene": "1.3",
+                    "result": [
+                        {
+                            "luck": 5,
+                            "health": 0,
+                            "mood": 25,
+                            "point": 85
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
