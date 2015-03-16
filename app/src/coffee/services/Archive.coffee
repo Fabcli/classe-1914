@@ -39,6 +39,7 @@ angular.module('classe1914.service').factory "Archive", [
             # True if we the actual sequence have archives to show
             shouldDisplayArchive: () =>
                 @display_archive = no
+                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
                 @archives = @sequence.archive
                 if @archives?
                     @shouldShowArchiveNav(@archives)
@@ -55,12 +56,12 @@ angular.module('classe1914.service').factory "Archive", [
             archiveNotification: ()=>
                 @notification = @sequence.archive_button
                 @display_archive = @shouldDisplayArchive()
+                @notification = @sequence.archive_button
                 if @display_archive is true
                     Notification.primary(@notification)
 
             # Open the lightbox for archives type
             openLightboxArchives: () =>
-                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
                 @display_archive = @shouldDisplayArchive()
                 if @display_archive is true
                     @archives = @sequence.archive
