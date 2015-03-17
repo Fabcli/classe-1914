@@ -44,6 +44,41 @@ class Game {
         return self::$story;
     }
 
+    public static function getIntro($opening_dates=NULL) {
+        /**
+         * Return the story (character + chapter + scene + sub-scene).
+         * If an opening_dates array is given, takes care about the returned chapters
+         */
+
+        if (!isset($intro)) {
+            $response = array();
+            $chapters = glob('data/introduction/[0-9*].json', GLOB_BRACE);
+            foreach ($chapters as $chapter_filename) {
+                $chapter_number = basename($chapter_filename, ".json");
+                $content        = file_get_contents($chapter_filename);
+                $chapter        = json_decode($content, true);
+                $opening_date   = isset($opening_dates[$chapter_number]) ? $opening_dates[$chapter_number] : null;
+                // if there is an opening date, compare it with today : keep only opened chapters
+                if(empty($opening_date) || strtotime(date('Y-m-d H:i:s')) >= strtotime($opening_date))  {
+                    // retrieve scenes files for the current chapter
+                    $scenes  = glob('data/introduction/'.$chapter_number.'.?*.json', GLOB_BRACE);
+                    $chapter['id']           = $chapter_number; # add the id from filename
+                    $chapter['opening_date'] = $opening_date; # add the opening_date from config into the chapter object
+                    $chapter['scenes']       = array();
+                    foreach ($scenes as $scene_filename) {
+                        $content     = file_get_contents($scene_filename);
+                        $scene       = json_decode($content, true);
+                        $scene["id"] = implode(array_slice(explode(".", basename($scene_filename, ".json")), 1)); # add the id from filename
+                        $chapter['scenes'][] = $scene;
+                    }
+                    $response[] = $chapter;
+                }
+            }
+            $intro = $response;
+        }
+        return $intro;
+    }
+
     public static function getStoryWithParts($opening_dates=NULL)  {
         /**
          * Return the story (part + chapter + scene + sequence).
