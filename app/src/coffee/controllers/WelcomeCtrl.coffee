@@ -10,6 +10,8 @@ class WelcomeCtrl
       # Delay between each step of the guide
       @guideStepDelay = 4000
 
+        console.log "welcome controller lancé"
+
       @scope.submit = =>
           # Saves the email
           @User.email  = @scope.email
@@ -48,7 +50,5 @@ class WelcomeCtrl
           not @User.inGame and not @User.isGameDone
 
 
-
 angular.module('classe1914').controller("WelcomeCtrl", WelcomeCtrl)
-# TODO : try to use classe1914.controller
 # EOF

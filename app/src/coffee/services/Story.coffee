@@ -88,9 +88,14 @@ angular.module("classe1914.service").factory "Story", [
           constructor: ->
               @chapters = []
               # Get story TODO : $http.get(api.story) avec les héros
-              @hero = "louis"
-              $http.get(api.story).success (chapters)=>
-                  @chapters = @wrapChapters chapters
+              $rootScope.$watch (=> $rootScope.hero), =>
+                  if $rootScope.hero?
+                      console.log "Il existe un $rootScope.hero: "+$rootScope.hero
+                      @hero = $rootScope.hero
+                  else
+                      @hero = "introduction"
+                  $http.get(api.story + "/" + @hero).success (chapters)=>
+                      @chapters = @wrapChapters chapters
               return @
 
           wrapSequence: (sequence)=>

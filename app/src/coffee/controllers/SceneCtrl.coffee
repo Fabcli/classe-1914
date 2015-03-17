@@ -104,7 +104,7 @@ class SceneCtrl
           #console.log(@User.archiveReady)
           if @sequence.hasArchive() and @sequence.archiveReady
               is_pointer = true
-          console.log ("Les archives sont prèetes: "+is_pointer)
+          console.log ("Valeur de shouldShowArchive: "+is_pointer)
           is_pointer
 
 

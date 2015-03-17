@@ -30,13 +30,15 @@ $app->get("/api/career", function() use ($app) {
     if (empty($export["scenes"])) return wrong(array('error' => 'undefined'));
     $scenes     = json_decode($career->scenes, true);
     $choices    = json_decode($career->choices, true);
+    $hero       = json_decode($career->hero, true);
     $last_scene = end($scenes);
     $response = array(
         "token"         => $career->token,
         "reached_scene" => $last_scene,
         "context"       => \app\helpers\Game::computeContext($export),
         "scenes"        => $scenes,
-        "choices"       => $choices
+        "choices"       => $choices,
+        "hero"          => $hero
     );
     return ok($response);
 });
@@ -54,7 +56,9 @@ $app->post('/api/career', function() use ($app) {
     if (isset($params['token'])) {
         $token  = $params['token'];
         $career = \app\helpers\Game::findCareer($token);
-        if (empty($career)) return wrong(array('error' => 'empty'));
+        if (empty($career)) {
+            return wrong(array('error' => 'empty'));
+        }
     } else {
         // generate a token and add it to the attribute
         $career          = R::dispense('career');
@@ -62,6 +66,7 @@ $app->post('/api/career', function() use ($app) {
         $career->token   = $token; # save the token
         $career->choices = "{}";
         $career->scenes  = "[]";
+        $career->hero    = "";
         $career->created = R::isoDateTime();
         $career->finished = false;
     }
@@ -70,6 +75,7 @@ $app->post('/api/career', function() use ($app) {
     if (is_null($data)) return wrong(array("error" => "body invalid. Need json."));
     $scenes  = json_decode($career->scenes, true);
     $choices = json_decode($career->choices);
+    $hero = json_decode($career->hero);
 
     // Recording choice...
     if (isset($data["scene"]) && isset($data["choice"])){
@@ -85,6 +91,12 @@ $app->post('/api/career', function() use ($app) {
         // $data["reached_scene"] = $options[$data["choice"]]["next_scene"];
     }
 
+    // Recording hero...
+    if (isset($data["hero"])) {
+        $hero = (string)$data["hero"];
+        $career->hero = json_encode($hero);
+    }
+
     // Recording progression...
     if (isset($data["reached_scene"])) {
         // TODO: check if already exists
@@ -96,7 +108,6 @@ $app->post('/api/career', function() use ($app) {
 
     if (isset($data["is_game_done"]) && $data["is_game_done"]) {
         $context = \app\helpers\Game::computeContext($career);
-
         $career->finished = true;
     }
 
@@ -108,7 +119,8 @@ $app->post('/api/career', function() use ($app) {
         "reached_scene" => end($scenes),
         "context"       => \app\helpers\Game::computeContext($career->export()),
         "scenes"        => $scenes,
-        "choices"       => $choices
+        "choices"       => $choices,
+        "hero"          => $hero
     );
     return ok($response);
 });

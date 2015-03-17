@@ -28,7 +28,6 @@ class ChapterCtrl
                   if sequence.isNewBg() and sequence.body isnt null
                     # Add the bg to bg list
                      @bgs.push media(sequence.body)
-          console.log @User.isReady
           @bgs
 
   shouldShowChapter: =>

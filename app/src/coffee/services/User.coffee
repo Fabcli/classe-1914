@@ -53,6 +53,9 @@ angular.module("classe1914.service").factory("User", [
                 [@token, @email] = [null, null]
                 # Reset user states
                 @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
+                #Reset hero choice
+                console.log "Valeur de master.hero dans SetInitialValue de User: "+master.hero
+                @hero = master.hero or "introduction"
                 # Reset progression
                 [@chapter, @scene, @sequence] = ["1", "1", 0]
                 # User indicators
@@ -85,6 +88,9 @@ angular.module("classe1914.service").factory("User", [
                         [@chapter, @scene] = career.reached_scene.split "."
                         # Saved passed scenes
                         @scenes = career.scenes
+                        # Save Hero
+                        console.log "Valeur de hero dans base de donnée: "+career.hero
+                        @hero = career.hero
                         # Save indicators
                         for own key, value of career.context
                             @indicators[key] = value
@@ -142,16 +148,20 @@ angular.module("classe1914.service").factory("User", [
                     # the last scene given by the career
                     .success( @updateProgression )
                     # Something wrong happens, restores the User model
-                    .error (data)=> do @newUser if @token? or @email?
+                    .error (data)=>
+                        console.log "Error in api get career"
+                        console.log(data)
+                        do @newUser if @token? or @email?
                     # Or create a new one
                 else
                     @createNewCareer (@email?)
 
             createNewCareer: (associate=no) =>
                 # Get value using the token
-                $http.post("#{api.career}", reached_scene: "1.1")
+                $http.post("#{api.career}", reached_scene: "1.1", hero: @hero)
                 # Save the token
                 .success (data)=>
+                    console.log "creation du token"
                     # Save the token
                     @token = data.token
                     (@associate @email) if associate
@@ -174,6 +184,7 @@ angular.module("classe1914.service").factory("User", [
                     state = reached_scene: @pos()
 
                 state.is_game_done = @isGameDone
+                console.log "Lancement du post token dans User.coffee"
                 # Get value using the token
                 $http.post("#{api.career}?token=#{@token}", state).success @updateProgression
 

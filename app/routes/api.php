@@ -32,7 +32,7 @@ function wrong($body, $status=500,  $json_encode=true) {
 #    API
 #
 # -----------------------------------------------------------------------------
-$app->get('/api/story', function() use ($app) {
+$app->get('/api/story/:hero', function($hero) use ($app) {
     /**
      * Retrieve the list of opened chapters and their scenes from the `chapters` folder.
      * Chapter must have a name like [0-9].json
@@ -45,7 +45,7 @@ $app->get('/api/story', function() use ($app) {
         $app->expires('+10 minutes');
     }
 
-    $story = \app\helpers\Game::getStory($app->config("opening_dates"));
+    $story = \app\helpers\Game::getStory($hero,$app->config("opening_dates"));
     return ok($story);
 });
 
