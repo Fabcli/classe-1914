@@ -17,6 +17,7 @@
             "body": "Choisissez votre héros",
             "default_option": null,
             "delay": null,
+            "hero": true,
             "options": [
                 {
                     "header": "Louis",

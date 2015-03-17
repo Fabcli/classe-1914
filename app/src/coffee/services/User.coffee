@@ -54,7 +54,7 @@ angular.module("classe1914.service").factory("User", [
                 # Reset user states
                 @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
                 #Reset hero choice
-                @hero = if master.hero is null then "introduction" else master.hero
+                @hero = if master.hero is not null then master.hero else null
                 console.log "Valeur de master.hero dans SetInitialValue de User: "+master.hero
                 console.log "nouvelle valeur de hero: "+@hero
                 # Reset progression

@@ -3,6 +3,7 @@ class WelcomeCtrl
     constructor: (@scope, @User, @timeout) ->
         @scope.user  = @User
         @scope.email = @User.email
+        @scope.hero  = @User.hero
         # Takes the chapter only when the controller is instantiated
         @token       = @User.token
         # Guide visible steps

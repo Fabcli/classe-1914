@@ -19,6 +19,9 @@ angular.module("classe1914.service").factory "Story", [
               isSkipped: ->
                   settings.sequenceSkip.indexOf( this.lowerType() ) > -1
 
+              isHeroChoice: ->
+                  this.lowerType() is types.sequence.choice and this.hero
+
               isChoice: ->
                   this.lowerType() is types.sequence.choice
 
@@ -88,9 +91,10 @@ angular.module("classe1914.service").factory "Story", [
           constructor: ->
               @chapters = []
               # Get story TODO : $http.get(api.story) avec les héros
-              $rootScope.$watch (=> $rootScope.hero), =>
+              $rootScope.$watch (=> $rootScope.user.hero), =>
+                  console.log "Valeur de $rootScope.user.hero dans Story: "+$rootScope.user.hero
                   if $rootScope.hero?
-                      @hero = $rootScope.hero
+                      @hero = $rootScope.user.hero
                       $http.get(api.story + "/" + @hero).success (chapters)=>
                           @chapters = @wrapChapters chapters
                   else
