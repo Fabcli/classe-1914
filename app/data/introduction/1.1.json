@@ -21,35 +21,20 @@
             "options": [
                 {
                     "header": "Louis",
-                    "result": [
-                        {
-                            "hero": "louis"
-                        }
-                    ]
+                    "hero": "louis"
                 },
                 {
                     "header": "Pierre",
-                    "result": [
-                        {
-                            "hero": "pierre"
-                        }
-                    ]
+                    "hero": "pierre"
+
                 },
                 {
                     "header": "Eugénie",
-                    "result": [
-                        {
-                            "hero": "eugenie"
-                        }
-                    ]
+                    "hero": "eugenie"
                 },
                 {
                     "header": "Marie",
-                    "result": [
-                        {
-                            "hero": "marie"
-                        }
-                    ]
+                    "hero": "marie"
                 }
             ]
         }

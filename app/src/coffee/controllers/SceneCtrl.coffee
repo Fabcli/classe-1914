@@ -38,6 +38,9 @@ class SceneCtrl
       @scope.selectOption = (option, idx)=>
           # Save choice for this scene
           do @Timeout.cancel
+          console.log (@sequence.isHeroChoice())
+          if @sequence.isHeroChoice()
+              console.log option.hero
           @User.updateCareer choice: idx, scene: @User.pos()
           # Some choice may have an outro feedback
           if option.outro?
@@ -104,7 +107,7 @@ class SceneCtrl
           #console.log(@User.archiveReady)
           if @sequence.hasArchive() and @sequence.archiveReady
               is_pointer = true
-          console.log ("Valeur de shouldShowArchive: "+is_pointer)
+          #console.log ("Valeur de shouldShowArchive: "+is_pointer)
           is_pointer
 
 
