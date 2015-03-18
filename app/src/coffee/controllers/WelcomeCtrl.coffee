@@ -3,15 +3,12 @@ class WelcomeCtrl
     constructor: (@scope, @User, @timeout) ->
         @scope.user  = @User
         @scope.email = @User.email
-        @scope.hero  = @User.hero
         # Takes the chapter only when the controller is instantiated
         @token       = @User.token
         # Guide visible steps
         @scope.showHeadphone = @scope.showControl = no
         # Delay between each step of the guide
-        @guideStepDelay = 4000
-
-        console.log "welcome controller lancé"
+        @guideStepDelay = 2000
 
         @scope.submit = =>
             # Saves the email

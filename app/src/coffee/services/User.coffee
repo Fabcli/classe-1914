@@ -28,17 +28,17 @@ angular.module("classe1914.service").factory("User", [
                     @email = yes if @email is null
                     $location.search('token', null)
 
-                #TODO : Delete and replace by de next code with conditions
-                do @loadCareer
-                return @
-#                # Load the career if a token is given
-#                do @loadCareer if @token isnt null
-#                # Load career data from the API when the player enters the game
-#                $rootScope.$watch (=>@inGame), (newValue, oldValue) =>
-#                  if @token is null and newValue and not oldValue
-#                      do @loadCareer
-#                , yes
+#                #TODO : Delete and replace by de next code with conditions
+#                do @loadCareer
 #                return @
+                # Load the career if a token is given
+                do @loadCareer if @token isnt null
+                # Load career data from the API when the player enters the game
+                $rootScope.$watch (=>@inGame), (newValue, oldValue) =>
+                  if @token is null and newValue and not oldValue
+                      do @loadCareer
+                , yes
+                return @
 
 
             setInitialValues: (master={})=>
@@ -54,15 +54,16 @@ angular.module("classe1914.service").factory("User", [
                 # Reset user states
                 @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
                 #Reset hero choice
-                @hero = if master.hero is not null then master.hero else null
-                console.log "Valeur de master.hero dans SetInitialValue de User: "+master.hero
-                console.log "nouvelle valeur de hero: "+@hero
+                @hero = master.hero = null
+                #console.log "Valeur de master.hero dans SetInitialValue de User: "+master.hero
+                #console.log "nouvelle valeur de hero: "+@hero
                 # Reset progression
                 [@chapter, @scene, @sequence] = ["1", "1", 0]
                 # User indicators
                 @indicators =
                     luck     : UserIndicators.luck.meta.start
                     health   : UserIndicators.health.meta.start
+                    mood     : UserIndicators.mood.meta.start
                     mood     : UserIndicators.mood.meta.start
                     point    : UserIndicators.point.meta.start
                 return @
@@ -90,7 +91,6 @@ angular.module("classe1914.service").factory("User", [
                         # Saved passed scenes
                         @scenes = career.scenes
                         # Save Hero
-                        console.log "Valeur de hero dans base de donnée: "+career.hero
                         @hero = career.hero
                         # Save indicators
                         for own key, value of career.context
@@ -170,20 +170,27 @@ angular.module("classe1914.service").factory("User", [
                     do @loadCareer
 
             updateCareer: (choice)=>
+                console.log choice
                 return no unless @token
                 # Add reached scene parameter
                 if choice?
+                    console.log choice
                     state = choice
                     [chapterIdx, sceneIdx] = choice.scene.split(".")
                     # Get the current sequence to  update the indicators
                     sequence = Story.sequence(chapterIdx, sceneIdx, @sequence)
                     # Propagate the choices only if this sequence has options
-                    if sequence.options?
+                    if sequence.options? && sequence.hero?
+                        option = sequence.options[choice.choice]
+                        console.log "maj du hero"
+                        state.hero = option.hero
+                        @restartChapter()
+                    else if sequence.options?
                         option = sequence.options[choice.choice]
                         state.reached_scene = option.next_scene
+                        #Created the hero for the introduction
                 else
                     state = reached_scene: @pos()
-
                 state.is_game_done = @isGameDone
                 console.log "Lancement du post token dans User.coffee"
                 # Get value using the token

@@ -1,64 +1,61 @@
 class SceneCtrl
-  @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification' ]
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification' ]
 
-  constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification ) ->
-      @scope.story  = @Story
-      @scope.user  = @User
-      @scope.sound = @Sound
-      @scope.timeout = @Timeout
+    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification ) ->
+        @scope.story  = @Story
+        @scope.user  = @User
+        @scope.sound = @Sound
+        @scope.timeout = @Timeout
 
-      # Establishes a bound between "src" and "chapter" arguments
-      # provided by the scene directive and the Controller
-      @scene = @scope.scene = @scope.src
-      @chapter = @scope.chapter
+        # Establishes a bound between "src" and "chapter" arguments
+        # provided by the scene directive and the Controller
+        @scene = @scope.scene = @scope.src
+        @chapter = @scope.chapter
 
-      # True if the given scene is visible
-      @shouldShowScene = @scope.shouldShowScene = =>
-          if @User.isSummary
-              return @User.lastScene is @scene.id and @chapter.id is @User.lastChapter
-          else
-             return @scene.id is @User.scene
+        # True if the given scene is visible
+        @shouldShowScene = @scope.shouldShowScene = =>
+            if @User.isSummary
+                return @User.lastScene is @scene.id and @chapter.id is @User.lastChapter
+            else
+                return @scene.id is @User.scene
 
-      # True if the given sequence is visible
-      @scope.shouldShowSequence = (idx)=>
-          @shouldShowScene()            and
-              # Hide the sequence if the user is in one of this states
-              not @User.isStartingChapter() and
-              not @User.isGameOver          and
-              not @User.isGameDone          and
-              not @User.isSummary           and
-              # And show the sequence if it is the last one with a next button
-              [ @getLastDialogIdx(), @User.sequence ].indexOf(idx) > -1
+        # True if the given sequence is visible
+        @scope.shouldShowSequence = (idx)=>
+            @shouldShowScene()            and
+                # Hide the sequence if the user is in one of this states
+                not @User.isStartingChapter() and
+                not @User.isGameOver          and
+                not @User.isGameDone          and
+                not @User.isSummary           and
+                # And show the sequence if it is the last one with a next button
+                [ @getLastDialogIdx(), @User.sequence ].indexOf(idx) > -1
 
-      # Just wraps the function from the user service
-      @scope.goToNextSequence = =>
-          do @User.nextSequence
+        # Just wraps the function from the user service
+        @scope.goToNextSequence = =>
+            do @User.nextSequence
 
-      # Select an option within a sequence by wrapping the User's method
-      @scope.selectOption = (option, idx)=>
-          # Save choice for this scene
-          do @Timeout.cancel
-          console.log (@sequence.isHeroChoice())
-          if @sequence.isHeroChoice()
-              console.log option.hero
-          @User.updateCareer choice: idx, scene: @User.pos()
-          # Some choice may have an outro feedback
-          if option.outro?
-              # Find the current scene
-              scene = @Story.scene(@User.chapter, @User.scene)
-              # Create a "virtual sequence" at the end of the scene
-              # (becasue every choice is at the end of a scene)
-              virt_sequence =
-                  type      : "feedback"
-                  body      : option.outro
-                  next_scene: option.next_scene
+        # Select an option within a sequence by wrapping the User's method
+        @scope.selectOption = (option, idx)=>
+            # Save choice for this scene
+            do @Timeout.cancel
+            @User.updateCareer choice: idx, scene: @User.pos()
+            # Some choice may have an outro feedback
+            if option.outro?
+                # Find the current scene
+                scene = @Story.scene(@User.chapter, @User.scene)
+                # Create a "virtual sequence" at the end of the scene
+                # (becasue every choice is at the end of a scene)
+                virt_sequence =
+                    type      : "feedback"
+                    body      : option.outro
+                    next_scene: option.next_scene
 
-              scene.sequence.push Story.wrapSequence virt_sequence
-              # Then go the next sequence
-              @scope.goToNextSequence()
+                scene.sequence.push Story.wrapSequence virt_sequence
+                # Then go the next sequence
+                @scope.goToNextSequence()
 
-      # Get the list of the background for the given scene
-      @scope.getSceneBgs = ()=>
+        # Get the list of the background for the given scene
+        @scope.getSceneBgs = ()=>
           # Cache bgs to avoid infinite digest iteration
           return @bgs if @bgs?
           return [] if (not @scene? or not @scene.decor)
@@ -70,8 +67,8 @@ class SceneCtrl
               @bgs.push src: sequence.body, sequence: idx if sequence.isNewBg()
           @bgs
 
-      # True if we should display the given bg
-      @scope.shouldDisplayBg = (bg)=>
+        # True if we should display the given bg
+        @scope.shouldDisplayBg = (bg)=>
           should_display = no
           # Do not show the next background if the chapter is starting
           return bg.sequence is -1 if @User.isStartingChapter()
@@ -92,16 +89,16 @@ class SceneCtrl
 
           return should_display
 
-      # Condition to add a cursor on bg image
+        # Condition to add a cursor on bg image
 
 
-      @scope.getArchive = =>
+        @scope.getArchive = =>
           do Archive.getArchive
 
-      @scope.openArchive = =>
+        @scope.openArchive = =>
           do Archive.openLightboxArchives
 
-      @scope.shouldShowArchive = =>
+        @scope.shouldShowArchive = =>
           is_pointer = false
           @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
           #console.log(@User.archiveReady)
@@ -112,11 +109,11 @@ class SceneCtrl
 
 
 
-      # Play or pause the soundtrack
-      @scope.toggleVoicetrack = @Sound.toggleVoicetrack
+        # Play or pause the soundtrack
+        @scope.toggleVoicetrack = @Sound.toggleVoicetrack
 
-      # Last dialog box that we see
-      @getLastDialogIdx = @scope.getLastDialogIdx = =>
+        # Last dialog box that we see
+        @getLastDialogIdx = @scope.getLastDialogIdx = =>
           # Get current indexes
           chapterIdx  = @User.chapter
           sceneIdx    = @User.scene

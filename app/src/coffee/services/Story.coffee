@@ -92,8 +92,7 @@ angular.module("classe1914.service").factory "Story", [
               @chapters = []
               # Get story TODO : $http.get(api.story) avec les héros
               $rootScope.$watch (=> $rootScope.user.hero), =>
-                  console.log "Valeur de $rootScope.user.hero dans Story: "+$rootScope.user.hero
-                  if $rootScope.hero?
+                  if $rootScope.user.hero?
                       @hero = $rootScope.user.hero
                       $http.get(api.story + "/" + @hero).success (chapters)=>
                           @chapters = @wrapChapters chapters
