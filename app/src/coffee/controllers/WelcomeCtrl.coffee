@@ -7,8 +7,11 @@ class WelcomeCtrl
         @token       = @User.token
         # Guide visible steps
         @scope.showHeadphone = @scope.showControl = no
+        # Animate the wrapper
+        @scope.wrapperUp = no
         # Delay between each step of the guide
         @guideStepDelay = 2000
+
 
         @scope.submit = =>
             # Saves the email
@@ -20,8 +23,17 @@ class WelcomeCtrl
         @scope.isNewUser = =>
             not @token?
 
+        # True if the user didn't choose a hero
+        @scope.textIntro = =>
+            text_intro = no
+            if @User.hero is null
+                text_intro = yes
+            text_intro
+
         # Start the game by activating the using
         @scope.startGame = (guide=yes)=>
+            # Animate the welcome wrapper
+            @scope.wrapperUp = yes
             return @User.inGame = yes unless guide
             # Show headphone guide's step
             @scope.showHeadphone = yes
@@ -35,10 +47,10 @@ class WelcomeCtrl
                 @timeout (=> @scope.showHeadphone = @scope.showControl = no), @guideStepDelay * 2
                 , @guideStepDelay
 
-
-
         # Start a new party
         @scope.newGame = =>
+            # Animate the welcome wrapper
+            @scope.wrapperUp = yes
             # Creates a new user
             do @User.newUser
             # And starts the game!

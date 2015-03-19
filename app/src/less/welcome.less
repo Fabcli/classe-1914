@@ -59,11 +59,15 @@
 
     &__wrapper {
         width:400px;
+        margin-left: -200px;
         position:absolute;
         top:0;
         left:50%;
         padding-bottom:60px;
-        .translate(-50%, 0);
+        &.wrapper-up {
+            .transition(0.6s);
+            .translate(0, -100%);
+        }
     }
 
     &__intro,

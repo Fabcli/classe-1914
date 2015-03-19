@@ -5,7 +5,7 @@
     <!--<div ng-show="showHeadphone" class="welcome__guide welcome__guide--headphone"></div>-->
     <!--<div ng-show="showControl" class="welcome__guide welcome__guide--control"></div>-->
 
-    <div class="welcome__wrapper">
+    <div class="welcome__wrapper" ng-class="{ 'wrapper-up': wrapperUp }">
         <div ng-show="isNewUser()">
             <div class="welcome__intro">
                 <p>
@@ -36,21 +36,29 @@
             <!--</div>-->
 
             <div class="welcome__start">
-                <button class="welcome__start__btn btn btn-default btn-lg" ng-click="startGame()">Entrer</button>
+                <button class="welcome__start__btn btn btn-default btn-lg" ng-click="startGame();">Entrer</button>
             </div>
         </div>
 
         <div class="welcome__start" ng-hide="isNewUser()">
             <div class="welcome__intro">
-
                 <p>
-                    L'histoire de [[ hero ]] est déjà en cours avec ce compte.<br />
+                    Une histoire est déjà en cours avec ce compte.<br />
                     Votre héros vous attends
                 </p>
+
+                <p>
+                    Blend twenty oz of caviar in seven pounds of peanut sauce.
+                    Why does the girl rise?
+                    Arg, warm pin. you won't desire the fortress.
+                    cliquez sur "Reprendre la partie".
+                </p>
+
                 <p>
                     Si vous souhaitez le retrouver et poursuivre l'histoire,<br />
                     cliquez sur "Reprendre la partie".
                 </p>
+
                 <p>
                     Sinon choisissez "Recommencer au début".
                 </p>
