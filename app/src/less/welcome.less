@@ -10,6 +10,10 @@
 
     .fade > .show(@chapter-starting-duration-2);
 
+    p:last-child {
+        margin-bottom: 45px;
+    }
+
 
     &__lwf {
         position:fixed;
@@ -54,9 +58,9 @@
     }
 
     &__wrapper {
-        width:440px;
+        width:400px;
         position:absolute;
-        top:10%;
+        top:0;
         left:50%;
         padding-bottom:60px;
         .translate(-50%, 0);
@@ -64,26 +68,28 @@
 
     &__intro,
     &__user {
-        background:fade(black, 75);
-        padding:10px 20px;
+        background:@brand-primary;
+        padding:390px 20px 10px 20px;
     }
 
     &__intro {
-        padding-top:15px;
-        text-align: left;
+        text-align: center;
         font-size:12px;
-        white-space: nowrap;
-        margin-bottom:25px;
+//        white-space: nowrap;
+        margin:0px;
+        border-bottom: 1px solid #fff;
 
-        &__lead {
-            padding:0;
-            margin-bottom:20px;
-            padding-bottom:5px;
-            text-align: center;
-            border-bottom:2px solid #4C4C4C;
-            text-transform: uppercase;
-            font-size:14px;
-            color: @brand-secondary;
+        &:after {
+            content:"";
+            width: 400px - 40px;
+            margin:-390px 0 0 0;
+            top:390px;
+            height:390px;
+            background: url("/img/ui/c14_logo_hd.png") no-repeat;
+            background-size: 80%;
+            background-position: center;
+            position: absolute;
+            .translate(-50%, 0);
         }
 
         strong {
@@ -94,7 +100,6 @@
 
     &__user {
 
-        padding:15px 20px;
         background:fade(black, 30);
         margin-bottom:20px;
 
@@ -150,11 +155,15 @@
         text-align: center;
 
         &__btn {
+            background-color: #fff;
+            color:@brand-primary;
+            font-weight: bold;
+            font-size: 13px;
             display:inline-block;
             text-transform: uppercase;
-            height:60px;
+            height:40px;
             padding:0;
-            line-height:50px;
+            line-height:35px;
             width:170px;
             margin:0 10px;
         }
