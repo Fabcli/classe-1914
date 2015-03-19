@@ -101,6 +101,6 @@
     </div>
 
 
-    <button ng-if="user.inGame" class="nav__toggler" ng-class="{ 'close-nav': navVisible }" ng-click="navVisible = !navVisible" ng-class="{ hidden: !user.inGame }">
+    <button ng-show="user.inGame" class="nav__toggler" ng-class="{ 'close-nav': navVisible }" ng-click="navVisible = !navVisible" ng-class="{ hidden: !user.inGame }">
     </button>
 </header>
