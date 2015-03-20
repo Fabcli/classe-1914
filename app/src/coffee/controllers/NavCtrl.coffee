@@ -8,11 +8,13 @@ class NavCtrl
         @scope.isVolumeOn = => @User.volume > 0
 
         @scope.autoplay = @User.autoplay
-        @scope.isAutoplay = => @User.autoplay is true
+
+        @scope.isAutoplayOn = => @User.autoplay
 
         # Autoplay value
         @scope.toggleAutoplay = =>
             @User.autoplay = !@User.autoplay
+            @scope.autoplay = !@scope.autoplay
 
         # Mute or unmute the volume
         @scope.toggleVolume = =>
@@ -38,6 +40,9 @@ class NavCtrl
 
         # Update the User volume according the scope attribute
         @scope.$watch "volume", (v)=> @User.volume = v/100 if v?
+
+        # Update the User autoplay value
+        @scope.$watch "autoplay", (a)=> @User.autoplay = a if a?
 
         @scope.shouldShowSaveButton = @shouldShowSaveButton
         @scope.save = @save

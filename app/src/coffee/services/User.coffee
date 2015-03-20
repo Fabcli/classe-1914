@@ -46,7 +46,9 @@ angular.module("classe1914.service").factory("User", [
                 # Scenes the user passed
                 @scenes   = master.scenes or []
                 # Autoplay value
-                @autoplay = if isNaN(master.autoplay) then 0 else master.autoplay
+                console.log master.autoplay
+                @autoplay = if master.autoplay? then master.autoplay else false
+                console.log @autoplay
                 # Sound control
                 @volume   = if isNaN(master.volume) then 1 else master.volume
                 # Reset identification token
@@ -97,6 +99,7 @@ angular.module("classe1914.service").factory("User", [
                             @indicators[key] = value
                         # Start to the first sequence
                         @sequence = 0
+                        console.log "Valeur de autoplay dans updateProgression: "+@autoplay
                         # Check that the sequence's condition is OK
                         if not do @isSequenceConditionOk
                             # If not, go to the next sequence
