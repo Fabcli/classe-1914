@@ -26,7 +26,7 @@
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
           "case": 54,
           "archive_notification": "Voir les archives",
-          "archive" :
+          "archive" : [
               {
                   "src": "/medias/chap1/archives/archive1.jpg",
                   "cote": "archive1"
