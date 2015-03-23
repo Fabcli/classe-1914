@@ -5,6 +5,8 @@ angular.module('classe1914.game').factory 'Shot', [
         new class Shot
 
             constructor: ->
+                console.log Boot
+
                 #Création de la variable jeu : "game"
                 game = new (Phaser.Game)(600, 400, Phaser.AUTO, 'tir')
 
