@@ -2,6 +2,8 @@ angular.module('classe1914.game').factory 'Boot', [
     '$filter'
     ($filter)->
         new class Boot
+            constructor: (@game) ->
+
 
             init: ->
                 #  Full screen params
@@ -30,7 +32,6 @@ angular.module('classe1914.game').factory 'Boot', [
                     @scale.pageAlignHorizontally = true
                     @scale.setScreenSize true
                     @scale.refresh()
-                    console.log "test"
 
             preload: ->
 

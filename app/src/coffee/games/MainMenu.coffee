@@ -1,6 +1,7 @@
 angular.module('classe1914.game').factory 'MainMenu', [
     'User'
-    (User)->
+    '$rootScope'
+    (User, $rootScope)->
 
         new class MainMenu
 
@@ -11,13 +12,12 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @playButton
 
                 #VARIABLES : Utilisables dans toutes les étapes (Boot.js, MainMenu.js, Game.js, etc.)
-                @JeuDeTir = JeuDeTir
-                JeuDeTir.fullscreenButton
-                JeuDeTir.cursors
-                JeuDeTir.spacebar
-                JeuDeTir.b_key
-                JeuDeTir.z_key
-                JeuDeTir.click
+                $rootScope.fullscreenButton
+                $rootScope.cursors
+                $rootScope.spacebar
+                $rootScope.b_key
+                $rootScope.z_key
+                $rootScope.click
 
 
 
@@ -34,12 +34,12 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 #On active la fonction curseur intégré à Phaser
                 JeuDeTir.cursors = @input.keyboard.createCursorKeys()
                 #On definit les variables du clavier
-                JeuDeTir.spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
-                JeuDeTir.b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
-                JeuDeTir.z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
-                JeuDeTir.f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
+                $rootScope.spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+                $rootScope.b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
+                $rootScope.z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
+                $rootScope.f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
                 #On crée la variable de click
-                JeuDeTir.click = @input.activePointer
+                $rootScope.click = @input.activePointer
                 @startButton()
                 #Fonction d'ajout du bouton start
                 @initButtonFullScreen()
@@ -57,20 +57,20 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 return
 
             initButtonFullScreen: ->
-                JeuDeTir.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
-                JeuDeTir.fullscreenButton.input.useHandCursor = true
+                $rootScope.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
+                $rootScope.fullscreenButton.input.useHandCursor = true
                 #On lui met un curseur de type main
-                JeuDeTir.fullscreenButton.fixedToCamera = true
+                $rootScope.fullscreenButton.fixedToCamera = true
                 #On le fixe à l'écran
                 return
 
             enterFullScreen: ->
-                JeuDeTir.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @quitFullScreen, this, 0, 0, 1)
+                $rootScope.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @quitFullScreen, this, 0, 0, 1)
                 @scale.startFullScreen()
                 return
 
             quitFullScreen: ->
-                JeuDeTir.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
+                $rootScope.fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
                 @scale.stopFullScreen()
                 return
 

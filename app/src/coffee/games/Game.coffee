@@ -5,7 +5,6 @@ angular.module('classe1914.game').factory 'MainMenu', [
         new class MainMenu
 
             constructor: ->
-                console.log "MainMenu Phaser initialisé"
                 #VARIABLES : Utilisables dans cette étape uniquement (MainMenu.js)
                 @music
                 @playButton
