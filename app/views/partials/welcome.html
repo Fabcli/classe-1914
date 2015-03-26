@@ -1,8 +1,8 @@
 <div class="welcome" ng-controller="WelcomeCtrl" ng-show="shouldShowWelcome()">
 
-    <div class="welcome__bg"></div>
+    <game ng-if="gameReady()" src="shot"></game>
 
-    <game></game>
+    <div class="welcome__bg"></div>
 
     <!--<div ng-show="showHeadphone" class="welcome__guide welcome__guide--headphone"></div>-->
     <!--<div ng-show="showControl" class="welcome__guide welcome__guide--control"></div>-->
