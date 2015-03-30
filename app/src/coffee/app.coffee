@@ -6,7 +6,7 @@ angular.module('classe1914.directive',  ['ngResource', 'classe1914.constant'])
 angular.module('classe1914.filter',     ['ngResource', 'classe1914.constant'])
 angular.module('classe1914.template',   ['ngRoute'])
 angular.module('classe1914.service',    ['ngResource', 'LocalStorageModule', 'classe1914.constant'])
-angular.module('classe1914.game',    ['ngResource', 'LocalStorageModule', 'classe1914.constant'])
+angular.module('classe1914.game',       ['ngResource', 'LocalStorageModule', 'classe1914.constant'])
 
 
 app = angular.module('classe1914', [
