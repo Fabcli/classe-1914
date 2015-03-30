@@ -16,6 +16,7 @@ class GameCtrl
         @click                =   @MainMenu.click
 
         #TODO : Inject the Preloader assets !!!
+        # http://www.ng-newsletter.com/posts/building-games-with-angular.html
 
 
 
