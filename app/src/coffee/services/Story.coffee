@@ -90,7 +90,6 @@ angular.module("classe1914.service").factory "Story", [
           # ─────────────────────────────────────────────────────────────────
           constructor: ->
               @chapters = []
-              # Get story TODO : $http.get(api.story) avec les héros
               $rootScope.$watch (=> $rootScope.user.hero), =>
                   if $rootScope.user.hero?
                       @hero = $rootScope.user.hero
