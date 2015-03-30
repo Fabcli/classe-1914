@@ -46,7 +46,7 @@ angular.module("classe1914.service").factory("User", [
                 # Scenes the user passed
                 @scenes   = master.scenes or []
                 #Case unblocked in past or reset case
-                @case   =   master.case or [1, 2]
+                @case   =   master.case or settings.initialCase
                 # Autoplay value
                 @autoplay = if master.autoplay? then master.autoplay else false
                 # Sound control

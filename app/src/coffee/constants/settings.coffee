@@ -14,6 +14,8 @@ angular.module('classe1914.constant').constant 'constant.settings',
   sequenceSkip      : ["new_background"]
 # Refreshing rate for timeouts
   timeoutRefRate    : 100
+# The archives id open in the case on a new game
+  initialCase       : [1, 3]
 # Some scenes affect the percentage of progression
   mainScenes        :
     "1": ["1.1", "1.5", "1.8"]
