@@ -91,6 +91,7 @@ angular.module("classe1914.service").factory "Story", [
           constructor: ->
               @chapters = []
               $rootScope.$watch (=> $rootScope.user.hero), =>
+                  #Load the story or the introduction
                   if $rootScope.user.hero?
                       @hero = $rootScope.user.hero
                       $http.get(api.story + "/" + @hero).success (chapters)=>
