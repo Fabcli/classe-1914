@@ -1,6 +1,6 @@
 class WelcomeCtrl
-    @$inject: ['$scope', 'User', '$timeout', 'Shot']
-    constructor: (@scope, @User, @timeout, @Shot) ->
+    @$inject: ['$scope', 'User', '$timeout']
+    constructor: (@scope, @User, @timeout) ->
         @scope.user  = @User
         @scope.email = @User.email
         # Takes the chapter only when the controller is instantiated
