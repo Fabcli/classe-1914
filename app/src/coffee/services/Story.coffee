@@ -107,6 +107,7 @@ angular.module("classe1914.service").factory "Story", [
                 sequence = _.extend sequence, @sequenceWrappingObject
               sequence
 
+
           wrapChapters: (chapters)=>
               for c in chapters
                   for s in c.scenes

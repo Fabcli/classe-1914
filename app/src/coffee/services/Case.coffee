@@ -2,25 +2,24 @@ angular.module('classe1914.service').factory "Case", [
     '$http'
     '$q'
     'constant.api'
-    'Story'
     'User'
-    '$filter'
-    ($http, $q, api, Story, User, $filter)->
+    ($http, $q, api, User)->
 
         new class Case
             constructor: ->
                 User.caseReady  = no
-                console.log User.case
+                @caseData = no
 
-                @archives = false
+                @archives = []
                 #Promise when the archives json is loaded
                 @getCase().then(
-                    (archives) ->
+                    (archives) =>
                         @archives = archives
-                        console.log @archives
-                    (msg) ->
+                        @caseData = yes
+                    (msg) =>
                         alert(msg)
                 )
+                @
 
             getCase : ->
                 deferred = $q.defer()
@@ -31,4 +30,5 @@ angular.module('classe1914.service').factory "Case", [
                     .error () =>
                         deferred.reject('Failed to load archives')
                 deferred.promise
+
 ]

@@ -56,56 +56,56 @@ class SceneCtrl
 
         # Get the list of the background for the given scene
         @scope.getSceneBgs = ()=>
-          # Cache bgs to avoid infinite digest iteration
-          return @bgs if @bgs?
-          return [] if (not @scene? or not @scene.decor)
-          # First background is the one from the scene
-          @bgs = [src: @scene.decor[0].background, sequence: -1]
-          # Look into each scene's sequence to find the new background
-          for sequence, idx  in @scene.sequence
-              # Add the bg to bg list
-              @bgs.push src: sequence.body, sequence: idx if sequence.isNewBg()
-          @bgs
+            # Cache bgs to avoid infinite digest iteration
+            return @bgs if @bgs?
+            return [] if (not @scene? or not @scene.decor)
+            # First background is the one from the scene
+            @bgs = [src: @scene.decor[0].background, sequence: -1]
+            # Look into each scene's sequence to find the new background
+            for sequence, idx  in @scene.sequence
+                # Add the bg to bg list
+                @bgs.push src: sequence.body, sequence: idx if sequence.isNewBg()
+            @bgs
 
         # True if we should display the given bg
         @scope.shouldDisplayBg = (bg)=>
-          should_display = no
-          # Do not show the next background if the chapter is starting
-          return bg.sequence is -1 if @User.isStartingChapter()
-          # Ids of every sequences
-          for id in _.map(@bgs, (bg)-> bg.sequence)
-              # Took the last higher id than the current sequence
-              higherId = id if id <= @User.sequence
+            should_display = no
+            # Do not show the next background if the chapter is starting
+            return bg.sequence is -1 if @User.isStartingChapter()
+            # Ids of every sequences
+            for id in _.map(@bgs, (bg)-> bg.sequence)
+                # Took the last higher id than the current sequence
+                higherId = id if id <= @User.sequence
 
-          sequence = @Story.sequence(@chapter.id, @scene.id, bg.sequence)
-          should_display = (bg.sequence is 0) or (bg.sequence is higherId)
-          if sequence and sequence.hasConditions()
-              should_display = @User.userMeetSequenceConditions sequence
+            sequence = @Story.sequence(@chapter.id, @scene.id, bg.sequence)
+            should_display = (bg.sequence is 0) or (bg.sequence is higherId)
+            if sequence and sequence.hasConditions()
+                should_display = @User.userMeetSequenceConditions sequence
 
-          if @User.isSummary
-             should_display = should_display and @User.lastScene is @scene.id and @chapter.id is @User.lastChapter
-          else
-             should_display = should_display and @User.scene is @scene.id
+            if @User.isSummary
+                should_display = should_display and @User.lastScene is @scene.id and @chapter.id is @User.lastChapter
+            else
+                should_display = should_display and @User.scene is @scene.id
 
-          return should_display
+            return should_display
 
         # Condition to add a cursor on bg image
 
 
         @scope.getArchive = =>
-          do Archive.getArchive
+            do Archive.getArchive
 
         @scope.openArchive = =>
-          do Archive.openLightboxArchives
+            do Archive.openLightboxArchives
 
         @scope.shouldShowArchive = =>
-          is_pointer = false
-          @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-          #console.log(@User.archiveReady)
-          if @sequence.hasArchive() and @sequence.archiveReady
+            is_pointer = false
+            @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
+            #console.log(@User.archiveReady)
+            if @sequence.hasArchive() and @sequence.archiveReady
               is_pointer = true
-          #console.log ("Valeur de shouldShowArchive: "+is_pointer)
-          is_pointer
+            #console.log ("Valeur de shouldShowArchive: "+is_pointer)
+            is_pointer
 
 
 

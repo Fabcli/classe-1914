@@ -9,6 +9,7 @@ class ChapterCtrl
       # True if the given chapter is visible
       @scope.shouldShowChapter = @shouldShowChapter
 
+
       # Returns the class to apply to the Chapter
       @scope.chapterClasses = =>
           "chapter--starting": User.isStartingChapter()
