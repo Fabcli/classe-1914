@@ -1,7 +1,7 @@
 [
     {
         "date": "15 mars 1908",
-        "id": "1",
+        "id": 1,
         "title": "Test archive 1",
         "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vestibulum volutpat mollis",
         "type": "img",
@@ -10,7 +10,7 @@
     },
     {
         "date": "avril 1913",
-        "id": "2",
+        "id": 2,
         "title": "Test archive 2",
         "decription": "Maecenas ullamcorper, nunc non vulputate elementum, risus lectus interdum nulla, hendrerit bibendum erat dolor at felis.",
         "type": "img",
@@ -19,7 +19,7 @@
     },
     {
         "date": "1905",
-        "id": "3",
+        "id": 3,
         "title": "Certif",
         "decription": "Exercice de math tiré du certificat d'étude",
         "type": "",
