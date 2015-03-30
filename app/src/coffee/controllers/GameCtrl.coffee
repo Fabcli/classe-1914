@@ -1,8 +1,22 @@
 class GameCtrl
     @$inject: ['$scope', 'Story', 'User', 'Boot', 'Preloader', 'MainMenu', 'Shot']
     constructor: (@scope, @Story, @User, @Boot, @Preloader, @MainMenu, @Shot) ->
-        @scope.story  = @Story
-        @scope.user  = @User
+        @scope.story        =   @Story
+        @scope.user         =   @User
+        @scope.boot         =   @Boot
+        @scope.preloader    =   @Preloader
+        @scope.mainMenu     =   @MainMenu
+        @scope.shot         =   @Shot
+
+        @fullscreenButton     =   @MainMenu.fullscreenButton
+        @cursors              =   @MainMenu.cursors
+        @spacebar             =   @MainMenu.spacebar
+        @b_key                =   @MainMenu.b_key
+        @z_key                =   @MainMenu.z_key
+        @click                =   @MainMenu.click
+
+
+
 
         game = new Phaser.Game(600, 400, Phaser.AUTO, 'gameCanvas');
 
@@ -14,15 +28,13 @@ class GameCtrl
         game.state.add('Boot', @Boot)
         game.state.add('Preloader', @Preloader)
         game.state.add('MainMenu', @MainMenu)
-        game.state.add('Play', @Shot)
+        game.state.add('Game', @Shot)
 
         # Start the game
         game.state.start('Boot')
 
-        console.log @Boot
-        console.log @Preloader
-        console.log @MainMenu
-        console.log @Shot
+
+
 
 #        console.log "Les indicateurs visible à partir du GameCtrl: "
 #        console.log @User.indicators

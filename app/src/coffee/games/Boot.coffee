@@ -18,11 +18,9 @@ angular.module('classe1914.game').factory 'Boot', [
                 #  Phaser met en pause si on change d'onglet dans le navigateur, on peut le désactiver ici:
                 @stage.disableVisibilityChange = true
                 if @game.device.desktop
-
                     #  Si on a des paramètres spécifiques d'ordinateurs, ils peuvent aller ici
                     @scale.pageAlignHorizontally = true
                 else
-
                     #  Idem pour les paramètres mobiles .
                     #  Dans ce cas, on met " la taille du jeu :
                     #  pas plus bas que 480x260 et ne dépasse pas 1024x768 " .
@@ -33,12 +31,15 @@ angular.module('classe1914.game').factory 'Boot', [
                     @scale.setScreenSize true
                     @scale.refresh()
 
+                console.log "Boot.init() OK"
+
             preload: ->
 
                 #  Ici, nous chargeons les assets nécessaires pour notre Preloader
                 #  (dans ce cas une barre de chargement et son conteneur)
                 @load.image 'preloadBar', $filter('game')(games.preload.bar)
                 @load.image 'preloadBarContainer', $filter('game')(games.preload.barContainer)
+                console.log "Boot.preload() OK"
 
             create: ->
 
@@ -47,5 +48,5 @@ angular.module('classe1914.game').factory 'Boot', [
                 #
                 # Maintenant nous allons commencer le vrai préchargement
                 @state.start 'Preloader'
-                console.log "Boot OK"
+                console.log "Boot.create() OK"
 ]

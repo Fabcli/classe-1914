@@ -38,10 +38,11 @@ angular.module('classe1914.game').factory 'Preloader', [
                 @load.audio('shot', ['medias/games/sounds/img/game_shot/shot.mp3','medias/games/sounds/img/game_shot/shot.ogg']);
                 @load.audio('break_target', ['medias/games/sounds/img/game_shot/ecrase_pot_yaourt.mp3','medias/games/sounds/img/game_shot/ecrase_pot_yaourt.ogg']);
                 #@load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
-                console.log "Preloader : Preload OK"
+
+                #Launch the next function
+                console.log "Preloader.preload() OK"
 
             create: ->
-                console.log "create active in Preloader"
                 #--On arrete de rogner la barre de préchargement
                 #Une fois le chargement terminé, on désactive le rognage car on va commencer à lancer la boucle de mise a jour (update) afin de décoder la musique (s'il y en a)
                 @preloadBar.cropEnabled = false
@@ -49,7 +50,7 @@ angular.module('classe1914.game').factory 'Preloader', [
 
                 #Comme on a pas de musique, on lance le menu principale sans stopper le rognage de la barre de chargement
                 @state.start "MainMenu"
-                console.log "Preloader OK"
+                console.log "Preloader.create() OK"
 
             update: ->
 ]
