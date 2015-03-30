@@ -15,6 +15,8 @@ class GameCtrl
         @z_key                =   @MainMenu.z_key
         @click                =   @MainMenu.click
 
+        #TODO : Inject the Preloader assets !!!
+
 
 
 
