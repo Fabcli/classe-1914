@@ -11,6 +11,8 @@ class CaseCtrl
         console.log "Valeur de @Archive dans CaseCtrl :"
         console.log @Archive
 
+        @scope.toggleCase = @Case.toggleCase
+
 
 angular.module('classe1914.controller').controller("CaseCtrl", MainCtrl)
 # EOF
