@@ -40,9 +40,7 @@ class ChapterCtrl
          return @User.inGame and @chapter.id is @User.chapter
 
 
-
     shouldShowCase: =>
-        console.log @User.case.open
         return @User.inGame and @User.case.open
 
 
