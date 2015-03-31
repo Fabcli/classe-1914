@@ -1,24 +1,15 @@
 class CaseCtrl
-    @$inject: ['$scope', 'User', 'Case']
+    @$inject: ['$scope', 'User', 'Case', 'Archive']
 
-    constructor: (@scope, @User, @Case)->
+    constructor: (@scope, @User, @Case, @Archive)->
         @scope.user     =   @User
         @scope.case     =   @Case
 
-        # Establishes a bound between "src" argument
-        # provided by the case directive and the Controller
-        @archive = @scope.archive = @scope.src
+        console.log "Valeur de @Case dans CaseCtrl :"
+        console.log @Case
 
-        console.log @archive
-
-        console.log @Case.caseData
-        console.log @scope.case.archives
-
-    shouldShowCase: =>
-        true
-
-
-
+        console.log "Valeur de @Archive dans CaseCtrl :"
+        console.log @Archive
 
 
 angular.module('classe1914.controller').controller("CaseCtrl", MainCtrl)
