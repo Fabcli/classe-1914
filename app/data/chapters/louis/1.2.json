@@ -1,5 +1,5 @@
 {
-    "next_scene": "1.1",
+    "next_scene": "2.1",
     "decor": [
         {
             "background": "/medias/chap1/illustrations/c14_wait.png",
@@ -14,8 +14,7 @@
         },
         {
             "type": "narrative",
-            "reset": true,
-            "body": "Clique sur le bouton pour recommencer..."
+            "body": "Clique pour aller au chapitre 2..."
         }
     ]
 }

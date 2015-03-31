@@ -14,16 +14,7 @@
             "body": "/medias/louis/PL1.mp3",
             "case": 54,
             "archive_notification": "Voir les archives",
-            "archive": [
-                {
-                    "src": "/medias/chap1/archives/archive1.jpg",
-                    "cote": "archive1"
-                },
-                {
-                    "src": "/medias/chap1/archives/archive2.jpg",
-                    "cote": "archive2"
-                }
-            ],
+            "archive": [ 1, 2 ],
             "result": {
                 "point": 0
             }
@@ -37,14 +28,9 @@
             "type": "voixoff",
             "character": "Louis",
             "body": "/medias/louis/PL2.mp3",
-            "case": 54,
+            "case": 6,
             "archive_notification": "Voir l'exercice",
-            "archive": [
-                {
-                    "src": "/medias/louis/PL2TER.png",
-                    "cote": "Certificat d'étude"
-                }
-            ],
+            "archive": [ 4 ],
             "result": {
                 "mood": 5,
                 "point": 0

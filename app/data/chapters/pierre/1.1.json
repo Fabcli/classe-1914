@@ -12,7 +12,7 @@
           "type": "voixoff",
           "character": "Louis",
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-          "case": 54,
+          "case": 2,
           "result": {"point": 1000}
       },
       {
@@ -26,12 +26,7 @@
           "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
           "case": 54,
           "archive_notification": "Voir les archives",
-          "archive" : [
-              {
-                  "src": "/medias/chap1/archives/archive1.jpg",
-                  "cote": "archive1"
-              }
-          ],
+          "archive" : 1 ,
           "result": {"mood": 5,"point": 3}
       },
       {
@@ -54,16 +49,7 @@
           "body": "You have to balance, and love booda-hood by your occuring? Our special zen for fear is to respect others compassionately.",
           "result": {"mood": -25,"point": 3},
           "archive_notification": "Voir les archives de fou",
-          "archive" : [
-              {
-                  "src": "/medias/chap1/archives/archive1.jpg",
-                  "cote": "archive1"
-              },
-              {
-                  "src": "/medias/chap1/archives/archive2.jpg",
-                  "cote": "archive2"
-              }
-          ]
+          "archive" : [ 4, 6 ]
       },
       {
           "type": "narrative",
