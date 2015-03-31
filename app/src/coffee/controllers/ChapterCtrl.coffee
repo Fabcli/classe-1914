@@ -1,6 +1,6 @@
 class ChapterCtrl
-    @$inject: ['$scope', 'Story', 'User', '$filter']
-    constructor: (@scope, @Story, @User, @filter) ->
+    @$inject: ['$scope', 'Story', 'User', 'Case', '$filter']
+    constructor: (@scope, @Story, @User, @Case, @filter) ->
         @scope.story  = @Story
         @scope.user  = @User
         # Establishes a bound between "src" argument
@@ -10,6 +10,7 @@ class ChapterCtrl
         @scope.shouldShowChapter = @shouldShowChapter
         # True to view the case
         @scope.shouldShowCase = @shouldShowCase
+        @scope.toggleCase = @Case.toggleCase
 
         # Returns the class to apply to the Chapter
         @scope.chapterClasses = =>
@@ -39,8 +40,13 @@ class ChapterCtrl
          return @User.inGame and @chapter.id is @User.chapter
 
 
+
     shouldShowCase: =>
-          return yes
+        console.log @User.case.open
+        return @User.inGame and @User.case.open
+
+
+
 
 
 angular.module('classe1914.controller').controller("ChapterCtrl", ChapterCtrl)

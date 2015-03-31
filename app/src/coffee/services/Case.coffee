@@ -29,5 +29,7 @@ angular.module('classe1914.service').factory "Case", [
                         deferred.reject('Failed to load case')
                 deferred.promise
 
+            toggleCase: =>
+                User.case.open = !User.case.open
 ]
 #EOF
