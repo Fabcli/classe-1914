@@ -2,15 +2,16 @@ angular.module('classe1914.service').factory "Archive", [
     'Lightbox'
     'Story'
     'User'
+    'Case'
     'Notification'
     '$filter'
-    (Lightbox, Story, User, Notification, $filter)->
+    (Lightbox, Story, User, Case, Notification, $filter)->
 
         new class Archive
             constructor: ->
-                User.archiveReady = no
+                User.chapterArchive = no
 
-            getArchive: () =>
+            getArchivesId: () =>
                 return @archives if @archives?
                 @archives = []
                 @chapter = Story.chapters[0]
@@ -24,12 +25,10 @@ angular.module('classe1914.service').factory "Archive", [
                         if sequence.archive?
                             # Add the archive to archives list
                             @archives.push sequence.archive
-                @getArchivesUrl(@archives)
+                @getChapterArchivesUrl(@archives)
 
-
-
-            getArchivesUrl: (archives) =>
-                @archive_url = []
+            getChapterArchivesId: (archives) =>
+                @archive_id = []
                 angular.forEach archives, (archive)=>
                     angular.forEach archive, (a)=>
                         @archive_url.push $filter('media')(a.src)
