@@ -7,9 +7,10 @@ angular.module("classe1914.service").factory "Progression", [
       'User'
       'Sound'
       'Case'
+      'Archive'
       'Timeout'
       'KeyboardCommands'
-      ($rootScope, $timeout, doors, keys, Story, User, Sound, Case, Timeout, KeyboardCommands)->
+      ($rootScope, $timeout, doors, keys, Story, User, Sound, Case, Archive, Timeout, KeyboardCommands)->
             new class Progression
                   # ──────────────────────────────────────────────────────────────────────────
                   # Public method
@@ -39,6 +40,7 @@ angular.module("classe1914.service").factory "Progression", [
 
                       $rootScope.$watch (=>do User.isStartingChapter), ->
                          do Sound.toggleSequence
+
 
                       $rootScope.$watch (=> User.isGameOver), (new_value, old_value) ->
                           if new_value and (not old_value)
@@ -86,6 +88,7 @@ angular.module("classe1914.service").factory "Progression", [
                           # Record begining date of a chapter
                           do Sound.startScene
                           User.saveChapterChanging true
+
 
                   onKeyPressed: (e)=>
                       inGame = User.inGame
