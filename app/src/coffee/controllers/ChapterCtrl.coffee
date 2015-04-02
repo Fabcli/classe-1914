@@ -1,6 +1,6 @@
 class ChapterCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Case', '$filter']
-    constructor: (@scope, @Story, @User, @Case, @filter) ->
+    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', '$filter']
+    constructor: (@scope, @Story, @User, @Case, @Archive, @filter) ->
         @scope.story  = @Story
         @scope.user  = @User
         # Establishes a bound between "src" argument
@@ -9,7 +9,6 @@ class ChapterCtrl
         # True if the given chapter is visible
         @scope.shouldShowChapter = @shouldShowChapter
         # True to view the case
-        @scope.shouldShowCase = @shouldShowCase
         @scope.toggleCase = @Case.toggleCase
 
         # Returns the class to apply to the Chapter
@@ -33,17 +32,31 @@ class ChapterCtrl
                         @bgs.push media(sequence.body)
             @bgs
 
+        @scope.getArchives = =>
+            #cache chapter archive
+            return @archiveUrl if @archiveUrl?
+            @archivesId = []
+            # Fetch each sequence
+            angular.forEach @chapter.scenes, (scene)=>
+                # First archive if there's in the decor
+                if scene.decor? and scene.decor[0].archive?
+                    angular.forEach scene.decor[0].archive , (a) =>
+                        @archivesId.push a if a not in @archivesId
+                angular.forEach scene.sequence, (sequence)=>
+                    if sequence.archive?
+                        angular.forEach sequence.archive, (a)=>
+                            @archivesId.push a if a not in @archivesId
+            @archiveUrl = Archive.getArchivesUrl (@archivesId)
+            @archiveUrl
+
+        # Load the archives id and case id to preload
+        #Archive.getChapterArchives(@chapter)
+
     shouldShowChapter: =>
         if @User.isSummary
          return @User.lastChapter is @chapter.id
         else
          return @User.inGame and @chapter.id is @User.chapter
-
-
-    shouldShowCase: =>
-        return @User.inGame and @User.case.open
-
-
 
 
 
