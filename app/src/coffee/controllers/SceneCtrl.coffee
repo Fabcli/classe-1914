@@ -1,7 +1,7 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification' ]
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive']
 
-    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification ) ->
+    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive) ->
         @scope.story  = @Story
         @scope.user  = @User
         @scope.sound = @Sound
@@ -76,38 +76,30 @@ class SceneCtrl
             for id in _.map(@bgs, (bg)-> bg.sequence)
                 # Took the last higher id than the current sequence
                 higherId = id if id <= @User.sequence
-
             sequence = @Story.sequence(@chapter.id, @scene.id, bg.sequence)
             should_display = (bg.sequence is 0) or (bg.sequence is higherId)
             if sequence and sequence.hasConditions()
                 should_display = @User.userMeetSequenceConditions sequence
-
             if @User.isSummary
                 should_display = should_display and @User.lastScene is @scene.id and @chapter.id is @User.lastChapter
             else
                 should_display = should_display and @User.scene is @scene.id
-
             return should_display
 
-        # Condition to add a cursor on bg image
-
-
-        @scope.getArchives = =>
-            do Archive.getArchives
-
+        # Open the lightbox with archive
         @scope.openArchive = =>
-            do Archive.openLightboxArchives
+            do Archive.openArchive
 
+        # Condition to add a cursor on bg image
         @scope.shouldShowArchive = =>
             is_pointer = false
             @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-            #console.log(@User.archiveReady)
-            if @sequence.hasArchive() and @sequence.archiveReady
-              is_pointer = true
-            #console.log ("Valeur de shouldShowArchive: "+is_pointer)
+            if @sequence.hasArchive()
+                is_pointer = true
             is_pointer
 
-
+        #Launch the archive in case to preload
+        @Archive.getChapterCase(@chapter)
 
         # Play or pause the soundtrack
         @scope.toggleVoicetrack = @Sound.toggleVoicetrack
@@ -123,6 +115,10 @@ class SceneCtrl
               break if sequenceIdx <= 0 or not sequence? or sequence.hasExit()
               sequenceIdx--
           sequenceIdx
+
+
+
+
 
 angular.module('classe1914.controller').controller("SceneCtrl", SceneCtrl)
 # EOF
