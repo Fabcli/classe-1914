@@ -22,7 +22,7 @@ class ChapterCtrl
             @bgs = @getBackgrounds()
             @archivesUrl = @getArchives()
             @imgs = @bgs.concat @archiveUrl
-            console.log @imgs
+            @imgs
 
 
     shouldShowChapter: =>
