@@ -2,19 +2,21 @@ angular.module('classe1914.service').factory "Case", [
     '$http'
     '$q'
     'constant.api'
+    '$filter'
     'User'
-    ($http, $q, api, User)->
+    ($http, $q, api, $filter, User)->
 
         new class Case
             constructor: ->
                 #Promise when the archives json is loaded
                 @getCase().then(
                     (archives) =>
-                        @archives = archives
+                        @url = @addUrl(archives)
                         User.case.data = yes
                     (msg) =>
                         alert(msg)
                 )
+                console.log @
                 @
 
             getCase : ->
@@ -28,6 +30,14 @@ angular.module('classe1914.service').factory "Case", [
                     .error () =>
                         deferred.reject('Failed to load case')
                 deferred.promise
+
+            addUrl : (archives)->
+                @a = []
+                url = $filter('archives')
+                angular.forEach (archives), (archive) =>
+                    @a.push archive.url=url(archive.name)
+                @a
+
 
             toggleCase: =>
                 User.case.open = !User.case.open

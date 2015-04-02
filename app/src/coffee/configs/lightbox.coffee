@@ -4,7 +4,7 @@ angular.module('classe1914.config').config ['LightboxProvider', 'constant.settin
 
     LightboxProvider.getImageUrl= (image) =>
         #TODO : warning for the future organisation of the medias
-        settings.mediaUrl + "/archives/" +image.name
+        image.url
 
     LightboxProvider.getImageCaption= (image) =>
         image.cote

@@ -14,7 +14,7 @@ $app->configureMode('development', function () use ($app) {
         'cache'                => false,
         // assets
         'static_url'           => "/",
-        'media_url'           => "/medias/",
+        'media_url'           => "http://d1l5szzjxyb39v.cloudfront.net",
         // after this date, switch to the game home page
         'launching_date'       => "2015-01-01T10:00:00"
     ));
