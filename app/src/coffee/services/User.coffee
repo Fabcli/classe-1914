@@ -164,7 +164,6 @@ angular.module("classe1914.service").factory("User", [
                 $http.post("#{api.career}", reached_scene: "1.1", hero: @hero)
                 # Save the token
                 .success (data)=>
-                    console.log "creation du token"
                     # Save the token
                     @token = data.token
                     (@associate @email) if associate
@@ -176,7 +175,6 @@ angular.module("classe1914.service").factory("User", [
                 return no unless @token
                 # Add reached scene parameter
                 if choice?
-                    console.log choice
                     state = choice
                     [chapterIdx, sceneIdx] = choice.scene.split(".")
                     # Get the current sequence to  update the indicators
@@ -184,7 +182,6 @@ angular.module("classe1914.service").factory("User", [
                     # Propagate the choices only if this sequence has options
                     if sequence.options? && sequence.hero?
                         option = sequence.options[choice.choice]
-                        console.log "maj du hero"
                         state.hero = option.hero
                         @restartChapter()
                     else if sequence.options?
