@@ -1,8 +1,10 @@
 <!-- Archive list for pre-loading -->
- <div class="page">
+ <div ng-if="shouldShowCase()" class="page">
     <div ng-repeat="archive in case.archives" class="">
        [[ archive.title ]] / [[ archive.name ]]
     </div>
+     <div> Héros choisi : [[ user.hero ]]</div>
+     <div> Chapitre en cours : Chapitre [[ user.chapter ]]</div>
      <div ng-click="toggleCase()"><a>FERME LA VALISE</a></div>
 </div>
 
