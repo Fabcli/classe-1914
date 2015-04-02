@@ -8,6 +8,7 @@
     </div>
 
     <preload images="getBackgrounds()" object="user" attr="isReady" />
+    <preload images="getArchives()" object="user" attr="isReady" />
 
     <!-- Introduction du chapitre, affiché avec ng-show et 2 conditions true => isStartingChapters() && !isGameOver -->
     <div class="chapter__intro" ng-show="user.isStartingChapter() && !user.isGameOver">
@@ -105,8 +106,7 @@
         </button>
     </div>
 
-    <!-- La valise -->
-    <case ng-if="shouldShowCase()"></case>
+    <case  src="case" chapter="chapter"></case>
 
     <!-- La boucle des scenes -->
     <scene ng-repeat="scene in chapter.scenes" src="scene" chapter="chapter"></scene>
