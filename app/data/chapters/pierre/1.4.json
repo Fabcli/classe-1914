@@ -2,9 +2,9 @@
   "next_scene": null,
   "decor": [
     {
-      "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL1.png",
+      "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL1.png",
       "background_transition": "fade",
-      "soundtrack": "/medias/chap1/soundtrack/test2.mp3"
+      "soundtrack": "/pierre/part1/soundtrack/test2.mp3"
     }
   ],
   "sequence": [
@@ -14,21 +14,21 @@
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-      "archive": 54
+      "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
+      "archive": [ 5 ]
     },
     {
       "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+      "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL2.png",
       "transition": null
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
+      "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
     },
     {
       "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL3.png",
+      "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL3.png",
       "transition": null
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL4.png",
+      "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL4.png",
       "transition": "fade"
     },
     {
@@ -47,12 +47,12 @@
     },
     {
       "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5.png",
+      "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5.png",
       "transition": "fade"
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
+      "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
     },
     {
       "type": "choice",

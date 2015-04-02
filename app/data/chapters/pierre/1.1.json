@@ -2,45 +2,45 @@
   "next_scene": null,
   "decor": [
       {
-          "background": "/medias/chap1/illustrations/c14_wait.png",
+          "background": "/pierre/part1/illustrations/c14_wait.png",
           "background_transition": "fade",
-          "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+          "soundtrack": "/pierre/part1/soundtrack/test.mp3"
       }
   ],
   "sequence": [
       {
           "type": "voixoff",
           "character": "Louis",
-          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-          "case": 2,
+          "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
+          "case": [ 2 ],
           "result": {"point": 1000}
       },
       {
           "type": "new_background",
-          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+          "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL2.png",
           "transition": null
       },
       {
           "type": "voixoff",
           "character": "Eugenie",
-          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
+          "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL2.mp3",
           "case": 54,
           "archive_notification": "Voir les archives",
-          "archive" : 1 ,
+          "archive" : [ 1 ] ,
           "result": {"mood": 5,"point": 3}
       },
       {
           "type": "new_background",
-          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
+          "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL2.png",
           "transition": null
       },
       {
           "type": "voixoff",
-          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
+          "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
       },
       {
           "type": "new_background",
-          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL3.png",
+          "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL3.png",
           "transition": null
       },
       {
@@ -57,7 +57,7 @@
       },
       {
           "type": "new_background",
-          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL4.png",
+          "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL4.png",
           "transition": "fade"
       },
       {
@@ -67,7 +67,7 @@
       },
       {
           "type": "new_background",
-          "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5.png",
+          "body": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5.png",
           "transition": "fade",
           "result":
             {
@@ -78,7 +78,7 @@
       },
       {
           "type": "voixoff",
-          "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
+          "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
       },
       {
         "type": "choice",

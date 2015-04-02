@@ -30,7 +30,7 @@
             "body": "/louis/PL2.mp3",
             "case": [ 5 ],
             "archive_notification": "Voir l'exercice",
-            "archive": [ 4 ],
+            "archive": [ 2 ],
             "result": {
                 "mood": 5,
                 "point": 0

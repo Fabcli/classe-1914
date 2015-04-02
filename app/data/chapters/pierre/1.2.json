@@ -2,9 +2,9 @@
   "next_scene": "1.4",
   "decor": [
     {
-      "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
+      "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
       "background_transition": null,
-      "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+      "soundtrack": "/pierre/part1/soundtrack/test.mp3"
     }
   ],
   "sequence": [
@@ -12,16 +12,11 @@
       "type": "narrative",
       "body": "Nous sommes à la scene 1.2",
       "archive_notification": "Clique pour les archives",
-      "archive" : [
-        {
-          "src": "/medias/chap1/archives/archive1.jpg",
-          "cote": "archive1"
-        }
-      ]
+      "archive" : [ 1 ]
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5-2.mp3"
+      "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL5-2.mp3"
     }
   ]
 }

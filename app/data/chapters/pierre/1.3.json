@@ -2,9 +2,9 @@
   "next_scene": "1.4",
   "decor": [
     {
-      "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
+      "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
       "background_transition": null,
-      "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+      "soundtrack": "/pierre/part1/soundtrack/test.mp3"
     }
   ],
   "sequence": [
@@ -14,7 +14,7 @@
     },
     {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/test_nom.mp3"
+      "body": "/pierre/part1/voixoff/test_nom.mp3"
     }
   ]
 }
