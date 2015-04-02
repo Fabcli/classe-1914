@@ -53,6 +53,13 @@ angular.module('classe1914.service').factory "Archive", [
 #                    @chapterCase
 #                #@getChapterArchivesUrl(@archives)
 
+            getArchives: (Ids) =>
+                @a = []
+                archives = Case.archives
+                angular.forEach Ids, (id) =>
+                    @a.push archive for archive in archives when archive.id is id
+                @a
+
             getArchivesUrl: (Ids) =>
                 @archiveUrl = []
                 archives = Case.archives
@@ -92,6 +99,6 @@ angular.module('classe1914.service').factory "Archive", [
             openLightboxArchives: () =>
                 @display_archive = @shouldDisplayArchive()
                 if @display_archive is true
-                    @archives = @sequence.archive
+                    @archives = @getArchives(@sequence.archive)
                     Lightbox.openModal(@archives, 0)
 ]
