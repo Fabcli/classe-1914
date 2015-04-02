@@ -99,6 +99,7 @@ angular.module("classe1914.service").factory "Story", [
                   else
                       $http.get(api.intro).success (chapters)=>
                           @chapters = @wrapChapters chapters
+
               return @
 
           wrapSequence: (sequence)=>
