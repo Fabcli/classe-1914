@@ -10,8 +10,14 @@ angular.module('classe1914.service').factory "Archive", [
         new class Archive
             constructor: ->
 
+            # Load an array with the archives_id to unlocked in the current chapter
+            # In order to preload the images
+            # The chapter must be send in argument
             getChapterCase: (chapter) =>
+                # For the moment, there's no case to unlocked during the introduction
                 if User.hero isnt null
+                    # Create un  User parameter with the archive in case during the chapter
+                    # TODO : checked if it's necessary
                     @chapterCase = User.case.thisChapter = []
                     angular.forEach chapter.scenes, (scene)=>
                         # First archive or case to unblocked if there's one in the decor
@@ -21,38 +27,13 @@ angular.module('classe1914.service').factory "Archive", [
                         # Look into each scene's sequence to find the new archive
                         angular.forEach scene.sequence, (sequence)=>
                             if sequence.case?
-
                                 angular.forEach sequence.case, (c)=>
                                     @chapterCase.push c if c not in @chapterCase
                     console.log "VALEUR DES ARCHIVES A DEBLOQUER dans le valise"
                     console.log @chapterCase
                     @chapterCase
 
-#            getChapterArchives: (chapter) =>
-#                if User.hero isnt null
-#                    @chapterArchives = User.chapterArchives = []
-#                    @chapterCase = User.case.thisChapter = []
-#                    angular.forEach chapter.scenes, (scene)=>
-#                        # First archive or case to unblocked if there's one in the decor
-#                        if scene.decor? and scene.decor[0].archive? or scene.decor[0].case?
-#                                angular.forEach scene.decor[0].archive , (a) =>
-#                                    @chapterArchives.push a if a not in @chapterArchives
-#                                angular.forEach scene.decor[0].case , (c) =>
-#                                    @chapterCase.push c if c not in @chapterCase
-#                            # Look into each scene's sequence to find the new archive
-#                        angular.forEach scene.sequence, (sequence)=>
-#                            if sequence.archive? or sequence.case?
-#                                    angular.forEach sequence.archive, (a)=>
-#                                        @chapterArchives.push a if a not in @chapterArchives
-#                                    angular.forEach sequence.case, (c)=>
-#                                        @chapterCase.push c if c not in @chapterCase
-#                    console.log "VALEUR DES ARCHIVES A DEBLOQUER"
-#                    console.log "archive: "+@chapterArchives
-#                    console.log "case: "+@chapterCase
-#                    @chapterArchives
-#                    @chapterCase
-#                #@getChapterArchivesUrl(@archives)
-
+            # Get all the archives' params filter by id (with an id's array)
             getArchives: (Ids) =>
                 @a = []
                 archives = Case.archives
@@ -60,6 +41,7 @@ angular.module('classe1914.service').factory "Archive", [
                     @a.push archive for archive in archives when archive.id is id
                 @a
 
+            # Get the url of images filter by id (with an id's array)
             getArchivesUrl: (Ids) =>
                 @archiveUrl = []
                 archives = Case.archives
@@ -71,7 +53,7 @@ angular.module('classe1914.service').factory "Archive", [
                 @archiveUrl.push $filter('archives')(name) if $filter('archives')(name) not in @archiveUrl
 
 
-            # True if we the actual sequence have archives to show
+            # True if the actual sequence have archives to show
             shouldDisplayArchive: () =>
                 @display_archive = no
                 @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
@@ -82,6 +64,7 @@ angular.module('classe1914.service').factory "Archive", [
                 @display_archive
 
             # Display the arrow nav in the archive lightbox
+            # if there more than one archive to show
             shouldShowArchiveNav: (archives) =>
                 Lightbox.show_nav = no
                 if archives.length > 1
@@ -95,10 +78,13 @@ angular.module('classe1914.service').factory "Archive", [
                 if @display_archive is true
                     Notification.primary(@notification)
 
-            # Open the lightbox for archives type
-            openLightboxArchives: () =>
+            # Open the lightbox for archives
+            openArchive: () =>
                 @display_archive = @shouldDisplayArchive()
                 if @display_archive is true
                     @archives = @getArchives(@sequence.archive)
                     Lightbox.openModal(@archives, 0)
+
+            unlockArchiveInCase: () =>
+                console.log "archive debloqué"
 ]
