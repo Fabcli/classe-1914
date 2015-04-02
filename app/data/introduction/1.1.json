@@ -2,9 +2,9 @@
     "next_scene": null,
     "decor": [
         {
-            "background": "/medias/chap1/illustrations/c14_wait.png",
+            "background": "/chap1/illustrations/c14_wait.png",
             "background_transition": "fade",
-            "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+            "soundtrack": "/chap1/soundtrack/test.mp3"
         }
     ],
     "sequence": [

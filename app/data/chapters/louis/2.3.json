@@ -2,9 +2,9 @@
     "next_scene": "1.1",
     "decor": [
         {
-            "background": "/medias/chap1/illustrations/c14_wait.png",
+            "background": "/chap1/illustrations/c14_wait.png",
             "background_transition": "fade",
-            "soundtrack": "/medias/louis/soundtrack.mp3"
+            "soundtrack": "/louis/soundtrack.mp3"
         }
     ],
     "sequence": [

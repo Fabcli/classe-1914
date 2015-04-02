@@ -2,9 +2,9 @@
     "next_scene": null,
     "decor": [
         {
-            "background": "/medias/louis/PL1.png",
+            "background": "/louis/PL1.png",
             "background_transition": "fade",
-            "soundtrack": "/medias/louis/soundtrack.mp3"
+            "soundtrack": "/louis/soundtrack.mp3"
         }
     ],
     "sequence": [
@@ -21,13 +21,13 @@
         },
         {
             "type": "new_background",
-            "body": "/medias/louis/PL2.png",
+            "body": "/louis/PL2.png",
             "transition": null
         },
         {
             "type": "voixoff",
             "character": "Louis",
-            "body": "/medias/louis/PL2.mp3",
+            "body": "/louis/PL2.mp3",
             "case": [ 5 ],
             "archive_notification": "Voir l'exercice",
             "archive": [ 3 ],
@@ -38,7 +38,7 @@
         },
         {
             "type": "new_background",
-            "body": "/medias/louis/PL3.png",
+            "body": "/louis/PL3.png",
             "transition": null
         },
         {
