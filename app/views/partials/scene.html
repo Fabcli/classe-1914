@@ -8,9 +8,6 @@
          class="scene__sequence scene__sequence--[[sequence.type]]"
          ng-show="shouldShowSequence($index)">
 
-        <!-- Preload archives img -->
-        <!--<preload images="getArchive()" object="sequence" attr="chapterArchive" />-->
-
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">
             <div class="scene__sequence--[[sequence.type]]__body">
@@ -87,7 +84,7 @@
         </div>
 
         <!-- Archive, a the top right corner of the screen with a lightbox -->
-        <div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchives()">
+        <div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchive()">
             <div>[[ sequence.archive_notification ]]</div>
         </div>
 
