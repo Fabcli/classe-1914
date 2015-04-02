@@ -1,9 +1,10 @@
 class MainCtrl
-  @$inject: ['$scope', 'Progression', 'Story', 'User', 'Sound', 'Archive']
+  @$inject: ['$scope', 'Progression', 'Story', 'Case', 'User', 'Sound', 'Archive']
 
-  constructor: (@scope, @Progression, @Story, @User, @Sound)->
+  constructor: (@scope, @Progression, @Story, @Case, @User, @Sound)->
       @scope.user       =   @User
       @scope.story      =   @Story
+      @scope.case       =   @Case
       @scope.sound      =   @Sound
 
 
