@@ -7,8 +7,7 @@
         <p class="chapter__spinner__label">Chargement en cours...</p>
     </div>
 
-    <preload images="getBackgrounds()" object="user" attr="isReady" />
-    <preload images="getArchives()" object="user" attr="isReady" />
+    <preload images="getImagesToPreload()"  object="user" attr="isReady" />
 
     <!-- Introduction du chapitre, affiché avec ng-show et 2 conditions true => isStartingChapters() && !isGameOver -->
     <div class="chapter__intro" ng-show="user.isStartingChapter() && !user.isGameOver">
