@@ -12,7 +12,7 @@
             "type": "narrative",
             "character": "Louis",
             "body": "tu es au chapitre 2",
-            "case": 5,
+            "case": [ 5 ],
             "archive_notification": "Voir les archives",
             "archive": [ 1, 2 ],
             "result": {
@@ -28,7 +28,7 @@
             "type": "voixoff",
             "character": "Louis",
             "body": "/medias/louis/PL2.mp3",
-            "case": 54,
+            "case": [ 5 ],
             "archive_notification": "Voir l'exercice",
             "archive": [ 3 ],
             "result": {
