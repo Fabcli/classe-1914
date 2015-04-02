@@ -47,7 +47,7 @@ angular.module("classe1914.service").factory("User", [
                 # Scenes the user passed
                 @scenes   = master.scenes or []
                 #Case unblocked in past or reset case
-                @case   =   master.case or initalCase
+                @case   =   master.case or initalCase.case
                 # Autoplay value
                 @autoplay = if master.autoplay? then master.autoplay else false
                 # Sound control
@@ -66,7 +66,6 @@ angular.module("classe1914.service").factory("User", [
                 @indicators =
                     luck     : UserIndicators.luck.meta.start
                     health   : UserIndicators.health.meta.start
-                    mood     : UserIndicators.mood.meta.start
                     mood     : UserIndicators.mood.meta.start
                     point    : UserIndicators.point.meta.start
                 return @
