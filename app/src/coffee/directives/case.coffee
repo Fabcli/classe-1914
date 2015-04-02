@@ -5,5 +5,6 @@ angular.module('classe1914.directive').directive "case", ->
     controller: CaseCtrl
     scope:
         src: "="
+        chapter: "="
 
 #EOF
