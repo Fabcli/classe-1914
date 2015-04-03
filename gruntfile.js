@@ -170,7 +170,7 @@ module.exports = function(grunt) {
                 files: ['**/*.less','**/*.twig'],
                 tasks: ['less'],
                 options: {
-                    livereload: false
+                    livereload: true
                 }
             },
             css: {

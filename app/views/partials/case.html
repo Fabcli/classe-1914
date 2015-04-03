@@ -1,28 +1,41 @@
 <!-- Archive list for pre-loading -->
- <div ng-if="shouldShowCase()" class="case">
-    <hr>
-     <h3>Liste des archives</h3>
-         <ul>
-             <li ng-repeat="archive in case.archives" ng-class="{ 'case__TEST': shouldShowUnlocked(archive) }">
-                 [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
-             </li>
-         </ul>
-     <hr>
-     <h3>Liste des archives débloquées</h3>
-     <ul>
-         <li ng-repeat="archive in case.archives | filter:shouldShowUnlocked" ng-class="">
-             [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
-         </li>
-     </ul>
-     <hr>
-     <h3>Infos User</h3>
-     <ul>
-         <li> Héros choisi : [[ user.hero ]]</li>
-         <li> Chapitre en cours : Chapitre [[ user.chapter ]]</li>
-         <li> Liste des archives débloquées : [[ user.case.unlocked ]]</li>
-     </ul>
+<div ng-if="shouldShowCase()" class="case">
+    <div class="case__content">
+        <hr>
+        <h3>Liste des archives débloquées</h3>
+        <ul>
+            <li ng-repeat="archive in case.archives | filter:shouldShowUnlocked" ng-click="toggleStar(archive.id)">
+                [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
+            </li>
+        </ul>
+        <hr>
+        <h3>Liste des archives</h3>
+        <ul>
 
-     <hr>
-     <div ng-click="toggleCase()"><a>FERME LA VALISE</a></div>
+            <li ng-repeat="archive in case.archives" ng-class="{ 'case__TEST': shouldShowUnlocked(archive) }" ng-click="toggleStar(archive.id)">
+                [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
+            </li>
+        </ul>
+        <hr>
+
+        <h3>Liste des archives favorites</h3>
+        <ul>
+            <li ng-repeat="archive in case.archives | filter:shouldShowStarred" ng-click="toggleStar(archive.id)">
+                [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
+            </li>
+        </ul>
+
+        <!--<hr>-->
+        <!--<h3>Infos User</h3>-->
+        <!--<ul>-->
+        <!--<li> Héros choisi : [[ user.hero ]]</li>-->
+        <!--<li> Chapitre en cours : Chapitre [[ user.chapter ]]</li>-->
+        <!--<li> Liste des archives débloquées : [[ user.case.unlocked ]]</li>-->
+        <!--<li> Liste des archives en favoris : [[ user.case.starred ]]</li>-->
+        <!--</ul>-->
+
+        <hr>
+        <div ng-click="toggleCase()"><a>FERME LA VALISE</a></div>
+    </div>
 </div>
 

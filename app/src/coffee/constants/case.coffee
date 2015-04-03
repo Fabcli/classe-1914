@@ -7,11 +7,12 @@ angular.module('classe1914.constant').constant 'constant.case',
         open        :   no
         # The archives id open in the case on a new game
         unlocked    :   []
+        starred     :   []
         thisChapter :   []
 
     notification :
         # The default message for new archive unlocked in case
-        archive :   "Nouvelle archive !"
-        case    :   "Archive débloquée !"
+        archive :   "Archive dans le jeu !"
+        case    :   "Nouvelle Archive débloquée dans la valise!"
 
 
