@@ -1,3 +1,5 @@
+<preload images="getChapterCase()" object="user.case" attr="ready"></preload>
+
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
     <!-- This is the main illustration -->
@@ -48,7 +50,7 @@
                         </span>
                     </div>
                     <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
-                        <img ng-src="[[sequence.getAvatarSrc()]]" />
+                        <img ng-src="[[ sequence.getAvatarSrc() ]]" />
                     </div>
                 </div>
 
@@ -84,9 +86,9 @@
         </div>
 
         <!-- Archive, a the top right corner of the screen with a lightbox -->
-        <div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchive()">
-            <div>[[ sequence.archive_notification ]]</div>
-        </div>
+        <!--<div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchive()">-->
+            <!--<div>[[ sequence.archive_notification ]]</div>-->
+        <!--</div>-->
 
         <!-- Notification, a the top right corner of the screen -->
         <div ng-if="sequence.isNotification()" class="scene__sequence--notification__wrapper">
