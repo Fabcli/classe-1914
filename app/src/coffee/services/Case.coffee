@@ -16,7 +16,6 @@ angular.module('classe1914.service').factory "Case", [
                     (msg) =>
                         alert(msg)
                 )
-                console.log @
                 @
 
             getCase : ->
