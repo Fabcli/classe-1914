@@ -4,7 +4,8 @@
         {
             "background": "/louis/PL1.png",
             "background_transition": "fade",
-            "soundtrack": "/louis/soundtrack.mp3"
+            "soundtrack": "/louis/soundtrack.mp3",
+            "case":[ 6 ]
         }
     ],
     "sequence": [

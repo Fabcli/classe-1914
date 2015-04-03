@@ -2,7 +2,7 @@
     "next_scene": "1.1",
     "decor": [
         {
-            "background": "/chap1/illustrations/c14_wait.png",
+            "background": "/pierre/part1/illustrations/c14_wait.png",
             "background_transition": "fade",
             "soundtrack": "/louis/soundtrack.mp3"
         }
