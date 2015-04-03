@@ -99,7 +99,8 @@ class SceneCtrl
             is_pointer
 
         #Launch the archive in case to preload
-        @Archive.getChapterCase(@chapter)
+        @scope.getChapterCase = =>
+            return @Archive.getChapterCase (@chapter)
 
         # Play or pause the soundtrack
         @scope.toggleVoicetrack = @Sound.toggleVoicetrack
