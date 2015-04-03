@@ -13,7 +13,7 @@
             "type": "voixoff",
             "character": "Louis",
             "body": "/louis/PL1.mp3",
-            "case": [ 6 ],
+            "case": [ 3 ],
             "archive_notification": "Voir les archives",
             "archive": [ 1, 2 ],
             "result": {
@@ -30,7 +30,7 @@
             "character": "Louis",
             "body": "/louis/PL2.mp3",
             "archive_notification": "Voir l'exercice",
-            "archive": [ 3 ],
+            "archive": [ 4 ],
             "result": {
                 "mood": 5,
                 "point": 0
