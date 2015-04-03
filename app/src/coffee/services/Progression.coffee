@@ -6,11 +6,10 @@ angular.module("classe1914.service").factory "Progression", [
       'Story'
       'User'
       'Sound'
-      'Case'
       'Archive'
       'Timeout'
       'KeyboardCommands'
-      ($rootScope, $timeout, doors, keys, Story, User, Sound, Case, Archive, Timeout, KeyboardCommands)->
+      ($rootScope, $timeout, doors, keys, Story, User, Sound, Archive, Timeout, KeyboardCommands)->
             new class Progression
                   # ──────────────────────────────────────────────────────────────────────────
                   # Public method
@@ -31,15 +30,18 @@ angular.module("classe1914.service").factory "Progression", [
                       $rootScope.$watch (=> [Story.chapters, User.scene] ), (->
                           if User.inGame
                              do Sound.startScene
+                             do Archive.startScene
                       ), yes
                       # Sequence is changing
                       $rootScope.$watch (=>(User.scene+User.sequence)), ->
                           if User.inGame
                               do Timeout.toggleSequence
                               do Sound.toggleSequence
+                              do Archive.toggleSequence
 
                       $rootScope.$watch (=>do User.isStartingChapter), ->
                          do Sound.toggleSequence
+                         do Archive.toggleSequence
 
 
                       $rootScope.$watch (=> User.isGameOver), (new_value, old_value) ->

@@ -3,9 +3,10 @@ angular.module('classe1914.service').factory "Archive", [
     'User'
     'Story'
     'Case'
+    'constant.case'
     'Notification'
     '$filter'
-    (Lightbox, User, Story, Case, Notification, $filter)->
+    (Lightbox, User, Story, Case, initalCase, Notification, $filter)->
 
         new class Archive
             constructor: ->
@@ -29,9 +30,8 @@ angular.module('classe1914.service').factory "Archive", [
                             if sequence.case?
                                 angular.forEach sequence.case, (c)=>
                                     @chapterCase.push c if c not in @chapterCase
-                    console.log "VALEUR DES ARCHIVES A DEBLOQUER dans le valise"
-                    console.log @chapterCase
-                    @chapterCase
+                    @chapterCaseUrl = @getArchivesUrl(@chapterCase)
+                    @chapterCaseUrl
 
             # Get all the archives' params filter by id (with an id's array)
             getArchives: (Ids) =>
@@ -46,11 +46,11 @@ angular.module('classe1914.service').factory "Archive", [
                 @archiveUrl = []
                 archives = Case.archives
                 angular.forEach Ids, (id) =>
-                     @pushArchiveUrl archive.name for archive in archives when archive.id is id
+                     @pushArchiveUrl archive.url for archive in archives when archive.id is id
                 @archiveUrl
 
-            pushArchiveUrl: (name) ->
-                @archiveUrl.push $filter('archives')(name) if $filter('archives')(name) not in @archiveUrl
+            pushArchiveUrl: (url) ->
+                @archiveUrl.push (url) if (url) not in @archiveUrl
 
 
             # True if the actual sequence have archives to show
@@ -71,12 +71,10 @@ angular.module('classe1914.service').factory "Archive", [
                     Lightbox.show_nav = yes
                 Lightbox.show_nav
 
-            archiveNotification: ()=>
-                @notification = @sequence.archive_button
-                @display_archive = @shouldDisplayArchive()
-                @notification = @sequence.archive_button
-                if @display_archive is true
-                    Notification.primary(@notification)
+#            archiveNotification: (notif)=>
+#                @display_archive = @shouldDisplayArchive()
+#                if @display_archive is true
+#                    Notification.primary(notif)
 
             # Open the lightbox for archives
             openArchive: () =>
@@ -86,6 +84,38 @@ angular.module('classe1914.service').factory "Archive", [
                     @archives = @getArchives(@sequence.archive)
                     Lightbox.openModal(@archives, 0)
 
-            unlockArchiveInCase: () =>
-                console.log "archive debloqué"
+            startScene: (chapter=User.chapter, scene=User.scene) =>
+                # Start a new scene
+                if scene? and Story.chapters.length and Story.scene(chapter, scene)?
+                    # Get scene object
+                    scene  = Story.scene(chapter, scene)
+                    archives = scene.decor[0].archive
+                    caseArchives =  scene.decor[0].case
+                    notification = scene.decor[0].archive_button or initalCase.notification.archive
+                    if scene.decor[0].archive?
+                        @unlockArchiveInCase(archives, notification, "archiveType")
+                    else if scene.decor[0].case?
+                        @unlockArchiveInCase(caseArchives,initalCase.notification.case, "caseType")
+
+            toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence) =>
+                if sequenceIdx?
+                    # Get sequence object
+                    sequence = Story.sequence(chapterIdx, sceneIdx, sequenceIdx)
+                    if sequence? and sequence.archive?
+                        archives = sequence.archive
+                        notif = sequence.archive_notification or notif = initalCase.notification.archive
+                        @unlockArchiveInCase(archives,notif,"archiveType")
+                    if sequence? and sequence.case?
+                        caseArchives = sequence.case
+                        notif = initalCase.notification.case
+                        @unlockArchiveInCase(caseArchives,notif,"caseType")
+
+            unlockArchiveInCase: (array, notif, type) =>
+                unlockedArchives = User.case.unlocked
+                angular.forEach array, (a) =>
+                    unlockedArchives.push a if a not in unlockedArchives
+                if type is "archiveType"
+                    Notification.primary(notif)
+                else if type is "caseType"
+                    Notification.success(notif)
 ]
