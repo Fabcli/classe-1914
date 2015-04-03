@@ -1,18 +1,19 @@
 <!-- Archive list for pre-loading -->
- <div ng-if="shouldShowCase()" class="page">
+ <div ng-if="shouldShowCase()" class="case">
     <hr>
      <h3>Liste des archives</h3>
          <ul>
-             <li ng-repeat="archive in case.archives" class="">
-                 [[ archive.title | uppercase ]] / [[ archive.url ]]
+             <li ng-repeat="archive in case.archives" ng-class="{ 'case__TEST': shouldShowUnlocked(archive) }">
+                 [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
              </li>
          </ul>
-     <!--<hr>
+     <hr>
      <h3>Liste des archives débloquées</h3>
      <ul>
-         <li ng-repeat="archive in case.archives | filter:unblockedArchives()" class="">
+         <li ng-repeat="archive in case.archives | filter:shouldShowUnlocked" ng-class="">
+             [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
          </li>
-     </ul>-->
+     </ul>
      <hr>
      <h3>Infos User</h3>
      <ul>
@@ -22,6 +23,6 @@
      </ul>
 
      <hr>
-     <div ng-click="toggleCase()" ><a>FERME LA VALISE</a></div>
+     <div ng-click="toggleCase()"><a>FERME LA VALISE</a></div>
 </div>
 

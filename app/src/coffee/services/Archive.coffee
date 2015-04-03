@@ -118,4 +118,7 @@ angular.module('classe1914.service').factory "Archive", [
                     Notification.primary(notif)
                 else if type is "caseType"
                     Notification.success(notif)
+
+
+
 ]

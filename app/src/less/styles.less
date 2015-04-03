@@ -12,6 +12,7 @@
 @game-over-zindex     : @chapter-zindex     + 1000;
 @game-done-zindex     : @chapter-zindex     + 1000;
 @static-page-zindex   : @game-done-zindex   + 1000;
+@case-zindex          : @static-page-zindex - 100;
 @nav-zindex           : @static-page-zindex + 1000;
 @metanav-zindex       : @nav-zindex         + 1000;
 @cookie-cnil-zindex   : @metanav-zindex     + 1000;
@@ -39,6 +40,7 @@
     @import 'btn.less';
     @import 'chapter.cmd.less';
     @import 'chapter.less';
+    @import 'case.less';
     @import 'content.less';
     @import 'debug-toolbar.less';
     @import 'game-done.less';

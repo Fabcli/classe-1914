@@ -12,11 +12,24 @@ class CaseCtrl
 
         #To display the case
         @scope.shouldShowCase = @shouldShowCase
+
         # To close the case when it's open
         @scope.toggleCase = @Case.toggleCase
 
+        # To select the unlocked archives
+        @scope.shouldShowUnlocked = (archive) =>
+            is_unlocked = no
+            unlockedIds = @User.case.unlocked
+            if archive.id in unlockedIds
+                is_unlocked = yes
+            is_unlocked
+
     shouldShowCase: =>
         return @User.inGame and @User.case.open
+
+
+
+
 
 
 angular.module('classe1914.controller').controller("CaseCtrl", MainCtrl)
