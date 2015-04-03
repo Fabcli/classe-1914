@@ -98,7 +98,7 @@ angular.module('classe1914.service').factory "Archive", [
                         @unlockArchiveInCase(caseArchives,initalCase.notification.case, "caseType")
 
             toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence) =>
-                if sequenceIdx?
+                if sequenceIdx? and User.isReady
                     # Get sequence object
                     sequence = Story.sequence(chapterIdx, sceneIdx, sequenceIdx)
                     if sequence? and sequence.archive?
