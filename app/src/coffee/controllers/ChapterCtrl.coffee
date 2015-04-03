@@ -11,6 +11,7 @@ class ChapterCtrl
         # True to view the case
         @scope.toggleCase = @Case.toggleCase
 
+
         # Returns the class to apply to the Chapter
         @scope.chapterClasses = =>
           "chapter--starting": User.isStartingChapter()
