@@ -29,7 +29,6 @@
             "type": "voixoff",
             "character": "Louis",
             "body": "/louis/PL2.mp3",
-            "case": [ 5 ],
             "archive_notification": "Voir l'exercice",
             "archive": [ 3 ],
             "result": {
@@ -46,6 +45,7 @@
             "type": "choice",
             "body": "Quelle est la longueur de cette pièce d'étoffe ?",
             "default_option": null,
+            "case": [ 3, 4, 5 ],
             "delay": null,
             "options": [
                 {
