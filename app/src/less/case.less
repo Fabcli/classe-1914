@@ -1,3 +1,5 @@
+@ipad-landscape: ~"only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)";
+
 .case {
     z-index: @case-zindex;
     position:absolute;
@@ -12,40 +14,61 @@
         color: red;
     }
 
-    .scroll-me {
-        //max-height: 600px;
-    }
-
     .fade > .show(@chapter-starting-duration-2);
 
-    &__content {
+    &__container {
+        // For bootstrap grid
+        .container;
+
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
         overflow-y: auto;
         background-color: @brand-primary;
-        position:absolute;
-        top:80px;
-        left:50%;
-        .translate(-50%, 0);
-        width:1300px;
-        height:600px;
-        padding:40px 0;
-        text-align:justify;
-        z-index: @case-zindex;
-        color:lighter(@text-color, 10);
+        width: 84%!important;
+        margin: 6% 8% 10% 8%!important;
 
-        h1 {
-            position:absolute;
-            top:0;
-            left:0;
-            right:0;
-            font-size:200%;
-            height:auto;
+        @media (max-width: @screen-lg-min) and (min-width: @screen-md-min) {
+            width: 92%!important;
+            margin: 3% 4% 5% 4%!important;
         }
 
-        &__close {
-            position:absolute;
-            right:0;
-            top:0;
+        @media (max-width: @screen-md-min), @ipad-landscape {
+            width: 98%!important;
+            margin: 1%!important;
         }
+
+        // The main content
+        &__content {
+            // For bootstrap grid
+            .row;
+
+            &__my-case  {
+
+            }
+        }
+
+        // The tabs menu
+        &__tabs  {
+
+        }
+
+        // The button to close the case
+        &__my-case  {
+            // For bootstrap grid
+            //.col-lg-14;
+
+
+            display: block;
+            cursor: pointer;
+            height: 20px;
+            background-color: green;
+
+
+        }
+
     }
 
 }
