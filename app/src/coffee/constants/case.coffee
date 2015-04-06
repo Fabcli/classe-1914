@@ -8,6 +8,7 @@ angular.module('classe1914.constant').constant 'constant.case',
         # The archives id open in the case on a new game
         unlocked    :   []
         starred     :   []
+        viewed      :   []
         thisChapter :   []
         # The choice for the menu
         menu        :   "all"

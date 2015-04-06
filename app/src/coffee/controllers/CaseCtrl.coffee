@@ -9,6 +9,7 @@ class CaseCtrl
         @menu = @User.case.menu
         @unlockedIds = @User.case.unlocked
         @starredIds  = @User.case.starred
+        @viewedIds   = @User.case.viewed
 
 
         # Establishes a bound between "src" argument
@@ -22,16 +23,21 @@ class CaseCtrl
         @scope.toggleCase = @Case.toggleCase
 
         # to attribute class in a box
-        @scope.archiveClass = (id) =>
+        @scope.archiveClass = (id ) =>
             'unlocked'  : id in @unlockedIds
             'starred'   : id in @starredIds
             'locked'    : id not in @unlockedIds
+            'unviewed'  : id not in @viewedIds
 
         # To show active the menu
         @scope.shouldShowBox = (id) =>
             return true if id in @unlockedIds and @menu is 'unlocked'
             return true if id in @starredIds and @menu is 'starred'
             return true if @menu is 'all'
+
+        @scope.shouldShowBoxContent = (id) =>
+            return true if id in @unlockedIds
+
 
         @scope.toggleStar = (id)  =>
             if id in @starredIds

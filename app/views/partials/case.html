@@ -7,17 +7,21 @@
 
         <div class="case__container__content" >
 
-            <div class="case__container__content__archives">
-
                 <div class="case__container__content__box col-md-2" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)" ng-click="toggleStar(archive.id)">
 
-                    <div class="case__container__content__box__archive" ng-style="{'background-image':'url([[ archive.url ]])'}" ng-class="archiveClass(archive.id)">
-                        <a href="[[ archive.url ]]">[[ archive.title | uppercase ]]</a> <br /> ID : [[ archive.id ]]
+                    <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)" ng-style="{'background-image' : 'url([[ archive.url ]])' }">
+
+
+                        <div class="case__container__content__box__archive__block">
+                            <div class="case__container__content__box__archive__block__title">[[ archive.title | uppercase ]]</div>
+                            <div class="case__container__content__box__archive__block__cote">COTE : [[ archive.cote ]]</div>
+                            <div class="case__container__content__box__archive__block__url"><a href="[[ archive.url ]]" alt="[[ archive.url ]]">PERMALIEN</a></div>
+                            <div class="case__container__content__box__archive__block__excerpt">[[ archive.description | excerpt:true:55 ]]</div>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
 
         </div><!-- end class="case__container__content" -->
 
