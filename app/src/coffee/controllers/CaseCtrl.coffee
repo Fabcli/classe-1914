@@ -6,6 +6,11 @@ class CaseCtrl
         @scope.case     =   @Case
         @scope.archive  =   @Archive
 
+        @menu = @User.case.menu
+        @unlockedIds = @User.case.unlocked
+        @starredIds  = @User.case.starred
+
+
         # Establishes a bound between "src" argument
         # provided by the chapter directive and the Controller
         @chapter        =   @scope.chapter
@@ -16,35 +21,30 @@ class CaseCtrl
         # To close the case when it's open
         @scope.toggleCase = @Case.toggleCase
 
-        # To select the unlocked archives
-        @scope.shouldShowUnlocked = (archive) =>
-            is_unlocked = no
-            unlockedIds = @User.case.unlocked
-            if archive.id in unlockedIds
-                is_unlocked = yes
-            is_unlocked
+        # to attribute class in a box
+        @scope.archiveClass = (id) =>
+            'unlocked'  : id in @unlockedIds
+            'starred'   : id in @starredIds
+            'locked'    : id not in @unlockedIds
 
-        # To select the unlocked archives
-        @scope.shouldShowStarred = (archive) =>
-            is_starred = no
-            unlockedIds = @User.case.starred
-            if archive.id in unlockedIds
-                is_starred = yes
-            is_starred
+        # To show active the menu
+        @scope.shouldShowBox = (id) =>
+            return true if id in @unlockedIds and @menu is 'unlocked'
+            return true if id in @starredIds and @menu is 'starred'
+            return true if @menu is 'all'
 
         @scope.toggleStar = (id)  =>
-            starredIds = @User.case.starred
-            unlockedIds = @User.case.unlocked
-            if id in starredIds
-                indexOfId = starredIds.indexOf(id)
-                starredIds.splice(indexOfId,1)
-            else if id in unlockedIds
-                starredIds.push id
-            else if id not in unlockedIds
+            if id in @starredIds
+                indexOfId = @starredIds.indexOf(id)
+                @starredIds.splice(indexOfId,1)
+            else if id in @unlockedIds
+                @starredIds.push id
+            else if id not in @unlockedIds
                 @Notification.error("Attention, cette archive n'est pas débloquée !")
-            starredIds
+            @starredIds
 
-
+        @scope.selectMenu = (value) =>
+            @menu = value
 
 
     shouldShowCase: =>

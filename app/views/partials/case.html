@@ -1,50 +1,40 @@
 <!-- Archive list for pre-loading -->
 <div ng-if="shouldShowCase()" class="case ">
 
-    <div class="case__container"  >
+    <div class="case__bg" ng-click="toggleCase()"></div>
+
+    <div class="case__container">
+
         <div class="case__container__content" >
 
-            <div>
-                <h3>Liste des archives débloquées</h3>
-                <ul>
-                    <li ng-repeat="archive in case.archives | filter:shouldShowUnlocked" ng-click="toggleStar(archive.id)">
-                        [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
-                    </li>
-                </ul>
-            </div>
+            <div class="case__container__content__archives">
 
-            <div>
-                <h3>Liste des archives</h3>
-                <ul>
+                <div class="case__container__content__box col-md-2" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)" ng-click="toggleStar(archive.id)">
 
-                    <li ng-repeat="archive in case.archives" ng-class="{ 'case__TEST': shouldShowUnlocked(archive) }" ng-click="toggleStar(archive.id)">
-                        [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
-                    </li>
-                </ul>
-            </div>
+                    <div class="case__container__content__box__archive" ng-style="{'background-image':'url([[ archive.url ]])'}" ng-class="archiveClass(archive.id)">
+                        <a href="[[ archive.url ]]">[[ archive.title | uppercase ]]</a> <br /> ID : [[ archive.id ]]
+                    </div>
 
-            <div>
-                <h3>Liste des archives favorites</h3>
-                <ul>
-                    <li ng-repeat="archive in case.archives | filter:shouldShowStarred" ng-click="toggleStar(archive.id)">
-                        [[ archive.title | uppercase ]] / URL : [[ archive.url ]] / ID : [[ archive.id ]]
-                    </li>
-                </ul>
+                </div>
+
             </div>
 
         </div><!-- end class="case__container__content" -->
 
-        <div class="case__container__tabs">
-
-            <div class="case__container__tabs__unlocked">Documents Dévérouillés</div>
-            <div class="case__container__tabs__all">Tous les documents</div>
-            <div class="case__container__tabs__starred">Documents Favoris</div>
-
-        </div><!-- end class="case__container__tabs" -->
-
-        <div class="case__container__my-case col-lg-7" ng-click="toggleCase()">
-        </div><!-- end class="case__container__my-case" -->
-
     </div>
+
+    <div class="case__container__menu">
+        <ul class="case__container__tabs">
+
+            <li class="case__container__tabs__unlocked col-lg-2 col-lg-offset-4" ng-click="selectMenu('unlocked')">Documents Dévérouillés</li>
+            <li class="case__container__tabs__all active col-lg-2" ng-click="selectMenu('all')">Tous les documents</li>
+            <li class="case__container__tabs__starred col-lg-2" ng-click="selectMenu('starred')">Documents Favoris</li>
+
+        </ul>
+    </div><!-- end class="case__container__tabs" -->
+
+    <div class="case__container__my-case col-lg-2 col-lg-offset-6" ng-click="toggleCase()">
+    </div><!-- end class="case__container__my-case" -->
+
 </div>
 

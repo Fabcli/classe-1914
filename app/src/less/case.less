@@ -7,26 +7,31 @@
     bottom:0;
     left:0;
     right:0;
-    background:fade(black, 55);
-    overflow: auto;
 
-    &__TEST {
-        color: red;
-    }
 
     .fade > .show(@chapter-starting-duration-2);
+
+    &__bg   {
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        display: block;
+        background:fade(black, 55);
+        cursor: pointer;
+    }
 
     &__container {
         // For bootstrap grid
         .container;
 
+        overflow-x: hidden;
         position: absolute;
         top:0;
         bottom:0;
         left:0;
         right:0;
-        overflow-y: auto;
-        background-color: @brand-primary;
         width: 84%!important;
         margin: 6% 8% 10% 8%!important;
 
@@ -45,28 +50,89 @@
             // For bootstrap grid
             .row;
 
-            &__my-case  {
+            &__box {
+                position: relative;
+                text-align: center;
+                padding:2px;
+                overflow: hidden;
+
+
+
+                &:before {
+                    content: "";
+                    display: block;
+                    padding-top: 100%; 	/* initial ratio of 1:1*/
+                    background-color: @brand-primary;
+
+                }
+
+
+
+                &__archive{
+                    cursor: pointer;
+                    position:  absolute;
+                    background-size: cover;
+                    background-position: center;
+                    margin: 2px;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+
+                    &.locked {
+                        background-image: none!important;
+                        cursor: auto!important;
+                    }
+
+                    &.unlocked {
+                        color:  green!important;
+                    }
+
+                    &.starred {
+                        color: red!important;
+                    }
+                }
+            }
+
+
+
+            &__unlocked,
+            &__all,
+            &__starred {
 
             }
         }
 
         // The tabs menu
-        &__tabs  {
+        &__menu  {
+            // For bootstrap tabs
+            //.nav;
+            //.nav-tabs;
+            // For bootstrap grid
+            .row;
+
+            cursor: pointer;
+
+            li {
+
+                display: inline-block;
+            }
+
 
         }
 
         // The button to close the case
         &__my-case  {
             // For bootstrap grid
-            //.col-lg-14;
+            //.col-lg-14
+            // For bootstrap grid
+            .row;
 
 
             display: block;
             cursor: pointer;
             height: 20px;
             background-color: green;
-
-
         }
 
     }

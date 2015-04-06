@@ -9,6 +9,8 @@ angular.module('classe1914.constant').constant 'constant.case',
         unlocked    :   []
         starred     :   []
         thisChapter :   []
+        # The choice for the menu
+        menu        :   "all"
 
     notification :
         # The default message for new archive unlocked in case
