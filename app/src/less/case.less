@@ -52,7 +52,7 @@
 
             &__box {
                 position: relative;
-                text-align: center;
+                text-align: left;
                 padding:2px;
                 overflow: hidden;
 
@@ -102,11 +102,22 @@
                         margin: 22% 0;
                         height: 56%;
                         overflow: hidden;
+                        text-indent: 35px;
 
                         &__title {
-                            padding: 15px 1px 1px 1px;
-                            font-size: @font-size-base + 2;
+                            padding: 15px 1px 0px 1px;
+                            font-size: @font-size-base + 2px;
                             font-weight: bold;
+
+                            &:after {
+                                content:"";
+                                height:15px;
+                                width:12px;
+                                background: url("/img/ui/c14_case_box_unlocked.svg") no-repeat 0 0;
+                                position: absolute;
+                                left:15px;
+                                top:30%;
+                            }
 
                         }
 
@@ -114,7 +125,7 @@
                             background:fade(@black, 90);
                             padding: 1px;
                             color: #fff;
-                            font-size: @font-size-base - 2;
+                            font-size: @font-size-base - 2px;
                             text-transform: uppercase;
                         }
 
@@ -126,10 +137,24 @@
                         }
 
                         &__excerpt {
+                            text-indent: 0px;
                             text-align: left;
-                            font-size: @font-size-base - 1;
+                            font-size: @font-size-base - 2px;
+                            font-style: italic;
+                            line-height: @font-size-base - 2px;
                             padding: 7px 15px 10px 15px;
 
+                        }
+
+                        &:after {
+                            content: "";
+                            height: 15px;
+                            width: 12px;
+                            background: url("/img/ui/c14_case_starred-off.svg") no-repeat 0 0;
+                            position: absolute;
+                            left: 50%;
+                            .translate(-50%,0);
+                            bottom: 5%;
                         }
 
 
