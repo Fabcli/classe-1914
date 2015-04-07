@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="172" height="34" viewBox="0 0 172 34">
+  <defs>
+    <style>
+
+      .cls-4 {
+        font-size: 12.5px;
+      }
+
+      .cls-5 {
+        fill: #ffffff;
+        text-anchor: middle;
+        font-size: 12.5px;
+        font-family: "Trebuchet MS";
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  <g id="rollover">
+    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAAiBAMAAAAwpS9DAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAALVBMVEU0Njg7PT9BQkRERkhGR0lLTU9QUVNSU1VTVFZYWVtbXF5eX2FhYmRkZWcAAAAf3IJMAAAAAWJLR0QOb70wTwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAFJJREFUSMdjYFR2oTowEmAQDiunOkg1ZFDtXEV1MCOIwWz2GaqDnckM7mvuUh2cKhk1dtTYUWNHjR01dtTYUWNHjaW3sTRqLNGoaUejhihtms0AFpzbL6+oGW4AAAAASUVORK5CYII=" width="172" height="34"/>
+    <text class="cls-4" x="84px" y="15px"><tspan x="85px" class="cls-5">DOCUMENTS</tspan><tspan dy="1em" x="85px" class="cls-5">favoris</tspan></text>
+  </g>
+</svg>
