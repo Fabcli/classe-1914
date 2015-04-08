@@ -7,11 +7,9 @@
 
         <div class="case__container__content" >
 
-                <div class="case__container__content__box col-lg-15 col-md-21 col-sm-35" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)">
+                <div class="case__container__content__box col-lg-15 col-md-21 col-xs-35" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)">
 
                     <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)" ng-style="{'background-image' : 'url([[ archive.url ]])' }" >
-
-
                         <div class="case__container__content__box__archive__block" ng-class="archiveClass(archive.id)">
                             <div class="case__container__content__box__archive__block__title" ng-class="archiveClass(archive.id)">[[ archive.title | uppercase ]]</div>
                             <div class="case__container__content__box__archive__block__cote" ng-class="archiveClass(archive.id)">COTE : [[ archive.cote ]]</div>
@@ -20,32 +18,75 @@
                         </div>
 
                         <div class="case__container__content__box__archive__star" ng-class="archiveClass(archive.id)" ng-click="toggleStar(archive.id)"></div>
-
-
                     </div>
 
                 </div>
-
         </div><!-- end class="case__container__content" -->
+
+        <div class="case__container__archive" ng-if="shouldShowArchive(id)">
+
+            <div class="case__container__archive__left-content">
+
+                <div class="case__container__archive__left-content__img">
+                    <img scr="[[ archive.url  ]]" />
+                </div>
+
+                <div class="case__container__archive__left-content__button">
+                    <button class="case__container__archive__left-content__button__unlocked"></button>
+                    <button class="case__container__archive__left-content__button__starred" ng-click="toggleStar()"></button>
+                    <button class="case__container__archive__left-content__button__previous"></button>
+                    <button class="case__container__archive__left-content__button__next"></button>
+                </div>
+
+            </div>
+
+            <div class="case__container__archive__right-content">
+
+                <!--<div class="case__container__archive__right-content__button">-->
+                    <!--<button class="case__container__archive__left-content__button__facebook"></button>-->
+                    <!--<button class="case__container__archive__left-content__button__twitter"></button>-->
+                    <!--<textarea class="case__container__archive__left-content__button__comment"></textarea>-->
+                <!--</div>-->
+
+                <div class="case__container__archive__right-content__description">
+                    <h2 class="case__container__archive__right-content__description__title">[[ archive.title ]]</h2>
+                    <p class="case__container__archive__right-content__description__text">[[ archive.description ]]</p>
+                </div>
+
+                <div class="case__container__archive__right-content__thumbs">
+                    <div class="case__container__archive__right-content__thumbs__box"></div>
+                </div>
+
+            </div>
+
+        </div><!-- end class="case__container__archive" -->
 
         <div class="case__container__menu">
             <ul class="case__container__menu__tabs">
 
-                <li class="col-lg-15 col-md-21 col-sm-35 col-lg-offset-30 col-md-offset-21" ng-click="selectMenu('all')">
+                <li class="col-lg-15 col-md-21 col-xs-35 col-lg-offset-30 col-md-offset-21 " ng-click="selectMenu('all')">
                     <div class="case__container__menu__tabs__all" ng-class="{ 'on': isSelected('all') }"></div>
                 </li>
-                <li class="col-lg-15 col-md-21 col-sm-35" ng-click="selectMenu('unlocked')">
+                <li class="col-lg-15 col-md-21  col-xs-35" ng-click="selectMenu('unlocked')">
                     <div class="case__container__menu__tabs__unlocked" ng-class="{ 'on': isSelected('unlocked') }"></div>
                 </li>
-                <li class="col-lg-15 col-md-21 col-sm-35" ng-click="selectMenu('starred')">
+                <li class="col-lg-15 col-md-21 col-xs-35" ng-click="selectMenu('starred')">
                     <div class="case__container__menu__tabs__starred" ng-class="{ 'on': isSelected('starred') }"></div>
                 </li>
 
             </ul><!-- end class="case__container__tabs" -->
 
             <ul class="case__container__menu__my-case">
-                <li  class="col-lg-15 col-md-21 col-sm-35 col-lg-offset-45 col-md-offset-42 col-sm-offset-35" ng-click="toggleCase()">
-                    <div class="case__container__menu__my-case__button">ma valise</div>
+                <li  class="col-lg-15 col-md-21 col-xs-35 col-lg-offset-30 col-md-offset-21" ng-click="">
+                    <div class="case__container__menu__my-case__previous"></div>
+                </li>
+
+                <li  class="col-lg-15 col-md-21 col-xs-35" ng-click="toggleCase()">
+                    <div class="case__container__menu__my-case__button back">ma valise</div>
+                </li>
+
+                <li  class="col-lg-15 col-md-21 col-xs-35" ng-click="">
+                    <div class="case__container__menu__my-case__next"></div>
                 </li>
             </ul><!-- end class="case__container__my-case" -->
 

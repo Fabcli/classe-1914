@@ -126,7 +126,6 @@
                                 left:15px;
                                 top:30%;
                             }
-
                         }
 
                         &__cote {
@@ -180,8 +179,6 @@
                     }
                 }
             }
-
-
 
             &__unlocked,
             &__all,
@@ -307,15 +304,82 @@
                     background-color: #fff;
                     color:@brand-primary;
                     font-weight: bold;
-                    font-size: 13px;
+                    font-size: @font-size-base + 1px;;
                     text-transform: uppercase;
                     .transition(0.3s);
 
                     &:hover {
+                        color: #fff;
                         background-color: @brand-primary;
-                        color:#fff;
+                    }
+
+                    &.back {
+                        text-indent: 15px;
+                        padding-top: 1px;
+//                        font-size: @font-size-base;
+
+                        &:after {
+                            content:"";
+                            height:15px;
+                            width:15px;
+                            background: url("/img/ui/c14_case_archive_menu_back.png") no-repeat 0 0;
+                            position: absolute;
+                            left:36px;
+                            top:28%;
+                        }
+
+                        &:hover {
+                            color: #fff;
+                            background-color: @brand-primary;
+
+                            &:after {
+                                content:"";
+                                height:15px;
+                                width:15px;
+                                background: url("/img/ui/c14_case_archive_menu_back-hover.png") no-repeat 0 0;
+                                position: absolute;
+                                left:36px;
+                                top:28%;
+                            }
+                        }
+
                     }
                 }
+
+                &__previous,
+                &__next {
+                    background-size: contain!important;
+                    cursor: pointer;
+                    height: 35px;
+                    width: 35px;
+                    display: block;
+                    padding: 10px;
+                    background-origin: content-box;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: @brand-primary;
+                    background-image: url('/img/ui/c14_case_archive_menu_arrow.svg');
+
+                    &:hover {
+                        background-color: #fff;
+                        background-image: url('/img/ui/c14_case_archive_menu_arrow-hover.svg');
+
+                    }
+                }
+
+                &__previous {
+                    float: right;
+                    -webkit-transform: translate(4px, 0) rotate(180deg)!important;
+                    -ms-transform: translate(4px, 0) rotate(180deg) !important;
+                    -o-transform: translate(4px, 0) rotate(180deg) !important;
+                    transform: translate(4px, 0) rotate(180deg) !important;
+                }
+
+                &__next {
+                    float: left;
+                    .translate(-4px,0)!important;
+                }
+
             }
 
 
