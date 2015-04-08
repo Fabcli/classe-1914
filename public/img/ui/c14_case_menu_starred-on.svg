@@ -1,6 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="172" height="34" viewBox="0 0 172 34">
-  <g id="etat-2">
-    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAAiBAMAAAAwpS9DAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAALVBMVEWFYQiXbgmleAmufwqzggrAiwvLkwvRlwzUmQzhowzoqA3wrQ34sw7/uA4AAADJ6zIMAAAAAWJLR0QOb70wTwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAFJJREFUSMdjYFR2oTowEmAQDiunOkg1ZFDtXEV1MCOIwWz2GaqDnckM7mvuUh2cKhk1dtTYUWNHjR01dtTYUWNHjaW3sTRqLNGoaUejhihtms0AFpzbL6+oGW4AAAAASUVORK5CYII=" width="172" height="34"/>
-    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVCAMAAAB1/u6nAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAflBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCtoPsAAAAKXRSTlMAM4jZLX7TJHhx+XAy2gyhoFvzI8zLaL28Evz7Y3a13TazD6YO9GB8J/mik7YAAAABYktHRACIBR1IAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAmUlEQVQY023O6xKCIBAF4PVupBZalqlp3s/7v2AyE4LJ+QHLNyws0RbLIlNs28iOY1IXcA3sAZ6BfcA/aoA1wYFDweF2PDEcws5EUfyvcSTuJ5e9XpPfQzxVmHL1X3aTes/0OXLJ+W68h+SnrsVLclloXAmo63LdKo3fQNMStQ3wUdox9IMohh6s25iPkyynUc09L6pzmcX6BQI9GGqNT1UgAAAAAElFTkSuQmCC" x="74" y="7" width="22" height="21"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="21px" viewBox="0 0 22 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="c14_case_menu_starred-on" sketch:type="MSLayerGroup">
+            <g id="etat-2" sketch:type="MSBitmapLayer">
+                <image id="Bitmap" x="0" y="0" width="22" height="21" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVCAYAAABCIB6VAAAAAXNSR0IArs4c6QAAARdJREFUOBGtlD0KwkAQhYNaioJXULCyUfAeglY2lpZa2XgYbbyA2OkJ1MpKwVNoIwr6HtmBDfnZ2ZgHQyYz37xdlmSDQK8eUIZKFRUVQiPDnj1mVOgVFKNQdeD2NcHcqZKTCIGBxdm5Vc6XXjAmO2ZeiFpwEVN5spYpzVEMExySajFsjsoLIbv590mvmazSRXIrwJwe9Iqoirc1Iu+OV5ilR6rG6DwQ2gXIckalJqgTwmV+BEPWS1PQLmMy3jpgwmW893VtYOCjMH6DIRtT2g/C+6Bs0VxkYYK5iNeu192xw4Acwx15X5xMzpr0t1YvM62jK3/iBnktgWaNPZqT5YxT/CafiImTDBmyqu94CbCtMBWELGci+gGmVozJ61PB2QAAAABJRU5ErkJggg=="></image>
+            </g>
+        </g>
+    </g>
 </svg>

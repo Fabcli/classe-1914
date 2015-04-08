@@ -11,7 +11,6 @@ class CaseCtrl
         @starredIds  = @User.case.starred
         @viewedIds   = @User.case.viewed
 
-
         # Establishes a bound between "src" argument
         # provided by the chapter directive and the Controller
         @chapter        =   @scope.chapter
@@ -51,6 +50,13 @@ class CaseCtrl
 
         @scope.selectMenu = (value) =>
             @menu = value
+
+        @scope.isSelected = (value) =>
+            if @menu?
+                return true if value is @menu
+            else
+                return true if value is 'all'
+
 
 
     shouldShowCase: =>

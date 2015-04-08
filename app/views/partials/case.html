@@ -7,17 +7,20 @@
 
         <div class="case__container__content" >
 
-                <div class="case__container__content__box col-md-2" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)" ng-click="toggleStar(archive.id)">
+                <div class="case__container__content__box col-lg-15 col-md-21 col-sm-35" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)">
 
-                    <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)" ng-style="{'background-image' : 'url([[ archive.url ]])' }">
+                    <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)" ng-style="{'background-image' : 'url([[ archive.url ]])' }" >
 
 
-                        <div class="case__container__content__box__archive__block">
-                            <div class="case__container__content__box__archive__block__title">[[ archive.title | uppercase ]]</div>
-                            <div class="case__container__content__box__archive__block__cote">COTE : [[ archive.cote ]]</div>
-                            <div class="case__container__content__box__archive__block__url"><a href="[[ archive.url ]]" alt="[[ archive.url ]]">PERMALIEN</a></div>
-                            <div class="case__container__content__box__archive__block__excerpt">[[ archive.description | excerpt:true:55 ]]</div>
+                        <div class="case__container__content__box__archive__block" ng-class="archiveClass(archive.id)">
+                            <div class="case__container__content__box__archive__block__title" ng-class="archiveClass(archive.id)">[[ archive.title | uppercase ]]</div>
+                            <div class="case__container__content__box__archive__block__cote" ng-class="archiveClass(archive.id)">COTE : [[ archive.cote ]]</div>
+                            <div class="case__container__content__box__archive__block__url" ng-class="archiveClass(archive.id)"><a href="[[ archive.url ]]" alt="[[ archive.url ]]" target="_blank">PERMALIEN</a></div>
+                            <div class="case__container__content__box__archive__block__excerpt" ng-class="archiveClass(archive.id)">[[ archive.description | excerpt:true:55 ]]</div>
                         </div>
+
+                        <div class="case__container__content__box__archive__star" ng-class="archiveClass(archive.id)" ng-click="toggleStar(archive.id)"></div>
+
 
                     </div>
 
@@ -25,20 +28,34 @@
 
         </div><!-- end class="case__container__content" -->
 
+        <div class="case__container__menu">
+            <ul class="case__container__menu__tabs">
+
+                <li class="col-lg-15 col-md-21 col-sm-35 col-lg-offset-30 col-md-offset-21" ng-click="selectMenu('all')">
+                    <div class="case__container__menu__tabs__all" ng-class="{ 'on': isSelected('all') }"></div>
+                </li>
+                <li class="col-lg-15 col-md-21 col-sm-35" ng-click="selectMenu('unlocked')">
+                    <div class="case__container__menu__tabs__unlocked" ng-class="{ 'on': isSelected('unlocked') }"></div>
+                </li>
+                <li class="col-lg-15 col-md-21 col-sm-35" ng-click="selectMenu('starred')">
+                    <div class="case__container__menu__tabs__starred" ng-class="{ 'on': isSelected('starred') }"></div>
+                </li>
+
+            </ul><!-- end class="case__container__tabs" -->
+
+            <ul class="case__container__menu__my-case">
+                <li  class="col-lg-15 col-md-21 col-sm-35 col-lg-offset-45 col-md-offset-42 col-sm-offset-35" ng-click="toggleCase()">
+                    <div class="case__container__menu__my-case__button">ma valise</div>
+                </li>
+            </ul><!-- end class="case__container__my-case" -->
+
+        </div><!-- end class="case__container__menu" -->
+
+
+
     </div>
 
-    <div class="case__container__menu">
-        <ul class="case__container__tabs">
 
-            <li class="case__container__tabs__unlocked col-lg-2 col-lg-offset-4" ng-click="selectMenu('unlocked')">Documents Dévérouillés</li>
-            <li class="case__container__tabs__all active col-lg-2" ng-click="selectMenu('all')">Tous les documents</li>
-            <li class="case__container__tabs__starred col-lg-2" ng-click="selectMenu('starred')">Documents Favoris</li>
-
-        </ul>
-    </div><!-- end class="case__container__tabs" -->
-
-    <div class="case__container__my-case col-lg-2 col-lg-offset-6" ng-click="toggleCase()">
-    </div><!-- end class="case__container__my-case" -->
 
 </div>
 

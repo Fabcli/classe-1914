@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="172" height="34" viewBox="0 0 172 34">
-  <g id="etat-2">
-    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAAiAQMAAAD4RaAzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAA1BMVEUAAACnej3aAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAABBJREFUKM9jYBgFo2AUQAAAAw4AAfY/CUsAAAAASUVORK5CYII=" width="172" height="34"/>
-    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAVCAMAAADVYYZJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA6lBMVEUAAAAhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYhlaYAAAAVcCeDAAAATHRSTlMAK6Xr7qw0HIvO4MmEFFj5/WlO9EAx+uZvQt3+MO+KY5L18iLnGhHcwrToICzxoHpmBwRxUx0bVVCAEA1LfIdJCQrffdC7z/DtlvyDdhvzVAAAAAFiS0dEAIgFHUgAAAAJcEhZcwAALiMAAC4jAXilP3YAAADkSURBVDjL7Y9dU4JAGIW3hFLDREOKyEorNb+ytFoCxczvzv//PeICTezs7HDbTOfmnDnveS5eQtLr4DADRT361Rxnc/kTrSDHTovYSy/9NOUz1iiGDKuYOL+wSpew49lVEdXrm9sa6ncSTsX9Q2CNJlpR84h2J7BuD30J18MT8wHsZxZeTAxZ0JCRcMCIuQG8svAGWCy8A1KOMu84zkcYgPBTmoqL5HoDYEz3mgQnfyqEPn06m33RWJ5L5khqIeQW3GpJuAIrIbfiZ//cH+dsrlgLuTW3sslGTxTbbyGnbRMrfbMD3FmTuq24qEwAAAAASUVORK5CYII=" x="58" y="6" width="55" height="21"/>
-    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFBAMAAAB7tOvrAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAElBMVEUAAAAilqYilqYilqYilqYAAAASxXofAAAABHRSTlMAImZEyky9vAAAAAFiS0dEAIgFHUgAAAAJcEhZcwAALiMAAC4jAXilP3YAAAAWSURBVAjXY2AQYQACEKHi4mLAAOcCAA7VAS1cXhndAAAAAElFTkSuQmCC" x="83" y="17" width="7" height="5"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="55px" height="21px" viewBox="0 0 55 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="c14_case_menu_all-on" sketch:type="MSLayerGroup">
+            <g id="etat-2" sketch:type="MSBitmapLayer">
+                <image id="Bitmap" x="0" y="0" width="55" height="21" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAVCAYAAADiv3Z7AAAAAXNSR0IArs4c6QAAAjNJREFUWAntl01IVFEUxx2pBMPACF3YJlu0cNGIRJsosHQjBOkm2rZMahMiQmLaItsYSI0RCW1cCeK6CNGV6KKwTS7MlR8QKLoQCT9+fz13ePN87zH4pnGSOfDz3HvOveee8+4HY6LkP5Ir70bqSLcLmuESrME3eP37yaNZdIYkMnrWIchlms/gLlyEVfgCbwnyB513IaeHLPoZzgUsvoutndxSXt+R4ghynwEjcN470Nr6Uq0EmQjw/TMTOdUTfBrOwjL0wxxcg+dQC3vQ6M0toziCJBmgIPo66/ARfsF1eAzlsAlJgiyg8yLkNcpCbbACDay95BbGV0l7Bq7CFL7bzlfqGqZfoVWYjmE9AzvgEzylfxM2oAK6IZ/SZIsNkku6MNno6zS9Mf8tii2zdkm6OIxnMDabo59Ji26QNP2fqEGztZjOl7pgC+kUBcm8GXUSq9wAFeSkmobOtOTHoTry19n1Up2E7IQsuoj9pfl0bQ7EW5wrTA69PkHyN8h40jY7ZT3+PBIcR90hXcIa+GADXqB1DP2ie9dpxgfobZgg+JbZcqbIS4/XHdAdGrDAw+g5a0cpbcKkdm4K9Bp6pc/bCWmPmf0r2l34kKHHMo8z655vZq+vH9X9rgfFX1jUhCDfjSBjDmxx4ybTr2UOkim4EMXiCm5LskyouHNZfqiCG1bcuYLbkiwTOvU7p3/y4kjYj9k4MTU3btw97dwQhP1Q1iJRogTeRw2I4Usx97gFqp6hfVHYe/5rrRCrAAAAAElFTkSuQmCC"></image>
+                <image id="Bitmap" x="25" y="11" width="7" height="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAYAAACJmvbYAAAAAXNSR0IArs4c6QAAACpJREFUCB1jYIACpWnLlID4P4wPopmQOehsRqDqNKDgTHQJIN8VLkaysQB/mApi2X3OKgAAAABJRU5ErkJggg=="></image>
+            </g>
+        </g>
+    </g>
 </svg>
