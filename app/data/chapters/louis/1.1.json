@@ -14,7 +14,6 @@
             "character": "Louis",
             "body": "/louis/PL1.mp3",
             "case": [ 3 ],
-            "archive_notification": "Voir les archives",
             "archive": [ 1, 2 ],
             "result": {
                 "point": 0
