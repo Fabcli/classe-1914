@@ -47,11 +47,11 @@ module.exports = function(grunt) {
         concat: {
             bower_js: {
                 src: jslibrary,
-                dest: 'www/js/lib.min.js'
+                dest: 'public/js/lib.min.js'
             },
             bower_css: {
                 src: csslibrary,
-                dest: 'www/css/lib.css'
+                dest: 'public/css/lib.css'
             },
             coffee_src: {
                 src: [
@@ -69,35 +69,35 @@ module.exports = function(grunt) {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/phaser/build/phaser.map'],
-                        dest: 'www/js/',
+                        dest: 'public/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular/angular.min.js.map'],
-                        dest: 'www/js/',
+                        dest: 'public/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-animate/angular-animate.min.js.map'],
-                        dest: 'www/js/',
+                        dest: 'public/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-touch/angular-touch.min.js.map'],
-                        dest: 'www/js/',
+                        dest: 'public/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-route/angular-route.min.js.map'],
-                        dest: 'www/js/',
+                        dest: 'public/js/',
                         filter: 'isFile'
                     }
                 ]
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
              'classe1914.template': {
                 cwd:  'app/views/',
                 src:  'partials/*.html',
-                dest: 'www/dev/js/app.template.js'
+                dest: 'public/dev/js/app.template.js'
             }
         },
 
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
                     bare: true
                 },
                 files: {
-                    'www/dev/js/app.js': ['tmp/app.coffee']
+                    'public/dev/js/app.js': ['tmp/app.coffee']
                 }
             }
         },
@@ -126,8 +126,8 @@ module.exports = function(grunt) {
         uglify: {
             app: {
                 files: {
-                    'www/js/app.min.js': ['www/dev/js/app.js'],
-                    'www/js/app.template.min.js': ['www/dev/js/app.template.js']
+                    'public/js/app.min.js': ['public/dev/js/app.js'],
+                    'public/js/app.template.min.js': ['public/dev/js/app.template.js']
                 }
             }
         },
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    "www/dev/css/styles.css": "app/src/less/styles.less"
+                    "public/dev/css/styles.css": "app/src/less/styles.less"
                 }
             }
         },
@@ -173,7 +173,7 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['www/css/*.css'],
+                files: ['public/css/*.css'],
                 tasks: []
             },
             twig: {
