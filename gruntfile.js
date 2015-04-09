@@ -47,11 +47,11 @@ module.exports = function(grunt) {
         concat: {
             bower_js: {
                 src: jslibrary,
-                dest: 'public/js/lib.min.js'
+                dest: 'www/js/lib.min.js'
             },
             bower_css: {
                 src: csslibrary,
-                dest: 'public/css/lib.css'
+                dest: 'www/css/lib.css'
             },
             coffee_src: {
                 src: [
@@ -69,35 +69,35 @@ module.exports = function(grunt) {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/phaser/build/phaser.map'],
-                        dest: 'public/js/',
+                        dest: 'www/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular/angular.min.js.map'],
-                        dest: 'public/js/',
+                        dest: 'www/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-animate/angular-animate.min.js.map'],
-                        dest: 'public/js/',
+                        dest: 'www/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-touch/angular-touch.min.js.map'],
-                        dest: 'public/js/',
+                        dest: 'www/js/',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: ['bower_modules/angular-route/angular-route.min.js.map'],
-                        dest: 'public/js/',
+                        dest: 'www/js/',
                         filter: 'isFile'
                     }
                 ]
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
              'classe1914.template': {
                 cwd:  'app/views/',
                 src:  'partials/*.html',
-                dest: 'public/dev/js/app.template.js'
+                dest: 'www/dev/js/app.template.js'
             }
         },
 
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
                     bare: true
                 },
                 files: {
-                    'public/dev/js/app.js': ['tmp/app.coffee']
+                    'www/dev/js/app.js': ['tmp/app.coffee']
                 }
             }
         },
@@ -126,8 +126,8 @@ module.exports = function(grunt) {
         uglify: {
             app: {
                 files: {
-                    'public/js/app.min.js': ['public/dev/js/app.js'],
-                    'public/js/app.template.min.js': ['public/dev/js/app.template.js']
+                    'www/js/app.min.js': ['www/dev/js/app.js'],
+                    'www/js/app.template.min.js': ['www/dev/js/app.template.js']
                 }
             }
         },
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    "public/dev/css/styles.css": "app/src/less/styles.less"
+                    "www/dev/css/styles.css": "app/src/less/styles.less"
                 }
             }
         },
@@ -173,7 +173,7 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['public/css/*.css'],
+                files: ['www/css/*.css'],
                 tasks: []
             },
             twig: {
@@ -198,7 +198,7 @@ module.exports = function(grunt) {
                     port: 80,
                     keepalive: true,
                     open: false,
-                    base: 'public',
+                    base: 'www',
                     hostname: "0.0.0.0"
                 }
             }

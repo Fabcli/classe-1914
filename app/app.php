@@ -34,7 +34,7 @@ $app->view->parserExtensions = array(
     new \app\ClasseTwigExtension()
 );
 
-//Load 404 Route (=> public/.htaccess)
+//Load 404 Route (=> www/.htaccess)
     $app->notFound(function () use ($app) {
     $app->redirect('/404.html');
 });
