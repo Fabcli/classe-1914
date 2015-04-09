@@ -112,12 +112,15 @@ angular.module('classe1914.service').factory "Archive", [
 
             unlockArchiveInCase: (array, notif, type) =>
                 unlockedArchives = User.case.unlocked
-                angular.forEach array, (a) =>
-                    unlockedArchives.push a if a not in unlockedArchives
                 if type is "archiveType"
+                    angular.forEach array, (a) =>
+                        unlockedArchives.push a if a not in unlockedArchives
                     Notification.primary(notif)
                 else if type is "caseType"
-                    Notification.success(notif)
+                    angular.forEach array, (a) =>
+                        if a not in unlockedArchives
+                            unlockedArchives.push a
+                            Notification.success(notif)
 
 
 
