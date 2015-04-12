@@ -106,6 +106,9 @@ class CaseCtrl
                 @User.case.archive.id = id
                 do @toggleArchive
 
+        @scope.socialAlert = () =>
+            @Notification.error("Mon cher Damien, le partage sur les réseaux sociaux arrivera bientôt !")
+
     shouldShowCase: =>
         return @User.inGame and @User.isReady and @User.case.open
 
