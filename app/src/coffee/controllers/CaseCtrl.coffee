@@ -82,8 +82,10 @@ class CaseCtrl
                         @toggleArchive()
                 indexOfId = @starredIds.indexOf(id)
                 @starredIds.splice(indexOfId,1)
+                @Notification.info("Archive supprimée des favoris !!!")
             else if id in @unlockedIds
                 @starredIds.push id
+                @Notification.info("Archive ajoutée dans les favoris !!!")
             else if id not in @unlockedIds
                 @Notification.error("Attention, cette archive n'est pas débloquée !")
             @filter('crescentOrder')(@starredIds)
@@ -106,8 +108,12 @@ class CaseCtrl
                 @User.case.archive.id = id
                 do @toggleArchive
 
-        @scope.socialAlert = () =>
+        @scope.socialAlert = =>
             @Notification.error("Mon cher Damien, le partage sur les réseaux sociaux arrivera bientôt !")
+
+        @scope.unlockAlert = =>
+            @Notification.error(" Cette archive est déjà débloquée !")
+
 
     shouldShowCase: =>
         return @User.inGame and @User.isReady and @User.case.open
