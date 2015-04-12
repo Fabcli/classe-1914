@@ -32,7 +32,7 @@
             .row;
 
             overflow-x: hidden;
-            position: absolute;
+            position: fixed;
             top:0;
             bottom:0;
             left:0;
@@ -57,20 +57,14 @@
                 padding:2px;
                 overflow: hidden;
 
-
-
                 &:before {
                     content: "";
                     display: block;
                     padding-top: 100%; 	/* initial ratio of 1:1*/
                     background-color: @brand-primary;
-
                 }
 
-
-
                 &__archive{
-                    cursor: pointer;
                     position:  absolute;
                     background-size: cover;
                     background-position: center;
@@ -101,6 +95,7 @@
                     }
 
                     &__block {
+                        cursor: pointer;
                         background:fade(@brand-primary, 65);
                         margin: 18% 0 22% 0;
                         height: 60%;
@@ -131,7 +126,7 @@
                                 content:"";
                                 height:15px;
                                 width:12px;
-                                background: url("/img/ui/c14_case_box_unlocked.svg") no-repeat 0 0;
+                                background: url("/img/ui/c14_case_box_unlocked.png") no-repeat 0 0;
                                 position: absolute;
                                 left:15px;
                             }
@@ -166,7 +161,6 @@
                             font-style: italic;
                             line-height: @font-size-base - 2px;
                             padding: 7px 15px 10px 15px;
-
                         }
                     }
 
@@ -175,7 +169,7 @@
                         cursor: pointer;
                         height: 23px;
                         width: 23px;
-                        background: url("/img/ui/c14_case_box_starred-off.svg") no-repeat 0 0;
+                        background: url("/img/ui/c14_case_box_starred-off.png") no-repeat 0 0;
                         background-size: contain;
                         position: absolute;
                         left: 50%;
@@ -183,7 +177,7 @@
                         bottom: 5%;
 
                         &.starred {
-                            background: url("/img/ui/c14_case_box_starred-on.svg") no-repeat 0 0;
+                            background: url("/img/ui/c14_case_box_starred-on.png") no-repeat 0 0;
                         }
                     }
                 }
@@ -192,9 +186,87 @@
             &__unlocked,
             &__all,
             &__starred {
-
             }
         }
+
+        &__archive {
+
+            overflow-x: hidden;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 1270px !important;
+            margin: 120px auto 138px auto !important;
+            padding: 0 35px;
+
+            color: @black;
+
+            @media (max-width: @screen-lg-min) and (min-width: @screen-md-min) {
+                width: 1060px !important;
+                margin: 65px auto 83px auto !important;
+            }
+
+            @media (max-width: @screen-md-min), @ipad-landscape {
+                width: 838px !important;
+                margin: 15px auto 33px auto !important;
+            }
+
+            &__all-content {
+                // For bootstrap grid
+                .row;
+
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 1200px !important;
+                margin: 0px auto !important;
+
+                color: @black;
+                background-color: #fff;
+
+
+                @media (max-width: @screen-lg-min) and (min-width: @screen-md-min) {
+                    width: 990px !important;
+                    margin: 65px auto 83px auto !important;
+                }
+
+                @media (max-width: @screen-md-min), @ipad-landscape {
+                    width: 768px !important;
+                    margin: 15px auto 33px auto !important;
+                }
+
+            }
+
+            &__close {
+                position: absolute;
+                right: 0;
+
+                background-size: contain!important;
+                cursor: pointer;
+                height: 35px;
+                width: 35px;
+                display: block;
+                padding: 10px;
+                background-origin: content-box;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: #fff;
+                background-image: url('/img/ui/c14_case_archive_close.svg');
+                .transition(0.3s);
+
+                &:hover {
+                    background-position: center;
+                    padding: 11px;
+                    background-image: url('/img/ui/c14_case_archive_close-hover.svg');
+                }
+            }
+        }
+
+
 
         // The tabs menu
         &__menu  {
@@ -251,41 +323,41 @@
                 }
 
                 &__all {
-                    background-image: url('/img/ui/c14_case_menu_all-off.svg');
+                    background-image: url('/img/ui/c14_case_menu_all-off.png');
 
                     &:hover {
-                        background-image: url('/img/ui/c14_case_menu_all-hover.svg');
+                        background-image: url('/img/ui/c14_case_menu_all-hover.png');
                     }
 
                     &.on {
-                        background-image: url('/img/ui/c14_case_menu_all-on.svg');
+                        background-image: url('/img/ui/c14_case_menu_all-on.png');
                         background-color: @black;
                     }
                 }
 
                 &__unlocked {
-                    background-image: url('/img/ui/c14_case_menu_unlocked-off.svg');
+                    background-image: url('/img/ui/c14_case_menu_unlocked-off.png');
 
                     &:hover {
-                        background-image: url('/img/ui/c14_case_menu_unlocked-hover.svg');
+                        background-image: url('/img/ui/c14_case_menu_unlocked-hover.png');
                     }
 
                     &.on {
-                        background-image: url('/img/ui/c14_case_menu_unlocked-on.svg') ;
+                        background-image: url('/img/ui/c14_case_menu_unlocked-on.png') ;
                         background-color: @brand-primary;
                     }
 
                 }
 
                 &__starred {
-                    background-image: url('/img/ui/c14_case_menu_starred-off.svg');
+                    background-image: url('/img/ui/c14_case_menu_starred-off.png');
 
                     &:hover {
-                        background-image: url('/img/ui/c14_case_menu_starred-hover.svg');
+                        background-image: url('/img/ui/c14_case_menu_starred-hover.png');
                     }
 
                     &.on {
-                        background-image: url('/img/ui/c14_case_menu_starred-on.svg');
+                        background-image: url('/img/ui/c14_case_menu_starred-on.png');
                         background-color: @yellow;
                     }
                 }

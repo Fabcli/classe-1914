@@ -25,11 +25,13 @@ angular.module('classe1914.service').factory "Archive", [
                         if scene.decor? and scene.decor[0].case?
                             angular.forEach scene.decor[0].case , (c) =>
                                 @chapterCase.push c if c not in @chapterCase
+                                $filter('crescentOrder')(@chapterCase)
                         # Look into each scene's sequence to find the new archive
                         angular.forEach scene.sequence, (sequence)=>
                             if sequence.case?
                                 angular.forEach sequence.case, (c)=>
                                     @chapterCase.push c if c not in @chapterCase
+                                    $filter('crescentOrder')(@chapterCase)
                     @chapterCaseUrl = @getArchivesUrl(@chapterCase)
                     @chapterCaseUrl
 
@@ -115,12 +117,15 @@ angular.module('classe1914.service').factory "Archive", [
                 if type is "archiveType"
                     angular.forEach array, (a) =>
                         unlockedArchives.push a if a not in unlockedArchives
+                        $filter('crescentOrder')(unlockedArchives)
                     Notification.primary(notif)
                 else if type is "caseType"
                     angular.forEach array, (a) =>
                         if a not in unlockedArchives
                             unlockedArchives.push a
+                            $filter('crescentOrder')(unlockedArchives)
                             Notification.success(notif)
+
 
 
 

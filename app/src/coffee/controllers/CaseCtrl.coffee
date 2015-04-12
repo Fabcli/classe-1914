@@ -1,7 +1,7 @@
 class CaseCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification']
+    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification', '$filter']
 
-    constructor: (@scope, @Story, @User, @Case, @Archive, @Notification)->
+    constructor: (@scope, @Story, @User, @Case, @Archive, @Notification, @filter)->
         @scope.user     =   @User
         @scope.case     =   @Case
         @scope.archive  =   @Archive
@@ -15,11 +15,65 @@ class CaseCtrl
         # provided by the chapter directive and the Controller
         @chapter        =   @scope.chapter
 
-        #To display the case
+        #To display the case or the archive
         @scope.shouldShowCase = @shouldShowCase
 
-        # To close the case when it's open
-        @scope.toggleCase = @Case.toggleCase
+        @scope.getArchs = ()=>
+            if  @User.case.archive.open is true
+                # Cache bgs to avoid infinite digest iteration
+                @archs = []
+                # Return an array for unlocked archives
+                if @menu isnt 'starred'
+                    @archs = @Archive.getArchives(@unlockedIds)
+                else
+                    @archs = @Archive.getArchives(@starredIds)
+                @archs
+
+        # True if we should display the given archive
+        @scope.shouldShowArchive = (id) =>
+            @shouldShowArchive(id)
+
+        @scope.navArchive = (direction) =>
+            if @User.case.archive.open is true
+                # The open id archive
+                id = @User.case.archive.id
+                # Choose the correct array according to the menu
+                if @menu isnt 'starred'
+                    array = @unlockedIds
+                else
+                    array = @starredIds
+                # Index of the archive opened in the chosen array
+                idx = array.indexOf(id)
+                l = array.length
+                # The loop according to the chosen direction
+                if direction is 'next'
+                    if idx + 1 < l
+                        id = array[idx + 1]
+                    else
+                        id = array[0]
+                else if direction is 'previous'
+                    if idx - 1 >= 0
+                        id = array[idx - 1]
+                    else
+                        id = array[l - 1]
+                # Update the opened archive
+                @User.case.archive.id = id
+                @shouldShowArchive(id)
+
+
+        @scope.shouldShowArchiveMenu = () =>
+            return true if @User.case.archive.open and @User.case.archive.id?
+
+        # To close the case or the archive when it's open
+        @scope.toggleArchive = =>
+            do @toggleArchive
+
+        @scope.toggleCase = =>
+            if @User.case.archive.open is true
+                do @toggleArchive
+            else
+                do @Case.toggleCase
+
 
         # to attribute class in a box
         @scope.archiveClass = (id ) =>
@@ -46,10 +100,12 @@ class CaseCtrl
                 @starredIds.push id
             else if id not in @unlockedIds
                 @Notification.error("Attention, cette archive n'est pas débloquée !")
+            @filter('crescentOrder')(@starredIds)
             @starredIds
 
         @scope.selectMenu = (value) =>
             @menu = value
+            @User.case.menu = value
 
         @scope.isSelected = (value) =>
             if @menu?
@@ -57,10 +113,25 @@ class CaseCtrl
             else
                 return true if value is 'all'
 
-
+        @scope.displayArchive = (id) =>
+            if id not in @unlockedIds
+                @Notification.error("Mince, cette archive n'est pas débloquée !")
+            else
+                @User.case.archive.id = id
+                do @toggleArchive
 
     shouldShowCase: =>
-        return @User.inGame and @User.case.open
+        return @User.inGame and @User.isReady and @User.case.open
+
+    shouldShowArchive: (id) =>
+        if @User.case.archive.open and @User.case.archive.id?
+            should_show = yes if id is @User.case.archive.id
+        should_show
+
+    toggleArchive:  =>
+        @User.case.archive.open = !@User.case.archive.open
+
+
 
 
 

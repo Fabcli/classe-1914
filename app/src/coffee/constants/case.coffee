@@ -12,7 +12,9 @@ angular.module('classe1914.constant').constant 'constant.case',
         thisChapter :   []
         # The choice for the menu
         menu        :   "all"
-
+        archive     :
+            open    :   no
+            id      :   {}
     notification :
         # The default message for new archive unlocked in case
         archive :   "Archive dans le jeu !"

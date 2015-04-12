@@ -1,3 +1,4 @@
+# To know if a value is an array
 angular.module("classe1914.filter").filter "array", ->
     (value)->
         value and
