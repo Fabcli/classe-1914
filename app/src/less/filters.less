@@ -5,3 +5,10 @@
     filter: gray;
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
+
+.translate-rotate(@x,@y,@alpha) {
+    -webkit-transform: translate(@x, @y) rotate(@alpha)!important;
+    -ms-transform: translate(@x, @y) rotate(@alpha) !important;
+    -o-transform: translate(@x, @y) rotate(@alpha) !important;
+    transform: translate(@x, @y) rotate(@alpha) !important;
+}

@@ -37,7 +37,6 @@
 
         </div><!-- end class="case__container__menu" -->
 
-
         <!-- CASE -->
         <div class="case__container__content" >
 
@@ -52,6 +51,7 @@
                     </div>
 
                     <div class="case__container__content__box__archive__star" ng-class="archiveClass(archive.id)" ng-click="toggleStar(archive.id)"></div>
+
                 </div>
 
             </div>
@@ -59,42 +59,51 @@
         </div><!-- end class="case__container__content" -->
 
         <!-- ARCHIVE -->
-        <div class="case__container__archive " ng-repeat="a in getArchs() " ng-show="shouldShowArchive(a.id)">
+        <div class="case__container__archive " ng-repeat="arch in getArchs() " ng-show="shouldShowArchive(arch.id)">
 
             <div class="case__container__archive__all-content">
                 <div class="case__container__archive__left-content col-md-105 col-xs-210">
 
-                    <div class="case__container__archive__left-content__img">
-                        <img scr="[[ a.url  ]]" />
+                    <div class="case__container__archive__left-content__img" ng-style="{'background-image' : 'url([[ arch.url ]])' }">
                     </div>
 
                     <div class="case__container__archive__left-content__button">
-                        <button class="case__container__archive__left-content__button__unlocked"></button>
-                        <button class="case__container__archive__left-content__button__starred" ng-click="toggleStar()"></button>
-                        <button class="case__container__archive__left-content__button__previous"></button>
-                        <button class="case__container__archive__left-content__button__next"></button>
+                        <div class="case__container__archive__left-content__button__unlocked" ng-class="archiveClass(arch.id)"></div>
+                        <div class="case__container__archive__left-content__button__starred " ng-class="archiveClass(arch.id)" ng-click="toggleStar(arch.id)"></div>
+                        <div class="case__container__archive__left-content__button__previous"></div>
+                        <div class="case__container__archive__left-content__button__next"></div>
                     </div>
 
                 </div>
 
-                <div class="case__container__archive__right-content col-md-105 col-xs-210">
+                <div class="case__container__archive__right-content col-xs-105">
 
-                    <!--<div class="case__container__archive__right-content__button">-->
-                    <!--<button class="case__container__archive__left-content__button__facebook"></button>-->
-                    <!--<button class="case__container__archive__left-content__button__twitter"></button>-->
+                    <div class="case__container__archive__right-content__button">
+                        <div class="case__container__archive__right-content__button__facebook"></div>
+                        <div class="case__container__archive__right-content__button__twitter"></div>
                     <!--<textarea class="case__container__archive__left-content__button__comment"></textarea>-->
-                    <!--</div>-->
+                    </div>
+
+                    <div class="case__container__archive__right-content__gradient">
+                        <div class="case__container__archive__right-content__gradient--top"></div>
+                        <div class="case__container__archive__right-content__gradient--bottom"></div>
+                    </div>
 
                     <div class="case__container__archive__right-content__description">
-                        <h2 class="case__container__archive__right-content__description__title">[[ a.title ]]</h2>
-                        <p class="case__container__archive__right-content__description__text">[[ a.description ]]</p>
-                        <p class="case__container__archive__right-content__description__text">ID: [[ a.id ]]</p>
+
+                        <div class="case__container__archive__right-content__description__title">[[ arch.title | uppercase ]]</div>
+                        <div class="case__container__archive__right-content__description__cote">COTE : [[ arch.cote ]]</div>
+                        <div class="case__container__archive__right-content__description__permalien"><a href="[[ arch.url ]]">PERMALIEN</a></div>
+                        <div class="case__container__archive__right-content__description__text">[[ arch.description ]]</div>
+
                     </div>
 
                     <div class="case__container__archive__right-content__thumbs">
-                        <div class="case__container__archive__right-content__thumbs__box"></div>
+                        <!-- TODO : Find a solution for a lot a images in one archive -->
+                        <div class="case__container__archive__right-content__thumbs__box">
+                            <div class="case__container__archive__right-content__thumbs__box__thumb" ng-style="{'background-image' : 'url([[ arch.url ]])' }"></div>
+                        </div>
                     </div>
-
                 </div>
             </div>
 

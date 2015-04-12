@@ -33,32 +33,9 @@ class CaseCtrl
         @scope.shouldShowArchive = (id) =>
             @shouldShowArchive(id)
 
+        # To navigate in archive when archive is open in the case
         @scope.navArchive = (direction) =>
-            if @User.case.archive.open is true
-                # The open id archive
-                id = @User.case.archive.id
-                # Choose the correct array according to the menu
-                if @menu isnt 'starred'
-                    array = @unlockedIds
-                else
-                    array = @starredIds
-                # Index of the archive opened in the chosen array
-                idx = array.indexOf(id)
-                l = array.length
-                # The loop according to the chosen direction
-                if direction is 'next'
-                    if idx + 1 < l
-                        id = array[idx + 1]
-                    else
-                        id = array[0]
-                else if direction is 'previous'
-                    if idx - 1 >= 0
-                        id = array[idx - 1]
-                    else
-                        id = array[l - 1]
-                # Update the opened archive
-                @User.case.archive.id = id
-                @shouldShowArchive(id)
+            do @navArchive(direction)
 
 
         @scope.shouldShowArchiveMenu = () =>
@@ -94,6 +71,15 @@ class CaseCtrl
 
         @scope.toggleStar = (id)  =>
             if id in @starredIds
+                # close or go to the next if the player unstar in archive view
+                if @User.case.archive.open is true and @menu is 'starred'
+                    if @starredIds.length > 1
+                        console.log "archive suivante"
+                        @navArchive('next')
+                    else
+                        console.log "ferme l'archive"
+                        @Notification.error("Il n'y a plus d'archive en favoris !!!")
+                        @toggleArchive()
                 indexOfId = @starredIds.indexOf(id)
                 @starredIds.splice(indexOfId,1)
             else if id in @unlockedIds
@@ -127,6 +113,34 @@ class CaseCtrl
         if @User.case.archive.open and @User.case.archive.id?
             should_show = yes if id is @User.case.archive.id
         should_show
+
+        # To navigate in archive when archive is open in the case
+    navArchive: (direction) =>
+        if @User.case.archive.open is true
+            # The open id archive
+            id = @User.case.archive.id
+            # Choose the correct array according to the menu
+            if @menu isnt 'starred'
+                array = @unlockedIds
+            else
+                array = @starredIds
+            # Index of the archive opened in the chosen array
+            idx = array.indexOf(id)
+            l = array.length
+            # The loop according to the chosen direction
+            if direction is 'next'
+                if idx + 1 < l
+                    id = array[idx + 1]
+                else
+                    id = array[0]
+            else if direction is 'previous'
+                if idx - 1 >= 0
+                    id = array[idx - 1]
+                else
+                    id = array[l - 1]
+            # Update the opened archive
+            @User.case.archive.id = id
+            @shouldShowArchive(id)
 
     toggleArchive:  =>
         @User.case.archive.open = !@User.case.archive.open
