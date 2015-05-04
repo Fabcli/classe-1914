@@ -79,8 +79,8 @@
                 <div class="case__container__archive__right-content col-xs-105">
 
                     <div class="case__container__archive__right-content__button">
-                        <div class="case__container__archive__right-content__button__facebook" ng-click="socialAlert()"></div>
-                        <div class="case__container__archive__right-content__button__twitter" ng-click="socialAlert()"></div>
+                        <div ng-click='thirdParty.shareOnFacebook( "[[ arch.url ]]", "[[ arch.title ]]", "[[ arch.description | excerpt:true:105 ]]" )' class="case__container__archive__right-content__button__facebook"></div>
+                        <div ng-click="thirdParty.shareOnTwitter( '[[ arch.url ]]' )" class="case__container__archive__right-content__button__twitter"></div>
                     <!--<textarea class="case__container__archive__left-content__button__comment"></textarea>-->
                     </div>
 

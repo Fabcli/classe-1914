@@ -1,10 +1,12 @@
 class CaseCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification', '$filter']
+    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification', '$filter', 'ThirdParty']
 
-    constructor: (@scope, @Story, @User, @Case, @Archive, @Notification, @filter)->
+    constructor: (@scope, @Story, @User, @Case, @Archive, @Notification, @filter, @ThirdParty)->
         @scope.user     =   @User
         @scope.case     =   @Case
         @scope.archive  =   @Archive
+        @scope.thirdParty = @ThirdParty
+
 
         @menu = @User.case.menu
         @unlockedIds = @User.case.unlocked

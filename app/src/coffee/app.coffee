@@ -16,12 +16,12 @@ app = angular.module('classe1914', [
   "ngAnimate"
   "ngTouch"
   "ngSanitize"
+  # External dependencies
   "nouislider"
   "FBAngular"
   "toggle-switch"
   "bootstrapLightbox"
   "ui-notification"
-  # External dependencies
   "btford.markdown"
   #Internal dependencies
   "classe1914.constant"
