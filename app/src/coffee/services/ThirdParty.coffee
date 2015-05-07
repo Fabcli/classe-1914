@@ -4,8 +4,6 @@ angular.module('classe1914.service').service 'ThirdParty', ['$http', '$window', 
             @url = "http://classe-1914.gregdesplaces.com/"
 
         shareOnFacebook: (url=@url, title, excerpt)=>
-            feedUrl = "
-                https://www.facebook.com/dialog/feed?app_id=1109731455720216&redirect_uri=#{url}"
             shareUrlNew="https://www.facebook.com/dialog/share?app_id=1109731455720216&display=popup&href=#{url}&redirect_uri=#{url}"
             shareUrl = "https://www.facebook.com/sharer/sharer.php?u=#{url}&display=popup&caption=#{title}&description=#{excerpt}"
             $window.open shareUrl, "shareOnFacebook","status=no, scrollbars=no, menubar=no, width=670, height=370"
