@@ -11,7 +11,7 @@ angular.module("classe1914.service").factory("User", [
     '$timeout'
     '$location'
     '$rootScope'
-    (api, settings, types, initalCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
+    (api, settings, types, initialCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
         new class User
             # ─────────────────────────────────────────────────────────────────
             # Public method
@@ -47,7 +47,7 @@ angular.module("classe1914.service").factory("User", [
                 # Scenes the user passed
                 @scenes   = master.scenes or []
                 #Case unblocked in past or reset case
-                @case   =   master.case or initalCase.case
+                @case   =   master.case or initialCase.case
                 # Autoplay value
                 @autoplay = if master.autoplay? then master.autoplay else false
                 # Sound control

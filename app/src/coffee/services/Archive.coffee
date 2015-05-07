@@ -6,7 +6,7 @@ angular.module('classe1914.service').factory "Archive", [
     'constant.case'
     'Notification'
     '$filter'
-    (Lightbox, User, Story, Case, initalCase, Notification, $filter)->
+    (Lightbox, User, Story, Case, initialCase, Notification, $filter)->
 
         new class Archive
             constructor: ->
@@ -93,11 +93,11 @@ angular.module('classe1914.service').factory "Archive", [
                     scene  = Story.scene(chapter, scene)
                     archives = scene.decor[0].archive
                     caseArchives =  scene.decor[0].case
-                    notification = scene.decor[0].archive_button or initalCase.notification.archive
+                    notification = scene.decor[0].archive_button or initialCase.notification.archive
                     if scene.decor[0].archive?
                         @unlockArchiveInCase(archives, notification, "archiveType")
                     else if scene.decor[0].case?
-                        @unlockArchiveInCase(caseArchives,initalCase.notification.case, "caseType")
+                        @unlockArchiveInCase(caseArchives,initialCase.notification.case, "caseType")
 
             toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence) =>
                 if sequenceIdx? and User.isReady
@@ -105,11 +105,11 @@ angular.module('classe1914.service').factory "Archive", [
                     sequence = Story.sequence(chapterIdx, sceneIdx, sequenceIdx)
                     if sequence? and sequence.archive?
                         archives = sequence.archive
-                        notif = sequence.archive_notification or notif = initalCase.notification.archive
+                        notif = sequence.archive_notification or notif = initialCase.notification.archive
                         @unlockArchiveInCase(archives,notif,"archiveType")
                     if sequence? and sequence.case?
                         caseArchives = sequence.case
-                        notif = initalCase.notification.case
+                        notif = initialCase.notification.case
                         @unlockArchiveInCase(caseArchives,notif,"caseType")
 
             unlockArchiveInCase: (array, notif, type) =>

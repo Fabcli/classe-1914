@@ -36,8 +36,8 @@ class CaseCtrl
             @shouldShowArchive(id)
 
         # To navigate in archive when archive is open in the case
-        @scope.navArchive = (direction) =>
-            do @navArchive(direction)
+        @scope.navArchive = (dir) =>
+            @navArchive(dir)
 
 
         @scope.shouldShowArchiveMenu = () =>
@@ -116,6 +116,44 @@ class CaseCtrl
         @scope.unlockAlert = =>
             @Notification.error(" Cette archive est déjà débloquée !")
 
+        @scope.severalArchiveImg = (allUrl) =>
+            is_ok = no
+            if allUrl?
+                is_ok = yes
+            is_ok
+
+        @scope.archNewUrl = (newUrl,id,direction=false) =>
+            @archNewUrl(newUrl,id, direction)
+
+        @scope.archImg = (u) =>
+            url = 'url('+u+')'
+            return url
+
+    archNewUrl: (URL,id,direction) =>
+        # The archive find with the index (id - 1)
+        archive = @Case.archives[id-1]
+        # for the thumbnail click
+        if direction is false
+            if archive.url is URL
+                @Notification.error(" Cette image est déja séléctionnée !")
+            else
+                archive.url = URL
+        # For the next/previous button
+        else
+            allUrl = archive.allUrl
+            idx = allUrl.indexOf(URL)
+            l = allUrl.length
+            if direction is "previous"
+                if idx - 1 >= 0
+                    newUrl = allUrl[idx - 1]
+                else
+                    newUrl = allUrl[l - 1]
+            if direction is "next"
+                if idx + 1 < l
+                    newUrl = allUrl[idx + 1]
+                else
+                    newUrl = allUrl[0]
+            archive.url = newUrl
 
     shouldShowCase: =>
         return @User.inGame and @User.isReady and @User.case.open

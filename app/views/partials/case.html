@@ -42,7 +42,7 @@
 
             <div class="case__container__content__box col-lg-30 col-md-42 col-xs-70" ng-repeat="archive in case.archives" ng-show="shouldShowBox(archive.id)">
 
-                <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)" ng-style="{'background-image' : 'url([[ archive.url ]])' }">
+                <div class="case__container__content__box__archive" ng-if="shouldShowBoxContent(archive.id)" ng-class="archiveClass(archive.id)"  ng-style="{'background-image' : 'url([[ archive.url ]])' }">
                     <div class="case__container__content__box__archive__block" ng-class="archiveClass(archive.id)" ng-click="displayArchive(archive.id)">
                         <div class="case__container__content__box__archive__block__title" ng-class="archiveClass(archive.id)">[[ archive.title | uppercase ]]</div>
                         <div class="case__container__content__box__archive__block__cote" ng-class="archiveClass(archive.id)">COTE : [[ archive.cote ]]</div>
@@ -64,14 +64,16 @@
             <div class="case__container__archive__all-content">
                 <div class="case__container__archive__left-content col-md-105 col-xs-210">
 
-                    <div class="case__container__archive__left-content__img" ng-style="{'background-image' : 'url([[ arch.url ]])' }">
+                    <div class="case__container__archive__left-content__img" ng-style="{'background-image' : archImg(arch.url) }">
                     </div>
 
                     <div class="case__container__archive__left-content__button">
                         <div class="case__container__archive__left-content__button__unlocked" ng-class="archiveClass(arch.id)" ng-click="unlockAlert()"></div>
                         <div class="case__container__archive__left-content__button__starred " ng-class="archiveClass(arch.id)" ng-click="toggleStar(arch.id)"></div>
-                        <div class="case__container__archive__left-content__button__previous"></div>
-                        <div class="case__container__archive__left-content__button__next"></div>
+                        <div ng-show="severalArchiveImg(arch.allUrl)">
+                            <div class="case__container__archive__left-content__button__previous" ng-click="archNewUrl(arch.url,arch.id,'previous')"></div>
+                            <div class="case__container__archive__left-content__button__next" ng-click="archNewUrl(arch.url,arch.id,'next')"></div>
+                        </div>
                     </div>
 
                 </div>
@@ -100,9 +102,11 @@
 
                     <div class="case__container__archive__right-content__thumbs">
                         <!-- TODO : Find a solution for a lot a images in one archive -->
-                        <div class="case__container__archive__right-content__thumbs__box">
-                            <div class="case__container__archive__right-content__thumbs__box__thumb" ng-style="{'background-image' : 'url([[ arch.url ]])' }"></div>
+                        <div class="case__container__archive__right-content__thumbs__box" >
+                            <div ng-hide="severalArchiveImg(arch.allUrl)" class="case__container__archive__right-content__thumbs__box__thumb" ng-style="{'background-image' : 'url([[ arch.url ]])' }"></div>
+                            <div ng-show="severalArchiveImg(arch.allUrl)" ng-repeat="u in arch.allUrl" class="case__container__archive__right-content__thumbs__box__thumb pointer" ng-style="{'background-image' : 'url([[ u ]])' }" ng-click="archNewUrl(u,$parent.arch.id)"></div>
                         </div>
+
                     </div>
                 </div>
             </div>
