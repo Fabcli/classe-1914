@@ -9,7 +9,7 @@ angular.module('classe1914.constant').constant 'constant.settings',
   archiveNotification : 1*1000
   feedbackDuration    : 2*1000
 # Some types of sequence have different behavior
-  sequenceWithNext  : ["dialog", "narrative", "notification", "voixoff"]
+  sequenceWithNext  : ["dialog", "narrative", "notification", "voixoff", "video_background"]
   sequenceDialog    : ["dialog", "narrative"]
   sequenceSkip      : ["new_background"]
 # Refreshing rate for timeouts

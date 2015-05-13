@@ -195,11 +195,5 @@ class CaseCtrl
         @User.case.archive.open = !@User.case.archive.open
 
 
-
-
-
-
-
-
 angular.module('classe1914.controller').controller("CaseCtrl", MainCtrl)
 # EOF

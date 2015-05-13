@@ -64,6 +64,7 @@ angular.module("classe1914.service").factory "Story", [
               hasNext: ->
                    settings.sequenceWithNext.indexOf( this.lowerType() ) > -1
 
+
               hasExit: ->
                   this.isPlayer() or
                   this.isDialog() or
@@ -73,9 +74,12 @@ angular.module("classe1914.service").factory "Story", [
                   this.isVideoBg()
 
               getEmbedSrc: ->
-                  isSafari = navigator.userAgent.toLowerCase().indexOf('safari') != -1
-                  # Force HTML5 player only with Safari
-                  this.body = this.body.replace("&html=1", "") unless isSafari
+                  if this.body.toLowerCase().indexOf('https://vimeo.com/') > -1
+                      this.body = this.body.replace("https://vimeo.com/", "https://player.vimeo.com/video/")
+                      this.body = this.body+"?api=1&player_id=vimeoPlayer&autoplay=1&title=0&byline=0&portrait=0"
+#                      this.body = this.body.replace("https://vimeo.com/", "")
+                  else
+                      this.body
 
               getAvatarSrc: ->
                    if this.character?

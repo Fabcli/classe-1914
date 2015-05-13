@@ -19,6 +19,9 @@ var jslibrary = [
     'bower_modules/angular-loading-bar/build/loading-bar.min.js',
     'bower_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
     'bower_modules/angular-markdown-directive/markdown.js',
+    'bower_modules/videogular/videogular.min.js',
+    'bower_modules/videogular-controls/vg-controls.min.js',
+    'bower_modules/videogular-buffering/vg-buffering.min.js',
     'bower_modules/circles/index.js',
     'bower_modules/howler/howler.min.js',
     'bower_modules/showdown/src/showdown.js'
@@ -29,6 +32,7 @@ var csslibrary = [
     'bower_modules/angular-loading-bar/build/loading-bar.min.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css',
+    'bower_modules/videogular-themes-default/videogular.min.css',
     'bower_modules/nouislider/jquery.nouislider.css'
 ];
 

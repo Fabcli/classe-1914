@@ -49,12 +49,12 @@
                             [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
                         </span>
                     </div>
-                    <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
+                    <div class="scene__sequence--voixoff__frame__head" ng-if="$parent.sequence.getAvatarSrc()">
                         <img ng-src="[[ sequence.getAvatarSrc() ]]" />
                     </div>
                 </div>
 
-                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
+                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.$parent.sequence.hasNext()" ng-click="goToNextSequence()">
                     <span class="sr-only">Continuer</span>
                 </a>
 
@@ -110,7 +110,15 @@
         <!-- Video, in the middle of the screen -->
         <div ng-if="sequence.isVideoBg()">
             <div class="scene__sequence--video_background__body">
-                <iframe frameborder="0" width="100%" height="100%" ng-src="[[sequence.getEmbedSrc()]]" allowfullscreen ng-if="shouldShowSequence($index)"></iframe>
+                <videogular vg-auto-play="video.config.autoPlay" vg-theme="video.config.theme.url" ng-if="shouldShowSequence($index)">
+                    <vg-media vg-src="video.config.sources" ></vg-media>
+
+                    <vg-controls class="scene__sequence--video_background__controls" vg-autohide="sequence.autoHide" vg-autohide-time="sequence.autoHideTime">
+                        <video-controls></video-controls>
+                        <vg-scrub-bar></vg-scrub-bar>
+                    </vg-controls>
+
+                </videogular>
             </div>
         </div>
 

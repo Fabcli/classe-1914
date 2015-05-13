@@ -10,7 +10,16 @@
     "sequence": [
         {
             "type": "narrative",
-            "body": "Ceci est l'intro."
+            "body": "Ceci est l'intro avec un test de video en background."
+        },
+        {
+        "type": "video_background",
+        "next_button": true,
+        "character": "Louis",
+        "body": "https://vimeo.com/125324632",
+        "name": "test_classe1914_bgVideo",
+        "autoHide": false,
+        "autoHideTime": 500
         },
         {
             "type": "choice",

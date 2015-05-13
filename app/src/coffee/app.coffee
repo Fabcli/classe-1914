@@ -23,6 +23,9 @@ app = angular.module('classe1914', [
   "bootstrapLightbox"
   "ui-notification"
   "btford.markdown"
+  "com.2fdevs.videogular"
+  "com.2fdevs.videogular.plugins.controls"
+  "com.2fdevs.videogular.plugins.buffering"
   #Internal dependencies
   "classe1914.constant"
   "classe1914.animation"

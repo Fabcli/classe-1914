@@ -1,10 +1,11 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive']
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive']
 
-    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive) ->
+    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive) ->
         @scope.story  = @Story
         @scope.user  = @User
         @scope.sound = @Sound
+        @scope.video = @Video
         @scope.timeout = @Timeout
 
         # Establishes a bound between "src" and "chapter" arguments
@@ -116,10 +117,6 @@ class SceneCtrl
               break if sequenceIdx <= 0 or not sequence? or sequence.hasExit()
               sequenceIdx--
           sequenceIdx
-
-
-
-
 
 angular.module('classe1914.controller').controller("SceneCtrl", SceneCtrl)
 # EOF

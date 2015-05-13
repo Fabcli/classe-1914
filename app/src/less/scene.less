@@ -250,13 +250,18 @@
                     bottom:0;
                 }
             }
+
+            &__controls {
+                z-index: @scene-zindex;
+
+            }
         }
 
         // Dialog box & player, a the bottom of the screen
         &--dialog,
         &--narrative,
         &__next,
-        &--voixoff {
+        &--voixoff{
 
             @media (max-width: @screen-xs-min) {
                 width:auto;
