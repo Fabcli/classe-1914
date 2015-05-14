@@ -1,6 +1,6 @@
 <div class="scene__sequence--voixoff__body">
     <div class="scene__sequence--voixoff__frame">
-        <button ng-show="API.isReady" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="API.playPause()" ng-class="{ 'active': API.currentState == 'pause' }">
+        <button ng-show="API.isReady" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="API.playPause()" ng-class="{ 'active': API.currentState == 'play' }">
             <span class="sr-only" ng-show=" API.currentState == 'pause' ">Pause</span>
             <span class="sr-only" ng-show=" API.currentState == 'play' ">Play</span>
         </button>

@@ -110,8 +110,8 @@
         <!-- Video, in the middle of the screen -->
         <div ng-if="sequence.isVideoBg()">
             <div class="scene__sequence--video_background__body">
-                <videogular vg-auto-play="video.config.autoPlay" vg-theme="video.config.theme.url" ng-if="shouldShowSequence($index)">
-                    <vg-media vg-src="video.config.sources" ></vg-media>
+                <videogular vg-auto-play="video.config.autoPlay"  ng-if="shouldShowSequence($index)">
+                    <vg-media vg-src="video.videoSources(sequence.name)" ></vg-media>
 
                     <vg-controls class="scene__sequence--video_background__controls" vg-autohide="sequence.autoHide" vg-autohide-time="sequence.autoHideTime">
                         <video-controls></video-controls>
@@ -128,7 +128,7 @@
         </div>
 
         <!-- generic next button -->
-        <div class="scene__sequence__next" ng-if="sequence.next_button">
+        <div class="scene__sequence__next" ng-if="sequence.next_button && !sequence.isVideoBg()">
             <a class="scene__sequence__next__btn btn btn-default" ng-click="goToNextSequence()">
                 <span class="sr-only">Continuer</span>
             </a>

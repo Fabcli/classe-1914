@@ -1,36 +1,31 @@
-# http://www.videogular.com
-angular.module("classe1914.service").factory "Video", ['$sce', ($sce)->
+# Based on this module => http://www.videogular.com,
+# Used for the video backround
+angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User', ($sce, $filter, User)->
     new class Video
 
         constructor: ->
-            console.log $sce
-
             @config =
                 autoPlay: true
-                sources: [
-                    {
-                        src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.mp4"), type: "video/mp4"
-                    },
-                    {
-                        src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.webm"), type: "video/webm"
-                    },
-                    {
-                        src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/videos/videogular.ogg"), type: "video/ogg"
-                    }
-                ]
-
                 theme:
-                    {
-                        url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"
-                    }
+                    url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"
 
-                # TODO : delete => params in the json file
-                plugins: {
-                    controls: {
-                        autoHide: false,
-                        autoHideTime: 1000
-                    }
-                }
+        videoSources: (name) =>
+            # Cache video sources to avoid infinite digest iteration
+            return @sources if @sources?
+            @sources = []
+            # Find the directory on amazon S3 with the hero name
+            if User.hero?
+                n = "/"+User.hero+"/"+name
+            else
+                n = "/introduction/"+name
+            # Add the frontcloud url
+            url = $filter('media')(n)
+            # list of video extensions
+            extensions = ["mp4","ogg","webm"]
+            # Create de source array for videogular
+            angular.forEach extensions, (extension) =>
+                @sources.push src: $sce.trustAsResourceUrl(url+'.'+extension), type: "video/"+extension+""
+            @sources
 
 ]
 # EOF
