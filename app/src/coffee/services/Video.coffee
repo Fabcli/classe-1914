@@ -1,4 +1,4 @@
-# Based on this module => http://www.videogular.com,
+# Based on this module => http://www.videogular.com/docs/#/api/com.2fdevs.videogular.controller:vgController
 # Used for the video backround
 angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User', ($sce, $filter, User)->
     new class Video

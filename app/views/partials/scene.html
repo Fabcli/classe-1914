@@ -110,7 +110,7 @@
         <!-- Video, in the middle of the screen -->
         <div ng-if="sequence.isVideoBg()">
             <div class="scene__sequence--video_background__body">
-                <videogular vg-auto-play="video.config.autoPlay"  ng-if="shouldShowSequence($index)">
+                <videogular vg-auto-play="video.config.autoPlay" vg-complete="autoPlayNextSequence()" ng-if="shouldShowSequence($index)">
                     <vg-media vg-src="video.videoSources(sequence.name)" ></vg-media>
 
                     <vg-controls class="scene__sequence--video_background__controls" vg-autohide="sequence.autoHide" vg-autohide-time="sequence.autoHideTime">

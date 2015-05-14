@@ -35,6 +35,10 @@ class SceneCtrl
         @scope.goToNextSequence = =>
             do @User.nextSequence
 
+        @scope.autoPlayNextSequence = =>
+            console.log "Lectur auto ? => "+User.autoplay
+            do @User.nextSequence if User.autoplay is true
+
         # Select an option within a sequence by wrapping the User's method
         @scope.selectOption = (option, idx)=>
             # Save choice for this scene
