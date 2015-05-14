@@ -15,7 +15,7 @@
         {
         "type": "video_background",
         "next_button": true,
-        "character": "Louis",
+        "character": "Marie",
         "name": "test_classe1914_bgVideo",
         "autoHide": true,
         "autoHideTime": 1500
