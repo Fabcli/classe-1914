@@ -1,4 +1,5 @@
 1. Noms des fichiers
+1. Noms des fichiers
 =================
 
 Les noms des fichiers json représentent les nom des parties, chapitre et scene :
@@ -132,7 +133,7 @@ La musique d'ambiance, ou on donne  le chemin du fichier :
 
 #### 2.7. delay #
 
-Le delai en seconde avant de lancer la sequence :
+Le delai en seconde avant de lancer la sequence, il existe une valeur par defaut reglable (j'ai mis 12s) :
 * `"delay": 12`
 
 #### 2.8. result #

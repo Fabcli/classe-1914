@@ -1,9 +1,10 @@
-# Based on this module => http://www.videogular.com/docs/#/api/com.2fdevs.videogular.controller:vgController
+# Based on this module => http://www.videogular.com/docs/#/api/
 # Used for the video backround
 angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User', ($sce, $filter, User)->
     new class Video
 
         constructor: ->
+            @API = null
             @config =
                 autoPlay: true
 
@@ -24,6 +25,18 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
             angular.forEach extensions, (extension) =>
                 @sources.push src: $sce.trustAsResourceUrl(url+'.'+extension), type: "video/"+extension+""
             @sources
+
+        # Link the vidogular API
+        onPlayerReady: (API) =>  @API = API
+
+        # Pause the video bg if the case is open
+        openCase: =>
+            if @API isnt null
+                if User.case.open is true
+                    @API.pause()
+                else
+                    @API.play()
+
 
 ]
 # EOF

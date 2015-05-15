@@ -47,6 +47,8 @@ angular.module("classe1914.service").factory("User", [
                 @autoplay = if master.autoplay? then master.autoplay else false
                 # Sound control
                 @volume   = if isNaN(master.volume) then 1 else master.volume
+                # Backrgound Video State
+                @videoState = null
                 # Reset identification token
                 [@token, @email] = [null, null]
                 # Reset user states

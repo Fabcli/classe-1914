@@ -9,6 +9,8 @@ class NavCtrl
 
         @scope.autoplay = @User.autoplay
 
+        console.log "Valeur de l'auto dans navCtrl : "+@scope.autoplay
+
         @scope.isAutoplayOn = => @User.autoplay
 
         # Autoplay value

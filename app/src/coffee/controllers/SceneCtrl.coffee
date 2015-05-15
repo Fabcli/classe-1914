@@ -1,17 +1,21 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive']
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'AutoPlay']
 
-    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive) ->
-        @scope.story  = @Story
-        @scope.user  = @User
-        @scope.sound = @Sound
-        @scope.video = @Video
-        @scope.timeout = @Timeout
+    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @AutoPlay) ->
+        @scope.story    = @Story
+        @scope.user     = @User
+        @scope.sound    = @Sound
+        @scope.video    = @Video
+        @scope.timeout  = @Timeout
+        @scope.autoplay = @AutoPlay
+        @scope.archive  = @Archive
 
         # Establishes a bound between "src" and "chapter" arguments
         # provided by the scene directive and the Controller
         @scene = @scope.scene = @scope.src
         @chapter = @scope.chapter
+
+        @scope.video.currentState = @User.videoState
 
         # True if the given scene is visible
         @shouldShowScene = @scope.shouldShowScene = =>
@@ -34,9 +38,6 @@ class SceneCtrl
         # Just wraps the function from the user service
         @scope.goToNextSequence = =>
             do @User.nextSequence
-
-        @scope.autoPlayNextSequence = =>
-            do @User.nextSequence if User.autoplay is true
 
         # Select an option within a sequence by wrapping the User's method
         @scope.selectOption = (option, idx)=>
@@ -90,9 +91,6 @@ class SceneCtrl
                 should_display = should_display and @User.scene is @scene.id
             return should_display
 
-        # Open the lightbox with archive
-        @scope.openArchive = =>
-            do Archive.openArchive
 
         # Condition to add a cursor on bg image
         @scope.shouldShowArchive = =>
@@ -106,8 +104,6 @@ class SceneCtrl
         @scope.getChapterCase = =>
             return @Archive.getChapterCase (@chapter)
 
-        # Play or pause the soundtrack
-        @scope.toggleVoicetrack = @Sound.toggleVoicetrack
 
         # Last dialog box that we see
         @getLastDialogIdx = @scope.getLastDialogIdx = =>

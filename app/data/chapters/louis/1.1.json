@@ -45,9 +45,7 @@
         {
             "type": "choice",
             "body": "Quelle est la longueur de cette pièce d'étoffe ?",
-            "default_option": null,
             "case": [ 3, 4, 5 ],
-            "delay": null,
             "options": [
                 {
                     "header": "175 m",

@@ -5,7 +5,8 @@ angular.module("classe1914.service").factory "Timeout", [
   'TimeoutStates'
   'constant.settings'
   '$timeout'
-  ($rootScope, User, Story, TimeoutStates, settings, $timeout)->
+  'Notification'
+  ($rootScope, User, Story, TimeoutStates, settings, $timeout, Notification)->
       new class Timeout
           # ──────────────────────────────────────────────────────────────────────────
           # Public method
@@ -22,6 +23,11 @@ angular.module("classe1914.service").factory "Timeout", [
               @remainingTime = 0
               @_lastStep = null
 
+          timeoutStart: =>
+              @remainingTime = 0
+              @_timeout = $timeout @timeStep, settings.timeoutRefRate
+              @_lastStep = do Date.now
+
           toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence) =>
               if sequenceIdx?
                   if @_timeout?
@@ -32,12 +38,10 @@ angular.module("classe1914.service").factory "Timeout", [
                   @sequence = Story.sequence(chapterIdx, sceneIdx, sequenceIdx)
                   return if not @sequence?
                   # Some choices have a delay
-                  if @sequence.isChoice() and @sequence.delay?
-                      @remainingTime = 0
-                      @_timeout = $timeout @timeStep, settings.timeoutRefRate
-                      @_lastStep = do Date.now
+                  #if @sequence.isChoice() and @sequence.delay?
+                  #   @timeoutStart()
                       # Some sequence are feedbacks that disapear after a short delay
-                  else if @sequence.isFeedback()
+                  if @sequence.isFeedback()
                       if TimeoutStates.feedback isnt undefined
                           $timeout.cancel TimeoutStates.feedback
                           TimeoutStates.feedback = undefined
@@ -48,34 +52,53 @@ angular.module("classe1914.service").factory "Timeout", [
                               # Simply go to the next scene
                               -> User.goToScene(sequence.next_scene)
                       , settings.feedbackDuration)
-                  # when autoplay is on, go to the next sequence
-                  else if User.autoplay is true
-                      console.log "autoplay en route"
+                  # when autoplay is on for dialog sequence, go to the next sequence
+                  else if User.autoplay is true and User.case.open isnt true and ( @sequence.isDialog() or @sequence.isChoice() )
+                      if @sequence.delay is undefined
+                          @sequence.delay = settings.defaultDelay
+                      @timeoutStart()
+
 
           timeStep: =>
-              console.log @sequence.delay
               return unless @_timeout?
               now = do Date.now
+              # remaining time in percentage
               @remainingTime += (now - @_lastStep) * (100 / (@sequence.delay * 1000))
               return if isNaN(@remainingTime)
+              console.log Math.floor(@remainingTime)+" %"
+              # Launch the countdown
               if @remainingTime < 100
+                  if 49 < @remainingTime < 50
+                      # Error message for random choice
+                      if @sequence.isChoice()
+                          if User.hero?
+                              Notification.error ("Un choix va être fait au hasard dans "+@sequence.delay/2+" secondes")
+                          else
+                              Notification.error ({message : "Le choix du personnage est obligatoire", title: 'IMPORTANT',  delay: 15000})
                   @_timeout = $timeout @timeStep, settings.timeoutRefRate
                   @_lastStep = now
               else
+              # the countdown id done
                   @_timeout = undefined
                   _default = 0
-                  if @sequence.default_option?
-                      _default = @sequence.default_option - 1
-                  option = @sequence.options[_default]
-                  @remainingTime = 0
-                  @_lastStep = null
-                  User.updateCareer choice: _default, scene: User.pos()
-                  User.goToScene option.next_scene
-
-          startScene: =>
-              console.log "timeout.startScene launch"
-              if User.autoplay is true
-                  console.log "autoplay en route dans timeout.startScene"
+                  # For the choice sequence
+                  if @sequence.isChoice()
+                      # except for the introduction
+                      if User.hero?
+                          # If there's a default choice in the json file
+                          if @sequence.default_option?
+                              _default = @sequence.default_option - 1
+                          else
+                          # If not, a random choice
+                              _default = Math.floor(Math.random()* @sequence.options.length)
+                          option = @sequence.options[_default]
+                          @remainingTime = 0
+                          @_lastStep = null
+                          User.updateCareer choice: _default, scene: User.pos()
+                          User.goToScene option.next_scene
+                  # For narrative and dialog sequence
+                  if @sequence.isDialog()
+                      do User.nextSequence
 
 ]
 # EOF

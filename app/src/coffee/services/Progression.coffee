@@ -3,13 +3,16 @@ angular.module("classe1914.service").factory "Progression", [
       '$timeout'
       'constant.doors'
       'constant.keys'
+      'constant.settings'
       'Story'
       'User'
       'Sound'
       'Archive'
       'Timeout'
       'KeyboardCommands'
-      ($rootScope, $timeout, doors, keys, Story, User, Sound, Archive, Timeout, KeyboardCommands)->
+      'AutoPlay'
+      'Video'
+      ($rootScope, $timeout, doors, keys, settings, Story, User, Sound, Archive, Timeout, KeyboardCommands, AutoPlay, Video)->
             new class Progression
                   # ──────────────────────────────────────────────────────────────────────────
                   # Public method
@@ -31,7 +34,6 @@ angular.module("classe1914.service").factory "Progression", [
                           if User.inGame
                              do Sound.startScene
                              do Archive.startScene
-                             do Timeout.startScene
                       ), yes
                       # Sequence is changing
                       $rootScope.$watch (=>(User.scene+User.sequence)), ->
@@ -44,6 +46,15 @@ angular.module("classe1914.service").factory "Progression", [
                          do Sound.toggleSequence
                          do Archive.toggleSequence
                          do Timeout.toggleSequence
+
+                      # User open the case
+                      $rootScope.$watch (=>User.case.open ), ->
+                          do Timeout.toggleSequence
+                          do Video.openCase if settings.activeBgPause
+
+                      # Autoplay is changing
+                      $rootScope.$watch (=>User.autoplay), ->
+                         do AutoPlay.changeValue
 
 
                       $rootScope.$watch (=> User.isGameOver), (new_value, old_value) ->

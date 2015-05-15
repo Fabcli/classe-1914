@@ -14,7 +14,8 @@ angular.module('classe1914.constant').constant 'constant.settings',
   sequenceSkip      : ["new_background"]
 # Refreshing rate for timeouts
   timeoutRefRate    : 100
-# Some scenes affect the percentage of progression
-  mainScenes        :
-    "1": ["1.1", "1.5", "1.8"]
+# Default value for delay in second on active autoplay
+  defaultDelay      : 12
+# Active the pause on videoBackground when the user open the case
+  activeBgPause     : true
 
