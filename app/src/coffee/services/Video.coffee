@@ -26,7 +26,7 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
                 @sources.push src: $sce.trustAsResourceUrl(url+'.'+extension), type: "video/"+extension+""
             @sources
 
-        # Link the vidogular API
+        # Link the vidogular API => need vg-player-ready in the html (http://www.videogular.com/tutorials/videogular-api/)
         onPlayerReady: (API) =>  @API = API
 
         # Pause the video bg if the case is open
