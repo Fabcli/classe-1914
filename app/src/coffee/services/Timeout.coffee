@@ -41,15 +41,19 @@ angular.module("classe1914.service").factory "Timeout", [
                       if TimeoutStates.feedback isnt undefined
                           $timeout.cancel TimeoutStates.feedback
                           TimeoutStates.feedback = undefined
-                      # Simply go to the next sequence after a short delay
+                      # Simply go to the next scene after a short delay
                       TimeoutStates.feedback = $timeout(
                           # Closure to pass the current sequence object
                           do (sequence=@sequence)->
                               # Simply go to the next scene
                               -> User.goToScene(sequence.next_scene)
                       , settings.feedbackDuration)
+                  # when autoplay is on, go to the next sequence
+                  else if User.autoplay is true
+                      console.log "autoplay en route"
 
           timeStep: =>
+              console.log @sequence.delay
               return unless @_timeout?
               now = do Date.now
               @remainingTime += (now - @_lastStep) * (100 / (@sequence.delay * 1000))
@@ -67,6 +71,11 @@ angular.module("classe1914.service").factory "Timeout", [
                   @_lastStep = null
                   User.updateCareer choice: _default, scene: User.pos()
                   User.goToScene option.next_scene
+
+          startScene: =>
+              console.log "timeout.startScene launch"
+              if User.autoplay is true
+                  console.log "autoplay en route dans timeout.startScene"
 
 ]
 # EOF

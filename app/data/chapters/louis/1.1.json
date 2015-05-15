@@ -12,6 +12,7 @@
         {
             "type": "voixoff",
             "character": "Louis",
+            "next_button": true,
             "body": "/louis/PL1.mp3",
             "case": [ 3 ],
             "archive": [ 1, 2 ],
@@ -27,6 +28,7 @@
         {
             "type": "voixoff",
             "character": "Louis",
+            "next_button": true,
             "body": "/louis/PL2.mp3",
             "archive_notification": "Voir l'exercice",
             "archive": [ 4 ],
@@ -60,7 +62,7 @@
                     ]
                 },
                 {
-                    "header": "363 m",
+                    "header": "263 m",
                     "next_scene": "1.2",
                     "result": [
                         {
@@ -72,7 +74,7 @@
                     ]
                 },
                 {
-                    "header": "700 m",
+                    "header": "300 m",
                     "next_scene": "1.3",
                     "result": [
                         {

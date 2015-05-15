@@ -96,7 +96,7 @@ Le paramètre `next_scene` peut-être **null**, **une chaine** représentant une
 
 On a trois possibilités de type de décor :
 * `img`qui représente un fond d'écran avec une image fixe (png, jpeg ou gif) ou une image animéé (gif animé)
-* `video` qui sera un background video
+* `video_background` qui sera un background video
 * `interactive` qui sera un plan interactif => **ATTENTION IL RESTE A DEFINIR SON FONCTIONNEMENT EN JSON** 
 
 #### 2.2. date et place #
@@ -156,8 +156,6 @@ Les archives de la valise à ouvrir, sous forme de tableau :
 
 
 
-
-
 ### 3. Séquences
 
 Un évenement (appelé aussi "plan") peut être bloquant ou pas. Il est bloquant s'il nécessite d'être terminé pour enchainer sur l'évenement suivant de la séquence.
@@ -176,17 +174,18 @@ Un évenement (appelé aussi "plan") peut être bloquant ou pas. Il est bloquant
 * Comme le type `interactive` induit des aller-retour sur les sènes, il faut que je le definisse plus tard.
 
 
-| types          |  bouton next à la fin | bloquant | paramètres                                                                              |
-|:------------   |:---------------------:|:--------:|----------------------------------------------------------------------------------------:|
-| dialogue       |                     ✓ |        ✓ | header, delay, body, character, result, condition, archive, case                        |
-| narrative      |                     ✓ |        ✓ | body, delay, result, condition, archive, case                                           |
-| voixoff        |                     ✕ |        ✓ | delay, body, character, result, condition, archive, case                                |
-| game           |                     ✕ |        x | body, delay, result, options(list), condition, archive, case                            |
-| interactive    |                     ✕ |        ✓ | __A PRECISER__                                                                          |
-| video          |                     ✓ |        ✓ | body, delay, result, condition, case                                                    |
-| notification   |                     ✓ |        ✓ | body, delay, header, sound, result, condition, archive, case                            |
-| new_background |                     ✕ |        ✕ | body, type,  delay, transition, transition_duration result, condition, archive, case    |
-| choice         |                     ✕ |        ✓ | body, delay, result, default_option, options(list), condition, archive, case            |
+| types            |  bouton next à la fin | bloquant | paramètres                                                                              |
+|:---------------- |:---------------------:|:--------:|----------------------------------------------------------------------------------------:|
+| dialogue         |                     ✓ |        ✓ | header, delay, body, character, result, condition, archive, case                        |
+| narrative        |                     ✓ |        ✓ | body, delay, result, condition, archive, case                                           |
+| voixoff          |                     ✕ |        ✓ | delay, body, character, result, condition, archive, case                                |
+| game             |                     ✕ |        x | body, delay, result, options(list), condition, archive, case                            |
+| interactive      |                     ✕ |        ✓ | __A PRECISER__                                                                          |
+| video            |                     ✓ |        ✓ | body, delay, result, condition, case                                                    |
+| video_background |                     ✓ |        ✓ | body, delay, result, condition, case, button_next                                                    |
+| notification     |                     ✓ |        ✓ | body, delay, header, sound, result, condition, archive, case                            |
+| new_background   |                     ✕ |        ✕ | body, type,  delay, transition, transition_duration result, condition, archive, case    |
+| choice           |                     ✕ |        ✓ | body, delay, result, default_option, options(list), condition, archive, case            |
 
 * Si `choice` ou `game` n'est pas spécifié, le paramètre `next_scene` doit être renseigné dans l'objet `scene`.
 * Tous les types ont une option archives possibles avec :

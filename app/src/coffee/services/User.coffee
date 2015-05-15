@@ -25,13 +25,8 @@ angular.module("classe1914.service").factory("User", [
                 @token    = $location.search().token or master.token or null
                 @email    = master.email or null
                 if (do $location.search).token?
-                    #TODO : CREATE route/api.career.php
                     @email = yes if @email is null
                     $location.search('token', null)
-
-#                #TODO : Delete and replace by de next code with conditions
-#                do @loadCareer
-#                return @
                 # Load the career if a token is given
                 do @loadCareer if @token isnt null
                 # Load career data from the API when the player enters the game
@@ -58,8 +53,6 @@ angular.module("classe1914.service").factory("User", [
                 @inGame = @isGameOver = @isGameDone = @isSummary  = @isReady = no
                 #Reset hero choice
                 @hero = master.hero = null
-                #console.log "Valeur de master.hero dans SetInitialValue de User: "+master.hero
-                #console.log "nouvelle valeur de hero: "+@hero
                 # Reset progression
                 [@chapter, @scene, @sequence] = ["1", "1", 0]
                 # User indicators

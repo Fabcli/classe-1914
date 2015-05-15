@@ -6,8 +6,6 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
         constructor: ->
             @config =
                 autoPlay: true
-                theme:
-                    url: "http://www.videogular.com/styles/themes/default/latest/videogular.css"
 
         videoSources: (name) =>
             # Cache video sources to avoid infinite digest iteration

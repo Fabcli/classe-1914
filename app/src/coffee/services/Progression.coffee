@@ -31,6 +31,7 @@ angular.module("classe1914.service").factory "Progression", [
                           if User.inGame
                              do Sound.startScene
                              do Archive.startScene
+                             do Timeout.startScene
                       ), yes
                       # Sequence is changing
                       $rootScope.$watch (=>(User.scene+User.sequence)), ->
@@ -42,6 +43,7 @@ angular.module("classe1914.service").factory "Progression", [
                       $rootScope.$watch (=>do User.isStartingChapter), ->
                          do Sound.toggleSequence
                          do Archive.toggleSequence
+                         do Timeout.toggleSequence
 
 
                       $rootScope.$watch (=> User.isGameOver), (new_value, old_value) ->

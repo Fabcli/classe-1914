@@ -1,25 +1,36 @@
 <div class="scene__sequence--voixoff__body">
+
     <div class="scene__sequence--voixoff__frame">
+
         <button ng-hide="API.isBuffering" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="API.playPause()" ng-class="{ 'active': API.currentState == 'play' }">
             <span class="sr-only" ng-show=" API.currentState == 'pause' ">Pause</span>
             <span class="sr-only" ng-show=" API.currentState == 'play' ">Play</span>
         </button>
+
         <button ng-show="API.isBuffering" class="btn btn-default scene__sequence--voixoff__frame__play scene__sequence--voixoff__frame__load"></button>
+
         <div class="scene__sequence--voixoff__frame__progression">
+
             <div class="progress">
                 <div class="progress-bar" role="progressbar" ng-style="{ width: (API.currentTime/API.totalTime)*100 + '%'}"></div>
             </div>
-                        <span class="scene__sequence--voixoff__frame__progression__timestamp">
-                            [[ API.currentTime | date:'mm:ss' ]] / [[ API.totalTime | date:'mm:ss' ]]
-                        </span>
+
+            <span class="scene__sequence--voixoff__frame__progression__timestamp">
+                [[ API.currentTime | date:'mm:ss' ]] / [[ API.totalTime | date:'mm:ss' ]]
+            </span>
+
         </div>
+
         <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
             <img ng-src="[[ sequence.getAvatarSrc() ]]" />
         </div>
+
     </div>
 
-    <a class="scene__sequence--dialog__next btn btn-default" ng-show="sequence.next_button" ng-click="goToNextSequence()">
-        <span class="sr-only">Continuer</span>
-    </a>
+    <div>
+        <a class="scene__sequence--dialog__next btn btn-default" ng-show="sequence.next_button" ng-click="goToNextSequence()">
+            <span class="sr-only">Continuer</span>
+        </a>
+    </div>
 
 </div>
