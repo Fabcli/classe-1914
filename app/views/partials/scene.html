@@ -98,7 +98,7 @@
         <div ng-if="sequence.isVideoBg()">
             <div class="scene__sequence--video_background__body">
 
-                <videogular vg-player-ready="video.onPlayerReady($API)" vg-auto-play="video.config.autoPlay" vg-complete="autoplay.nextSequence()" ng-if="shouldShowSequence($index)">
+                <videogular vg-player-ready="video.onPlayerReady($API)" vg-auto-play="video.config.autoPlay" vg-complete="completeVideoBg()" ng-if="shouldShowSequence($index)">
                     <vg-media vg-src="video.videoSources(sequence.name)" ></vg-media>
 
                     <vg-controls vg-autohide="sequence.autoHide" vg-autohide-time="sequence.autoHideTime">
