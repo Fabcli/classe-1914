@@ -28,7 +28,7 @@
     </div>
 
     <div>
-        <a class="scene__sequence--dialog__next btn btn-default" ng-show="sequence.next_button" ng-click="goToNextSequence()">
+        <a class="scene__sequence--dialog__next btn btn-default" ng-show="sequence.next_button" ng-click="goToNextSequence() && video.updateVolume()">
             <span class="sr-only">Continuer</span>
         </a>
     </div>
