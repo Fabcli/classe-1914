@@ -41,7 +41,6 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
                     @API.play()
 
         updateVolume: =>
-            console.log @volume
             if @API isnt null
                 if @volume isnt null
                     User.volume = @volume
