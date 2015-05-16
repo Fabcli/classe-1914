@@ -15,7 +15,10 @@ class SceneCtrl
         @scene = @scope.scene = @scope.src
         @chapter = @scope.chapter
 
-        @scope.video.currentState = @User.videoState
+        @scope.completeVideoBg = =>
+            console.log "@completeVideoBg ok"
+            do @AutoPlay.nextSequence
+            do @Video.updateVolume
 
         # True if the given scene is visible
         @shouldShowScene = @scope.shouldShowScene = =>

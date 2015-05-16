@@ -5,6 +5,7 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
 
         constructor: ->
             @API = null
+            @volume = null
             @config =
                 autoPlay: true
 
@@ -26,8 +27,10 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
                 @sources.push src: $sce.trustAsResourceUrl(url+'.'+extension), type: "video/"+extension+""
             @sources
 
-        # Link the vidogular API => need vg-player-ready in the html (http://www.videogular.com/tutorials/videogular-api/)
-        onPlayerReady: (API) =>  @API = API
+        # Link the videogular API => need vg-player-ready in the html  (http://www.videogular.com/tutorials/videogular-api/)
+        onPlayerReady: (API) =>
+            @API = API
+            do @updateVolume
 
         # Pause the video bg if the case is open
         openCase: =>
@@ -37,6 +40,14 @@ angular.module("classe1914.service").factory "Video", ['$sce', '$filter', 'User'
                 else
                     @API.play()
 
+        updateVolume: =>
+            console.log @volume
+            if @API isnt null
+                if @volume isnt null
+                    User.volume = @volume
+                else
+                    @volume = User.volume
+                    User.volume = 0.15 if @volume > 0.15
 
 ]
 # EOF
