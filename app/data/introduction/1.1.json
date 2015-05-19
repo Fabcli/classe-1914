@@ -1,3 +1,50 @@
 {
-    "title" : "Chapitre 1 de l'intro"
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/pierre/part1/illustrations/c14_wait.png",
+            "background_transition": "fade",
+            "soundtrack": "/pierre/part1/soundtrack/test.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "narrative",
+            "body": "Ceci est l'intro avec un test de video en background."
+        },
+        {
+            "type": "video_background",
+            "next_button": true,
+            "character": "Marie",
+            "name": "test_classe1914_bgVideo",
+            "autoHide": true,
+            "autoHideTime": 1500
+        },
+        {
+            "type": "choice",
+            "body": "Choisissez votre héros",
+            "default_option": null,
+            "hero": true,
+            "options": [
+                {
+                    "header": "Louis",
+                    "hero": "louis"
+                },
+                {
+                    "header": "Pierre",
+                    "hero": "pierre"
+
+                },
+                {
+                    "header": "Eugénie",
+                    "hero": "eugenie"
+                },
+                {
+                    "header": "Marie",
+                    "hero": "marie"
+                }
+            ]
+        }
+    ]
 }
+

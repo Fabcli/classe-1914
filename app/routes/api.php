@@ -45,7 +45,7 @@ $app->get('/api/story/:hero', function($hero) use ($app) {
         $app->expires('+10 minutes');
     }
 
-    $story = \app\helpers\Game::getStory($hero,$app->config("opening_dates"));
+    $story = \app\helpers\Game::getStoryParts($hero,$app->config("opening_dates"));
     return ok($story);
 });
 

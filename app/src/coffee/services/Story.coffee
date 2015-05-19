@@ -100,6 +100,8 @@ angular.module("classe1914.service").factory "Story", [
                       @hero = $rootScope.user.hero
                       $http.get(api.story + "/" + @hero).success (chapters)=>
                           @chapters = @wrapChapters chapters
+                          console.log @chapters
+
                   else
                       $http.get(api.intro).success (chapters)=>
                           @chapters = @wrapChapters chapters

@@ -79,14 +79,64 @@ class Game {
         return $intro;
     }
 
-    public static function getStoryWithParts($opening_dates=NULL)  {
+    public static function getStoryParts($hero=NULL,$opening_dates=NULL) {
+        /**
+         * Return the story (character + chapter + scene + sub-scene).
+         * If an opening_dates array is given, takes care about the returned chapters.
+         */
+        if (!isset(self::$story)) {
+            $response = array();
+            $chapters = glob('data/chapters/'.$hero.'/[0-9*].[0-9*].json', GLOB_BRACE);
+            foreach ($chapters as $key => $chapter_filename) {
+                $chapter_number = basename($chapter_filename, ".json");
+                $part_number    = $chapter_number{0};
+                //var_dump("Chapter number : ".$chapter_number);
+                //var_dump("Part number : ".$part_number);
+                $content        = file_get_contents($chapter_filename);
+                $chapter        = json_decode($content, true);
+                $opening_date   = isset($opening_dates[$chapter_number]) ? $opening_dates[$chapter_number] : null;
+                // if there is an opening date, compare it with today : keep only opened chapters
+                if(empty($opening_date) || strtotime(date('Y-m-d H:i:s')) >= strtotime($opening_date))  {
+                    // retrieve scenes files for the current chapter
+                    $scenes  = glob('data/chapters/'.$hero.'/'.$chapter_number.'?*.json', GLOB_BRACE);
+                    if ($part_number == 1) {
+                        $chapter['part']    =   "AVANT-GUERRE";
+                    }
+                    elseif ($part_number == 2) {
+                        $chapter['part']    =   "LA GUERRE";
+                    }
+                    elseif ($part_number == 2) {
+                        $chapter['part']    =   "APRES-GUERRE";
+                    }
+                    $chapter_id              = $key + 1;
+                    //var_dump("Chapter id : ".$chapter_id);
+                    $chapter['id']           = $chapter_id; # add the id from filename
+                    $chapter['opening_date'] = $opening_date; # add the opening_date from config into the chapter object
+                    $chapter['scenes']       = array();
+                    foreach ($scenes as $scene_filename) {
+                        $content     = file_get_contents($scene_filename);
+                        $scene       = json_decode($content, true);
+                        //var_dump($scene);
+                        $scene["id"] = implode(array_slice(explode(".", basename($scene_filename, ".json")), 2)); # add the id from filename
+                        $chapter['scenes'][] = $scene;
+                    }
+                    $response[] = $chapter;
+                    //var_dump($chapter);
+                }
+            }
+            self::$story = $response;
+
+        }
+        return self::$story;
+    }
+
+    public static function getStoryWithParts($hero=NULL, $opening_dates=NULL)  {
         /**
          * Return the story (part + chapter + scene + sequence).
          * TODO:add & hero parameter
          */
         if (!isset(self::$story)) {
             $response = array();
-            $hero = 'louis';
             $parts = glob('data/chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
             foreach ($parts as $part_filename) {
                 $part_number        = basename($part_filename, ".json");
