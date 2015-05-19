@@ -2,90 +2,84 @@
   "next_scene": null,
   "decor": [
     {
-      "background": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL1.png",
+      "background": "/louis/PL1.png",
       "background_transition": "fade",
-      "soundtrack": "/medias/chap1/soundtrack/test.mp3"
+      "soundtrack": "/louis/soundtrack.mp3",
+      "case":[ 6 ]
     }
   ],
   "sequence": [
     {
-      "type": "narrative",
-      "body": "Au milieu de rien, c'est beau, non ?",
-      "result": {"mood": -25}
-    },
-    {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL1.mp3",
-      "archive": 54
-    },
-    {
-      "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL2.png",
-      "transition": null
-    },
-    {
-      "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL2.mp3"
-    },
-    {
-      "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL3.png",
-      "transition": null
-    },
-    {
-      "type": "narrative",
-      "body": "Eugénie et Marie jouent au jeu de la queue de la vache."
-    },
-    {
-      "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL4.png",
-      "transition": "fade"
-    },
-    {
-      "type": "dialog",
-      "character": "Pierre",
-      "body": "Ensuite, nous nous faisons prendre en photo tous ensemble par le photographe ambulant."
-    },
-    {
-      "type": "new_background",
-      "body": "/medias/chap1/illustrations/CH1_SE5_SC2_TP_PL5.png",
-      "transition": "fade",
-      "result":
-      {
-        "luck": 25,
-        "health": -30,
-        "mood": 23
+      "character": "Louis",
+      "next_button": true,
+      "body": "/louis/PL1.mp3",
+      "case": [ 3 ],
+      "archive": [ 1, 2 ],
+      "result": {
+        "point": 0
       }
     },
     {
+      "type": "new_background",
+      "body": "/louis/PL2.png",
+      "transition": null
+    },
+    {
       "type": "voixoff",
-      "body": "/medias/chap1/voixoff/CH1_SE5_SC2_TP_PL5.mp3"
+      "character": "Louis",
+      "next_button": true,
+      "body": "/louis/PL2.mp3",
+      "archive_notification": "Voir l'exercice",
+      "archive": [ 4 ],
+      "result": {
+        "mood": 5,
+        "point": 0
+      }
+    },
+    {
+      "type": "new_background",
+      "body": "/louis/PL3.png",
+      "transition": null
     },
     {
       "type": "choice",
-      "body": "Fait un choix",
-      "default_option": null,
-      "delay": null,
+      "body": "Quelle est la longueur de cette pièce d'étoffe ?",
+      "case": [ 3, 4, 5 ],
       "options": [
         {
-          "header": "Vers 1.1.1-1",
+          "header": "175 m : vers 1.1.1-1",
           "next_scene": "1.1.1-1",
           "result": [
             {
               "luck": -5,
               "health": 0,
-              "mood": -3
+              "mood": -3,
+              "point": -5
             }
           ]
         },
         {
-          "header": "Vers 1.1.1-2",
+          "header": "263 m : vers 1.1.1-2",
           "next_scene": "1.1.1-2",
           "result": [
             {
               "luck": -5,
               "health": 0,
-              "mood": -3
+              "mood": -3,
+              "point": -5
+            }
+          ]
+        },
+        {
+          "header": "300 m : vers 1.1.1-1",
+          "next_scene": "1.1.1-1",
+          "result": [
+            {
+              "luck": 5,
+              "health": 0,
+              "mood": 25,
+              "point": 85
             }
           ]
         }
@@ -93,4 +87,3 @@
     }
   ]
 }
-

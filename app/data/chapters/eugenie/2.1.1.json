@@ -1,0 +1,28 @@
+{
+    "next_scene": "2.1.2" ,
+    "decor": [
+    {
+        "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
+        "background_transition": null,
+        "soundtrack": "/pierre/part1/soundtrack/test.mp3"
+    }
+],
+"sequence": [
+    {
+        "type": "narrative",
+        "body": "Bienvenue dans 2eme partie de l'histoire",
+        "archive_notification": "Clique pour les archives",
+        "archive" : [ 1 ]
+    },
+    {
+        "type": "narrative",
+        "body": "Nous sommes à la scene 2.1.1",
+        "archive_notification": "Clique pour les archives",
+        "archive" : [ 1 ]
+    },
+    {
+        "type": "narrative",
+        "body": "Aller, tu vas à la scene 2 du chapitre 1 de la partie 2"
+    }
+]
+}

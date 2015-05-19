@@ -1,5 +1,5 @@
 {
-    "next_scene": "1.1.2",
+    "next_scene": "2.1.1",
     "decor": [
         {
             "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
@@ -10,7 +10,7 @@
     "sequence": [
         {
             "type": "narrative",
-            "body": "Nous sommes à la scene 1.1.1-2",
+            "body": "Nous sommes à la scene 1.2.1",
             "archive_notification": "Clique pour les archives",
             "archive" : [ 1 ]
         },

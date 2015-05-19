@@ -1,5 +1,5 @@
 {
-    "next_scene": "1.1.2",
+    "next_scene": null,
     "decor": [
         {
             "background": "/pierre/part1/illustrations/CH1_SE5_SC2_TP_PL5-2.png",
@@ -10,13 +10,13 @@
     "sequence": [
         {
             "type": "narrative",
-            "body": "Nous sommes à la scene 1.1.1-2",
+            "body": "Nous sommes à la scene 2.1.2",
             "archive_notification": "Clique pour les archives",
             "archive" : [ 1 ]
         },
         {
-            "type": "voixoff",
-            "body": "/pierre/part1/voixoff/CH1_SE5_SC2_TP_PL5-2.mp3"
+            "type": "narrative",
+            "body": "STOOOOP"
         }
     ]
 }
