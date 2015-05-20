@@ -14,7 +14,7 @@
             "character": "Louis",
             "next_button": true,
             "body": "/louis/PL1.mp3",
-            "case": [ 3 ],
+            "case": [ 4 ],
             "archive": [ 1, 2 ],
             "result": {
                 "point": 0
@@ -31,7 +31,7 @@
             "next_button": true,
             "body": "/louis/PL2.mp3",
             "archive_notification": "Voir l'exercice",
-            "archive": [ 4 ],
+            "archive": [ 3 ],
             "result": {
                 "mood": 5,
                 "point": 0

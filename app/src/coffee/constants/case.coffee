@@ -14,6 +14,7 @@ angular.module('classe1914.constant').constant 'constant.case',
         menu        :   "all"
         archive     :
             open    :   no
+            zoom    :   false
             id      :   {}
     notification :
         # The default message for new archive unlocked in case

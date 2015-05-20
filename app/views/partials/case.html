@@ -64,7 +64,8 @@
             <div class="case__container__archive__all-content">
                 <div class="case__container__archive__left-content col-md-105 col-xs-210">
 
-                    <div class="case__container__archive__left-content__img" ng-style="{'background-image' : archImg(arch.url) }">
+                    <div class="case__container__archive__left-content__img" ><!--ng-style="{'background-image' : archImg(arch.url) }"-->
+                        <img ng-elevate-zoom  ng-src="[[ arch.url ]]" data-zoom-image="[[ arch.url ]]"/>
                     </div>
 
                     <div class="case__container__archive__left-content__button">

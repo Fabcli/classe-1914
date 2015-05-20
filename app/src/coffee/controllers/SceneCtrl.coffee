@@ -16,7 +16,6 @@ class SceneCtrl
         @chapter = @scope.chapter
 
         @scope.completeVideoBg = =>
-            console.log "@completeVideoBg ok"
             do @AutoPlay.nextSequence
             do @Video.updateVolume
 

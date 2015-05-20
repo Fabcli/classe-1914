@@ -129,6 +129,18 @@ class CaseCtrl
             url = 'url('+u+')'
             return url
 
+        @scope.imgRatio =  =>
+            console.log
+#            height = $(this).height()
+#            width = $(this).width()
+#            console.log 'widthandheight:', width, height
+#            if width > height
+#                $(this).addClass 'wide-img'
+#            else
+#                $(this).addClass 'tall-img'
+#            return
+
+
     archNewUrl: (URL,id,direction) =>
         # The archive find with the index (id - 1)
         archive = @Case.archives[id-1]

@@ -25,6 +25,7 @@
     "install": "~1.0.4",
     "videogular": "~1.2.1",
     "videogular-controls": "~1.2.1",
-    "videogular-buffering": "~1.2.1"
+    "videogular-buffering": "~1.2.1",
+    "elevatezoom": "~2.2.3"
   }
 }
