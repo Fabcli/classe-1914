@@ -16,8 +16,9 @@
 
             <!-- navigation -->
             <div class="lightbox__image__caption__nav" >
-                <div class="lightbox__image__caption__nav__previous button" ng-click="Lightbox.prevImage()" ng-if="Lightbox.show_nav"></div>
                 <div class="lightbox__image__caption__nav__zoom button" ng-click="user.case.archive.zoom = !user.case.archive.zoom" ng-class="{ 'active': user.case.archive.zoom }"></div>
+
+                <div class="lightbox__image__caption__nav__previous button" ng-click="Lightbox.prevImage()" ng-if="Lightbox.show_nav"></div>
                 <div class="lightbox__image__caption__nav__next button" ng-click="Lightbox.nextImage()" ng-if="Lightbox.show_nav"></div>
             </div>
 
