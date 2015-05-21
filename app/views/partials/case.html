@@ -65,7 +65,7 @@
                 <div class="case__container__archive__left-content col-md-105 col-xs-210">
 
                     <div class="case__container__archive__left-content__img" ><!--ng-style="{'background-image' : archImg(arch.url) }"-->
-                        <img ng-elevate-zoom  ng-src="[[ arch.url ]]" data-zoom-image="[[ arch.url ]]"/>
+                        <img ng-elevate-zoom class="zoomImg"  ng-src="[[ arch.url ]]" data-zoom-image="[[ arch.url ]]" />
                     </div>
 
                     <div class="case__container__archive__left-content__button">
@@ -84,6 +84,7 @@
                     <div class="case__container__archive__right-content__button">
                         <div ng-click='thirdParty.shareOnFacebook( "[[ arch.url ]]", "[[ arch.title ]]", "[[ arch.description | excerpt:true:105 ]]" )' class="case__container__archive__right-content__button__facebook"></div>
                         <div ng-click="thirdParty.shareOnTwitter( '[[ arch.url ]]' )" class="case__container__archive__right-content__button__twitter"></div>
+                        <div ng-click="toggleZoom()" class="case__container__archive__right-content__button__zoom" ng-class="{ 'active': user.case.archive.zoom }"></div>
                     <!--<textarea class="case__container__archive__left-content__button__comment"></textarea>-->
                     </div>
 

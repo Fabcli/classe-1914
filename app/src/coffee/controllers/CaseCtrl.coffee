@@ -53,6 +53,10 @@ class CaseCtrl
             else
                 do @Case.toggleCase
 
+        # To close the case or the archive when it's open
+        @scope.toggleZoom = =>
+            do @toggleZoom
+
 
         # to attribute class in a box
         @scope.archiveClass = (id ) =>
@@ -110,9 +114,6 @@ class CaseCtrl
                 @User.case.archive.id = id
                 do @toggleArchive
 
-        @scope.socialAlert = =>
-            @Notification.error("Mon cher Damien, le partage sur les réseaux sociaux arrivera bientôt !")
-
         @scope.unlockAlert = =>
             @Notification.error(" Cette archive est déjà débloquée !")
 
@@ -125,23 +126,14 @@ class CaseCtrl
         @scope.archNewUrl = (newUrl,id,direction=false) =>
             @archNewUrl(newUrl,id, direction)
 
-        @scope.archImg = (u) =>
-            url = 'url('+u+')'
-            return url
-
-        @scope.imgRatio =  =>
-            console.log
-#            height = $(this).height()
-#            width = $(this).width()
-#            console.log 'widthandheight:', width, height
-#            if width > height
-#                $(this).addClass 'wide-img'
-#            else
-#                $(this).addClass 'tall-img'
-#            return
-
+        #To use with img in background
+#        @scope.archImg = (u) =>
+#            url = 'url('+u+')'
+#            return url
 
     archNewUrl: (URL,id,direction) =>
+        # Delete the lens
+        console.log
         # The archive find with the index (id - 1)
         archive = @Case.archives[id-1]
         # for the thumbnail click
@@ -152,8 +144,12 @@ class CaseCtrl
                 archive.url = URL
         # For the next/previous button
         else
+        # For more than 1 image for 1 archive
+            # All images url
             allUrl = archive.allUrl
+            # Index of the actual archive
             idx = allUrl.indexOf(URL)
+            # the number of images
             l = allUrl.length
             if direction is "previous"
                 if idx - 1 >= 0
@@ -205,6 +201,10 @@ class CaseCtrl
 
     toggleArchive:  =>
         @User.case.archive.open = !@User.case.archive.open
+
+    toggleZoom: =>
+        @User.case.archive.zoom = !@User.case.archive.zoom
+
 
 
 angular.module('classe1914.controller').controller("CaseCtrl", MainCtrl)

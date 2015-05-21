@@ -4,22 +4,56 @@
 angular.module('classe1914.directive').directive  'ngElevateZoom', [
     ()->
         restrict: "A"
-        controller: "ZoomCtrl"
         link: (scope, element, attrs)->
-            userZoom = scope.user.case.archive.zoom
-            #Will watch for changes on the attribute
+            @UserArchive    = scope.user.case.archive
+            @UserCase       = scope.user.case
+
+            #Will watch for changes image inside an archive (caseCtrl)
             attrs.$observe 'zoomImage', ->
-                if userZoom is true
-                    linkElevateZoom()
+                resetData()
+                linkElevateZoom()
+
+            scope.$watch (=> @UserArchive.id ), ->
+                console.log "changement d'archive"
+                resetData()
+                linkElevateZoom()
+
+            scope.$watch (=> @UserArchive.zoom ), ->
+                console.log "changement de zoom"
+                resetData()
+                linkElevateZoom()
 
             linkElevateZoom = ->
-                #Check if its not empty
-                if !attrs.zoomImage
-                    return
-                element.attr 'data-zoom-image', attrs.zoomImage
-                $(element).elevateZoom
-                    zoomType: 'lens'
-                    lensShape: 'round'
-                    lensSize: 200
+                if @UserArchive.zoom is true
+                    #Check if its not empty
+                    if !attrs.zoomImage
+                        return
+                    element.attr 'data-zoom-image', attrs.zoomImage
+                    $(element).elevateZoom
+                        zoomType: 'lens'
+                        lensShape: 'round'
+                        lensSize: 300
+
+            resetData = ->
+                element.removeData('elevateZoom')
+                element.removeData('zoomImage')
+                $('.zoomContainer').remove()
+
+#            scope.$watch (=> @UserArchive.open ), (newValue, oldValue) ->
+#                console.log "POUR L'ARCHIVE : "
+#                console.log "---oldvalue : "+oldValue
+#                console.log "---newValue : "+newValue
+#                console.log "fermeture de l'archive" if newValue is false
+#                resetData()
+#
+#            scope.$watch (=> @UserCase.open ), ->
+#                console.log "POUR LA VALISE : "
+#                #console.log "---oldvalue : "+oldValue
+#                #console.log "---newValue : "+newValue
+#                console.log "@UserCase.open value : "+scope.user.caseUserCase.open
+#                #console.log "fermeture de la valise" if newValue is false
+#                resetData()
+
+
 
 ]

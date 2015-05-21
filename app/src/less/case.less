@@ -352,7 +352,8 @@
                     margin: 20px 0px 20px 20px;
 
                     &__facebook,
-                    &__twitter {
+                    &__twitter,
+                    &__zoom{
                         display: block;
                         width: 32px;
                         height: 32px;
@@ -382,7 +383,17 @@
                         top: 46px;
                         background-color: @blue-twitter;
                         background-image: url('/img/ui/c14_social_twitter-white.svg');
+                    }
 
+                    &__zoom {
+                        top: 110px;
+                        background-color: @grey-case;
+                        background-image: url('/img/ui/c14_case_zoom-white.svg');
+
+                        &.active {
+                            background-color: @brand-primary;
+                            background-image: url('/img/ui/c14_case_zoom-black.svg');
+                        }
                     }
                 }
 
