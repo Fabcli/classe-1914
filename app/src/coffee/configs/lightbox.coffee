@@ -1,4 +1,4 @@
-angular.module('classe1914.config').config ['LightboxProvider', 'constant.settings', (LightboxProvider, settings) ->
+angular.module('classe1914.config').config ['LightboxProvider', (LightboxProvider) ->
 
     LightboxProvider.templateUrl = 'partials/lightbox.html'
 

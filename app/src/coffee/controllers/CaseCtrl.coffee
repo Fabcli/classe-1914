@@ -58,7 +58,7 @@ class CaseCtrl
 
         # To close the case or the archive when it's open
         @scope.toggleZoom = =>
-            do @toggleZoom
+            do @ElevateZoom.toggleZoom
 
 
         # to attribute class in a box
@@ -208,12 +208,6 @@ class CaseCtrl
         if @User.case.archive.open is false
             do @ElevateZoom.removeZoom
 
-    toggleZoom: =>
-        @User.case.archive.zoom = !@User.case.archive.zoom
-        if @User.case.archive.zoom is true
-            @Notification.success "Loupe activée !"
-        else
-            @Notification.error "Loupe désactivée !"
 
 
 

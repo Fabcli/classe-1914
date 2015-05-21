@@ -3,11 +3,12 @@
 
 angular.module('classe1914.directive').directive  'ngElevateZoom', [
     '$rootScope'
-    ($rootScope)->
+    'ElevateZoom'
+    ($rootScope, ElevateZoom)->
         restrict: "A"
         link: (scope, element, attrs)->
-            @UserArchive    = scope.user.case.archive
-            @UserCase       = scope.user.case
+            @UserArchive    = $rootScope.user.case.archive
+            @UserCase       = $rootScope.user.case
 
             #Will watch for changes image inside an archive (caseCtrl)
             attrs.$observe 'zoomImage', ->
@@ -18,7 +19,14 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                 resetData()
                 linkElevateZoom()
 
+            # Reset when the case is opened or closed
+            scope.$watch (=> @UserCase.open ), ->
+                resetData()
+
+            # Relink when the zoom is toggled and notify for story archive
             scope.$watch (=> @UserArchive.zoom ), ->
+                if $rootScope.user.case.open is false
+                    ElevateZoom.notifZoom()
                 resetData()
                 linkElevateZoom()
 

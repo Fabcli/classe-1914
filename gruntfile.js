@@ -29,7 +29,7 @@ var jslibrary = [
 ];
 
 var csslibrary = [
-    'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
+    //'bower_modules/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
     'bower_modules/angular-loading-bar/build/loading-bar.min.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch.css',
     'bower_modules/angular-toggle-switch/angular-toggle-switch-bootstrap.css',

@@ -82,7 +82,6 @@ angular.module('classe1914.service').factory "Archive", [
             openArchive: () =>
                 @display_archive = @shouldDisplayArchive()
                 if @display_archive is true
-                    console.log "valeur de la sequence"+@sequence.archive
                     @archives = @getArchives(@sequence.archive)
                     Lightbox.openModal(@archives, 0)
 

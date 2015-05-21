@@ -1,14 +1,15 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'AutoPlay']
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'AutoPlay', 'ElevateZoom']
 
-    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @AutoPlay) ->
-        @scope.story    = @Story
-        @scope.user     = @User
-        @scope.sound    = @Sound
-        @scope.video    = @Video
-        @scope.timeout  = @Timeout
-        @scope.autoplay = @AutoPlay
-        @scope.archive  = @Archive
+    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @AutoPlay, @ElevateZoom) ->
+        @scope.story        = @Story
+        @scope.user         = @User
+        @scope.sound        = @Sound
+        @scope.video        = @Video
+        @scope.timeout      = @Timeout
+        @scope.autoplay     = @AutoPlay
+        @scope.archive      = @Archive
+        @scope.ElevateZoom  = @ElevateZoom
 
         # Establishes a bound between "src" and "chapter" arguments
         # provided by the scene directive and the Controller

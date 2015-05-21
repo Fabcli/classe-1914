@@ -8,7 +8,6 @@ angular.module('classe1914.template',   ['ngRoute'])
 angular.module('classe1914.service',    ['ngResource', 'LocalStorageModule', 'classe1914.constant'])
 angular.module('classe1914.game',       ['ngResource', 'LocalStorageModule', 'classe1914.constant'])
 
-
 app = angular.module('classe1914', [
   #Angular dependencies
   "ngRoute"
