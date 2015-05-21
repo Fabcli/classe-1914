@@ -2,7 +2,8 @@
 # Directive from http://stackoverflow.com/questions/21353124/angularjs-directive-for-elevatezoom-jquery-plugin
 
 angular.module('classe1914.directive').directive  'ngElevateZoom', [
-    ()->
+    '$rootScope'
+    ($rootScope)->
         restrict: "A"
         link: (scope, element, attrs)->
             @UserArchive    = scope.user.case.archive
@@ -14,12 +15,10 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                 linkElevateZoom()
 
             scope.$watch (=> @UserArchive.id ), ->
-                console.log "changement d'archive"
                 resetData()
                 linkElevateZoom()
 
             scope.$watch (=> @UserArchive.zoom ), ->
-                console.log "changement de zoom"
                 resetData()
                 linkElevateZoom()
 
@@ -35,6 +34,7 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                         lensSize: 300
 
             resetData = ->
+                console.log "reset data"
                 element.removeData('elevateZoom')
                 element.removeData('zoomImage')
                 $('.zoomContainer').remove()

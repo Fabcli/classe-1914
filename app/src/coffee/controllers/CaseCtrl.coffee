@@ -1,12 +1,11 @@
 class CaseCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification', '$filter', 'ThirdParty']
+    @$inject: ['$scope', 'Story', 'User', 'Case', 'Archive', 'Notification', '$filter', 'ElevateZoom', 'ThirdParty']
 
-    constructor: (@scope, @Story, @User, @Case, @Archive,  @Notification, @filter, @ThirdParty)->
-        @scope.user     =   @User
-        @scope.case     =   @Case
-        @scope.archive  =   @Archive
-        @scope.thirdParty = @ThirdParty
-
+    constructor: (@scope, @Story, @User, @Case, @Archive,  @Notification, @filter, @ElevateZoom, @ThirdParty)->
+        @scope.user         =   @User
+        @scope.case         =   @Case
+        @scope.archive      =   @Archive
+        @scope.thirdParty   =   @ThirdParty
 
         @menu = @User.case.menu
         @unlockedIds = @User.case.unlocked
@@ -201,9 +200,15 @@ class CaseCtrl
 
     toggleArchive:  =>
         @User.case.archive.open = !@User.case.archive.open
+        if @User.case.archive.open is false
+            do @ElevateZoom.removeZoom
 
     toggleZoom: =>
         @User.case.archive.zoom = !@User.case.archive.zoom
+        if @User.case.archive.zoom is true
+            @Notification.success "Loupe activée !"
+        else
+            @Notification.error "Loupe désactivée !"
 
 
 

@@ -329,4 +329,5 @@ angular.module("classe1914.service").factory("User", [
                     data :
                         chapter : @chapter
 
+
 ])
