@@ -34,26 +34,9 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                         lensSize: 400
 
             resetData = ->
-                console.log "reset data"
                 element.removeData('elevateZoom')
                 element.removeData('zoomImage')
                 $('.zoomContainer').remove()
 
-#            scope.$watch (=> @UserArchive.open ), (newValue, oldValue) ->
-#                console.log "POUR L'ARCHIVE : "
-#                console.log "---oldvalue : "+oldValue
-#                console.log "---newValue : "+newValue
-#                console.log "fermeture de l'archive" if newValue is false
-#                resetData()
-#
-#            scope.$watch (=> @UserCase.open ), ->
-#                console.log "POUR LA VALISE : "
-#                #console.log "---oldvalue : "+oldValue
-#                #console.log "---newValue : "+newValue
-#                console.log "@UserCase.open value : "+scope.user.caseUserCase.open
-#                #console.log "fermeture de la valise" if newValue is false
-#                resetData()
-
-
-
 ]
+#EOF
