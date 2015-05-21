@@ -14,11 +14,11 @@ angular.module('classe1914.constant').constant 'constant.case',
         menu        :   "all"
         archive     :
             open    :   no
-            zoom    :   false
+            zoom    :   true
             id      :   {}
     notification :
         # The default message for new archive unlocked in case
         archive :   "Archive dans le jeu !"
-        case    :   "Nouvelle Archive débloquée dans la valise!"
+        case    :   "Nouvelle archive débloquée dans la valise!"
 
 
