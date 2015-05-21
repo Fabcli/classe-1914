@@ -52,6 +52,10 @@ class CaseCtrl
             else
                 do @Case.toggleCase
 
+        @scope.closeCase = =>
+            do @ElevateZoom.removeZoom
+            do @Case.toggleCase
+
         # To close the case or the archive when it's open
         @scope.toggleZoom = =>
             do @toggleZoom
@@ -200,6 +204,7 @@ class CaseCtrl
 
     toggleArchive:  =>
         @User.case.archive.open = !@User.case.archive.open
+        # Delete all div.zoomContainer
         if @User.case.archive.open is false
             do @ElevateZoom.removeZoom
 
