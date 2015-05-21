@@ -31,7 +31,7 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                     $(element).elevateZoom
                         zoomType: 'lens'
                         lensShape: 'round'
-                        lensSize: 300
+                        lensSize: 400
 
             resetData = ->
                 console.log "reset data"
