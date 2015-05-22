@@ -58,11 +58,12 @@ angular.module('classe1914.game').factory 'Shot', [
 
             buildExplosion: ->
                 @shotExplosion = @add.emitter(289, 295, 50) #Ajoute l'emetteur des particules (x,y,nombre maximum de particules créées)
+                @shotExplosion.fixedToCamera = true #On le fixe à l'écran
+                @shotExplosion.cameraOffset = new Phaser.Point(288,295) #On fixe le bug de Phaser 2.3.0 qui ne recopie pas les coordonnées apres avoir fixé à la caméra
                 @shotExplosion.minParticleScale = 0.2 #Coeff miniùum de taille des particules
                 @shotExplosion.maxParticleScale = 1 #Coeff maximum de taille des particules
                 @shotExplosion.minParticleSpeed.setTo -100, 100 #Vélocité minimum
                 @shotExplosion.maxParticleSpeed.setTo 100, -100 #Vélocité max
-                @shotExplosion.fixedToCamera = true #On le fixe à l'écran
                 @shotExplosion.makeParticles "shot" #On crêe les particules à partir de l'image 'shot'
 
 
