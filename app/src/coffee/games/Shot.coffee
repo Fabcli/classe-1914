@@ -1,10 +1,19 @@
 angular.module('classe1914.game').factory 'Shot', [
-    ()->
+    '$rootScope'
+    'User'
+    'Notification'
+    ($rootScope, User, Notification)->
         new class Shot
             constructor: (game) ->
 
                 #-----------------------------------//
             create: ->
+                @spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+                @b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
+                @z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
+                @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
+                @cursors = @input.keyboard.createCursorKeys()
+
                 #On met le score à 0
                 @score = 0
                 @gameover = false #Le jeu n'est pas terminé
@@ -48,7 +57,7 @@ angular.module('classe1914.game').factory 'Shot', [
                 @shotgun.animations.add "shotAnim", [ 0, 1, 2, 3, 0 ], 60, false #Ajoute l'animation et on ne la lit pas en boucle
 
             buildExplosion: ->
-                @shotExplosion = @add.emitter(288, 295, 50) #Ajoute l'emetteur des particules (x,y,nombre maximum de particules créées)
+                @shotExplosion = @add.emitter(289, 295, 50) #Ajoute l'emetteur des particules (x,y,nombre maximum de particules créées)
                 @shotExplosion.minParticleScale = 0.2 #Coeff miniùum de taille des particules
                 @shotExplosion.maxParticleScale = 1 #Coeff maximum de taille des particules
                 @shotExplosion.minParticleSpeed.setTo -100, 100 #Vélocité minimum
@@ -101,7 +110,8 @@ angular.module('classe1914.game').factory 'Shot', [
                 if @totalTargets > 0
                     @physics.arcade.overlap @targetGroup, @shotExplosion, @targetShot, null, this #La fonction targetShot(this.targetGroup,this.shotExplosion) sera executée lorsque une des cibles appartenant au targetGroup sera en collision avec une particule de shotExplosion...
                 else
-                    @gameoverContain = "BRAVO \nTu as eu toutes les cibles.\n\nScore: " + @score + "\nBonus temps: " + @timerLeft #On félicite le joueur et on lui attribue un bonus des secondes qu'il reste
+                    @point = @score + @timerLeft
+                    @gameoverContain = "BRAVO \nTu as eu toutes les cibles.\n\nScore: " + @score + "\nDons un bonus temps: " + @timerLeft #On félicite le joueur et on lui attribue un bonus des secondes qu'il reste
                     @gameOver() #On lance la fonction gameOver
 
             activeShot: ->
@@ -130,7 +140,7 @@ angular.module('classe1914.game').factory 'Shot', [
                 @targetShotSound.play() #On le lance
                 @totalTargets-- #Réduit le nombre de cibles
                 @score++ #Augmente le score
-                @scoreText.text = "Score : " + @score
+                #@scoreText.text = "Score : " + @score
 
             updateTimer: ->
                 if @gameover is false
@@ -140,30 +150,38 @@ angular.module('classe1914.game').factory 'Shot', [
                         @timeBar.width = @timeBarWidth * elapsedSeconds / @timerDuration #Réduit la taille de la timeBar
                         @timerText.text = "Chrono : " + @timerLeft + " s"
                     else
-                        @gameoverContain = "L'entrainement est terminé \nTu n'as plus de temps \n\nScore: " + @score + "\n\nMalus cible: -" + @totalTargets
+                        @point = @score - @totalTargets
+                        @gameoverContain = "L'entrainement est terminé \nTu n'as plus de temps \n\nScore: " + @score + "\n\n Dont un malus cible: -" + @totalTargets
                         @gameOver()
 
 
             #-----------------------------------//
             gameOver: ->
                 @gameover = true #On active la variable gameover qui empêche les actions du joueur
+                #game.destroy()
                 @gameoverCurtain = @add.sprite(@camera.x, @camera.y, "curtain") #On ajoute un rideau masquant le jeu
-                @gameoverStyle =
-                    font: "35px Arial"
-                    fill: "#fff"
-                    stroke: "#6a9f3a"
-                    strokeThickness: 1
-                    align: "center"
+#                @gameoverStyle =
+#                    font: "35px Arial"
+#                    fill: "#fff"
+#                    stroke: "#6a9f3a"
+#                    strokeThickness: 1
+#                    align: "center"
+#                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
+#                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
+#                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
+#                @gameoverText.anchor.set 0.5 #On centre le texte
+                Notification.error @gameoverContain
+                # On ajoute les points au niveau du jeu global
+                User.indicators.point += @point
+                #User.indicators.point += @point
+                User.nextSequence()
+                @game.destroy()
 
-                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
-                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
-                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
-                @gameoverText.anchor.set 0.5 #On centre le texte
 
             render: ->
 
-                @game.debug.text('Position de la cam => x: '+this.camera.x+',y: '+this.camera.y, 140, 32);
-                @game.debug.text('Taille du text game over: ' +this.gameoverText.width, 140, 64);
-                @game.debug.text('Taille du monde: ' + this.world.width, 140, 64);
+                #@game.debug.text('Position de la cam => x: '+this.camera.x+',y: '+ this.camera.y, 140, 32);
+                #@game.debug.text('Taille du text game over: ' +this.gameoverText.width, 140, 64);
+                #@game.debug.text('Taille du monde: ' + this.world.width, 140, 64);
 
 ]

@@ -1,11 +1,14 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification' ]
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Timeout', 'Archive', 'Lightbox', 'Notification', 'ArcadesGame']
 
-    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification ) ->
+    constructor: (@scope, @Story, @User, @Sound, @Timeout, @Archive , Lightbox, Notification, ArcadesGame ) ->
         @scope.story  = @Story
         @scope.user  = @User
         @scope.sound = @Sound
         @scope.timeout = @Timeout
+
+        @scope.launchGame = ArcadesGame.LaunchGame
+
 
         # Establishes a bound between "src" and "chapter" arguments
         # provided by the scene directive and the Controller

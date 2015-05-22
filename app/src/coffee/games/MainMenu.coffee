@@ -1,5 +1,6 @@
 angular.module('classe1914.game').factory 'MainMenu', [
-    ()->
+    '$rootScope'
+    ($rootScope)->
         new class MainMenu
 
             constructor: () ->
@@ -37,6 +38,8 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
                 @z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
                 @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
+                console.log "@input dans MainMenu:"
+                console.log @b_key
                 #On crée la variable de click
                 @click = @input.activePointer
                 @startButton()
@@ -46,9 +49,6 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 #MONDE
                 #  Modifie la taille du monde (de la taille de l'image de fond)
                 @world.setBounds 0, 0, 1500, 500
-                console.log "MainMenu.create() : OK"
-                @startgame()
-                return
 
 
             startButton: ->
@@ -56,8 +56,6 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 #On ajoute un bouton qui lancera le jeu avec 3 états
                 @playButton.input.useHandCursor = true
                 #On lui met un curseur de type main
-                console.log "MainMenu.startButton() : OK"
-                return
 
             initButtonFullScreen: ->
                 @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
@@ -65,26 +63,20 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 #On lui met un curseur de type main
                 @fullscreenButton.fixedToCamera = true
                 #On le fixe à l'écran
-                console.log @fullscreenButton
-                console.log "MainMenu.buttonFullScreen() : OK"
-                return
 
             enterFullScreen: ->
                 @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @quitFullScreen, this, 0, 0, 1)
                 @scale.startFullScreen()
-                return
 
             quitFullScreen: ->
                 @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
                 @scale.stopFullScreen()
-                return
+
 
             update: ->
                 #	pour faire un menu évolué
-                return
 
             startgame: (pointer) ->
                 # Bon, on a cliqué (ou taper) sur le bouton principal, on arrete la musique et on lance le jeu
                 @state.start 'Game'
-                return
 ]

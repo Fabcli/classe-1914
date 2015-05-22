@@ -31,16 +31,15 @@ angular.module('classe1914.game').factory 'Preloader', [
                 @load.image('timeBar', 'medias/games/img/game_shot/timebar.png');
                 @load.image('timeContainer','medias/games/img/game_shot/timebar-container.png');
                 @load.image('curtain','medias/games/img/game_common/curtain_black.png');
-                @load.atlas('shotgun', 'medias/games/img/game_shot/sprites/shotgun.png', 'data/img/game_shot/lebel.json');
-                #@load.spritesheet('explosion', 'medias/games/img/game_shot/sprites/explosion.png', 36, 51);
-                @load.spritesheet('playButton', 'medias/games/game_common/sprites/playButton.png', 193, 71);
-                @load.spritesheet('fullscreenButton', 'medias/games/game_common/sprites/fullscreenButton.png', 36, 36);
-                @load.audio('shot', ['medias/games/sounds/img/game_shot/shot.mp3','medias/games/sounds/img/game_shot/shot.ogg']);
-                @load.audio('break_target', ['medias/games/sounds/img/game_shot/ecrase_pot_yaourt.mp3','medias/games/sounds/img/game_shot/ecrase_pot_yaourt.ogg']);
+                @load.atlas('shotgun', 'medias/games/img/game_shot/sprites/shotgun.png', 'medias/games/data/game_shot/lebel.json');
+                @load.spritesheet('explosion', 'medias/games/img/game_shot/sprites/explosion.png', 36, 51);
+                @load.spritesheet('playButton', 'medias/games/img/game_common/sprites/playButton.png', 193, 71);
+                @load.spritesheet('fullscreenButton', 'medias/games/img/game_common/sprites/fullscreenButton.png', 36, 36);
+                @load.audio('shot', ['medias/games/sounds/game_shot/shot.mp3','medias/games/sounds/game_shot/shot.ogg']);
+                @load.audio('break_target', ['medias/games/sounds/game_shot/ecrase_pot_yaourt.mp3','medias/games/sounds/game_shot/ecrase_pot_yaourt.ogg']);
                 #@load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
 
                 #Launch the next function
-                console.log "Preloader.preload() OK"
 
             create: ->
                 #--On arrete de rogner la barre de préchargement
@@ -50,7 +49,6 @@ angular.module('classe1914.game').factory 'Preloader', [
 
                 #Comme on a pas de musique, on lance le menu principale sans stopper le rognage de la barre de chargement
                 @state.start "MainMenu"
-                console.log "Preloader.create() OK"
 
             update: ->
 ]

@@ -21,6 +21,6 @@
     "angular-fullscreen": "~1.0.1",
     "angular-bootstrap-lightbox": "0.4.0",
     "angular-ui-notification": "~0.0.5",
-    "phaser": "~2.3.0"
+    "phaser": "~2.2.0"
   }
 }

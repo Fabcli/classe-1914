@@ -28,6 +28,9 @@ angular.module("classe1914.service").factory "Story", [
               isPlayer: ->
                   this.lowerType() is types.sequence.player
 
+              isGame: ->
+                  this.lowerType() is types.sequence.game
+
               isVideo: ->
                   this.lowerType() is types.sequence.video
 

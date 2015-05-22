@@ -9,6 +9,12 @@
     ],
     "sequence": [
         {
+            "type": "game",
+            "body": "Ceci est le test du jeu.",
+            "game_model" : "shot",
+            "game_name": "fete"
+        },
+        {
             "type": "narrative",
             "body": "Ceci est l'intro."
         },

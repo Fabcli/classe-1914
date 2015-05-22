@@ -4,7 +4,7 @@ angular.module('classe1914.constant').constant 'constant.games',
         barContainer   :   'img/game_common/c14g_preloader-bar-container.png'
 
     shot    :
-        preloader    :
+        preloader :
             assets  :
                 bg                      :   'img/game_shot/decor1test-nuitW.jpg'
                 target                  :   'img/game_shot/cible.png'
