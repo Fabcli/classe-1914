@@ -1,14 +1,16 @@
-<preload images="getChapterCase()" object="user.case" attr="ready"></preload>
-
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
+
     <!-- This is the main illustration -->
-    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldShowArchive() }" ng-click="archive.openArchive()"/>
+    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldShowArchive() }" ng-click="openArchive()"/>
 
     <!-- Scene's sequence -->
     <div ng-repeat="sequence in scene.sequence"
          class="scene__sequence scene__sequence--[[sequence.type]]"
          ng-show="shouldShowSequence($index)">
+
+        <!-- Preload archives img -->
+        <preload images="getArchive()" object="sequence" attr="archiveReady" />
 
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">
@@ -25,7 +27,7 @@
                         <img ng-src="[[sequence.getAvatarSrc()]]" />
                     </div>
                 </div>
-                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext() || sequence.next_button" ng-click="goToNextSequence()">
+                <a class="scene__sequence--dialog__next btn btn-default" ng-show="$parent.sequence.hasNext()" ng-click="goToNextSequence()">
                     <span class="sr-only">Continuer</span>
                 </a>
             </div>
@@ -36,9 +38,9 @@
 
             <div class="scene__sequence--voixoff__body">
                 <div class="scene__sequence--voixoff__frame">
-                    <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="sound.toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
-                        <!--<span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>-->
-                        <!--<span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>-->
+                    <button ng-show="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play" ng-click="toggleVoicetrack()" ng-class="{ 'active': sound.voicetrack.isPlaying }">
+                        <span class="sr-only" ng-show="sound.voicetrack.isPlaying">Pause</span>
+                        <span class="sr-only" ng-hide="sound.voicetrack.isPlaying">Play</span>
                     </button>
                     <button ng-hide="sound.voicetrack._loaded" class="btn btn-default scene__sequence--voixoff__frame__play scene__sequence--voixoff__frame__load"></button>
                     <div class="scene__sequence--voixoff__frame__progression">
@@ -49,8 +51,8 @@
                             [[sound.voicetrack._position|minutes]] / [[sound.voicetrack._duration|minutes]]
                         </span>
                     </div>
-                    <div class="scene__sequence--voixoff__frame__head" ng-if="$parent.sequence.getAvatarSrc()">
-                        <img ng-src="[[ sequence.getAvatarSrc() ]]" />
+                    <div class="scene__sequence--voixoff__frame__head" ng-if="sequence.getAvatarSrc()">
+                        <img ng-src="[[sequence.getAvatarSrc()]]" />
                     </div>
                 </div>
 
@@ -75,6 +77,19 @@
                 </li>
             </ul>
 
+            <div ng-if="sequence.delay" class="scene__sequence--choice__timeout">
+                <div circle
+                     percentage="timeout.remainingTime"
+                     colors="transparent,#FF7F00"
+                     width="5"
+                     number=""
+                     radius="25"></div>
+            </div>
+        </div>
+
+        <!-- Archive, a the top right corner of the screen with a lightbox -->
+        <div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchives()">
+            <div>[[ sequence.archive_notification ]]</div>
         </div>
 
         <!-- Notification, a the top right corner of the screen -->
@@ -97,16 +112,7 @@
         <!-- Video, in the middle of the screen -->
         <div ng-if="sequence.isVideoBg()">
             <div class="scene__sequence--video_background__body">
-
-                <videogular vg-player-ready="video.onPlayerReady($API)" vg-auto-play="video.config.autoPlay" vg-complete="completeVideoBg()" ng-if="shouldShowSequence($index)">
-                    <vg-media vg-src="video.videoSources(sequence.name)" ></vg-media>
-
-                    <vg-controls vg-autohide="sequence.autoHide" vg-autohide-time="sequence.autoHideTime">
-                        <video-controls></video-controls>
-                        <vg-scrub-bar></vg-scrub-bar>
-                    </vg-controls>
-
-                </videogular>
+                <iframe frameborder="0" width="100%" height="100%" ng-src="[[sequence.getEmbedSrc()]]" allowfullscreen ng-if="shouldShowSequence($index)"></iframe>
             </div>
         </div>
 
@@ -115,6 +121,12 @@
             <div class="scene__sequence--feedback__body" btf-markdown="sequence.body"></div>
         </div>
 
+        <!-- generic next button -->
+        <div class="scene__sequence__next" ng-if="sequence.next_button">
+            <a class="scene__sequence__next__btn btn btn-default" ng-click="goToNextSequence()">
+                <span class="sr-only">Continuer</span>
+            </a>
+        </div>
 
     </div>
 </div>

@@ -1,9 +1,9 @@
 var jslibrary = [
+    'bower_modules/phaser/build/phaser.min.js',
     'bower_modules/jquery/dist/jquery.min.js',
     'bower_modules/modernizr/modernizr.js',
     'bower_modules/elevatezoom/jquery.elevateZoom-2.*.*.min.js',
     'bower_modules/underscore/underscore.js',
-    'bower_modules/phaser/build/phaser.min.js',
     'bower_modules/angular/angular.min.js',
     'bower_modules/nouislider/jquery.nouislider.js',
     'bower_modules/angular-nouislider/src/nouislider.js',

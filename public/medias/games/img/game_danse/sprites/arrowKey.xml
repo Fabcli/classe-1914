@@ -1,0 +1,6 @@
+<TextureAtlas imagePath="arrowKey.png">
+	<SubTexture name="arrowKey01.png" x="0" y="59" width="60" height="57"/>
+	<SubTexture name="arrowKey02.png" x="62" y="0" width="60" height="57"/>
+	<SubTexture name="arrowKey03.png" x="0" y="0" width="60" height="57"/>
+	<SubTexture name="arrowKey04.png" x="62" y="59" width="59" height="57"/>
+</TextureAtlas>

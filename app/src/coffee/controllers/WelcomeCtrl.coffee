@@ -1,6 +1,6 @@
 class WelcomeCtrl
     @$inject: ['$scope', 'User', '$timeout']
-    constructor: (@scope, @User, @timeout) ->
+    constructor: (@scope, @User, @timeout, @Shot) ->
         @scope.user  = @User
         @scope.email = @User.email
         # Takes the chapter only when the controller is instantiated
@@ -58,6 +58,10 @@ class WelcomeCtrl
 
         @scope.shouldShowWelcome = =>
             not @User.inGame and not @User.isGameDone
+
+        # To launch the gameCtrl in the element <game>
+        @scope.gameReady = =>
+            true
 
 
 angular.module('classe1914').controller("WelcomeCtrl", WelcomeCtrl)

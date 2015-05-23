@@ -1,0 +1,24 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="ninja01.png" x="540" y="132" width="89" height="130"/>
+	<SubTexture name="ninja02.png" x="447" y="133" width="91" height="131"/>
+	<SubTexture name="ninja03.png" x="631" y="0" width="88" height="131"/>
+	<SubTexture name="ninja04.png" x="0" y="134" width="125" height="132"/>
+	<SubTexture name="ninja05.png" x="0" y="0" width="126" height="132"/>
+	<SubTexture name="ninja06.png" x="0" y="268" width="117" height="132"/>
+	<SubTexture name="ninja07.png" x="442" y="0" width="94" height="131"/>
+	<SubTexture name="ninja08.png" x="127" y="134" width="110" height="132"/>
+	<SubTexture name="ninja09.png" x="538" y="0" width="90" height="130"/>
+	<SubTexture name="ninja10.png" x="233" y="0" width="103" height="132"/>
+	<SubTexture name="ninja11.png" x="343" y="134" width="102" height="132"/>
+	<SubTexture name="ninja12.png" x="442" y="268" width="102" height="132"/>
+	<SubTexture name="ninja13.png" x="128" y="0" width="103" height="132"/>
+	<SubTexture name="ninja14.png" x="338" y="268" width="102" height="132"/>
+	<SubTexture name="ninja15.png" x="338" y="0" width="102" height="132"/>
+	<SubTexture name="ninja16.png" x="239" y="134" width="102" height="132"/>
+	<SubTexture name="ninja17.png" x="231" y="268" width="105" height="133"/>
+	<SubTexture name="ninja18.png" x="637" y="267" width="86" height="132"/>
+	<SubTexture name="ninja19.png" x="637" y="133" width="87" height="132"/>
+	<SubTexture name="ninja20.png" x="725" y="267" width="85" height="133"/>
+	<SubTexture name="ninja21.png" x="119" y="268" width="110" height="135"/>
+	<SubTexture name="ninja22.png" x="546" y="264" width="89" height="135"/>
+</TextureAtlas>
