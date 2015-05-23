@@ -13,18 +13,18 @@
             "body": "Ceci est l'intro avec un test de video en background."
         },
         {
-            "type": "game",
-            "body": "Ceci est le test du jeu.",
-            "game_model" : "shot",
-            "game_name": "fete"
-        },
-        {
             "type": "video_background",
             "next_button": true,
             "character": "Marie",
             "name": "test_classe1914_bgVideo",
             "autoHide": true,
             "autoHideTime": 1500
+        },
+        {
+            "type": "game",
+            "body": "Ceci est le test du jeu.",
+            "game_model" : "shot",
+            "game_name": "fete"
         },
         {
             "type": "choice",
