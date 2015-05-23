@@ -13,7 +13,7 @@ angular.module('classe1914.game').factory 'MainMenu', [
 #
 #
 #                #VARIABLES : Utilisables dans toutes les étapes (Boot.js, MainMenu.js, Game.js, etc.)
-                @fullscreenButton
+#                @fullscreenButton
                 @cursors
                 @spacebar
                 @b_key
@@ -44,11 +44,11 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @click = @input.activePointer
                 @startButton()
                 #Fonction d'ajout du bouton start
-                @initButtonFullScreen()
+                #@initButtonFullScreen()
                 #Fonction d'ajout du bouton fullscreen
                 #MONDE
                 #  Modifie la taille du monde (de la taille de l'image de fond)
-                @world.setBounds 0, 0, 1500, 500
+                @world.setBounds 0, 0, 5000, 1673
 
 
             startButton: ->
@@ -57,20 +57,20 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @playButton.input.useHandCursor = true
                 #On lui met un curseur de type main
 
-            initButtonFullScreen: ->
-                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
-                @fullscreenButton.input.useHandCursor = true
-                #On lui met un curseur de type main
-                @fullscreenButton.fixedToCamera = true
-                #On le fixe à l'écran
-
-            enterFullScreen: ->
-                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @quitFullScreen, this, 0, 0, 1)
-                @scale.startFullScreen()
-
-            quitFullScreen: ->
-                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
-                @scale.stopFullScreen()
+#            initButtonFullScreen: ->
+#                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
+#                @fullscreenButton.input.useHandCursor = true
+#                #On lui met un curseur de type main
+#                @fullscreenButton.fixedToCamera = true
+#                #On le fixe à l'écran
+#
+#            enterFullScreen: ->
+#                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @quitFullScreen, this, 0, 0, 1)
+#                @scale.startFullScreen()
+#
+#            quitFullScreen: ->
+#                @fullscreenButton = @add.button(550, 12, 'fullscreenButton', @enterFullScreen, this, 1, 1, 0)
+#                @scale.stopFullScreen()
 
 
             update: ->

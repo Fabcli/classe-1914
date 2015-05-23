@@ -9,6 +9,12 @@
     ],
     "sequence": [
         {
+            "type": "game",
+            "body": "Ceci est le test du jeu.",
+            "game_model" : "shot",
+            "game_name": "fete"
+        },
+        {
             "type": "narrative",
             "body": "Ceci est l'intro avec un test de video en background."
         },
@@ -19,16 +25,6 @@
             "name": "test_classe1914_bgVideo",
             "autoHide": true,
             "autoHideTime": 1500
-        },
-        {
-            "type": "narrative",
-            "body": "le prochain sera le test du jeu."
-        },
-        {
-            "type": "game",
-            "body": "Ceci est le test du jeu.",
-            "game_model" : "shot",
-            "game_name": "fete"
         },
         {
             "type": "choice",

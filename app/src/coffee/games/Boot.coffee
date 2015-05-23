@@ -20,7 +20,7 @@ angular.module('classe1914.game').factory 'Boot', [
                 if @game.device.desktop
                     #  Si on a des paramètres spécifiques d'ordinateurs, ils peuvent aller ici
                     @scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
-                    @scale.setMinMax 480, 260, 1920, 1200
+                    @scale.setMinMax 600, 400, 1920, 1200
                     @scale.forceLandscape = true
                     @scale.pageAlignHorizontally = true
                     @scale.setScreenSize true

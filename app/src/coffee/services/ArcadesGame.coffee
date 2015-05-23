@@ -7,7 +7,7 @@ angular.module("classe1914.service").factory "ArcadesGame", ['User', 'Story', '$
             @height = window.innerHeight
             @width = window.innerWidth
 
-            game = new Phaser.Game(600, 400, Phaser.AUTO, 'gameCanvas')
+            game = new Phaser.Game(1920, 1200, Phaser.AUTO, 'gameCanvas')
 
             game.state.add('Boot', Boot)
             game.state.add('Preloader', Preloader)

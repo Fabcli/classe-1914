@@ -25,7 +25,6 @@ angular.module('classe1914.game').factory 'Preloader', [
                 #--ASSETS A PRECHARGER
                 #	Ici, on va charger les restes des assets nécessaires au jeu
                 @load.image('bg','medias/games/img/game_shot/decor1test-nuitW.jpg');
-                #@load.image('planks', 'medias/games/img/game_shot/planks.png');
                 @load.image('target', 'medias/games/img/game_shot/cible.png');
                 @load.image('shot','medias/games/img/game_shot/particles/shot.png');
                 @load.image('timeBar', 'medias/games/img/game_shot/timebar.png');

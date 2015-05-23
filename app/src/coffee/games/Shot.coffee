@@ -12,11 +12,15 @@ angular.module('classe1914.game').factory 'Shot', [
                 @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
                 @cursors = @input.keyboard.createCursorKeys()
 
+                # Coordonnée du fusil
+                @shotgunPosX = 960
+                @shotgunPosY = 1080
+
                 #On met le score à 0
                 @score = 0
                 @gameover = false #Le jeu n'est pas terminé
                 @totalTargets = 22 #On définit le nombre de cibles
-                @timerDuration = 3 #On définit le jeu à 30s
+                @timerDuration = 150 #On définit le jeu à 30s
                 @buildWorld() #On lance le fonction de création du monde
                 @buildScore() #On lance la fonction de création du score
                 @buildTimer() #On lance la fonction de création du timer
@@ -38,8 +42,9 @@ angular.module('classe1914.game').factory 'Shot', [
                 i = 0
 
                 while i < @totalTargets
-                    targetX = Math.floor(300 + Math.random() * 900) #Abscisses entre 300 et 1300 en x
-                    targetY = @rnd.realInRange(280, 380) #//Ordonnées entre 280 et 380. REM: Les deux méthodes pour x et y donne le même résultat.
+                    #targetX = Math.floor((@shotgunPosX/2) + Math.random() * (@world.width-(@shotgunPosX/2))) #Abscisses aux extremité du monde - 1/2 position du fusil
+                    targetX = @rnd.realInRange(@shotgunPosX, @world.width-@shotgunPosX) #//Ordonnées entre 280 et 380. REM: Les deux méthodes pour x et y donne le même résultat.
+                    targetY = @rnd.realInRange(@shotgunPosY-120, @shotgunPosY-20) #//Ordonnées entre 280 et 380. REM: Les deux méthodes pour x et y donne le même résultat.
                     t = @targetGroup.create(targetX, targetY, "target")
                     t.anchor.setTo 0.5, 0.5 #On centre le point d'ancrage des cibles
                     scale = @rnd.realInRange(0.2, 1.0) #On fait des tailles différentes (coeff mini, coeff max)
@@ -49,21 +54,20 @@ angular.module('classe1914.game').factory 'Shot', [
                     i++
 
             buildShotgun: ->
-                @shotgun = @add.sprite(300, 420, "shotgun") #On ajoute le fusil
+                @shotgun = @add.sprite(@shotgunPosX, @shotgunPosY, "shotgun") #On ajoute le fusil
                 @shotgun.fixedToCamera = true #On le fixe à l'écran
                 @shotgun.anchor.setTo 0.4, 0.8 #On l'ancre par rapport au centre bas
                 @shotgun.animations.add "shotAnim", [ 0, 1, 2, 3, 0 ], 60, false #Ajoute l'animation et on ne la lit pas en boucle
 
             buildExplosion: ->
-                @shotExplosion = @add.emitter(289, 295, 50) #Ajoute l'emetteur des particules (x,y,nombre maximum de particules créées)
+                @shotExplosion = @add.emitter(@shotgunPosX-11, @shotgunPosY-125, 100) #Ajoute l'emetteur des particules (x,y,nombre maximum de particules créées)
                 @shotExplosion.fixedToCamera = true #On le fixe à l'écran
-                @shotExplosion.cameraOffset = new Phaser.Point(288,295) #On fixe le bug de Phaser 2.3.0 qui ne recopie pas les coordonnées apres avoir fixé à la caméra
+                #@shotExplosion.cameraOffset = new Phaser.Point(949,895) #On fixe le bug de Phaser 2.3.0 qui ne recopie pas les coordonnées apres avoir fixé à la caméra
                 @shotExplosion.minParticleScale = 0.2 #Coeff miniùum de taille des particules
-                @shotExplosion.maxParticleScale = 1 #Coeff maximum de taille des particules
+                @shotExplosion.maxParticleScale = 2 #Coeff maximum de taille des particules
                 @shotExplosion.minParticleSpeed.setTo -100, 100 #Vélocité minimum
                 @shotExplosion.maxParticleSpeed.setTo 100, -100 #Vélocité max
                 @shotExplosion.makeParticles "shot" #On crêe les particules à partir de l'image 'shot'
-
 
             #Reglages de Caméra------
             cameraSettings: ->
