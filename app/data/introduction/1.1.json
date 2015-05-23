@@ -21,6 +21,10 @@
             "autoHideTime": 1500
         },
         {
+            "type": "narrative",
+            "body": "le prochain sera le test du jeu."
+        },
+        {
             "type": "game",
             "body": "Ceci est le test du jeu.",
             "game_model" : "shot",
