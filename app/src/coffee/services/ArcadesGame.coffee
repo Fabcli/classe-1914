@@ -7,9 +7,6 @@ angular.module("classe1914.service").factory "ArcadesGame", ['User', 'Story', '$
             @height = window.innerHeight
             @width = window.innerWidth
 
-            console.log @height
-            console.log @width
-
             game = new Phaser.Game(600, 400, Phaser.AUTO, 'gameCanvas')
 
             game.state.add('Boot', Boot)
@@ -18,6 +15,12 @@ angular.module("classe1914.service").factory "ArcadesGame", ['User', 'Story', '$
             game.state.add('Game', Shot)
 
             game.state.start('Boot')
+
+
+            console.log game
+
+        DestroyGame: (game) =>
+            game.destroy()
 
 
 ]

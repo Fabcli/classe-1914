@@ -4,8 +4,6 @@ angular.module('classe1914.game').factory 'Shot', [
     'Notification'
     ($rootScope, User, Notification)->
         new class Shot
-            constructor: (game) ->
-
                 #-----------------------------------//
             create: ->
                 @spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
@@ -18,7 +16,7 @@ angular.module('classe1914.game').factory 'Shot', [
                 @score = 0
                 @gameover = false #Le jeu n'est pas terminé
                 @totalTargets = 22 #On définit le nombre de cibles
-                @timerDuration = 30 #On définit le jeu à 30s
+                @timerDuration = 3 #On définit le jeu à 30s
                 @buildWorld() #On lance le fonction de création du monde
                 @buildScore() #On lance la fonction de création du score
                 @buildTimer() #On lance la fonction de création du timer
@@ -103,21 +101,23 @@ angular.module('classe1914.game').factory 'Shot', [
 
             #-----------------------------------//
             update: ->
-                @moveWorld() #Le déplacement dans le monde
-                @updateTimer() #On lance le timer
-                @collideTarget() #Fonction d'écoute de la collision tir-cible
+                if @gameover is false
+                    @moveWorld() #Le déplacement dans le monde
+                    @updateTimer() #On lance le timer
+                    @collideTarget() #Fonction d'écoute de la collision tir-cible
 
             collideTarget: ->
-                if @totalTargets > 0
-                    @physics.arcade.overlap @targetGroup, @shotExplosion, @targetShot, null, this #La fonction targetShot(this.targetGroup,this.shotExplosion) sera executée lorsque une des cibles appartenant au targetGroup sera en collision avec une particule de shotExplosion...
-                else
-                    @point = @score + @timerLeft
-                    @gameoverContain = "BRAVO \nTu as eu toutes les cibles.\n\nScore: " + @score + "\nDons un bonus temps: " + @timerLeft #On félicite le joueur et on lui attribue un bonus des secondes qu'il reste
-                    @gameOver() #On lance la fonction gameOver
+                if @gameover is false
+                    if @totalTargets > 0
+                        @physics.arcade.overlap @targetGroup, @shotExplosion, @targetShot, null, @ #La fonction targetShot(this.targetGroup,this.shotExplosion) sera executée lorsque une des cibles appartenant au targetGroup sera en collision avec une particule de shotExplosion...
+                    else
+                        @point = @score + @timerLeft
+                        @gameoverContain = "BRAVO \nTu as eu toutes les cibles.\n\nScore: " + @score + "\nDons un bonus temps: " + @timerLeft #On félicite le joueur et on lui attribue un bonus des secondes qu'il reste
+                        @gameOver() #On lance la fonction gameOver
 
             activeShot: ->
-                @input.onDown.add @shotAction, this #Active la fonction d'action de tir au clic
-                @spacebar.onDown.add @shotAction, this #Active la fonction d'action de tir lorsqu'on appuie sur la barre d'espace
+                @input.onDown.add @shotAction, @ #Active la fonction d'action de tir au clic
+                @spacebar.onDown.add @shotAction, @ #Active la fonction d'action de tir lorsqu'on appuie sur la barre d'espace
 
             shotAction: ->
                 if @gameover is false
@@ -158,25 +158,30 @@ angular.module('classe1914.game').factory 'Shot', [
 
             #-----------------------------------//
             gameOver: ->
+                User.nextSequence()
                 @gameover = true #On active la variable gameover qui empêche les actions du joueur
                 #game.destroy()
                 @gameoverCurtain = @add.sprite(@camera.x, @camera.y, "curtain") #On ajoute un rideau masquant le jeu
-#                @gameoverStyle =
-#                    font: "35px Arial"
-#                    fill: "#fff"
-#                    stroke: "#6a9f3a"
-#                    strokeThickness: 1
-#                    align: "center"
-#                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
-#                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
-#                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
-#                @gameoverText.anchor.set 0.5 #On centre le texte
+                @gameoverStyle =
+                    font: "35px Arial"
+                    fill: "#fff"
+                    stroke: "#6a9f3a"
+                    strokeThickness: 1
+                    align: "center"
+                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
+                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
+                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
+                @gameoverText.anchor.set 0.5 #On centre le texte
+
                 Notification.error @gameoverContain
                 # On ajoute les points au niveau du jeu global
                 User.indicators.point += @point
                 #User.indicators.point += @point
-                User.nextSequence()
-                @game.destroy()
+                # On lance la sequence suivante puis on detruit le jeu au bout de 1,5s
+                setTimeout ( ->
+                    @game.destroy() if @game?
+                    User.nextSequence()
+                ), 2000
 
 
             render: ->
