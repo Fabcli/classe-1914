@@ -1,7 +1,7 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'Notification', 'ArcadesGame', 'AutoPlay', 'ElevateZoom']
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'ArcadesGame', 'AutoPlay']
 
-    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @Notification, @ArcadesGame, @AutoPlay, @ElevateZoom) ->
+    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @ArcadesGame, @AutoPlay) ->
         @scope.story        = @Story
         @scope.user         = @User
         @scope.sound        = @Sound
@@ -9,7 +9,6 @@ class SceneCtrl
         @scope.timeout      = @Timeout
         @scope.autoplay     = @AutoPlay
         @scope.archive      = @Archive
-        @scope.ElevateZoom  = @ElevateZoom
 
         @scope.launchGame = @ArcadesGame.LaunchGame
 

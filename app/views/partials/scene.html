@@ -2,7 +2,7 @@
 
 
     <!-- This is the main illustration -->
-    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldShowArchive() }" ng-click="openArchive()"/>
+    <img  class="scene__bg" ng-src="[[ bg.src | media ]]" ng-repeat="bg in getSceneBgs() | filter:shouldDisplayBg" ng-class="{ 'scene__bg__archives': shouldShowArchive() }" ng-click="archive.openArchive()"/>
 
     <!-- Scene's sequence -->
     <div ng-repeat="sequence in scene.sequence"
@@ -90,12 +90,6 @@
         <!-- Archive, a the top right corner of the screen with a lightbox -->
         <div ng-if="shouldShowArchive()" class="scene__sequence--archive__wrapper" ng-click="openArchives()">
             <div>[[ sequence.archive_notification ]]</div>
-        </div>
-
-        <!-- Notification, a the top right corner of the screen -->
-        <div ng-if="sequence.isNotification()" class="scene__sequence--notification__wrapper">
-            <div class="scene__sequence--notification__wrapper__header" ng-if="sequence.header">[[sequence.header]]&nbsp;:</div>
-            <div class="scene__sequence--notification__wrapper__body" btf-markdown="sequence.body"></div>
         </div>
 
         <!-- Video, in the middle of the screen -->
