@@ -1,3 +1,6 @@
+<preload images="getChapterCase()" object="user.case" attr="ready"></preload>
+
+
 <div class="scene scene-entrance-animation" ng-if="shouldShowScene()">
 
 
@@ -8,9 +11,6 @@
     <div ng-repeat="sequence in scene.sequence"
          class="scene__sequence scene__sequence--[[sequence.type]]"
          ng-show="shouldShowSequence($index)">
-
-        <!-- Preload archives img -->
-        <preload images="getArchive()" object="sequence" attr="archiveReady" />
 
         <!-- Dialog box, a the bottom of the screen -->
         <div ng-if="sequence.isDialog()">

@@ -100,10 +100,6 @@ class SceneCtrl
 
         # Condition to add a cursor on bg image
 
-
-        @scope.getArchive = =>
-          do @Archive.getArchive
-
         @scope.openArchive = =>
           do @Archive.openLightboxArchives
 
