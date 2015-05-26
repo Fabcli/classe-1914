@@ -1,0 +1,38 @@
+{
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/pierre/part1/illustrations/c14_wait.png",
+            "background_transition": "fade",
+            "soundtrack": "/pierre/part1/soundtrack/test.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "choice",
+            "body": "Choisissez votre héros",
+            "default_option": null,
+            "hero": true,
+            "options": [
+                {
+                    "header": "Louis",
+                    "hero": "louis"
+                },
+                {
+                    "header": "Pierre",
+                    "hero": "pierre"
+
+                },
+                {
+                    "header": "Eugénie",
+                    "hero": "eugenie"
+                },
+                {
+                    "header": "Marie",
+                    "hero": "marie"
+                }
+            ]
+        }
+    ]
+}
+
