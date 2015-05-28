@@ -4,7 +4,7 @@
         {
             "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.png",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/marie/02_Simul_Marie.mp3"
+            "soundtrack": "/soundtracks/eugenie/02_Simul_Marie.mp3"
         }
     ],
     "sequence": [
@@ -34,10 +34,22 @@
             "transition": null
         },
         {
-            "type": "dialogue",
+            "type": "dialog",
             "header": "Pierre (à Eugénie)",
             "character": "Pierre",
-            "body": "Allez quoi! Tinquiète pas, on sera vite de retour! Les boches n'auront pas ma peau. Mon cuir breton est trop dur pour eux. Je te le promets!"
+            "body": "Allez quoi! Tinquiète pas, on sera vite de retour! "
+        },
+        {
+            "type": "dialog",
+            "header": "Pierre (à Eugénie)",
+            "character": "Pierre",
+            "body": "Les boches n'auront pas ma peau."
+        },
+        {
+            "type": "dialog",
+            "header": "Pierre (à Eugénie)",
+            "character": "Pierre",
+            "body": "Mon cuir breton est trop dur pour eux. Je te le promets!"
         },
         {
             "type": "new_background",
@@ -78,6 +90,7 @@
         },
         {
             "type": "narrative",
+            "reset": true,
             "body": " FIN DE LA DEMO, A BIENTÔT..."
         }
     ]

@@ -4,14 +4,14 @@
         {
             "background": "/illustrations/common/CH1_SE18_SC1_TP_PL4.jpg",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/louis/01_Simul_Louis.mp3"
+            "soundtrack": "/soundtracks/marie/01_Simul_Marie.mp3"
         }
     ],
     "sequence": [
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Pierre nous montre son ordre de route, il a le même que moi.",
+            "character": "Marie",
+            "body": "Pierre me montre l'ordre de route.",
             "archive_notification": "Cliquez sur l'ordre de route pour le voir",
             "archive": [ 1 ]
         },

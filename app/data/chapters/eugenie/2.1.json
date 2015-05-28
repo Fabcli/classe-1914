@@ -4,24 +4,19 @@
         {
             "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.png",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/louis/02_Simul_Louis.mp3"
+            "soundtrack": "/soundtracks/eugenie/02_Simul_Eugenie.mp3"
         }
     ],
     "sequence": [
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Ça y est, nous devons partir. Nous sommes dans nos uniformes bleus avec nos bardas sur le dos..."
+            "character": "Eugenie",
+            "body": "Ça y est, ils doivent partir. Louis et Pierre sont dans leurs uniformes bleus avec leurs bardas sur le dos."
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "...et nous disons au revoir à nos familles en leur assurant que nous rentrerons bientôt."
-        },
-        {
-            "type": "narrative",
-            "character": "Louis",
-            "body": "À Noël nous serons là, c'est sûr."
+            "character": "Eugenie",
+            "body": "Ils nous disent au revoir en nous assurant qu'ils rentreront bientôt. À Noël, ils seront là, c'est sûr."
         },
         {
             "type": "new_background",
@@ -30,13 +25,8 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Eugénie et Marie viennent nous dire au revoir. L'inquiétude se lit sur leurs visages."
-        },
-        {
-            "type": "narrative",
-            "character": "Louis",
-            "body": "Marie est en pleurs et Eugénie a l'air très inquiète."
+            "character": "Eugenie",
+            "body": "L'inquiétude se lit sur nos visages. Je suis inquiète. Marie est en pleurs."
         },
         {
             "type": "new_background",
@@ -68,23 +58,8 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Eugénie embrasse Stefan. Il  tente de la rassurer. Mais la peur se lit sur son visage."
-        },
-        {
-            "type": "narrative",
-            "character": "Louis",
-            "body": "Je lui dis que je vais m'en occuper de son Stefan."
-        },
-        {
-            "type": "narrative",
-            "character": "Louis",
-            "body": "On est affectés tous les deux au 41e régiment d'infanterie, le régiment des Bretons, le régiment des durs!"
-        },
-        {
-            "type": "narrative",
-            "character": "Louis",
-            "body": "Nous devons rejoindre Paris."
+            "character": "Eugenie",
+            "body": "J'embrasse Stefan. Il  tente de me rassurer. Mais la peur se lit sur mon visage. Ils doivent tous rejoindre Paris."
         },
         {
             "type": "new_background",
@@ -93,9 +68,9 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Je suis affecté au 41e, je dois intégrer l'état-major. Mon père est intervenu pour me mettre à l'abri.",
-            "archive_notification": "Revoir l'ordre de route...",
+            "character": "Eugenie",
+            "body": "Pierre me montre l'ordre de route.",
+            "archive_notification": "Cliquez sur l'ordre de route pour le voir",
             "archive": [ 1 ]
         },
         {
@@ -105,19 +80,18 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Avec toutes ses relations, ça a été facile."
+            "character": "Eugenie",
+            "body": "Louis doit retourner à Brest. Il va intégrer la marine de guerre. "
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Je suis un peu gêné de ce passe-droit, vu que les autres seront en première ligne."
+            "character": "Eugenie",
+            "body": "Comme dit Pierre, il va voir du pays... Il aurait préféré en voir autrement, mais c'est pour la France."
         },
         {
             "type": "narrative",
             "reset": true,
             "body": " FIN DE LA DEMO, A BIENTÔT..."
         }
-
     ]
 }

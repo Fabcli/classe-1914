@@ -4,23 +4,23 @@
         {
             "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.png",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/louis/02_Simul_Louis.mp3"
+            "soundtrack": "/soundtracks/pierre/02_Simul_Pierre.mp3"
         }
     ],
     "sequence": [
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Ça y est, nous devons partir. Nous sommes dans nos uniformes bleus avec nos bardas sur le dos..."
+            "character": "Pierre",
+            "body": "Ça y est, nous devons partir. Nous sommes dans nos uniformes bleus avec nos bardas sur le dos... "
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "...et nous disons au revoir à nos familles en leur assurant que nous rentrerons bientôt."
+            "character": "Pierre",
+            "body": "...et nous disons au revoir à nos familles en leur assurant que nous rentrerons bientôt. "
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "À Noël nous serons là, c'est sûr."
         },
         {
@@ -30,12 +30,12 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "Eugénie et Marie viennent nous dire au revoir. L'inquiétude se lit sur leurs visages."
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "Marie est en pleurs et Eugénie a l'air très inquiète."
         },
         {
@@ -68,22 +68,22 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "Eugénie embrasse Stefan. Il  tente de la rassurer. Mais la peur se lit sur son visage."
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "Je lui dis que je vais m'en occuper de son Stefan."
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "On est affectés tous les deux au 41e régiment d'infanterie, le régiment des Bretons, le régiment des durs!"
         },
         {
             "type": "narrative",
-            "character": "Louis",
+            "character": "Pierre",
             "body": "Nous devons rejoindre Paris."
         },
         {
@@ -93,10 +93,15 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Je suis affecté au 41e, je dois intégrer l'état-major. Mon père est intervenu pour me mettre à l'abri.",
+            "character": "Pierre",
+            "body": "Louis aussi est affecté au 41e, mais il doit intégrer l'état-major.",
             "archive_notification": "Revoir l'ordre de route...",
             "archive": [ 1 ]
+        },
+        {
+            "type": "narrative",
+            "character": "Pierre",
+            "body": "Son père est intervenu pour le mettre à l'abri."
         },
         {
             "type": "new_background",
@@ -105,19 +110,18 @@
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Avec toutes ses relations, ça a été facile."
+            "character": "Pierre",
+            "body": "Ah, les planqués ! Quand on a des relations, c'est facile !"
         },
         {
             "type": "narrative",
-            "character": "Louis",
-            "body": "Je suis un peu gêné de ce passe-droit, vu que les autres seront en première ligne."
+            "character": "Pierre",
+            "body": "C'est mieux pour lui. Je ne le voyais pas combattre."
         },
         {
             "type": "narrative",
             "reset": true,
             "body": " FIN DE LA DEMO, A BIENTÔT..."
         }
-
     ]
 }
