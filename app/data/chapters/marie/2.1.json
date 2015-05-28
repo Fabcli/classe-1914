@@ -1,0 +1,84 @@
+{
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.jpg",
+            "background_transition": "fade",
+            "soundtrack": "/soundtracks/marie/02_Simul_Marie.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Ça y est, ils doivent partir. Louis et Pierre sont dans leurs uniformes bleus avec leurs bardas sur le dos."
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Ils nous disent au revoir en nous assurant qu'ils rentreront bientôt. À Noël, ils seront là, c'est sûr."
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL2.jpg",
+            "transition": null
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Nous nous disons au revoir. L'inquiétude se lit sur nos visages. Je suis en pleurs et Eugénie à l'air très inquiète."
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL3.jpg",
+            "transition": null
+        },
+        {
+            "type": "dialogue",
+            "header": "Pierre (à Eugénie)",
+            "character": "Pierre",
+            "body": "Allez quoi! Tinquiète pas, on sera vite de retour! Les boches n'auront pas ma peau. Mon cuir breton est trop dur pour eux. Je te le promets!"
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL4.jpg",
+            "transition": null
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Eugénie embrasse Stefan. Il  tente de la rassurer. Mais la peur se lit sur son visage. Ils doivent tous rejoindre Paris."
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL5.jpg",
+            "transition": null
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Pierre me montre l'ordre de route.",
+            "archive_notification": "Cliquez sur l'ordre de route pour le voir",
+            "archive": [ 1 ]
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL6.jpg",
+            "transition": null
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Louis est affecté au 41e, il doit intégrer l'état-major. Son père est intervenu pour le mettre à l'abri. Avec toutes ses relations, ça a été facile."
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Ça me rassure un peu. Je ne sais pas où est affecté Frédéric. J'imagine qu'il doit rejoindre Paris lui aussi. J'espère qu'il m'écrira vite."
+        },
+        {
+            "type": "narrative",
+            "body": " FIN DE LA DEMO, A BIENTÔT..."
+        }
+    ]
+}

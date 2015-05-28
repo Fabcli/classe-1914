@@ -1,17 +1,22 @@
 {
-    "next_scene": null,
+    "next_scene": "2.1",
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL1.jpg",
+            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL1.png",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/marie/01_Simul_Marie.mp3"
         }
     ],
     "sequence": [
         {
-            "type": "voixoff",
+            "type": "narrative",
             "character": "Marie",
-            "body": "/soundtracks/marie/01_Simul_Marie.mp3"
+            "body": "Louis et Pierre ont leur ordre de route. Les autorités ont devancé l'appel d'un mois."
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Ils doivent partir dès le 10. D'abord pour une période d'instruction, avant de partir à la guerre. Louis me dit de ne pas m’inquiéter.."
         },
         {
             "type": "new_background",
@@ -19,9 +24,9 @@
             "transition": null
         },
         {
-            "type": "voixoff",
+            "type": "narrative",
             "character": "Marie",
-            "body": "/voicetracks/marie/***.mp3"
+            "body": "Il doit partir dans quelques jours pour rejoindre son régiment à Paris."
         },
         {
             "type": "new_background",
@@ -31,7 +36,7 @@
             "type": "narrative",
             "character": "Marie",
             "body": "Pierre me montre l'ordre de route.",
-            "archive_notification": "Voir l'ordre de route",
+            "archive_notification": "Cliquez sur l'ordre de route pour le voir",
             "archive": [ 1 ]
         },
         {
@@ -42,7 +47,7 @@
         {
             "type": "narrative",
             "character": "Pierre",
-            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer. On sera là à Noël"
+            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer. On sera là à Noël."
         }
     ]
 }
