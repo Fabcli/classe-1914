@@ -1,0 +1,48 @@
+{
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL1.jpg",
+            "background_transition": "fade",
+            "soundtrack": "/soundtracks/marie/01_Simul_Marie.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "voixoff",
+            "character": "Marie",
+            "body": "/soundtracks/marie/01_Simul_Marie.mp3"
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg",
+            "transition": null
+        },
+        {
+            "type": "voixoff",
+            "character": "Marie",
+            "body": "/voicetracks/marie/***.mp3"
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL4.jpg"
+        },
+        {
+            "type": "narrative",
+            "character": "Marie",
+            "body": "Pierre me montre l'ordre de route.",
+            "archive_notification": "Voir l'ordre de route",
+            "archive": [ 1 ]
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg",
+            "transition": null
+        },
+        {
+            "type": "narrative",
+            "character": "Pierre",
+            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer. On sera là à Noël"
+        }
+    ]
+}

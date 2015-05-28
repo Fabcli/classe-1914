@@ -48,7 +48,7 @@
             "case": [ 3, 4, 5 ],
             "options": [
                 {
-                    "header": "120 m",
+                    "header": "175 m",
                     "next_scene": "1.2",
                     "result": [
                         {
@@ -60,7 +60,7 @@
                     ]
                 },
                 {
-                    "header": "175 m",
+                    "header": "263 m",
                     "next_scene": "1.2",
                     "result": [
                         {

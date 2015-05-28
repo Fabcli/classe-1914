@@ -2,30 +2,12 @@
     "next_scene": null,
     "decor": [
         {
-            "background": "/pierre/part1/illustrations/c14_wait.png",
+            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg",
             "background_transition": "fade",
-            "soundtrack": "/pierre/part1/soundtrack/test.mp3"
+            "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3"
         }
     ],
     "sequence": [
-        {
-            "type": "game",
-            "body": "Ceci est le test du jeu.",
-            "game_model" : "shot",
-            "game_name": "fete"
-        },
-        {
-            "type": "narrative",
-            "body": "Ceci est l'intro avec un test de video en background."
-        },
-        {
-            "type": "video_background",
-            "next_button": true,
-            "character": "Marie",
-            "name": "test_classe1914_bgVideo",
-            "autoHide": true,
-            "autoHideTime": 1500
-        },
         {
             "type": "choice",
             "body": "Choisissez votre héros",
@@ -33,8 +15,8 @@
             "hero": true,
             "options": [
                 {
-                    "header": "Louis",
-                    "hero": "louis"
+                    "header": "Eugénie",
+                    "hero": "eugenie"
                 },
                 {
                     "header": "Pierre",
@@ -42,8 +24,8 @@
 
                 },
                 {
-                    "header": "Eugénie",
-                    "hero": "eugenie"
+                    "header": "Louis",
+                    "hero": "louis"
                 },
                 {
                     "header": "Marie",
