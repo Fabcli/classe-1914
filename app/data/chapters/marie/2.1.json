@@ -2,7 +2,7 @@
     "next_scene": null,
     "decor": [
         {
-            "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.jpg",
+            "background": "/illustrations/common/CH2_SE1_SC1_TP_PL1.png",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/marie/02_Simul_Marie.mp3"
         }
