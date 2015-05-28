@@ -12,8 +12,8 @@
     <!-- Introduction du chapitre, affiché avec ng-show et 2 conditions true => isStartingChapters() && !isGameOver -->
     <div class="chapter__intro" ng-show="user.isStartingChapter() && !user.isGameOver">
         <div class="chapter__intro__id">
-            <span ng-if="chapter.id === '1'">Introduction</span>
-            <span ng-if="chapter.id !== '1'">Chapitre [[chapter.id]]/3</span>
+            <span ng-if="user.hero === null ">Introduction</span>
+            <span ng-if="user.hero !== null">Chapitre [[chapter.id]]/3</span>
         </div>
         <h2 class="chapter__intro__title">[[chapter.title]]</h2>
     </div>

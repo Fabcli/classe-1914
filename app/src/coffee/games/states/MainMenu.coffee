@@ -38,8 +38,6 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
                 @z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
                 @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
-                console.log "@input dans MainMenu:"
-                console.log @b_key
                 #On crée la variable de click
                 @click = @input.activePointer
                 @startButton()

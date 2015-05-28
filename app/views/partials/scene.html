@@ -112,24 +112,24 @@
 
         <!-- Game -->
         <div ng-if="sequence.isGame()" >
-            <div class="scene__sequence--dialog__body">
-                <div class="scene__sequence--dialog__frame">
-                    <p class="scene__sequence--dialog__frame__header [[sequence.header | lowercase]]" ng-if="sequence.header">
-                        [[sequence.header]]
-                    </p>
-                    <!--     <p class="scene__sequence--dialog__frame__character" ng-if="sequence.character">
-                             [[sequence.character]]&nbsp;:
-                         </p>-->
-                    <div class="scene__sequence--dialog__frame__body" btf-markdown="sequence.body"></div>
-                    <div class="scene__sequence--dialog__frame__head" ng-if="sequence.getAvatarSrc()">
-                        <img ng-src="[[sequence.getAvatarSrc()]]" />
-                    </div>
-                </div>
-                <a class="scene__sequence--dialog__next btn btn-default" ng-click="launchGame()">
-                    <span class="sr-only">Continuer</span>
-                </a>
-            </div>
-            <game game-model="sequence.game_model" game-name="sequence.game_name"></game>
+            <!--<div class="scene__sequence--dialog__body">-->
+                <!--<div class="scene__sequence--dialog__frame">-->
+                    <!--<p class="scene__sequence--dialog__frame__header [[sequence.header | lowercase]]" ng-if="sequence.header">-->
+                        <!--[[sequence.header]]-->
+                    <!--</p>-->
+                    <!--&lt;!&ndash;     <p class="scene__sequence--dialog__frame__character" ng-if="sequence.character">-->
+                             <!--[[sequence.character]]&nbsp;:-->
+                         <!--</p>&ndash;&gt;-->
+                    <!--<div class="scene__sequence--dialog__frame__body" btf-markdown="sequence.body"></div>-->
+                    <!--<div class="scene__sequence--dialog__frame__head" ng-if="sequence.getAvatarSrc()">-->
+                        <!--<img ng-src="[[sequence.getAvatarSrc()]]" />-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<a class="scene__sequence--dialog__next btn btn-default" ng-click="launchGame()">-->
+                    <!--<span class="sr-only">Continuer</span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <game></game>
         </div>
 
         <!-- Feedback, in the middle of the screen -->

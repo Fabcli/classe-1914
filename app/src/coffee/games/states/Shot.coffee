@@ -2,7 +2,8 @@ angular.module('classe1914.game').factory 'Shot', [
     '$rootScope'
     'User'
     'Notification'
-    ($rootScope, User, Notification)->
+    'constant.games.shot'
+    ($rootScope, User, Notification, shotAssets)->
         new class Shot
                 #-----------------------------------//
             create: ->

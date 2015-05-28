@@ -4,6 +4,8 @@
 #ignore file compiled by PHPStorm
 app/src/coffee/*/*.js
 app/src/coffee/*/*.js.map
+app/src/coffee/*/*/*.js
+app/src/coffee/*/*/*.js.map
 app/src/less/*.css
 
 #ignore vendor directory

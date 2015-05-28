@@ -1,14 +1,14 @@
 angular.module('classe1914.game').factory 'Boot', [
-    'constant.games'
+    'constant.games.preload'
     '$filter'
-    (games, $filter)->
+    (preloadAssets, $filter)->
         new class Boot
-            constructor: (game) ->
+            constructor: () ->
 
             init: ->
                 #  Full screen params
                 #@scale.scaleMode = Phaser.ScaleManager.NO_SCALE
-                @scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL
+                #@scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL
 
                 #  Except if the game need the multi touch,
                 #  There's only one activate pointer
@@ -20,7 +20,7 @@ angular.module('classe1914.game').factory 'Boot', [
                 if @game.device.desktop
                     #  Si on a des paramètres spécifiques d'ordinateurs, ils peuvent aller ici
                     @scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
-                    @scale.setMinMax 600, 400, 1920, 1200
+                    @scale.setMinMax 1024, 768, 1920, 1200
                     @scale.forceLandscape = true
                     @scale.pageAlignHorizontally = true
                     @scale.setScreenSize true
@@ -40,8 +40,8 @@ angular.module('classe1914.game').factory 'Boot', [
 
                 #  Ici, nous chargeons les assets nécessaires pour notre Preloader
                 #  (dans ce cas une barre de chargement et son conteneur)
-                @load.image 'preloadBar', $filter('game')(games.preload.bar)
-                @load.image 'preloadBarContainer', $filter('game')(games.preload.barContainer)
+                @load.image 'preloadBar', $filter('media')(preloadAssets.bar)
+                @load.image 'preloadBarContainer', $filter('media')(preloadAssets.barContainer)
 
             create: ->
 

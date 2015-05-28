@@ -3,9 +3,11 @@ angular.module("classe1914.service").factory "ArcadesGame", ['User', 'Story', '$
     new class ArcadesGame
         constructor: ->
 
-        LaunchGame: =>
-            @height = window.innerHeight
-            @width = window.innerWidth
+        LaunchGame: ()=>
+            console.log "youhou"
+
+            @DestroyGame(game) if game?
+            @RemoveCanvas
 
             game = new Phaser.Game(1920, 1200, Phaser.AUTO, 'gameCanvas')
 
@@ -16,11 +18,16 @@ angular.module("classe1914.service").factory "ArcadesGame", ['User', 'Story', '$
 
             game.state.start('Boot')
 
-
-            console.log game
-
         DestroyGame: (game) =>
             game.destroy()
+
+        RemoveCanvas: =>
+            # Select all the zoom container
+            canvas = document.getElementsByTagName('canvas')
+            if canvas?
+            # Loop to remove all the containers
+                while(canvas.length > 0)
+                    canvas[0].parentNode.removeChild(canvas[0])
 
 
 ]

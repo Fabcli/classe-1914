@@ -1,7 +1,7 @@
 angular.module('classe1914.directive').directive "game", ->
     restrict: "E"
     replace : false
-    template : '<div id="gameCanvas"></div>'
+    template : '<div id="gameCanvas" ng-init="launchGame()"></div>'
     controller : GameCtrl
     scope :
         gameModel : "="

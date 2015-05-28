@@ -9,6 +9,11 @@
     ],
     "sequence": [
         {
+            "type": "game",
+            "game_model": "shot",
+            "game_name": "demo"
+        },
+        {
             "type": "narrative",
             "character": "Eugenie",
             "body": "Ça y est, ils doivent partir. Louis et Pierre sont dans leurs uniformes bleus avec leurs bardas sur le dos."
