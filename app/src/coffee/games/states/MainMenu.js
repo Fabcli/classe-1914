@@ -7,23 +7,10 @@
         function MainMenu() {
           this.music;
           this.playButton;
-          this.cursors;
-          this.spacebar;
-          this.b_key;
-          this.z_key;
-          this.click;
         }
 
         MainMenu.prototype.create = function() {
-          this.physics.startSystem(Phaser.Physics.ARCADE);
-          this.cursors = this.input.keyboard.createCursorKeys();
-          this.spacebar = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-          this.b_key = this.input.keyboard.addKey(Phaser.Keyboard.B);
-          this.z_key = this.input.keyboard.addKey(Phaser.Keyboard.Z);
-          this.f_key = this.input.keyboard.addKey(Phaser.Keyboard.F);
-          this.click = this.input.activePointer;
-          this.startButton();
-          return this.world.setBounds(0, 0, 5000, 1673);
+          return this.startButton();
         };
 
         MainMenu.prototype.startButton = function() {

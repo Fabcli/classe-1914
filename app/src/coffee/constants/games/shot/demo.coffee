@@ -1,7 +1,6 @@
-angular.module('classe1914.constant').constant 'constant.games.shot',
+angular.module('classe1914.constant').constant 'constant.games.shot.demo',
 
-    demo :
-
+    assets :
         images :
             bg                      :   '/games/img/game_shot/decor1test-nuitW.jpg'
             target                  :   '/games/img/game_shot/cible.png'
@@ -28,3 +27,8 @@ angular.module('classe1914.constant').constant 'constant.games.shot',
         audio :
             shot                    :   ['/games/sounds/game_shot/shot.mp3','sounds/game_shot/shot.ogg']
             break_target            :   ['/games/sounds/game_shot/ecrase_pot_yaourt.mp3','sounds/game_shot/ecrase_pot_yaourt.ogg']
+
+    settings :
+        world :
+            width                   :   4000
+            height                  :   1338

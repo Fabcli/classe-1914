@@ -21,10 +21,14 @@ angular.module('classe1914.game').factory 'Boot', [
                     #  Si on a des paramètres spécifiques d'ordinateurs, ils peuvent aller ici
                     @scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
                     @scale.setMinMax 1024, 768, 1920, 1200
-                    @scale.forceLandscape = true
+                    #@scale.forceLandscape = false
+                    @scale.noMargins = true
+                    @scale.forcePortrait = true
                     @scale.pageAlignHorizontally = true
-                    @scale.setScreenSize true
+                    #@scale.setScreenSize true
+                    #@scale.setShowAll()
                     @scale.refresh()
+
                 else
                     #  Idem pour les paramètres mobiles .
                     #  Dans ce cas, on met " la taille du jeu :
@@ -33,7 +37,7 @@ angular.module('classe1914.game').factory 'Boot', [
                     @scale.setMinMax 480, 260, 1024, 768
                     @scale.forceLandscape = true
                     @scale.pageAlignHorizontally = true
-                    @scale.setScreenSize true
+                    #@scale.setScreenSize true
                     @scale.refresh()
 
             preload: ->

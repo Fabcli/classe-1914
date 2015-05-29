@@ -6,6 +6,7 @@ class GameCtrl
         @scope.arcadesGame  =   @ArcadesGame
 
         @scope.launchGame = @ArcadesGame.LaunchGame
+        
 
 angular.module('classe1914.controller').controller("GameCtrl", GameCtrl)
 # EOF

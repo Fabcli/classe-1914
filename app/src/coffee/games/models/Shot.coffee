@@ -1,21 +1,34 @@
 angular.module('classe1914.game').factory 'Shot', [
-    '$rootScope'
+    'Story'
     'User'
     'Notification'
-    'constant.games.shot'
-    ($rootScope, User, Notification, shotAssets)->
+    'constant.games.shot.demo'
+    (Story, User, Notification, demoShot)->
         new class Shot
                 #-----------------------------------//
             create: ->
+                #On recupère les données du jeu dans la sequence
+                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
+                @gameModel  = @sequence.game_model
+                @gameName   = @sequence.game_name
+
+
+                #On active le mode arcade
+                @physics.startSystem Phaser.Physics.ARCADE
+
+
                 @spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
                 @b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
                 @z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
-                @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
                 @cursors = @input.keyboard.createCursorKeys()
+                #@click = @input.activePointer
 
-                # Coordonnée du fusil
-                @shotgunPosX = 960
-                @shotgunPosY = 1080
+                #  Modifie la taille du monde (de la taille de l'image de fond)
+                @world.setBounds 0, 0, 4000, 1338
+
+                # Coordonnées du fusil
+                @shotgunPosX = @game.width/2
+                @shotgunPosY = @game.height+(0.015*@game.height)
 
                 #On met le score à 0
                 @score = 0
@@ -25,7 +38,6 @@ angular.module('classe1914.game').factory 'Shot', [
                 @buildWorld() #On lance le fonction de création du monde
                 @buildScore() #On lance la fonction de création du score
                 @buildTimer() #On lance la fonction de création du timer
-                @keyFullScreen() #On lance la fonction de création du lancement de plein écran (touche F)
 
 
             #Objets du DOM------
@@ -74,12 +86,6 @@ angular.module('classe1914.game').factory 'Shot', [
             cameraSettings: ->
                 @camera.focusOnXY @world.centerX, @world.centerY #On centre la camera dans le monde
 
-            keyFullScreen: ->
-                @f_key.onDown.add @enterFullScreen, this #Passe en plein écran  lorsqu'on appuie sur la touche F
-
-            enterFullScreen: ->
-                @scale.startFullScreen()
-
 
             #Timer et score------
             buildScore: ->
@@ -107,9 +113,11 @@ angular.module('classe1914.game').factory 'Shot', [
             #-----------------------------------//
             update: ->
                 if @gameover is false
+                    #console.log "scaleFactor"+@game.scale
                     @moveWorld() #Le déplacement dans le monde
                     @updateTimer() #On lance le timer
                     @collideTarget() #Fonction d'écoute de la collision tir-cible
+
 
             collideTarget: ->
                 if @gameover is false
@@ -140,6 +148,13 @@ angular.module('classe1914.game').factory 'Shot', [
                         @camera.y -= @cursors.up.duration * 0.08
                     else @camera.y += @cursors.down.duration * 0.08  if @cursors.down.isDown
 
+#                    if @input.mouse.event.movementX?
+#                        @movementX = @input.mouse.event.movementX if @input.mouse.event.movementX?
+#                        @movementY = @input.mouse.event.movementY if @input.mouse.event.movementY?
+#                        @camera.x += @movementX
+#                        @camera.y += @movementY
+
+
             targetShot: (target, shot) ->
                 target.kill() #Détruit la cible "t"
                 @targetShotSound = @add.audio("break_target", 0.8) #On ajoute le son de la cible touchée à 80% de volume
@@ -163,36 +178,40 @@ angular.module('classe1914.game').factory 'Shot', [
 
             #-----------------------------------//
             gameOver: ->
-                User.nextSequence()
+                #User.nextSequence()
                 @gameover = true #On active la variable gameover qui empêche les actions du joueur
                 #game.destroy()
-                @gameoverCurtain = @add.sprite(@camera.x, @camera.y, "curtain") #On ajoute un rideau masquant le jeu
-                @gameoverStyle =
-                    font: "35px Arial"
-                    fill: "#fff"
-                    stroke: "#6a9f3a"
-                    strokeThickness: 1
-                    align: "center"
-                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
-                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
-                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
-                @gameoverText.anchor.set 0.5 #On centre le texte
-
-                Notification.error @gameoverContain
+#                @gameoverCurtain = @add.sprite(@camera.x, @camera.y, "curtain") #On ajoute un rideau masquant le jeu
+#                @gameoverStyle =
+#                    font: "35px Arial"
+#                    fill: "#fff"
+#                    stroke: "#6a9f3a"
+#                    strokeThickness: 1
+#                    align: "center"
+#                gameoverTextPositionX = @camera.x + (@game.width / 2) #Position du texte centré en x
+#                gameoverTextPositionY = @camera.y + (@game.height / 3) #Position du texte au tiers en y
+#                @gameoverText = @add.text(gameoverTextPositionX, gameoverTextPositionY, @gameoverContain, @gameoverStyle) #On place le texte en fonction du type de fin
+#                @gameoverText.anchor.set 0.5 #On centre le texte
                 # On ajoute les points au niveau du jeu global
                 User.indicators.point += @point
+                Notification.error @gameoverContain
                 #User.indicators.point += @point
                 # On lance la sequence suivante puis on detruit le jeu au bout de 1,5s
                 setTimeout ( ->
-                    @game.destroy() if @game?
                     User.nextSequence()
+                    @game.destroy() if @game?
                 ), 2000
 
 
             render: ->
 
-                #@game.debug.text('Position de la cam => x: '+this.camera.x+',y: '+ this.camera.y, 140, 32);
-                #@game.debug.text('Taille du text game over: ' +this.gameoverText.width, 140, 64);
-                #@game.debug.text('Taille du monde: ' + this.world.width, 140, 64);
+                @game.debug.text('Position de la cam => x: '+@camera.x+',y: '+ @camera.y, @game.width/2, 32);
+                @game.debug.text('Taille du monde: ' + @world.width, @game.width/2, 64);
+                @game.debug.text('Source Ratio: ' + @game.scale.sourceAspectRatio, @game.width/2, 96);
+                @game.debug.text('Ratio: ' + @game.scale.aspectRatio, @game.width/2, 128);
+                @game.debug.text('Movement x: ' +@movementX, @game.width/2, 160);
+                @game.debug.text('Movement Y: ' +@movementY, @game.width/2, 192);
+                @game.debug.text('input x: ' +@input.mouse.event.movementX, @game.width/2, 228);
+                @game.debug.text('input y: ' +@input.mouse.event.movementY, @game.width/2, 260);
 
 ]

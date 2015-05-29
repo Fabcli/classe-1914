@@ -9,16 +9,6 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 @music
                 @playButton
 #
-#                #game = shot
-#
-#
-#                #VARIABLES : Utilisables dans toutes les étapes (Boot.js, MainMenu.js, Game.js, etc.)
-#                @fullscreenButton
-                @cursors
-                @spacebar
-                @b_key
-                @z_key
-                @click
 
 
             create: ->
@@ -28,25 +18,12 @@ angular.module('classe1914.game').factory 'MainMenu', [
                 #this.music = this.add.audio('titleMusic');
                 #this.music.play();
                 #MODE DE CALCUL PHASER
-                #On active le mode arcade
-                @physics.startSystem Phaser.Physics.ARCADE
-                #SOURIS ET CLAVIERS
-                #On active la fonction curseur intégré à Phaser
-                @cursors = @input.keyboard.createCursorKeys()
-                #On definit les variables du clavier
-                @spacebar = @input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
-                @b_key = @input.keyboard.addKey(Phaser.Keyboard.B)
-                @z_key = @input.keyboard.addKey(Phaser.Keyboard.Z)
-                @f_key = @input.keyboard.addKey(Phaser.Keyboard.F)
-                #On crée la variable de click
-                @click = @input.activePointer
                 @startButton()
                 #Fonction d'ajout du bouton start
                 #@initButtonFullScreen()
                 #Fonction d'ajout du bouton fullscreen
                 #MONDE
-                #  Modifie la taille du monde (de la taille de l'image de fond)
-                @world.setBounds 0, 0, 5000, 1673
+
 
 
             startButton: ->

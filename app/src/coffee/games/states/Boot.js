@@ -12,16 +12,15 @@
           if (this.game.device.desktop) {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.setMinMax(1024, 768, 1920, 1200);
-            this.scale.forceLandscape = true;
+            this.scale.noMargins = true;
+            this.scale.forcePortrait = true;
             this.scale.pageAlignHorizontally = true;
-            this.scale.setScreenSize(true);
             return this.scale.refresh();
           } else {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.scale.setMinMax(480, 260, 1024, 768);
             this.scale.forceLandscape = true;
             this.scale.pageAlignHorizontally = true;
-            this.scale.setScreenSize(true);
             return this.scale.refresh();
           }
         };
