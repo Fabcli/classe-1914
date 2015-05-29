@@ -20,6 +20,6 @@ angular.module('classe1914.constant').constant 'constant.games.interactive.train
             audio :
                 ambiance :
                     loop                :   true
-                    volume              :   0.2
+                    volume              :   0.05
                     fadeIn              :   1500
                     fadeOut             :   1500

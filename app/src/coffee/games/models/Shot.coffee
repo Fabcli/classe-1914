@@ -42,7 +42,6 @@ angular.module('classe1914.game').factory 'Shot', [
             buildWorld: ->
                 @add.sprite 0, 0, "bg" #On ajoute l'image de fond
                 @ambianceSound() #On rajoute la music d'ambiance
-                @sound.play("ambiance", @SETTINGS.audio.ambiance.volume, @SETTINGS.audio.ambiance.loop)
                 @buildTargets() #Fonction de création des cibles
                 @buildExplosion() #Fonction de création de l'anim d'explosion de la balle
                 @buildShotgun() #Fonction d'ajout du fusil
@@ -50,7 +49,9 @@ angular.module('classe1914.game').factory 'Shot', [
                 @cameraSettings() #Fonction de réglages de la caméra
 
             ambianceSound: ->
-                ambiance = @game.add.audio("ambiance", @SETTINGS.audio.ambiance.volume, @SETTINGS.audio.ambiance.loop) #On ajoute le son de shot avec 0% de volume avec une loop
+                ambiance        = @game.add.audio("ambiance") #On ajoute le son
+                ambiance.volume = @SETTINGS.audio.ambiance.volume
+                ambiance.loop   = @SETTINGS.audio.ambiance.loop
                 ambiance.play()
                 # Corrige un bug sous chrome qui embêche à la music de boucler
                 ambiance.onLoop.add(->
