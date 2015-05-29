@@ -5,7 +5,8 @@ angular.module("classe1914.service").factory "ArcadesGame", [
     'MainMenu'
     'Preloader'
     'Shot'
-    (User, Story, Boot, MainMenu, Preloader, Shot)->
+    'Interactive'
+    (User, Story, Boot, MainMenu, Preloader, Shot, Interactive)->
 
         new class ArcadesGame
             constructor: ->

@@ -3,40 +3,28 @@
   angular.module('classe1914.constant').constant('constant.games.interactive.train', {
     assets: {
       images: {
-        bg: '/games/img/game_shot/decor1test-nuitW.jpg',
-        target: '/games/img/game_shot/cible.png',
-        shot: '/games/img/game_shot/particles/shot.png',
-        timeBar: '/games/img/game_shot/timebar.png',
-        timeContainer: '/games/img/game_shot/timebar-container.png',
-        curtain: '/games/img/game_common/curtain_black.png'
-      },
-      spriteAtlas: {
-        shotgun: {
-          path: '/games/img/game_shot/sprites/shotgun.png',
-          json: '/games/data/game_shot/lebel.json'
-        }
-      },
-      spriteSheet: {
-        explosion: {
-          path: '/games/img/game_shot/sprites/explosion.png',
-          width: 36,
-          height: 51
-        },
-        playButton: {
-          path: '/games/img/game_common/sprites/playButton.png',
-          width: 193,
-          height: 71
-        }
+        bg: '/games/interactive/img/CH2_SE1_SC1_TP_PL1.jpg'
       },
       audio: {
-        shot: ['/games/sounds/game_shot/shot.mp3', 'sounds/game_shot/shot.ogg'],
-        break_target: ['/games/sounds/game_shot/ecrase_pot_yaourt.mp3', 'sounds/game_shot/ecrase_pot_yaourt.ogg']
+        ambiance: ['/games/interactive/sound/train_foule.mp3', 'shot/interactive/sound/train_foule.ogg']
       }
     },
     settings: {
       world: {
-        width: 36,
-        height: 51
+        width: 4000,
+        height: 1291
+      },
+      navigation: {
+        horizontal: true,
+        vertical: false
+      },
+      audio: {
+        ambiance: {
+          loop: true,
+          volume: 0.2,
+          fadeIn: 1500,
+          fadeOut: 1500
+        }
       }
     }
   });

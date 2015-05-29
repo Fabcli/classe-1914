@@ -10,8 +10,8 @@
     "sequence": [
         {
             "type": "game",
-            "game_model": "shot",
-            "game_name": "demo"
+            "game_model": "interactive",
+            "game_name": "train"
         },
         {
             "type": "narrative",

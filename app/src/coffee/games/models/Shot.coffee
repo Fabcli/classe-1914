@@ -2,15 +2,13 @@ angular.module('classe1914.game').factory 'Shot', [
     'Story'
     'User'
     'Notification'
-    'constant.games.shot.demo'
-    (Story, User, Notification, demoShot)->
+    'LoadGameConstant'
+    (Story, User, Notification, LoadGameConstant)->
         new class Shot
                 #-----------------------------------//
             create: ->
-                #On recupère les données du jeu dans la sequence
-                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-                @gameModel  = @sequence.game_model
-                @gameName   = @sequence.game_name
+                #On recupère les réglage du jeu dans la sequence
+                @SETTINGS = LoadGameConstant.LoadSettings()
 
 
                 #On active le mode arcade
@@ -24,7 +22,7 @@ angular.module('classe1914.game').factory 'Shot', [
                 #@click = @input.activePointer
 
                 #  Modifie la taille du monde (de la taille de l'image de fond)
-                @world.setBounds 0, 0, 4000, 1338
+                @world.setBounds 0, 0, @SETTINGS.world.width, @SETTINGS.world.height
 
                 # Coordonnées du fusil
                 @shotgunPosX = @game.width/2
@@ -43,11 +41,21 @@ angular.module('classe1914.game').factory 'Shot', [
             #Objets du DOM------
             buildWorld: ->
                 @add.sprite 0, 0, "bg" #On ajoute l'image de fond
+                @ambianceSound() #On rajoute la music d'ambiance
+                @sound.play("ambiance", @SETTINGS.audio.ambiance.volume, @SETTINGS.audio.ambiance.loop)
                 @buildTargets() #Fonction de création des cibles
                 @buildExplosion() #Fonction de création de l'anim d'explosion de la balle
                 @buildShotgun() #Fonction d'ajout du fusil
                 @activeShot() #Fonction qui active le tir (les commandes clic et barre d'espace)
                 @cameraSettings() #Fonction de réglages de la caméra
+
+            ambianceSound: ->
+                ambiance = @game.add.audio("ambiance", @SETTINGS.audio.ambiance.volume, @SETTINGS.audio.ambiance.loop) #On ajoute le son de shot avec 0% de volume avec une loop
+                ambiance.play()
+                # Corrige un bug sous chrome qui embêche à la music de boucler
+                ambiance.onLoop.add(->
+                    ambiance.play()
+                )
 
             buildTargets: ->
                 @targetGroup = @add.group() #On déclare le groupe composé des cibles

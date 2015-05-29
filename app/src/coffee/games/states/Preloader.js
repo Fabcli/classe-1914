@@ -17,7 +17,6 @@
           this.preloadBarContainer = this.add.sprite((this.game.width / 2) - 45, this.game.width / 3, 'preloadBarContainer');
           this.load.setPreloadSprite(this.preloadBar);
           this.ASSETS = LoadGameConstant.loadAssets();
-          console.log(this.ASSETS);
           assetsImages = this.ASSETS.images;
           assetsAtlas = this.ASSETS.spriteAtlas;
           assetsSprite = this.ASSETS.spriteSheet;
@@ -51,6 +50,7 @@
         Preloader.prototype.create = function() {
           this.preloadBar.cropEnabled = false;
           this.ready = true;
+          this.gameModel = LoadGameConstant.loadModel();
           if (this.gameModel === "interactive") {
             return this.state.start("Game");
           } else {

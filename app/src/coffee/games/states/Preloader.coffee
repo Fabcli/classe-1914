@@ -13,13 +13,6 @@ angular.module('classe1914.game').factory 'Preloader', [
                 @preloadBar = null
                 @ready = false
 
-#            loadAssets: (model, name) ->
-#                @ASSETS = null
-#                if model is 'shot'
-#                    @ASSETS = demoShot.assets if name is 'demo'
-#                if model is 'interactive'
-#                    @ASSETS = trainInteractive.assets if name is 'train'
-#                @ASSETS
 
             preload: ->
                 #--BARRE DE PRECHARGEMENT
@@ -28,40 +21,30 @@ angular.module('classe1914.game').factory 'Preloader', [
                 @preloadBar = @add.sprite((@game.width/2)-45, (@game.width/3), 'preloadBar');
                 #Centre la barre depréchargement
                 @preloadBarContainer = @add.sprite((@game.width/2)-45, (@game.width/3), 'preloadBarContainer');
-                #Centre e conteneur
-                
+
                 #	On définit le sprite preloadBar comme un sprite de chargement .
                 # Cela rogne automatiquement le sprite de la largeur max à 0 lorsque les fichiers sont chargés
                 @load.setPreloadSprite(@preloadBar);
 
-                #--TYPE ET NOM DU JEU
+                #--ASSETS DU JEU
 #                # On récupère les données du jeu actuel
-#                @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-#                @gameModel  = @sequence.game_model
-#                @gameName   = @sequence.game_name
-
                 @ASSETS = LoadGameConstant.loadAssets()
-                console.log @ASSETS
-
-                #--ASSETS A PRECHARGER
-                # Charge les donnée (@ASSETS) en fonction du type et du nom
-                #@loadAssets @gameModel, @gameName
                 assetsImages     = @ASSETS.images
                 assetsAtlas      = @ASSETS.spriteAtlas
                 assetsSprite    = @ASSETS.spriteSheet
                 assetsAudio      = @ASSETS.audio
 
                 #-- PRECHARGEMENT
-                # Load images, Atlas, Spritesheets and aA
+                # Load images, Atlas, Spritesheets and Audio
                 angular.forEach assetsImages, (imagePath, imageName) =>
                     @load.image imageName,  @media(imagePath)
-
+                # Load Atlas
                 angular.forEach assetsAtlas, (atlasValues, atlasName) =>
                     @load.atlas atlasName,  @media(atlasValues.path),  @media(atlasValues.json)
-
+                # Load Spritesheets
                 angular.forEach assetsSprite, (spriteValues, spriteName) =>
                     @load.spritesheet spriteName,  @media(spriteValues.path), spriteValues.width, spriteValues.height
-
+                # Load Audio
                 angular.forEach assetsAudio, (audioArray, audioName) =>
                     @_a = []
                     angular.forEach audioArray, (audioPath) =>
@@ -76,6 +59,7 @@ angular.module('classe1914.game').factory 'Preloader', [
                 @ready = true
 
                 #Comme on a pas de musique, on lance le menu principale sans stopper le rognage de la barre de chargement
+                @gameModel = LoadGameConstant.loadModel()
                 if @gameModel is "interactive"
                     @state.start "Game"
                 else

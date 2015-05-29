@@ -3,40 +3,49 @@
   angular.module('classe1914.constant').constant('constant.games.shot.demo', {
     assets: {
       images: {
-        bg: '/games/img/game_shot/decor1test-nuitW.jpg',
-        target: '/games/img/game_shot/cible.png',
-        shot: '/games/img/game_shot/particles/shot.png',
-        timeBar: '/games/img/game_shot/timebar.png',
-        timeContainer: '/games/img/game_shot/timebar-container.png',
-        curtain: '/games/img/game_common/curtain_black.png'
+        bg: '/games/shot/img/decor1test-nuitW.jpg',
+        target: '/games/shot/img/cible.png',
+        shot: '/games/shot/img/particles/shot.png',
+        timeBar: '/games/shot/img/timebar.png',
+        timeContainer: '/games/shot/img/timebar-container.png',
+        curtain: '/games/common/img/curtain_black.png'
       },
       spriteAtlas: {
         shotgun: {
-          path: '/games/img/game_shot/sprites/shotgun.png',
-          json: '/games/data/game_shot/lebel.json'
+          path: '/games/shot/img/sprites/shotgun.png',
+          json: '/games/shot/data/lebel.json'
         }
       },
       spriteSheet: {
         explosion: {
-          path: '/games/img/game_shot/sprites/explosion.png',
+          path: '/games/shot/img/sprites/explosion.png',
           width: 36,
           height: 51
         },
         playButton: {
-          path: '/games/img/game_common/sprites/playButton.png',
+          path: '/games/common/img/sprites/playButton.png',
           width: 193,
           height: 71
         }
       },
       audio: {
-        shot: ['/games/sounds/game_shot/shot.mp3', 'sounds/game_shot/shot.ogg'],
-        break_target: ['/games/sounds/game_shot/ecrase_pot_yaourt.mp3', 'sounds/game_shot/ecrase_pot_yaourt.ogg']
+        shot: ['/games/shot/sound/shot.mp3', 'shot/sound/shot.ogg'],
+        break_target: ['/games/shot/sound/ecrase_pot_yaourt.mp3', '/games/shot/sound/ecrase_pot_yaourt.ogg'],
+        ambiance: ['/games/interactive/sound/train_foule.mp3', 'shot/interactive/sound/train_foule.ogg']
       }
     },
     settings: {
       world: {
         width: 4000,
         height: 1338
+      },
+      audio: {
+        ambiance: {
+          loop: true,
+          volume: 0.2,
+          fadeIn: 1500,
+          fadeOut: 1500
+        }
       }
     }
   });
