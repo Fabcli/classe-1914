@@ -1,8 +1,9 @@
 angular.module('classe1914.game').factory 'Preloader', [
     '$filter'
     'Story'
+    'User'
     'LoadGameConstant'
-    ($filter, Story, LoadGameConstant)->
+    ($filter, Story, User, LoadGameConstant)->
         new class Preloader
             constructor: () ->
                 @media = $filter('media')

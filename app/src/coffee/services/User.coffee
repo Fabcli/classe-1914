@@ -11,8 +11,7 @@ angular.module("classe1914.service").factory("User", [
     '$timeout'
     '$location'
     '$rootScope'
-    'ArcadesGame'
-    (api, settings, types, initialCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope, ArcadesGame)->
+    (api, settings, types, initialCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
         new class User
             # ─────────────────────────────────────────────────────────────────
             # Public method

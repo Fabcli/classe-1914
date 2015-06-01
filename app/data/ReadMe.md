@@ -288,7 +288,7 @@ Le `game` s'affiche au plein écran et offre un jeu :
     
    * un `"body"` qui donne le nom de la fonction javascript sous cette forme > `"body": "NomDuJeu()"
    * une list d' `options` avec
-      * un `header` qui sera le resultat du jeu => `true`ou `false` pour la c-victoire ou la defaite
+      * un `victory` qui sera le resultat du jeu => `true`ou `false` pour la c-victoire ou la defaite
       * `next_scene`
       * Optionnel:
           * `result` qui inluence les variables,

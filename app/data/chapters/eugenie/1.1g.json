@@ -1,0 +1,28 @@
+{
+    "next_scene": null,
+    "decor": [
+        {
+            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL1.jpg",
+            "background_transition": "fade",
+            "soundtrack": "/soundtracks/eugenie/soundtrack.mp3"
+        }
+    ],
+    "sequence": [
+        {
+            "type": "game",
+            "game_model": "shot",
+            "game_name": "demo",
+            "options": [
+                {
+                    "victory": true,
+                    "next_sequence": "2.1"
+                },
+                {
+                    "victory": false,
+                    "next_sequence": "1.2"
+
+                }
+            ]
+        }
+    ]
+}

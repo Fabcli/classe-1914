@@ -46,6 +46,12 @@
           fadeIn: 1500,
           fadeOut: 1500
         }
+      },
+      timer: {
+        duration: 20
+      },
+      target: {
+        quantity: 10
       }
     }
   });

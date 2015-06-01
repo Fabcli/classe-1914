@@ -31,8 +31,8 @@ angular.module('classe1914.game').factory 'Shot', [
                 #On met le score à 0
                 @score = 0
                 @gameover = false #Le jeu n'est pas terminé
-                @totalTargets = 22 #On définit le nombre de cibles
-                @timerDuration = 150 #On définit le jeu à 30s
+                @totalTargets = @SETTINGS.target.quantity #On définit le nombre de cibles
+                @timerDuration = @SETTINGS.timer.duration #On définit le jeu à 30s
                 @buildWorld() #On lance le fonction de création du monde
                 @buildScore() #On lance la fonction de création du score
                 @buildTimer() #On lance la fonction de création du timer
