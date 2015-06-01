@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             },
             bower_css: {
                 src: csslibrary,
-                dest: 'public/css/lib.css'
+                dest: 'public/css/lib.min.css'
             },
             coffee_src: {
                 src: [
@@ -140,6 +140,15 @@ module.exports = function(grunt) {
             development: {
                 files: {
                     "public/dev/css/styles.css": "app/src/less/styles.less"
+                }
+            },
+            production: {
+                options: {
+                    yuicompress: true
+                },
+                files: {
+                    "public/css/styles.min.css": "app/src/less/styles.less",
+                    "public/css/wait.min.css": "app/src/less/wait.less"
                 }
             }
         },

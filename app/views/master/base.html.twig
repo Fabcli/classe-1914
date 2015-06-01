@@ -36,11 +36,17 @@
       window.STATIC_URL = "{{STATIC_URL|raw}}";
     </script>
     {% if MODE == "development" %}
-    <link rel="stylesheet" href="{{STATIC_URL}}css/lib.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}css/lib.min.css" />
     <link rel="stylesheet" href="{{STATIC_URL}}dev/css/styles.css" />
     <script src="http://localhost:35729/livereload.js"></script>
     <script type="text/javascript" src="{{STATIC_URL}}dev/js/app.js"></script>
     <script type="text/javascript" src="{{STATIC_URL}}dev/js/app.template.js"></script>
+    {% endif %}
+    {% if MODE == "demo" %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/lib.min.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}css/styles.min.css" />
+    <script type="text/javascript" src="{{STATIC_URL}}js/app.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/app.template.min.js"></script>
     {% endif %}
     {% if MODE == "production" %}
     <script type="text/javascript" src="{{STATIC_URL}}js/app.min.js"></script>
