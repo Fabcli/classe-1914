@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "preload.js",
+  "sourceRoot": "",
+  "sources": [
+    "preload.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,OAAO,CAAC,MAAR,CAAe,qBAAf,CAAqC,CAAC,QAAtC,CAA+C,wBAA/C,EAEK;AAAA,IAAA,GAAA,EAAgB,0CAAhB;AAAA,IACA,YAAA,EAAmB,oDADnB;GAFL,CAAA,CAAA;AAAA"
+}
