@@ -1,5 +1,7 @@
 <?php
 
-$env = 'development';
+
+$env = 'demo';
+
 
 ?>
