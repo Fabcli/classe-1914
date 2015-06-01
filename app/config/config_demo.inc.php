@@ -11,7 +11,7 @@ $app->configureMode('demo', function () use ($app) {
                 'log.enabled'          => true,
                 'debug'                => false,
                 'display_debug_toolbar'=> false,
-                'cache'                => false,
+                'cache'                => realpath('../tmp/cache'),
                 // assets
                 'static_url'           => "/",
                 'media_url'           => "/medias/Demo_Col/medias",

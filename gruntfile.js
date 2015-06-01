@@ -287,7 +287,7 @@ module.exports = function(grunt) {
         },
 
         parallel: {
-            server: {
+            server_demo: {
                 options: {
                     grunt: true,
                     stream: true
@@ -300,7 +300,7 @@ module.exports = function(grunt) {
 
     //--- Load task ---
         // Default task
-    grunt.registerTask('default', ['development']);
+    grunt.registerTask('default', ['demo']);
         // Built the js files and put in a tmp folder
     grunt.registerTask('build_js', ['concat:coffee_src','coffee','uglify:app']);
         // Concat the js and css files from Bower libraries
@@ -313,30 +313,16 @@ module.exports = function(grunt) {
         // For development
     grunt.registerTask('development', ['copy:angular_map', 'ngtemplates', 'build_js','less:development',  'lib', 'assemble:development_php', 'clean:development','mkdir:clean', 'open:dev', 'watch']);
         // For demo
-    grunt.registerTask('demo', ['ngtemplates', 'build_js','less:production','lib', 'assemble:demo_php', 'clean:production','mkdir:clean', 'watch']);
+    grunt.registerTask('demo', ['ngtemplates', 'build_js','less:production','lib', 'assemble:demo_php', 'clean:production','mkdir:clean', 'parallel:server_demo', 'browser']);
         // For production
     grunt.registerTask('production', ['ngtemplates', 'build_js','less:production','lib', 'assemble:production_php', 'clean:production','mkdir:clean']);
 
 
 
-    grunt.registerTask('server', function(env){
-        if(env == 'production'){
-            grunt.task.run(['production','parallel:server_demo']);
-        }
-        else if(env == 'demo') {
-            grunt.task.run(['demo','parallel:server_demo']);
-        }
-        else {
-            grunt.task.run(['default','parallel:server_dev']);
-        }
-    });
-
     grunt.registerTask('browser', function(){
         var done = this.async();
         setTimeout(function(){
-            if(env == 'demo'){
-                grunt.task.run(['open:demo']);
-            }
+            grunt.task.run(['open:demo']);
             done();
         }, 1000);
     });
