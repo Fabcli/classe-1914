@@ -11,7 +11,8 @@ angular.module("classe1914.service").factory("User", [
     '$timeout'
     '$location'
     '$rootScope'
-    (api, settings, types, initialCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope)->
+    'ArcadesGame'
+    (api, settings, types, initialCase, TimeoutStates, UserIndicators, Story, localStorageService, $http, $timeout, $location, $rootScope, ArcadesGame)->
         new class User
             # ─────────────────────────────────────────────────────────────────
             # Public method
@@ -198,6 +199,12 @@ angular.module("classe1914.service").factory("User", [
                 if lastSequence.reset is true
                     do @restart
                     do window.location.reload()
+
+#                if lastSequence.isGame is true
+#                    console.log "je launch"
+#                    do ArcadesGame.LaunchGame(lastSequence.game_model)
+                #isInteractiveSeqOK(lastSequence)
+
                 if lastSequence.result and @isSequenceConditionOk(lastSequence)
                     for key, value of lastSequence.result
                         @indicators[key] += value
@@ -220,6 +227,17 @@ angular.module("classe1914.service").factory("User", [
                         # Return the new sequence
                         sequence = Story.sequence(@chapter, @scene, @sequence)
                 sequence
+
+
+            isGameSeqOK = (seq) =>
+                @is_game is false
+                @is_game = seq.isGame()
+                console.log "isGame : "+@is_game
+
+            isInteractiveSeqOK = (seq) =>
+                @is_interactive is false
+                @is_interactive = seq.isInteractiveBg()
+                console.log "isInteractive : "+@is_interactive
 
             isSequenceConditionOk: (seq) =>
                 # check that every sequence condition are met or not.

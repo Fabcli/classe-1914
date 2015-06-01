@@ -18,6 +18,7 @@ angular.module('classe1914.game').factory 'LoadGameConstant', [
                 @ASSETS = null
 
                 @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
+                console.log @sequence
                 @gameModel  = @sequence.game_model
                 @gameName   = @sequence.game_name
 

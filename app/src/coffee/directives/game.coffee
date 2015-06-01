@@ -6,6 +6,7 @@ angular.module('classe1914.directive').directive "game", ->
     scope :
         gameModel : "="
         gameName : "="
+        interactiveBg: "="
     #link: (scope, element, attrs, GameCtrl) ->
         #game = new Phaser.Game(600, 400, Phaser.AUTO, 'gameCanvas')
         #console.log GameCtrl.Boot

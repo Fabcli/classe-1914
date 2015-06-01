@@ -20,6 +20,7 @@ angular.module('classe1914.game').factory 'Interactive', [
 
                 @gameover = false
                 @buildWorld() #On lance le fonction de création du monde
+                @nextSequence()
 
 
             #Objets du DOM------
@@ -66,6 +67,12 @@ angular.module('classe1914.game').factory 'Interactive', [
                     User.nextSequence()
                     @game.destroy() if @game?
                 ), 2000
+
+            nextSequence: ->
+                setTimeout ( ->
+                    console.log "go to next"
+                    User.nextSequence()
+                ), 5000
 
 
             render: ->

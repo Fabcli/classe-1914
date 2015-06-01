@@ -9,17 +9,24 @@
     ],
     "sequence": [
         {
+            "type": "narrative",
+            "character": "Eugenie",
+            "body": "Ça y est, ils doivent partir. Louis et Pierre sont dans leurs uniformes bleus avec leurs bardas sur le dos."
+        },
+        {
             "type": "game",
             "game_model": "interactive",
             "game_name": "train"
         },
         {
             "type": "narrative",
+            "interactive_bg" : true,
             "character": "Eugenie",
             "body": "Ça y est, ils doivent partir. Louis et Pierre sont dans leurs uniformes bleus avec leurs bardas sur le dos."
         },
         {
             "type": "narrative",
+            "interactive_bg" : true,
             "character": "Eugenie",
             "body": "Ils nous disent au revoir en nous assurant qu'ils rentreront bientôt. À Noël, ils seront là, c'est sûr."
         },
@@ -31,6 +38,7 @@
         {
             "type": "narrative",
             "character": "Eugenie",
+            "interactive_bg" : true,
             "body": "L'inquiétude se lit sur nos visages. Je suis inquiète. Marie est en pleurs."
         },
         {

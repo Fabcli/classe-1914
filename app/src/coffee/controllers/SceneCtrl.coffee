@@ -126,5 +126,6 @@ class SceneCtrl
               sequenceIdx--
           sequenceIdx
 
+
 angular.module('classe1914.controller').controller("SceneCtrl", SceneCtrl)
 # EOF
