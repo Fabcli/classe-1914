@@ -12,7 +12,6 @@ class Game {
         /**
          * Return the story (character + chapter + scene + sub-scene).
          * If an opening_dates array is given, takes care about the returned chapters.
-         * TODO:TO DELETE [GREG]
          */
         if (!isset(self::$story)) {
             $response = array();
@@ -79,43 +78,6 @@ class Game {
         return $intro;
     }
 
-    public static function getStoryWithParts($opening_dates=NULL)  {
-        /**
-         * Return the story (part + chapter + scene + sequence).
-         * TODO:add & hero parameter
-         */
-        if (!isset(self::$story)) {
-            $response = array();
-            $hero = 'louis';
-            $parts = glob('data/chapters/'.$hero.'/[0-9*].json', GLOB_BRACE);
-            foreach ($parts as $part_filename) {
-                $part_number        = basename($part_filename, ".json");
-                $content            = file_get_contents($part_filename);
-                $part               = json_decode($content, true);
-                $chapters           = glob('data/chapters/'.$hero.'/'.$part_number.'.[0-9*].json', GLOB_BRACE);
-                $part['id']         = $part_number; # add the id from filename
-                $part['chapters']   = array();
-                foreach ($chapters as $chapter_filename) {
-                    $chapter_number     = basename($chapter_filename, ".json");
-                    $content            = file_get_contents($chapter_filename);
-                    $chapter            = json_decode($content, true);
-                    $scenes             = glob('chapters/' . $hero . '/' . $chapter_number . '.?*.json', GLOB_BRACE);
-                    $chapter['id']      = implode(array_slice(explode(".", basename($chapter_filename, ".json")), 1)); # add the id from filename
-                    $chapter['scenes']  = array();
-                    foreach ($scenes as $scene_filename) {
-                        $content             = file_get_contents($scene_filename);
-                        $scene               = json_decode($content, true);
-                        $scene["id"]         = implode(array_slice(explode(".", basename($scene_filename, ".json")), 2)); # add the id from filename
-                        $chapter['scenes'][] = $scene;
-                    }
-                    $part['chapters'] []  = $chapter;
-                }
-                $response[] = $part;
-            }
-            self::$story = $response;
-        }
-        return self::$story;
-    }
 
     public static function computeContext($career){
         /**
