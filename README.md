@@ -35,7 +35,7 @@ This command will install (in this order): npm's packages, composer and his pack
 	
 Choose the 1.3.15 angular version
 
-When this dependancies are installrd, you can compile the application
+When this dependancies are installed, you can compile the application
 	
 	make run
 

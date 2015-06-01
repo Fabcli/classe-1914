@@ -38,7 +38,7 @@ var csslibrary = [
 
 
 module.exports = function(grunt) {
-    var parallel = ['php:server','watch'];
+    var parallel = ['php:server_demo','watch'];
     if( ! grunt.option("disable-browser") ) {
         parallel.push("browser");
     }
@@ -259,16 +259,28 @@ module.exports = function(grunt) {
             dev : {
                 path: 'http://demo.classe-1914.dev/',
                 app: 'Google Chrome'
+            },
+            demo : {
+                path: 'http://localhost:8080'
             }
         },
 
         php: {
-            server: {
+            server_dev: {
                 options: {
                     port: 80,
                     keepalive: true,
                     open: false,
                     base: 'www',
+                    hostname: "0.0.0.0"
+                }
+            },
+            server_demo: {
+                options: {
+                    port: 8080,
+                    keepalive: true,
+                    open: false,
+                    base: 'public',
                     hostname: "0.0.0.0"
                 }
             }
@@ -309,14 +321,24 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', function(env){
         if(env == 'production'){
-            grunt.task.run(['production','parallel:server']);
+            grunt.task.run(['production','parallel:server_demo']);
         }
         else if(env == 'demo') {
-            grunt.task.run(['demo','parallel:server']);
+            grunt.task.run(['demo','parallel:server_demo']);
         }
         else {
-            grunt.task.run(['default','parallel:server']);
+            grunt.task.run(['default','parallel:server_dev']);
         }
+    });
+
+    grunt.registerTask('browser', function(){
+        var done = this.async();
+        setTimeout(function(){
+            if(env == 'demo'){
+                grunt.task.run(['open:demo']);
+            }
+            done();
+        }, 1000);
     });
 
 };
