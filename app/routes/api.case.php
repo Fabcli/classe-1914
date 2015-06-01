@@ -13,7 +13,7 @@ $app->get("/api/case", function() use ($app) {
          * Load case & archive data.
          */
 
-        // cache on production
+        // cache on  production and demo
         if( $app->getMode() != "development" ) {
                 $app->etag('api-case');
                 $app->expires('+30 seconds');

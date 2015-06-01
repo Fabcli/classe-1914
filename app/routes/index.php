@@ -13,7 +13,7 @@ $app->get('/', function() use ($app) {
     // $mode is "wait" or "index", depends of the current date
     $mode = ($app->config("launching_date") && strtotime(date('Y-m-d H:i:s')) < strtotime($app->config("launching_date"))) ? "wait" : "index";
 
-    // cache on production
+    // cache on production and demo
     if( $app->getMode() != "development" ) {
         $app->etag('home-' . $mode);
         $app->expires('+10 minutes');

@@ -13,7 +13,7 @@ $app->get("/api/career", function() use ($app) {
      * Retrieve the career progression for the given token from the database.
      */
 
-    // cache on production
+    // cache on production and demo
     if( $app->getMode() != "development" ) {
         $app->etag('api-career');
         $app->expires('+30 seconds');

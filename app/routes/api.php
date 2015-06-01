@@ -39,7 +39,7 @@ $app->get('/api/story/:hero', function($hero) use ($app) {
      * TODO: to be cached
      */
 
-    // cache on production
+    // cache on production and demo
     if( $app->getMode() != "development" ) {
         $app->etag('api-story');
         $app->expires('+10 minutes');
@@ -56,7 +56,7 @@ $app->get('/api/intro', function() use ($app) {
      * TODO: to be cached
      */
 
-    // cache on production
+    // cache on production and demo
     if( $app->getMode() != "development" ) {
         $app->etag('api-intro');
         $app->expires('+10 minutes');
