@@ -3,4 +3,8 @@
 run:
 	grunt server
 
+install:
+	npm install
+	grunt fetch
+
 
