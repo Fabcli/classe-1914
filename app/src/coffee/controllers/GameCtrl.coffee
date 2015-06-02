@@ -161,13 +161,13 @@ class GameCtrl
         @cameraSettings() #Fonction de réglages de la caméra
 
     ambianceSound: =>
-        ambiance        = @game.add.audio("ambiance") #On ajoute le son
-        ambiance.volume = @SETTINGS.audio.ambiance.volume
-        ambiance.loop   = @SETTINGS.audio.ambiance.loop
-        ambiance.play()
+        @ambiance        = @game.add.audio("ambiance") #On ajoute le son
+        @ambiance.volume = @SETTINGS.audio.ambiance.volume
+        @ambiance.loop   = @SETTINGS.audio.ambiance.loop
+        @ambiance.play()
         # Corrige un bug sous chrome qui embêche à la music de boucler
-        ambiance.onLoop.add(->
-            ambiance.play()
+        @ambiance.onLoop.add(=>
+            @ambiance.play()
         )
 
     buildTargets: =>
@@ -290,6 +290,7 @@ class GameCtrl
     gameOver: =>
         #User.nextSequence()
         @gameover = true #On active la variable gameover qui empêche les actions du joueur
+        @ambiance.fadeOut(1500) # On reduit le volume du son d'ambiance
         #@game.destroy()
         #@gameoverCurtain = @game.add.sprite(@game.camera.x, @game.camera.y, "curtain") #On ajoute un rideau masquant le jeu
         #                @gameoverStyle =
@@ -307,14 +308,12 @@ class GameCtrl
         @Notification.error @gameoverContain
         #User.indicators.point += @point
         # On lance la sequence suivante puis on detruit le jeu au bout de 1,5s
-        setTimeout ( =>
-            @User.nextSequence()
-        ), 1000
+        @User.nextSequence()
 
         setTimeout ( =>
             @game.destroy() if @game?
             @RemoveCanvas
-        ), 10000
+        ), 2000
 
 angular.module('classe1914.controller').controller("GameCtrl", GameCtrl)
 # EOF

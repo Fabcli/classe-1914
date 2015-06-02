@@ -11,7 +11,11 @@
         {
             "type": "narrative",
             "character": "Eugenie",
-            "body": "Louis et Pierre ont leur ordre de route. Les autorités ont devancé l'appel d'un mois."
+            "body": "Louis et Pierre ont leur ordre de route. Les autorités ont devancé l'appel d'un mois.",
+            "result" : {
+                "mood" : 22,
+                "point": 5
+            }
         },
         {
             "type": "narrative",

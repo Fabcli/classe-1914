@@ -11,16 +11,24 @@
         {
             "type": "game",
             "game_model": "shot",
-            "game_name": "demo",
+            "game_name": "demo"
+        },
+        {
+            "type": "narrative",
+            "character": "Eugenie",
+            "body": "Le jeu c'est bien passé?."
+        },
+        {
+            "type": "choice",
+            "body": "Que faire maintenant ?",
             "options": [
                 {
-                    "victory": true,
-                    "next_sequence": "2.1"
+                    "header": "Je recommence",
+                    "next_scene": "1.1g"
                 },
                 {
-                    "victory": false,
-                    "next_sequence": "1.2"
-
+                    "header": "Je continue",
+                    "next_scene": "1.2"
                 }
             ]
         }
