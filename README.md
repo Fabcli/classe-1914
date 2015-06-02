@@ -38,13 +38,13 @@ sudo npm install -g grunt-cli
 
 ### Setup the application
 
-This command will install (in this order): npm's packages, composer and his packages, and bower's packages.
+This command will install (in this order): npm's packages, composer and its packages, and bower's packages.
 
 	make install
 	
 Choose the 1.4.0 angular version (The latest one)
 
-When this dependancies are installed, you can compile the application (and lanch a dev server to test the compilation ! )
+When these dependancies are installed, you can compile the application (and launch a dev server to test the compilation ! )
 	
 	make run
 
