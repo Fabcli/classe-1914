@@ -291,7 +291,7 @@ class GameCtrl
         #User.nextSequence()
         @gameover = true #On active la variable gameover qui empêche les actions du joueur
         #@game.destroy()
-        @gameoverCurtain = @game.add.sprite(@game.camera.x, @game.camera.y, "curtain") #On ajoute un rideau masquant le jeu
+        #@gameoverCurtain = @game.add.sprite(@game.camera.x, @game.camera.y, "curtain") #On ajoute un rideau masquant le jeu
         #                @gameoverStyle =
         #                    font: "35px Arial"
         #                    fill: "#fff"
@@ -314,7 +314,7 @@ class GameCtrl
         setTimeout ( =>
             @game.destroy() if @game?
             @RemoveCanvas
-        ), 4000
+        ), 10000
 
 angular.module('classe1914.controller').controller("GameCtrl", GameCtrl)
 # EOF
