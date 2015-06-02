@@ -42,7 +42,7 @@ This command will install (in this order): npm's packages, composer and his pack
 
 	make install
 	
-Choose the 1.3.15 angular version (The migration to the new version 1.4 is on fire)
+Choose the 1.4.0 angular version (The latest one)
 
 When this dependancies are installed, you can compile the application (and lanch a dev server to test the compilation ! )
 	
