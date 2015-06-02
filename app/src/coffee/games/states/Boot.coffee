@@ -4,6 +4,10 @@ angular.module('classe1914.game').factory 'Boot', [
     (preloadAssets, $filter)->
         new class Boot
             constructor: () ->
+                @assetsPre = preloadAssets
+                console.log "preloadAssets :"
+                console.log @assetsPre
+
 
             init: ->
                 #  Full screen params

@@ -4,7 +4,11 @@
     'constant.games.preload', '$filter', function(preloadAssets, $filter) {
       var Boot;
       return new (Boot = (function() {
-        function Boot() {}
+        function Boot() {
+          this.assetsPre = preloadAssets;
+          console.log("preloadAssets :");
+          console.log(this.assetsPre);
+        }
 
         Boot.prototype.init = function() {
           this.input.maxPointers = 1;
