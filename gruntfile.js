@@ -38,16 +38,26 @@ var csslibrary = [
 
 
 module.exports = function(grunt) {
-    var parallel = ['php:server','watch'];
+    var parallel = ['php:server_demo','watch'];
     if( ! grunt.option("disable-browser") ) {
         parallel.push("browser");
     }
 
     // Load all grunt tasks matching the `grunt-*` pattern
     require('load-grunt-tasks')(grunt);
+    // Load task without grunt-* pattern
+    grunt.loadNpmTasks('assemble' );
 
     // Project configuration.
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        exec: {
+            composer_install: {
+                command: 'curl -sS https://getcomposer.org/installer | php && php composer.phar install',
+                stdout: false,
+                stderr: false
+            }
+        },
         concat: {
             bower_js: {
                 src: jslibrary,
@@ -55,14 +65,13 @@ module.exports = function(grunt) {
             },
             bower_css: {
                 src: csslibrary,
-                dest: 'public/css/lib.css'
+                dest: 'public/css/lib.min.css'
             },
             coffee_src: {
                 src: [
                     'app/src/coffee/app.coffee',
                     'app/src/coffee/*/*.coffee',
-                    'app/src/coffee/*/*/*.coffee',
-                    'app/src/coffee/*/*/*/*.coffee'
+                    'app/src/coffee/*/*/*.coffee'
                 ],
                 dest: 'tmp/app.coffee'
             }
@@ -118,6 +127,14 @@ module.exports = function(grunt) {
             }
         },
 
+        bower: {
+            install: {
+                options: {
+                    copy: false
+                }
+            }
+        },
+
         coffee: {
             compile: {
                 options: {
@@ -141,13 +158,24 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    "public/dev/css/styles.css": "app/src/less/styles.less"
+                    "public/dev/css/styles.css": "app/src/less/styles.less",
+                    "public/dev/css/wait.css": "app/src/less/wait.less"
+                }
+            },
+            production: {
+                options: {
+                    yuicompress: true
+                },
+                files: {
+                    "public/css/styles.min.css": "app/src/less/styles.less",
+                    "public/css/wait.min.css": "app/src/less/wait.less"
                 }
             }
         },
 
         clean: {
-            development: ["tmp"]
+            development: ["tmp"],
+            production: ["public/dev", "tmp"]
         },
 
         mkdir: {
@@ -191,15 +219,54 @@ module.exports = function(grunt) {
             }
         },
 
+        assemble: {
+            development_php: {
+                options: {
+                    dev: true,
+                    demo: false,
+                    prod: false,
+                    ext: '.php'
+                },
+                files: {
+                    "app/config/config_settings.inc.php": ["app/src/hbs/config.env.hbs"]
+                }
+            },
+            demo_php: {
+                options: {
+                    dev: false,
+                    demo: true,
+                    prod: false,
+                    ext: '.php'
+                },
+                files: {
+                    "app/config/config_settings.inc.php": ["app/src/hbs/config.env.hbs"]
+                }
+            },
+            production_php: {
+                options: {
+                    dev: false,
+                    demo: false,
+                    prod: true,
+                    ext: '.php'
+                },
+                files: {
+                    "app/config/config_settings.inc.php": ["app/src/hbs/config.env.hbs"]
+                }
+            }
+        },
+
         open: {
             dev : {
                 path: 'http://docgame.classe-1914.dev/',
                 app: 'Google Chrome'
+            },
+            demo : {
+                path: 'http://localhost:8080'
             }
         },
 
         php: {
-            server: {
+            server_dev: {
                 options: {
                     port: 80,
                     keepalive: true,
@@ -207,11 +274,20 @@ module.exports = function(grunt) {
                     base: 'www',
                     hostname: "0.0.0.0"
                 }
+            },
+            server_demo: {
+                options: {
+                    port: 8080,
+                    keepalive: true,
+                    open: false,
+                    base: 'public',
+                    hostname: "0.0.0.0"
+                }
             }
         },
 
         parallel: {
-            server: {
+            server_demo: {
                 options: {
                     grunt: true,
                     stream: true
@@ -222,20 +298,33 @@ module.exports = function(grunt) {
 
     });
 
-    // Load task
-    grunt.registerTask('default', ['development']);
-    grunt.registerTask('build', ['concat:coffee_src','coffee','uglify:app','less']);
+    //--- Load task ---
+        // Default task
+    grunt.registerTask('default', ['demo']);
+        // Built the js files and put in a tmp folder
+    grunt.registerTask('build_js', ['concat:coffee_src','coffee','uglify:app']);
+        // Concat the js and css files from Bower libraries
     grunt.registerTask('lib', ['concat:bower_js', 'concat:bower_css']);
+        // Install bower and composer
+    grunt.registerTask('fetch', ['exec']);
 
-    // Setup environment for development
-    grunt.registerTask('development', ['copy:angular_map', 'ngtemplates', 'build','lib', 'clean:development','mkdir:clean', 'open:dev', 'watch']);
 
-    grunt.registerTask('server', function(env){
-        if(env == 'production'){
-            grunt.task.run(['production','parallel:server']);
-        } else {
-            grunt.task.run(['default','parallel:server']);
-        }
+    //--- Setup environment ---
+        // For development
+    grunt.registerTask('development', ['copy:angular_map', 'ngtemplates', 'build_js','less:development',  'lib', 'assemble:development_php', 'clean:development','mkdir:clean', 'open:dev', 'watch']);
+        // For demo
+    grunt.registerTask('demo', ['ngtemplates', 'build_js','less:production','lib', 'assemble:demo_php', 'clean:production','mkdir:clean', 'parallel:server_demo', 'browser']);
+        // For production
+    grunt.registerTask('production', ['ngtemplates', 'build_js','less:production','lib', 'assemble:production_php', 'clean:production','mkdir:clean']);
+
+
+
+    grunt.registerTask('browser', function(){
+        var done = this.async();
+        setTimeout(function(){
+            grunt.task.run(['open:demo']);
+            done();
+        }, 1000);
     });
 
 };

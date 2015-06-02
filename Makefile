@@ -1,6 +1,10 @@
 # Makefile -- Classe-1914
 
 run:
-	grunt server
+	grunt development
 
+install:
+	sudo npm install
+	grunt fetch
+	bower install
 

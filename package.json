@@ -1,15 +1,17 @@
 {
   "name": "Classe-1914",
-  "author": "Kalioppe <contact@kalioppe.com>",
+  "author": "Greg Desplaces <contact@gregdesplaces.com>",
   "version": "0.1.0",
-  "description": "An interactive docgame during the first world war",
+  "description": "An interactive docgame during the first world war in Britain",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kalioppe/classe-1914"
+    "url": "https://github.com/GregDesplaces/classe-1914"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "bower": "1.4.1",
+    "grunt-exec": "~0.4.6",
     "grunt-angular-templates": "^0.5.7",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-coffee": "^0.12.0",
@@ -18,6 +20,7 @@
     "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
+    "assemble": "^0.4.42",
     "grunt-mkdir": "^0.1.2",
     "grunt-open": "^0.2.3",
     "grunt-parallel": "^0.4.0",
@@ -26,5 +29,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "scripts":
+  {
+    "start": "make run"
   }
 }

@@ -17,9 +17,19 @@
 
     {% if MODE == "development" %}
         <script type="text/javascript" src="{{STATIC_URL}}dev/js/wait.js"></script>
+        <link rel="stylesheet" href="{{STATIC_URL}}css/lib.min.css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}dev/css/wait.css" />
+    {% endif %}
+
+    {% if MODE == "demo" %}
+        <link rel="stylesheet" href="{{STATIC_URL}}css/lib.min.css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}css/wait.min.css" />
+        <script type="text/javascript" src="{{STATIC_URL}}js/wait.min.js?v={{ "../public/js/wait.min.js" | md5 }}"></script>
     {% endif %}
 
     {% if MODE == "production" %}
+        <link rel="stylesheet" href="{{STATIC_URL}}css/lib.min.css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}css/wait.min.css" />
         <script type="text/javascript" src="{{STATIC_URL}}js/wait.min.js?v={{ "../public/js/wait.min.js" | md5 }}"></script>
     {% endif %}
 
