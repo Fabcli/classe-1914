@@ -257,7 +257,7 @@ module.exports = function(grunt) {
 
         open: {
             dev : {
-                path: 'http://demo.classe-1914.dev/',
+                path: 'http://docgame.classe-1914.dev/',
                 app: 'Google Chrome'
             },
             demo : {
