@@ -39,7 +39,7 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
                     $(element).elevateZoom
                         zoomType: 'lens'
                         lensShape: 'round'
-                        lensSize: 400
+                        lensSize: 500
 
             resetData = ->
                 element.removeData('elevateZoom')
