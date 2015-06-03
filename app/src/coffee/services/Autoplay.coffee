@@ -10,15 +10,16 @@ angular.module('classe1914.service').factory "AutoPlay", [
 
             changeValue:  =>
                 if User.inGame is true
-                    if User.autoplay is true
+                    if User.autoplay is true and not User.pause
                         notif = "Lecture automatique activée"
                         Notification.success(notif)
                     else
                         if User.pause
                             notif = "Lecture en pause"
+                            Notification.primary(notif)
                         else
                             notif = "Lecture automatique désactivée"
-                        Notification.error(notif)
+                            Notification.error(notif)
                     do Timeout.toggleSequence
 
             nextSequence: =>
