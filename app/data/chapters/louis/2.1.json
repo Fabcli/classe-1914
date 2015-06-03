@@ -25,8 +25,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL2.jpg",
-            "transition": null
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL2.jpg"
         },
         {
             "type": "narrative",
@@ -37,11 +36,6 @@
             "type": "narrative",
             "character": "Louis",
             "body": "Marie est en pleurs et Eugénie a l'air très inquiète."
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL3.jpg",
-            "transition": null
         },
         {
             "type": "dialog",
@@ -88,8 +82,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL5.jpg",
-            "transition": null
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL5.jpg"
         },
         {
             "type": "narrative",
@@ -100,8 +93,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL6.jpg",
-            "transition": null
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL6.jpg"
         },
         {
             "type": "narrative",

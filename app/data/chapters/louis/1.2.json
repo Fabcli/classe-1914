@@ -17,8 +17,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg",
-            "transition": "fade"
+            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg"
         },
         {
             "type": "narrative",

@@ -20,8 +20,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg",
-            "transition": null
+            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg"
         },
         {
             "type": "narrative",
