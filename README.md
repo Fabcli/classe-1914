@@ -59,5 +59,5 @@ These options are defined into [app/config/config.demo.php](app/config/config.de
 | **cache**                       | true                                            | Disable or enable server side cache
 | **debug**                       | false                                           | Display debug message
 | **log.enabled**                 | true                                            | Disable or enable server logs
-| **media_url**                   | /medias/Demo_Col/medias			            	| Repository of the large files
+| **media_url**                   | /medias							            	| Repository of the large files (**it is strongly advised to use a cloud service**)
 | **static_url**                  | /                                               | If you  want to move static files
