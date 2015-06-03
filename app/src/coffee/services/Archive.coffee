@@ -61,7 +61,7 @@ angular.module('classe1914.service').factory "Archive", [
                 @display_archive = no
                 @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
                 @archives = @sequence.archive
-                if @archives?
+                if @archives? and not User.isStartingChapter()
                     @shouldShowArchiveNav(@archives)
                     @display_archive = yes
                 @display_archive
