@@ -14,9 +14,11 @@ angular.module('classe1914.constant').constant 'constant.case',
         # The choice for the menu
         menu        :   "all"
         archive     :
-            open    :   no
-            zoom    :   no
-            id      :   {}
+            open        :   no
+            zoom        :   no
+            id          :   {}
+            lightbox    :   no
+            
     notification :
         # The default message for new archive unlocked in case
         archive :   "Archive dans le jeu !"

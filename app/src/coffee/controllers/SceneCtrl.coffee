@@ -1,7 +1,7 @@
 class SceneCtrl
-    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'ArcadesGame', 'AutoPlay']
+    @$inject: ['$scope', 'Story', 'User', 'Sound', 'Video', 'Timeout', 'Archive', 'ArcadesGame', 'AutoPlay', 'Lightbox']
 
-    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @ArcadesGame, @AutoPlay) ->
+    constructor: (@scope, @Story, @User, @Sound, @Video, @Timeout, @Archive, @ArcadesGame, @AutoPlay, @Lightbox) ->
         @scope.story        = @Story
         @scope.user         = @User
         @scope.sound        = @Sound
@@ -105,9 +105,23 @@ class SceneCtrl
         @scope.shouldShowArchive = =>
             is_pointer = false
             @sequence = Story.sequence(User.chapter, User.scene, User.sequence)
-            if @sequence.hasArchive()
+            if @sequence.hasArchive() and @User.inGame and not @User.isStartingChapter()
+                @isLightboxOpen()
                 is_pointer = true
             is_pointer
+
+        @isLightboxOpen = @scope.isLightboxOpen = =>
+            if @Lightbox.image.id is undefined
+                @User.case.archive.lightbox = no
+                if @User.pause and not @User.autoplay
+                    @User.autoplay = yes
+                    @User.pause = no
+            else
+                @User.case.archive.lightbox = yes
+                if @User.autoplay
+                    @User.pause = yes
+                    @User.autoplay = no
+
 
         #Launch the archive in case to preload
         @scope.getChapterCase = =>

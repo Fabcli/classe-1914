@@ -4,7 +4,7 @@
      ng-swipe-left="Lightbox.nextImage()"
      ng-swipe-right="Lightbox.prevImage()">
 
-    <div class="case__bg"></div>
+    <div class="case__bg" ng-click="user.case.archive.lightbox == false "></div>
 
     <div class="lightbox__image">
 
@@ -22,7 +22,7 @@
                 <div class="lightbox__image__caption__nav__next button" ng-click="Lightbox.nextImage()" ng-if="Lightbox.show_nav"></div>
             </div>
 
-            <span class="lightbox__image__caption__cote">Cote : [[ Lightbox.imageCaption | uppercase ]]</span><br />
+            <span class="lightbox__image__caption__cote">Cote : [[Lightbox.imageCaption | uppercase ]]</span><br />
             <span class="lightbox__image__caption__url"><a href="[[ Lightbox.imageUrl ]]" target="_blank">[[ Lightbox.imageUrl ]]</a></span>
         </div>
 
