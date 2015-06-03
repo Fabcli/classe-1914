@@ -88,6 +88,7 @@ angular.module("classe1914.service").factory "Story", [
                    if this.character?
                         # slugify the character name (to avoid error)
                         character = this.character.toLowerCase().replace(/[^\w-]+/g,'')
+                        c = character.toLowerCase().replace(/\ /g,'_')
                         # Just returns the URL
                         characters[character] #TODO: Add a small function to add _child option in avatar characters
 
