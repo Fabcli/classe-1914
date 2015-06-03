@@ -6,7 +6,8 @@ angular.module('classe1914.service').factory "Archive", [
     'constant.case'
     'Notification'
     '$filter'
-    (Lightbox, User, Story, Case, initialCase, Notification, $filter)->
+    '$timeout'
+    (Lightbox, User, Story, Case, initialCase, Notification, $filter, $timeout)->
 
         new class Archive
             constructor: ->
@@ -83,7 +84,9 @@ angular.module('classe1914.service').factory "Archive", [
                 @display_archive = @shouldDisplayArchive()
                 if @display_archive is true
                     @archives = @getArchives(@sequence.archive)
-                    User.case.archive.zoom = 0
+                    # Disables the magnifying glass/ zoom
+                    User.case.archive.zoom = no
+                    # Launch the modal
                     Lightbox.openModal(@archives, 0)
 
             startScene: (chapter=User.chapter, scene=User.scene) =>

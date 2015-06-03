@@ -13,11 +13,15 @@ angular.module("classe1914.service").factory "ElevateZoom", [
 
             toggleZoom: =>
                 # Change the value for when the case is open
-                User.case.archive.zoom = !User.case.archive.zoom
+                if User.case.open is true
+                    User.case.zoom = !User.case.zoom
+                    @notifZoom
+                else
+                    User.case.archive.zoom = !User.case.archive.zoom
                 do @notifZoom
 
             notifZoom: =>
-                if User.case.archive.zoom is true
+                if User.case.zoom is true
                     Notification.success "Loupe activée !"
                 else
                     Notification.error "Loupe désactivée !"

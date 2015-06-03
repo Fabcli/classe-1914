@@ -5,6 +5,7 @@ angular.module('classe1914.constant').constant 'constant.case',
         data        :   no
         ready       :   no
         open        :   no
+        zoom        :   yes
         # The archives id open in the case on a new game
         unlocked    :   []
         starred     :   []
@@ -14,7 +15,7 @@ angular.module('classe1914.constant').constant 'constant.case',
         menu        :   "all"
         archive     :
             open    :   no
-            zoom    :   true
+            zoom    :   no
             id      :   {}
     notification :
         # The default message for new archive unlocked in case

@@ -25,13 +25,20 @@ angular.module('classe1914.directive').directive  'ngElevateZoom', [
 
             # Relink when the zoom is toggled and notify for story archive
             scope.$watch (=> @UserArchive.zoom ), ->
-                if $rootScope.user.case.open is false
-                    ElevateZoom.notifZoom()
+                #if $rootScope.user.case.open is false
+                #    ElevateZoom.notifZoom()
+                resetData()
+                linkElevateZoom()
+
+            # Relink when the zoom is toggled and notify for story archive
+            scope.$watch (=> @UserCase.zoom ), ->
+                #if $rootScope.user.case.open is true
+                #    ElevateZoom.notifZoom()
                 resetData()
                 linkElevateZoom()
 
             linkElevateZoom = ->
-                if @UserArchive.zoom is true
+                if @UserCase.zoom is true and @UserCase.open is true || @UserArchive.zoom is true and @UserCase.open is false
                     #Check if its not empty
                     if !attrs.zoomImage
                         return

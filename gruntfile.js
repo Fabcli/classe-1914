@@ -313,9 +313,9 @@ module.exports = function(grunt) {
         // For development
     grunt.registerTask('development', ['copy:angular_map', 'ngtemplates', 'build_js','less:development',  'lib', 'assemble:development_php', 'clean:development','mkdir:clean', 'open:dev', 'watch']);
         // For demo
-    grunt.registerTask('demo', ['ngtemplates', 'build_js','less:production','lib', 'assemble:demo_php', 'clean:production','mkdir:clean', 'parallel:server_demo', 'browser']);
+    grunt.registerTask('demo', ['ngtemplates', 'build_js','less:production','lib', 'assemble:demo_php', 'clean:production','mkdir:clean', 'parallel:server_demo', 'browser', 'watch']);
         // For production
-    grunt.registerTask('production', ['ngtemplates', 'build_js','less:production','lib', 'assemble:production_php', 'clean:production','mkdir:clean']);
+    grunt.registerTask('production', ['ngtemplates', 'build_js','less:production','lib', 'assemble:production_php', 'clean:production','mkdir:clean', 'watch']);
 
 
 

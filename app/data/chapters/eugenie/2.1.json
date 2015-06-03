@@ -20,18 +20,12 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL2.jpg",
-            "transition": null
+            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL2.jpg"
         },
         {
             "type": "narrative",
             "character": "Eugenie",
             "body": "L'inquiétude se lit sur nos visages. Je suis inquiète. Marie est en pleurs."
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/CH2_SE1_SC1_TP_PL3.jpg",
-            "transition": null
         },
         {
             "type": "dialog",
