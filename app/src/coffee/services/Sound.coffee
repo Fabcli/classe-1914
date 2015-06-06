@@ -27,7 +27,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
       startSoundEffect: (effects) =>
           return if @is_ipad
           if @soundeffect?
-              console.log "effets sonores"
+              console.log "effets sonores existant"
               do @soundeffect.stop
               @soundeffect = undefined
           # Create the new sound
@@ -42,6 +42,8 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               onend  : => $rootScope.safeApply => @soundeffect.isPlaying = no
           # Play the sound with a fadein entrance
           @soundeffect.play => @soundeffect.fade(0, User.volume, 1000)
+          console.log "effets sonores lancê"
+
 
       extractAllTracks: (track) =>
           tracks = [track]
@@ -84,6 +86,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                           do @soundtrack.stop
                           @soundtrack = undefined
               if scene.decor[0].hasOwnProperty 'soundeffect'
+                  console.log "sound effet detecté dans decor"
                   if scene.decor[0].soundeffect?
                       if (not @soundeffect?)
                           console.log "sound effet detecté 1"
@@ -213,7 +216,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               if @soundtrack?
                  @soundtrack.volume(volume)
               if @soundeffect?
-                  @soundeffect.volume(volume)
+                 @soundeffect.volume(volume)
 
 ]
 # EOF
