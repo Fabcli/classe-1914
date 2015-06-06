@@ -2,7 +2,7 @@
     "next_scene": null,
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg",
+            "background": "/illustrations/common/1_2.jpg",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3"
         }
@@ -11,6 +11,7 @@
         {
             "type": "choice",
             "body": "Choisissez votre héros",
+            "delay": 30,
             "default_option": null,
             "hero": true,
             "options": [

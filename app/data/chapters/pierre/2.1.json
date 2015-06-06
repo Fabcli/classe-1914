@@ -1,76 +1,17 @@
 {
-    "next_scene": null,
+    "next_scene": "2.1a",
     "decor": [
         {
             "background": "/illustrations/common/2_1.jpg",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/pierre/02_Simul_Pierre.mp3"
+            "soundtrack": "/soundtracks/pierre/02_Simul_Pierre.mp3",
+            "soundeffect": "/soundeffects/SND_CH2_SE1_SC1_TP_PL1.mp3"
         }
     ],
     "sequence": [
         {
             "type": "voixoff",
             "body": "/voicetracks/pierre/CH2_SE1_SC1_TP_PL1.mp3"
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/2_2.jpg"
-        },
-        {
-            "type": "voixoff",
-            "body": "/voicetracks/pierre/CH2_SE1_SC1_TP_PL2.mp3"
-        },
-        {
-            "type": "dialog",
-            "character": "Pierre Soldat 14",
-            "body": "Allez quoi! Vous inquiétez pas, on sera vite de retour! "
-        },
-        {
-            "type": "dialog",
-            "character": "Pierre Soldat 14",
-            "body": "Les boches n'auront pas notre peau."
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/2_3.jpg"
-        },
-        {
-            "type": "dialog",
-            "character": "Pierre Soldat 14",
-            "body": "Le cuir breton est trop dur pour eux. On vous le promets!"
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/2_2.jpg"
-        },
-        {
-            "type": "narrative",
-            "character": "Eugenie 14",
-            "body": "Je suis inquiète pour Stéphan, il est avec vous, vous le protègerez ?"
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/2_4.jpg"
-        },
-        {
-            "type": "narrative",
-            "character": "Pierre Soldat 14",
-            "body": "Bien sur qu’on va le surveiller ton promis ! Pas vrai Louis ?",
-            "archive_notification": "Voir l'ordre de route de Pierre",
-            "archive": [ 1 ]
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/2_7.jpg"
-        },
-        {
-            "type": "voixoff",
-            "body": "/voicetracks/pierre/CH2_SE1_SC1_TP_PL6.mp3"
-        },
-        {
-            "type": "narrative",
-            "reset": true,
-            "body": " Fin de la demo de Pierre, cliquez pour réinitialiser..."
         }
     ]
 }

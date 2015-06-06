@@ -24,7 +24,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
           # Play the sound with a fadein entrance
           @soundtrack.play => @soundtrack.fade(0, User.volume, 1000)
 
-      startSoundEffect: (tracks) =>
+      startSoundEffect: (effects) =>
           return if @is_ipad
           if @soundeffect?
               console.log "effets sonores"
@@ -32,7 +32,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               @soundeffect = undefined
           # Create the new sound
           @soundeffect = new Howl
-              urls : tracks
+              urls : effects
               loop : yes
               buffer : yes
               volume : 0
@@ -70,6 +70,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               # Get scene object
               scene  = Story.scene(chapter, scene)
               tracks = @extractAllTracks $filter('media')(scene.decor[0].soundtrack)
+              effects = @extractAllTracks $filter('media')(scene.decor[0].soundeffect)
               # Update the soundtrack if it is different
               if scene.decor[0].hasOwnProperty 'soundtrack'
                   if scene.decor[0].soundtrack?
@@ -83,17 +84,20 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                           do @soundtrack.stop
                           @soundtrack = undefined
               if scene.decor[0].hasOwnProperty 'soundeffect'
-                  console.log "sound effcet detecté"
                   if scene.decor[0].soundeffect?
-                      if (not soundeffect?)
-                          @startSoundEffect tracks
-                      else if (not angular.equals( soundeffect.urls(), tracks))
-                          soundeffect.fade User.volume, 0, 1000, =>
-                              @startSoundEffect tracks
-                  else if soundeffect?
-                      soundeffect.fade (do soundeffect.volume), 0, 1000, =>
-                          do soundeffect.stop
-                          soundeffect = undefined
+                      if (not @soundeffect?)
+                          console.log "sound effet detecté 1"
+                          @startSoundEffect effects
+                      else if (not angular.equals( @soundeffect.urls(), effects))
+                          console.log "sound effet detecté 2"
+                          @soundeffect.fade User.volume, 0, 1000, =>
+                              @startSoundEffect effects
+                  else if @soundeffect?
+                      console.log "ancien sound effect"
+                      @soundeffect.fade (do @soundeffect.volume), 0, 1000, =>
+                          do @soundeffect.stop
+                          @soundeffect = undefined
+
 
       toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence)=>
           if sequenceIdx?

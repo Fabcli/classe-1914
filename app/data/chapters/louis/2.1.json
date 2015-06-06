@@ -4,7 +4,8 @@
         {
             "background": "/illustrations/common/2_1.jpg",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/louis/02_Simul_Louis.mp3"
+            "soundtrack": "/soundtracks/louis/02_Simul_Louis.mp3",
+            "soundeffect": "/soundeffects/SND_CH2_SE1_SC1_TP_PL1.mp3"
         }
     ],
     "sequence": [
@@ -41,7 +42,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/2_5.jpg"
+            "body": "/illustrations/common/2_5bis.jpg"
         },
         {
             "type": "narrative",
@@ -61,7 +62,7 @@
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/2_2.jpg"
+            "body": "/illustrations/common/2_2bis.jpg"
         },
         {
             "type": "voixoff",

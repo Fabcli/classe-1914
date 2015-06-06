@@ -4,7 +4,8 @@
         {
             "background": "/illustrations/common/1_1.jpg",
             "background_transition": "fade",
-            "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3"
+            "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3",
+            "soundeffect": "/soundeffects/SND_CH1_SE18_SC1_TP_PL1.mp3"
         }
     ],
     "sequence": [
