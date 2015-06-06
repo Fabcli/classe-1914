@@ -1,5 +1,5 @@
 {
-    "next_scene": "1.1a",
+    "next_scene": "1.2",
     "decor": [
         {
             "background": "/illustrations/common/1_1.jpg",
@@ -12,6 +12,14 @@
         {
             "type": "voixoff",
             "body": "/voicetracks/pierre/CH1_SE18_SC1_TP_PL1.mp3"
+        },
+        {
+            "type": "new_background",
+            "body": "/illustrations/common/1_3.jpg"
+        },
+        {
+            "type": "voixoff",
+            "body": "/voicetracks/pierre/CH1_SE18_SC1_TP_PL4.mp3"
         }
     ]
 }
