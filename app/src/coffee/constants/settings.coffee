@@ -16,7 +16,7 @@ angular.module('classe1914.constant').constant 'constant.settings',
 # Refreshing rate for timeouts
   timeoutRefRate    : 100
 # Default value for delay in second on active autoplay
-  defaultDelay      : 6
+  defaultDelay      : 8
 # Active the pause on videoBackground when the user open the case
   activeBgPause     : true
 

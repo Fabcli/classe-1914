@@ -2,7 +2,7 @@
     "next_scene": "2.1",
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL4.jpg",
+            "background": "/illustrations/common/1_3.jpg",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3"
         }
@@ -10,20 +10,25 @@
     "sequence": [
         {
             "type": "narrative",
-            "character": "Eugenie",
-            "body": "Pierre me montre son ordre de route.",
+            "body": "Pierre montre son ordre de route.",
+            "delay": 12,
             "archive_notification": "Cliquez sur l'ordre de route pour le voir",
             "archive": [ 1 ]
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg",
+            "body": "/illustrations/common/1_2.jpg",
             "transition": "fade"
         },
         {
             "type": "narrative",
-            "character": "Pierre",
-            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer. On sera là à Noël."
+            "character": "Pierre Civil",
+            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer."
+        },
+        {
+            "type": "narrative",
+            "character": "Pierre Civil",
+            "body": "On sera là à Noël."
         }
     ]
 }

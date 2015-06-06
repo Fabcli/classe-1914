@@ -2,35 +2,23 @@
     "next_scene": "1.2",
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL1.jpg",
+            "background": "/illustrations/common/1_1.jpg",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/eugenie/01_Simul_Eugenie.mp3"
         }
     ],
     "sequence": [
         {
-            "type": "narrative",
-            "character": "Eugenie",
-            "body": "Louis et Pierre ont leur ordre de route. Les autorités ont devancé l'appel d'un mois."
-        },
-        {
-            "type": "narrative",
-            "character": "Eugenie",
-            "body": "Ils doivent partir dès le 10. D'abord pour une période d'instruction, avant de partir à la guerre."
-        },
-        {
-            "type": "narrative",
-            "character": "Eugenie",
-            "body": "Louis me dit de ne pas m’inquiéter."
+            "type": "voixoff",
+            "body": "/voicetracks/eugenie/CH1_SE17_SC1_TP_PL1.mp3"
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL3.jpg"
+            "body": "/illustrations/common/1_2.gif"
         },
         {
-            "type": "narrative",
-            "character": "Eugenie",
-            "body": "Il doit partir dans quelques jours pour rejoindre son régiment à Paris."
+            "type": "voixoff",
+            "body": "/voicetracks/eugenie/CH1_SE17_SC1_TP_PL3.mp3"
         }
     ]
 }

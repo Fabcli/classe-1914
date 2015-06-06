@@ -44,7 +44,7 @@ angular.module("classe1914.service").factory("User", [
                 #Case unblocked in past or reset case
                 @case   =   master.case or initialCase.case
                 # Autoplay value
-                @autoplay = if master.autoplay? then master.autoplay else false
+                @autoplay = if master.autoplay? then master.autoplay else true
                 @pause = no
                 # Sound control
                 @volume   = if isNaN(master.volume) then 1 else master.volume

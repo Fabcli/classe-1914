@@ -2,7 +2,7 @@
     "next_scene": "2.1",
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL4.jpg",
+            "background": "/illustrations/common/1_2.jpg",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/pierre/01_Simul_Pierre.mp3"
         }
@@ -10,24 +10,14 @@
     "sequence": [
         {
             "type": "narrative",
-            "character": "Pierre",
-            "body": "Je leur montre mon ordre de route, enfin surtout aux filles... Louis a le même que moi !",
-            "archive_notification": "Cliquez sur l'ordre de route pour le voir",
-            "archive": [ 1 ]
-        },
-        {
-            "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg"
+            "character": "Pierre Civil",
+            "body": "Tout le monde dit que ça ne va pas durer.",
+            "delay": 4
         },
         {
             "type": "narrative",
-            "character": "Pierre",
-            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer."
-        },
-        {
-            "type": "narrative",
-            "character": "Pierre",
-            "body": "On sera chez nous à Noël."
+            "character": "Pierre Civil",
+            "body": "On va a Berlin et on rentre pour Noël."
         }
     ]
 }

@@ -1,74 +1,74 @@
 angular.module("classe1914.service").factory "Story", [
-  '$http'
-  'constant.api'
-  'constant.settings'
-  'constant.characters'
-  'constant.types'
-  '$rootScope'
-  ($http, api, settings, characters, types, $rootScope)->
-      new class Story
-          sequenceWrappingObject:
-              # help us to know if we already wrapped a sequence
-              _wrapped: yes
+    '$http'
+    'constant.api'
+    'constant.settings'
+    'constant.characters'
+    'constant.types'
+    '$rootScope'
+    ($http, api, settings, characters, types, $rootScope)->
+        new class Story
+            sequenceWrappingObject:
+                # help us to know if we already wrapped a sequence
+                _wrapped: yes
 
-              lowerType: -> this.type.toLowerCase()
+                lowerType: -> this.type.toLowerCase()
 
-              isDialog: ->
+                isDialog: ->
                   settings.sequenceDialog.indexOf( this.lowerType() ) > -1
 
-              isSkipped: ->
+                isSkipped: ->
                   settings.sequenceSkip.indexOf( this.lowerType() ) > -1
 
-              isHeroChoice: ->
+                isHeroChoice: ->
                   this.lowerType() is types.sequence.choice and this.hero
 
-              isChoice: ->
+                isChoice: ->
                   this.lowerType() is types.sequence.choice
 
-              isPlayer: ->
+                isPlayer: ->
                   this.lowerType() is types.sequence.player
 
-              isGame: ->
+                isGame: ->
                   this.lowerType() is types.sequence.game
 
-              isVideo: ->
+                isVideo: ->
                   this.lowerType() is types.sequence.video
 
-              isGame: ->
+                isGame: ->
                   this.lowerType() is types.sequence.game
 
-              isNewBg: ->
+                isNewBg: ->
                   this.lowerType() is types.sequence.newBackground
 
-              isArchive: ->
+                isArchive: ->
                   this.lowerType() is types.sequence.archive
 
-              isVideoBg: ->
+                isVideoBg: ->
                   this.lowerType() is types.sequence.videoBackground
 
-              isGameOver: ->
+                isGameOver: ->
                   this.lowerType() is types.sequence.gameOver
 
-              isNotification: ->
+                isNotification: ->
                   this.lowerType() is types.sequence.notification
 
-              isNotificationWithButton: ->
+                isNotificationWithButton: ->
                   (this.lowerType() is types.sequence.notification) and this.next_button
 
-              isFeedback: ->
+                isFeedback: ->
                   this.lowerType() is types.sequence.feedback
 
-              hasConditions: ->
+                hasConditions: ->
                   this.condition?
 
-              hasArchive: ->
+                hasArchive: ->
                   this.archive?
 
-              hasNext: ->
+                hasNext: ->
                    settings.sequenceWithNext.indexOf( this.lowerType() ) > -1
 
 
-              hasExit: ->
+                hasExit: ->
                   this.isPlayer() or
                   this.isDialog() or
                   this.isChoice() or
@@ -76,65 +76,63 @@ angular.module("classe1914.service").factory "Story", [
                   this.isNotificationWithButton() or
                   this.isVideoBg()
 
-              getEmbedSrc: ->
+                getEmbedSrc: ->
                   if this.body.toLowerCase().indexOf('https://vimeo.com/') > -1
                       this.body = this.body.replace("https://vimeo.com/", "https://player.vimeo.com/video/")
                       this.body = this.body+"?api=1&player_id=vimeoPlayer&autoplay=1&title=0&byline=0&portrait=0"
-#                      this.body = this.body.replace("https://vimeo.com/", "")
+                #                      this.body = this.body.replace("https://vimeo.com/", "")
                   else
                       this.body
 
-              getAvatarSrc: ->
-                   if this.character?
+                getAvatarSrc: ->
+                    if @character?
                         # slugify the character name (to avoid error)
-                        character = this.character.toLowerCase().replace(/[^\w-]+/g,'')
-                        c = character.toLowerCase().replace(/\ /g,'_')
+                        character = @character.toLowerCase().split(' ').join('_').replace(/[^\w-]+/g,'')
                         # Just returns the URL
-                        characters[character] #TODO: Add a small function to add _child option in avatar characters
+                        characters[character]
 
-
-          # ─────────────────────────────────────────────────────────────────
-          # Public methods
-          # ─────────────────────────────────────────────────────────────────
-          constructor: ->
-              @chapters = []
-              $rootScope.$watch (=> $rootScope.user.hero), =>
-                  #Load the story or the introduction
-                  if $rootScope.user.hero?
+            # ─────────────────────────────────────────────────────────────────
+            # Public methods
+            # ─────────────────────────────────────────────────────────────────
+            constructor: ->
+                @chapters = []
+                $rootScope.$watch (=> $rootScope.user.hero), =>
+                    #Load the story or the introduction
+                    if $rootScope.user.hero?
                       @hero = $rootScope.user.hero
                       $http.get(api.story + "/" + @hero).success (chapters)=>
                           @chapters = @wrapChapters chapters
-                  else
+                    else
                       $http.get(api.intro).success (chapters)=>
                           @chapters = @wrapChapters chapters
 
-              return @
+                return @
 
-          wrapSequence: (sequence)=>
+            wrapSequence: (sequence)=>
               sequence = sequence or { type: "" }
               unless sequence._wrapped
                 sequence = _.extend sequence, @sequenceWrappingObject
               sequence
 
 
-          wrapChapters: (chapters)=>
+            wrapChapters: (chapters)=>
               for c in chapters
                   for s in c.scenes
                      s.sequence = _.map s.sequence, @wrapSequence
               chapters
 
 
-          # Getter shortcuts
-          chapter : (chapterId)=>
+            # Getter shortcuts
+            chapter : (chapterId)=>
               # Fetch the chapters list
               _.find @chapters or [], (chapter)-> chapter.id is chapterId
 
-          scene   : (chapterId, sceneId)=>
+            scene   : (chapterId, sceneId)=>
               chapter = @chapter(chapterId) or {}
               # Fetch the chapters list and its scenes
               _.find chapter.scenes or [], (scene)-> scene.id is sceneId
 
-          sequence: (chapterId, sceneId, sequenceIdx)=>
+            sequence: (chapterId, sceneId, sequenceIdx)=>
               # Find a scene, inside a chapter, then takes the given element
               scene = @scene(chapterId, sceneId) or { sequence: [] }
               scene.sequence[sequenceIdx]

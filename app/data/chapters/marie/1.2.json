@@ -2,7 +2,7 @@
     "next_scene": "2.1",
     "decor": [
         {
-            "background": "/illustrations/common/CH1_SE18_SC1_TP_PL4.jpg",
+            "background": "/illustrations/common/1_3.jpg",
             "background_transition": "fade",
             "soundtrack": "/soundtracks/marie/01_Simul_Marie.mp3"
         }
@@ -10,19 +10,18 @@
     "sequence": [
         {
             "type": "narrative",
-            "character": "Marie",
-            "body": "Pierre me montre l'ordre de route.",
+            "body": "Pierre montre son ordre de route.",
             "archive_notification": "Cliquez sur l'ordre de route pour le voir",
             "archive": [ 1 ]
         },
         {
             "type": "new_background",
-            "body": "/illustrations/common/CH1_SE18_SC1_TP_PL5.jpg"
+            "body": "/illustrations/common/1_2.jpg"
         },
         {
             "type": "narrative",
-            "character": "Pierre",
-            "body": "On sera là bientôt. Tout le monde dit que ça ne va pas durer. On sera là à Noël."
+            "character": "Pierre Civil",
+            "body": "Tout le monde dit que ça ne va pas durer. On va a Berlin et on rentre pour Noël."
         }
     ]
 }
