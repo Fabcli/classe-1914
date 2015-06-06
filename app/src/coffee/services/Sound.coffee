@@ -24,6 +24,25 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
           # Play the sound with a fadein entrance
           @soundtrack.play => @soundtrack.fade(0, User.volume, 1000)
 
+      startSoundEffect: (tracks) =>
+          return if @is_ipad
+          if @soundeffect?
+              console.log "effets sonores"
+              do @soundeffect.stop
+              @soundeffect = undefined
+          # Create the new sound
+          @soundeffect = new Howl
+              urls : tracks
+              loop : yes
+              buffer : yes
+              volume : 0
+          # Default states
+              onplay : => $rootScope.safeApply => @soundeffect.isPlaying = yes
+              onpause: => $rootScope.safeApply => @soundeffect.isPlaying = no
+              onend  : => $rootScope.safeApply => @soundeffect.isPlaying = no
+          # Play the sound with a fadein entrance
+          @soundeffect.play => @soundeffect.fade(0, User.volume, 1000)
+
       extractAllTracks: (track) =>
           tracks = [track]
           tracks.push tracks[0]
@@ -63,6 +82,18 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                       @soundtrack.fade (do @soundtrack.volume), 0, 1000, =>
                           do @soundtrack.stop
                           @soundtrack = undefined
+              if scene.decor[0].hasOwnProperty 'soundeffect'
+                  console.log "sound effcet detecté"
+                  if scene.decor[0].soundeffect?
+                      if (not soundeffect?)
+                          @startSoundEffect tracks
+                      else if (not angular.equals( soundeffect.urls(), tracks))
+                          soundeffect.fade User.volume, 0, 1000, =>
+                              @startSoundEffect tracks
+                  else if soundeffect?
+                      soundeffect.fade (do soundeffect.volume), 0, 1000, =>
+                          do soundeffect.stop
+                          soundeffect = undefined
 
       toggleSequence: (chapterIdx=User.chapter, sceneIdx=User.scene, sequenceIdx=User.sequence)=>
           if sequenceIdx?
@@ -78,6 +109,10 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               if @soundtrack?
                   if (do @soundtrack.volume) < User.volume
                       @soundtrack.fade( (do @soundtrack.volume), User.volume, 500 )
+
+              if @soundeffect?
+                  if (do @soundeffect.volume) < User.volume
+                      @soundeffect.fade( (do @soundeffect.volume), User.volume, 500 )
 
               return if do User.isStartingChapter
 
@@ -106,9 +141,11 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                           onplay  : =>
                               $rootScope.safeApply =>
                                 if @soundtrack?
-                                  @soundtrack.fade( @soundtrack.volume(), User.volume/4, 500 )
-                                  # Duration only on starting
-                                  duration = if @soundtrack.pos() is 0 then 1000 else 0
+                                    @soundtrack.fade( @soundtrack.volume(), User.volume/4, 500 )
+                                    # Duration only on starting
+                                    duration = if @soundtrack.pos() is 0 then 1000 else 0
+                                if @soundeffect?
+                                    @soundeffect.fade( @soundeffect.volume(), User.volume/4, 500 )
                                 @voicetrack.fade(0, 1, duration)
                                 @voicetrack.isPlaying = yes
                           onpause : =>
@@ -117,6 +154,7 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
                           onend   : =>
                               $rootScope.safeApply =>
                                   @soundtrack.fade( @soundtrack.volume(), User.volume, 500 ) if @soundtrack?
+                                  @soundeffect.fade( @soundeffect.volume(), User.volume, 500 ) if @soundeffect?
                                   $rootScope.safeApply => @voicetrack._position = @voicetrack._duration
                                   @voicetrack.pos(0)
                                   @voicetrack.isPlaying = no
@@ -162,12 +200,16 @@ angular.module("classe1914.service").factory "Sound", ['User', 'Story', '$rootSc
               do @voicetrack.stop
           if stopSound and @soundtrack?
               do @soundtrack.stop
+          if stopSound and soundeffect?
+              do soundeffect.stop
 
       updateVolume: (volume)=>
           # New volume set
           if volume?
               if @soundtrack?
                  @soundtrack.volume(volume)
+              if @soundeffect?
+                  @soundeffect.volume(volume)
 
 ]
 # EOF
