@@ -20,11 +20,13 @@ angular.module("classe1914.service").factory "Timeout", [
           cancel: =>
               $timeout.cancel @_timeout
               @_timeout = undefined
+              @half_timeout_msg = no
               @remainingTime = 0
               @_lastStep = null
 
           timeoutStart: =>
               @remainingTime = 0
+              @half_timeout_msg = no
               @_timeout = $timeout @timeStep, settings.timeoutRefRate
               @_lastStep = do Date.now
 
@@ -32,6 +34,7 @@ angular.module("classe1914.service").factory "Timeout", [
               if sequenceIdx?
                   if @_timeout?
                       @remainingTime = 0
+                      @half_timeout_msg = null
                       $timeout.cancel @_timeout
                       @_timeout = undefined
                       @_lastStep = null
@@ -56,10 +59,12 @@ angular.module("classe1914.service").factory "Timeout", [
                   else if User.autoplay is true and User.case.open isnt true and ( @sequence.isDialog() or @sequence.isChoice() )
                       if @sequence.delay is undefined
                           @sequence.delay = settings.defaultDelay
+                      @half_timeout_msg = null
                       @timeoutStart()
 
 
           timeStep: =>
+              console.log "@half_timeout_msg : "+@half_timeout_msg
               return unless @_timeout?
               now = do Date.now
               # remaining time in percentage
@@ -68,9 +73,10 @@ angular.module("classe1914.service").factory "Timeout", [
               console.log Math.floor(@remainingTime)+" %"
               # Launch the countdown
               if @remainingTime < 100
-                  if 49 < @remainingTime < 50
+                  if 49 < @remainingTime < 50 and @half_timeout_msg is false
                       # Error message for random choice
                       if @sequence.isChoice()
+                          @half_timeout_msg = yes
                           if User.hero?
                               Notification.error ("Un choix va être fait au hasard dans "+@sequence.delay/2+" secondes")
                           else
@@ -93,6 +99,7 @@ angular.module("classe1914.service").factory "Timeout", [
                               _default = Math.floor(Math.random()* @sequence.options.length)
                           option = @sequence.options[_default]
                           @remainingTime = 0
+                          @half_timeout_msg = null
                           @_lastStep = null
                           User.updateCareer choice: _default, scene: User.pos()
                           User.goToScene option.next_scene
